@@ -5,7 +5,7 @@ plugins {
 dokka {
 	dokkaSourceSets.configureEach {
 		sourceLink {
-			remoteUrl("https://github.com/Laxystem/spock/tree/master")
+			remoteUrl("https://github.com/Laxystem/spock/tree/main")
 			localDirectory = rootDir
 			remoteLineSuffix = "#L"
 		}
