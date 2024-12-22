@@ -1,5 +1,5 @@
 [versions]
-javaNativeAccess = "5.15.0"
+javaNativeAccess = "5.16.0"
 dokka = "2.0.0"
 kotlin = "2.1.0"
 kotlinLogging = "7.0.3"
