@@ -1,20 +1,25 @@
 [versions]
 javaNativeAccess = "5.15.0"
+dokka = "2.0.0"
 kotlin = "2.1.0"
-kotlinLogging = "7.0.0"
+kotlinLogging = "7.0.3"
 kotlinx-browser = "0.3"
-kotlinx-coroutines = "1.9.0"
-logback = "1.5.12"
-lwjgl = "3.3.4"
+kotlinx-coroutines = "1.10.1"
+logback = "1.5.15"
+lwjgl = "3.3.5"
 wgpu4k = "preview-3"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
 
 [libraries]
+dokka = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version.ref = "dokka" }
+dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin" }
+javaNativeAccess = { group = "net.java.dev.jna", name = "jna", version.ref = "javaNativeAccess" }
+javaNativeAccess-platform = { group = "net.java.dev.jna", name = "jna-platform", version.ref = "javaNativeAccess" }
+kotlinJvm = { group = "org.jetbrains.kotlin.jvm", name = "org.jetbrains.kotlin.jvm.gradle.plugin", version.ref = "kotlin" }
 kotlinLogging = { group = "io.github.oshai", name = "kotlin-logging", version.ref = "kotlinLogging" }
+kotlinMultiplatform = { group = "org.jetbrains.kotlin.multiplatform", name = "org.jetbrains.kotlin.multiplatform.gradle.plugin", version.ref = "kotlin" }
 kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinx-browser" }
-javaNativeAccess = { group = "net.java.dev.jna", name = "jna", version.ref = "javaNativeAccess"}
-javaNativeAccess-platform = { group = "net.java.dev.jna", name = "jna-platform", version.ref = "javaNativeAccess"}
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 lwjgl = { group = "org.lwjgl", name = "lwjgl", version.ref = "lwjgl" }
@@ -22,8 +27,3 @@ lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl" }
 wgpu4k = { group = "io.ygdrasil", name = "wgpu4k", version.ref = "wgpu4k" }
 wgpu4k-glfw = { group = "io.ygdrasil", name = "glfw-native", version.ref = "wgpu4k-glfw" }
 wgpu4k-rococoa = { group = "io.ygdrasil", name = "rococoa", version.ref = "wgpu4k-rococoa" }
-
-
-[plugins]
-kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

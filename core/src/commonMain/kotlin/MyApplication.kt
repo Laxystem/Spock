@@ -8,6 +8,7 @@ private val Surface.canvasFormat
 		?: TextureFormat.bgra8unorm.takeIf { it in supportedFormats }
 		?: supportedFormats.first()
 
+@OptIn(ExperimentalSpockApi::class)
 public class MyApplication(
 	override val device: Device,
 	override val surface: Surface,

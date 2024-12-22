@@ -1,0 +1,346 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>quest.laxla.spock.glfw</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../index.html">
+                    spock
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+<dokka-template-command data="{&quot;@class&quot;:&quot;org.jetbrains.dokka.base.templating.ReplaceVersionsCommand&quot;,&quot;location&quot;:&quot;quest.laxla.spock.glfw/index.html&quot;}">0.0.1-alpha.1</dokka-template-command>        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":glfw/commonMain">common</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":glfw/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector native-like" data-active="" data-filter=":glfw/nativeMain">native</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":glfw/commonMain" data-filter=":glfw/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":glfw/jvmMain" data-filter=":glfw/jvmMain">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":glfw/nativeMain" data-filter=":glfw/nativeMain">
+                                <span class="checkbox--icon"></span>
+                                native
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    spock
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="glfw::quest.laxla.spock.glfw////PointingToDeclaration//1224313801">
+  <div class="breadcrumbs"><a href="../index.html">glfw</a><span class="delimiter">/</span><span class="current">quest.laxla.spock.glfw</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="873633976%2FClasslikes%2F-27867071" anchor-label="Glfw" id="873633976%2FClasslikes%2F-27867071" data-filterable-set=":glfw/commonMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw/index.html"><span><span>Glfw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="873633976%2FClasslikes%2F-27867071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-glfw/index.html">Glfw</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a>, <a href="../../util/quest.laxla.spock/-suspend-closeable/index.html">SuspendCloseable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1586490176%2FClasslikes%2F-27867071" anchor-label="LowLevelGlfwApi" id="1586490176%2FClasslikes%2F-27867071" data-filterable-set=":glfw/commonMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-low-level-glfw-api/index.html"><span>Low</span><wbr><span>Level</span><wbr><span>Glfw</span><wbr><span><span>Api</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1586490176%2FClasslikes%2F-27867071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-target/index.html"><span class="token annotation builtin">Target</span></a><span class="token punctuation">(</span><span>allowedTargets<span class="token operator"> = </span><span class="token punctuation">[</span><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-f-u-n-c-t-i-o-n/index.html">AnnotationTarget.FUNCTION</a><span class="token punctuation">, </span></span><wbr><span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.annotation/-annotation-target/-p-r-o-p-e-r-t-y/index.html">AnnotationTarget.PROPERTY</a></span><wbr><span class="token punctuation">]</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-low-level-glfw-api/index.html">LowLevelGlfwApi</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1195764930%2FClasslikes%2F1224313801" anchor-label="Window" id="-1195764930%2FClasslikes%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-window/index.html"><span><span>Window</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1195764930%2FClasslikes%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-window/index.html">Window</a> : <a href="../../util/quest.laxla.spock/-suspend-closeable/index.html">SuspendCloseable</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-window/index.html">Window</a> : <a href="../../util/quest.laxla.spock/-suspend-closeable/index.html">SuspendCloseable</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-window/index.html">Window</a> : <span data-unresolved-link="/<ERROR CLASS> ERROR CLASS: Symbol not found for SuspendCloseable///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for SuspendCloseable</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="523017872%2FProperties%2F1224313801" anchor-label="GlfwClientApi" id="523017872%2FProperties%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw-client-api.html"><span>Glfw</span><wbr><span>Client</span><wbr><span><span>Api</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="523017872%2FProperties%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="-glfw-client-api.html">GlfwClientApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-client-api.html">GlfwClientApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-client-api.html">GlfwClientApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1974043452%2FProperties%2F1224313801" anchor-label="GlfwFalse" id="1974043452%2FProperties%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw-false.html"><span>Glfw</span><wbr><span><span>False</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1974043452%2FProperties%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="-glfw-false.html">GlfwFalse</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-false.html">GlfwFalse</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-false.html">GlfwFalse</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1513931642%2FProperties%2F1224313801" anchor-label="GlfwNoApi" id="-1513931642%2FProperties%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw-no-api.html"><span>Glfw</span><wbr><span>No</span><wbr><span><span>Api</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1513931642%2FProperties%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="-glfw-no-api.html">GlfwNoApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-no-api.html">GlfwNoApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-no-api.html">GlfwNoApi</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-31780428%2FProperties%2F1224313801" anchor-label="GlfwResizable" id="-31780428%2FProperties%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw-resizable.html"><span>Glfw</span><wbr><span><span>Resizable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-31780428%2FProperties%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="-glfw-resizable.html">GlfwResizable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-resizable.html">GlfwResizable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-resizable.html">GlfwResizable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-372965779%2FProperties%2F1224313801" anchor-label="GlfwTrue" id="-372965779%2FProperties%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-glfw-true.html"><span>Glfw</span><wbr><span><span>True</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372965779%2FProperties%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="-glfw-true.html">GlfwTrue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-true.html">GlfwTrue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">val </span><a href="-glfw-true.html">GlfwTrue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2030525109%2FFunctions%2F1224313801" anchor-label="glfwInit" id="-2030525109%2FFunctions%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="glfw-init.html"><span>glfw</span><wbr><span><span>Init</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2030525109%2FFunctions%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="glfw-init.html"><span class="token function">glfwInit</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-init.html"><span class="token function">glfwInit</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-init.html"><span class="token function">glfwInit</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1433387678%2FFunctions%2F1224313801" anchor-label="glfwTerminate" id="1433387678%2FFunctions%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="glfw-terminate.html"><span>glfw</span><wbr><span><span>Terminate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1433387678%2FFunctions%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="glfw-terminate.html"><span class="token function">glfwTerminate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-terminate.html"><span class="token function">glfwTerminate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-terminate.html"><span class="token function">glfwTerminate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1224562779%2FFunctions%2F1224313801" anchor-label="glfwWindowHint" id="1224562779%2FFunctions%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="glfw-window-hint.html"><span>glfw</span><wbr><span>Window</span><wbr><span><span>Hint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1224562779%2FFunctions%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="glfw-window-hint.html"><span class="token function">glfwWindowHint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">hint<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-window-hint.html"><span class="token function">glfwWindowHint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">hint<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="glfw-window-hint.html"><span class="token function">glfwWindowHint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">hint<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1706072441%2FFunctions%2F1224313801" anchor-label="pollEvents" id="1706072441%2FFunctions%2F1224313801" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain"></a>
+          <div class="table-row" data-filterable-current=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain" data-filterable-set=":glfw/commonMain,:glfw/jvmMain,:glfw/nativeMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="poll-events.html"><span>poll</span><wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1706072441%2FFunctions%2F1224313801"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":glfw/commonMain" data-filterable-set=":glfw/commonMain" data-active="" data-toggle=":glfw/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":glfw/jvmMain" data-filterable-set=":glfw/jvmMain" data-toggle=":glfw/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":glfw/nativeMain" data-filterable-set=":glfw/nativeMain" data-toggle=":glfw/nativeMain">native</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":glfw/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="poll-events.html"><span class="token function">pollEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="poll-events.html"><span class="token function">pollEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div></div><div class="content sourceset-dependent-content" data-togglable=":glfw/nativeMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="poll-events.html"><span class="token function">pollEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

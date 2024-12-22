@@ -1,5 +1,8 @@
 package quest.laxla.spock
 
+/**
+ * @author Laxystem
+ */
 private val currentTarget = System.getProperty("os.name").run {
 	when {
 		startsWith("SunOS", ignoreCase = true) || startsWith("Unit", ignoreCase = true) ||
@@ -12,4 +15,5 @@ private val currentTarget = System.getProperty("os.name").run {
 	}
 }.let(Target::Jvm)
 
+@ExperimentalSpockApi
 public actual val Target.Companion.current: Target get() = currentTarget

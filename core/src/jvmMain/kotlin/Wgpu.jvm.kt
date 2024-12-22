@@ -27,6 +27,7 @@ private const val SessionType = "XDG_SESSION_TYPE"
 private const val Wayland = "wayland"
 private const val X11 = "x11"
 
+@OptIn(ExperimentalSpockApi::class)
 @LowLevelGlfwApi
 private fun Wgpu.getRawSurfaceOrNull(window: Window): MemorySegment? = when (Target.current.operatingSystem) {
 	OperatingSystem.Linux, OperatingSystem.FreeBsd -> when (val sessionType = System.getenv(SessionType)) {

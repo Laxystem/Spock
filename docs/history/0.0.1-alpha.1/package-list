@@ -1,0 +1,10 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:quest.laxla.spock.glfw/Window/raw/#/PointingToDeclaration/glfw/quest.laxla.spock.glfw/-window/[native]raw.html
+$dokka.location:quest.laxla.spock//main/#/PointingToDeclaration/core/quest.laxla.spock/[wasm-js]main.html
+module:core
+quest.laxla.spock
+module:glfw
+quest.laxla.spock.glfw
+module:util
+quest.laxla.spock

@@ -5,7 +5,8 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
-	alias(libs.plugins.kotlinMultiplatform)
+	multiplatform
+	dokka
 }
 
 group = "quest.laxla"
@@ -18,9 +19,11 @@ repositories {
 	}
 }
 
+val jvm: String by properties
 
 kotlin {
 	explicitApi()
+	jvmToolchain(jvm.toInt())
 	applyDefaultHierarchyTemplate()
 
 	jvm().mainRun {

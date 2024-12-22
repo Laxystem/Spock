@@ -1,6 +1,11 @@
 plugins {
-    alias(libs.plugins.kotlinJvm) apply false
-    alias(libs.plugins.kotlinMultiplatform) apply false
+    base
 }
 
-repositories.mavenCentral()
+private val _group = properties["group"]!!
+private val _version = properties["version"]!!.toString()
+
+allprojects {
+    group = _group
+    version = _version
+}
