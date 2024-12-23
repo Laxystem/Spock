@@ -3,20 +3,12 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-	`maven-publish`
 	dokka
 	multiplatform
-	signing
+	alias(libs.plugins.publish)
 }
 
-repositories.mavenCentral()
-
-val jvm: String by properties
-
 kotlin {
-	explicitApi()
-	jvmToolchain(jvm.toInt())
-
 	jvm()
 	linuxX64()
 	wasmJs().browser()

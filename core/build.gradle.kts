@@ -7,34 +7,27 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
 	multiplatform
 	dokka
+	alias(libs.plugins.publish)
 }
 
-group = "quest.laxla"
-version = "1.0-SNAPSHOT"
-
-repositories {
-	mavenCentral()
-	maven(url = "https://gitlab.com/api/v4/projects/25805863/packages/maven") {
-		name = "Wgpu4k"
-	}
+repositories.maven(url = "https://gitlab.com/api/v4/projects/25805863/packages/maven") { // TODO: remove
+	name = "Wgpu4k"
 }
-
-val jvm: String by properties
 
 kotlin {
-	explicitApi()
-	jvmToolchain(jvm.toInt())
 	applyDefaultHierarchyTemplate()
 
 	jvm().mainRun {
 		mainClass = "quest.laxla.spock.MainKt"
 	}
+
 	linuxX64().binaries.executable {
 		entryPoint = "quest.laxla.spock.mainBreaking"
 	}
+
 	wasmJs {
 		moduleName = "spock"
-		
+
 		binaries.executable()
 		browser {
 			commonWebpackConfig {

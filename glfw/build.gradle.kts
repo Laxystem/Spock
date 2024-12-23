@@ -3,18 +3,12 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-	multiplatform
 	dokka
+	multiplatform
+	alias(libs.plugins.publish)
 }
 
-repositories.mavenCentral()
-
-val jvm: String by properties
-
 kotlin {
-	explicitApi()
-	jvmToolchain(jvm.toInt())
-	
 	jvm()
 	linuxX64()
 	

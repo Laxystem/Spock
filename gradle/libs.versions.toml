@@ -10,6 +10,7 @@ lwjgl = "3.3.5"
 wgpu4k = "preview-3"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
+mavenPublish = "0.30.0"
 
 [libraries]
 dokka = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version.ref = "dokka" }
@@ -27,3 +28,6 @@ lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl" }
 wgpu4k = { group = "io.ygdrasil", name = "wgpu4k", version.ref = "wgpu4k" }
 wgpu4k-glfw = { group = "io.ygdrasil", name = "glfw-native", version.ref = "wgpu4k-glfw" }
 wgpu4k-rococoa = { group = "io.ygdrasil", name = "rococoa", version.ref = "wgpu4k-rococoa" }
+
+[plugins]
+publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

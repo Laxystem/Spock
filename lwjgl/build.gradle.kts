@@ -1,10 +1,9 @@
 plugins {
 	jvm
+	alias(libs.plugins.publish)
 }
 
-repositories.mavenCentral()
-
-val classifier = "natives-linux"
+val classifier = "natives-linux" // TODO: put all classifiers here
 
 dependencies {
 	api(variantOf(libs.lwjgl) {

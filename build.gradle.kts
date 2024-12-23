@@ -1,11 +1,14 @@
 plugins {
+    alias(libs.plugins.publish) apply false
     base
 }
 
-private val _group = properties["group"]!!
+
+@Suppress("PropertyName")
+val GROUP: String by properties
 private val _version = properties["version"]!!.toString()
 
 allprojects {
-    group = _group
+    group = GROUP
     version = _version
 }
