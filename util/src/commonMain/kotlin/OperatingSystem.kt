@@ -1,8 +1,10 @@
+@file:Suppress("ClassName")
+
 package quest.laxla.spock
 
 /**
+ * An operating system supported by Spock.
  * 
- * Test
  * @since 0.0.1-alpha.1
  */
 public sealed interface OperatingSystem {
@@ -46,11 +48,9 @@ public sealed interface OperatingSystem {
 	public object Windows : JvmSupported
 
 	/**
-	 * Aka iOS, this name does not play well with camelcasing.
-	 * 
 	 * @since 0.0.1-alpha.1
 	 */
-	public object ApplePhoneOS
+	public object iOS
 
 	/**
 	 * @since 0.0.1-alpha.1

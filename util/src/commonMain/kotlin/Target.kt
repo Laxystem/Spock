@@ -21,6 +21,13 @@ public sealed interface Target {
 	public data class WasmJs(override val operatingSystem: OperatingSystem? = null) : Target
 
 	/**
+	 * Compiles to WebAssembly and uses the WASI API.
+	 * 
+	 * @since 0.0.1-alpha.4
+	 */
+	public data class WasmWasi(override val operatingSystem: OperatingSystem? = null) : Target
+
+	/**
 	 * @since 0.0.1-alpha.1
 	 * @see OperatingSystem.SupportedByAnyJvmBased
 	 */
