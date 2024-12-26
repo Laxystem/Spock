@@ -25,11 +25,11 @@ private suspend fun application(canvasElementId: String) = autoclose {
 	val canvas = document.getElementById(canvasElementId) ?: error("Cannot find HTML canvas with id #$canvasElementId")
 	canvas as? HTMLCanvasElement ?: error("HTML element #$canvasElementId must be a canvas")
 	val surface = canvas.getSurface() ?: error("Failed acquiring WebGPU surface for HTML canvas #$canvasElementId")
-	val application = +MyApplication(device, surface)
+	val render = +MyRenderer(device, surface)
 
 	logger.debug { "Rendering..." }
 
-	application.renderFrame()
+	render()
 
 	coroutineScope {
 		val observer = ResizeObserver { entries, _ ->
@@ -46,7 +46,7 @@ private suspend fun application(canvasElementId: String) = autoclose {
 			}
 
 			launch(start = CoroutineStart.ATOMIC) {
-				application.renderFrame()
+				render()
 			}
 		}
 

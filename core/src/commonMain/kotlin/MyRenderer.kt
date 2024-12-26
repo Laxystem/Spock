@@ -9,11 +9,11 @@ private val Surface.canvasFormat
 		?: supportedFormats.first()
 
 @OptIn(ExperimentalSpockApi::class)
-public class MyApplication(
+public class MyRenderer(
 	override val device: Device,
 	override val surface: Surface,
 	override val format: TextureFormat = surface.canvasFormat,
-) : WebGpuApplication, Closer by Closer(surface.asSuspendCloseable(), device.asSuspendCloseable()) {
+) : WebGpuRenderer, Closer by Closer(surface.asSuspendCloseable(), device.asSuspendCloseable()) {
 	private val vertices = floatArrayOf(
 		-0.8f, -0.8f,
 		+0.8f, -0.8f,
@@ -81,7 +81,7 @@ public class MyApplication(
 		)
 	)
 	
-	override suspend fun renderFrame(): Unit = autoclose {
+	override suspend fun invoke(): Unit = autoclose {
 		val encoder = +device.createCommandEncoder()
 		
 		device.queue.writeBuffer(vertexBuffer, bufferOffset = 0, vertices)

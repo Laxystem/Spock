@@ -1,6 +1,6 @@
 package quest.laxla.spock
 
 @SubclassOptInRequired(ExperimentalSpockApi::class)
-public interface Application : Closer {
-	public suspend fun renderFrame()
+public interface Renderer : Closer {
+	public suspend operator fun invoke()
 }

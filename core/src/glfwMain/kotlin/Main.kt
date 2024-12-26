@@ -22,11 +22,11 @@ public suspend fun main(): Unit = withContext(Dispatchers.Default) {
 		val surface = wgpu.createSurface(window)
 		val adapter = +wgpu.requestAdapter(surface)
 		val device = adapter.requestDevice() ?: error("Failed acquiring WebGPU device")
-		val application = +MyApplication(device, surface)
+		val render = +MyRenderer(device, surface)
 
 		while (coroutineContext.isActive && !window.shouldClose) {
 			pollEvents()
-			application.renderFrame()
+			render()
 			surface.present()
 		}
 	}
