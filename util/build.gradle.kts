@@ -14,7 +14,6 @@ kotlin {
 	linuxX64()
 	mingwX64()
 	wasmJs().browser()
-	wasmWasi()
 
 	sourceSets {
 		commonMain.dependencies {
