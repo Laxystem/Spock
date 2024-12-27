@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW.glfwPollEvents
 
 private val logger = KotlinLogging.logger {  }
 
-public actual fun pollEvents(): Job = Glfw.launch(start = CoroutineStart.ATOMIC) {
+public actual fun Glfw.pollEvents(): Job = launch(start = CoroutineStart.ATOMIC) {
 	glfwPollEvents()
 
 	logger.debug { "Polling events..." }

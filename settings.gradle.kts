@@ -4,8 +4,10 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
 	"core",
 	"docs",
+	"example",
 	"glfw",
 	"lwjgl",
+	"toolkit",
 	"util"
 )
 

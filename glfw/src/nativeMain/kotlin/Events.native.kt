@@ -6,6 +6,6 @@ import glfw.glfwPollEvents
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.Job
 
-public actual fun pollEvents(): Job = Glfw.launch {
+public actual fun Glfw.pollEvents(): Job = launch {
 	glfwPollEvents()
 }

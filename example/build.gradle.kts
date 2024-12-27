@@ -6,24 +6,30 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
 	multiplatform
-	dokka
-	alias(libs.plugins.publish)
+}
+
+repositories.maven(url = "https://gitlab.com/api/v4/projects/25805863/packages/maven") { // TODO: remove
+	name = "Wgpu4k"
 }
 
 dependencies {
+	commonMainApi(projects.toolkit)
+
+	// TODO: remove below dependencies, KT-74152
+	commonMainApi(projects.core)
 	commonMainApi(projects.util)
+	commonMainApi(libs.wgpu4k)
 }
 
 kotlin {
-	applyDefaultHierarchyTemplate()
-
-	jvm()
-	linuxX64()
-
+	linuxX64().binaries.executable {
+		entryPoint = "quest.laxla.spock.example.main"
+	}
+	jvm().mainRun {
+		mainClass = "quest.laxla.spock.example.MainKt"
+	}
 	wasmJs {
-		moduleName = "spock"
-
-		binaries.library()
+		binaries.executable()
 		browser {
 			commonWebpackConfig {
 				outputFileName = "spock.js"

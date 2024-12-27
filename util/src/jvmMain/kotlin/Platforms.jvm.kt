@@ -13,7 +13,7 @@ private val currentTarget = System.getProperty("os.name").run {
 
 		else -> null
 	}
-}.let(Target::Jvm)
+}.let(KTarget::Jvm)
 
 @ExperimentalSpockApi
-public actual val Target.Companion.current: Target get() = currentTarget
+public actual val KTarget.Companion.current: KTarget get() = currentTarget

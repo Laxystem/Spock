@@ -1,6 +1,6 @@
 package quest.laxla.spock
 
-private val currentTarget = Target.WasmJs(null) // TODO
+private val currentTarget = KTarget.WasmJs(null) // TODO
 
 @ExperimentalSpockApi
-public actual val Target.Companion.current: Target get() = currentTarget
+public actual val KTarget.Companion.current: KTarget get() = currentTarget
