@@ -45,8 +45,6 @@ private suspend inline fun Closer.createResizeObserver(
 		logger.warn(e) { "Failed registering ResizeObserver using device pixels, does your browser support it?" }
 		observer.observe(canvas, ResizeObserverOptions(ContentBox))
 	}
-	
-	+AutoCloseable(observer::disconnect)
 }
 
 private const val CanvasElementId = "SpockTarget"
