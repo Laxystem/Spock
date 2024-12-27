@@ -2,7 +2,6 @@
 
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
 	multiplatform
@@ -24,17 +23,6 @@ kotlin {
 		moduleName = "spock"
 
 		binaries.library()
-		browser {
-			commonWebpackConfig {
-				outputFileName = "spock.js"
-				devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-					static = (static ?: mutableListOf()).apply {
-						// Serve sources to debug inside browser
-						add(project.rootDir.path)
-						add(project.projectDir.path)
-					}
-				}
-			}
-		}
+		browser()
 	}
 }
