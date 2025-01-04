@@ -6,6 +6,7 @@ import cnames.structs.GLFWwindow
 import glfw.glfwCreateWindow
 import glfw.glfwDestroyWindow
 import glfw.glfwGetWindowSize
+import glfw.glfwSetFramebufferSizeCallback
 import glfw.glfwWindowShouldClose
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -13,8 +14,10 @@ import kotlinx.cinterop.IntVar
 import kotlinx.cinterop.alloc
 import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.ptr
+import kotlinx.cinterop.staticCFunction
 import kotlinx.cinterop.value
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
 import quest.laxla.spock.SuspendCloseable
 
 public actual class Window(@LowLevelGlfwApi public val raw: CPointer<GLFWwindow>) : SuspendCloseable {
@@ -34,6 +37,15 @@ public actual class Window(@LowLevelGlfwApi public val raw: CPointer<GLFWwindow>
 			width.value.toUInt() to height.value.toUInt()
 		}
 	}
+
+	@OptIn(LowLevelGlfwApi::class)
+	public actual inline fun setFramebufferSizeCallback(crossinline callback: Window.(width: UInt, height: UInt) -> Unit): Job =
+		Glfw.launch {
+			glfw.glfwSetFramebufferSizeCallback(
+				raw,
+				staticCFunction { _, width: Int, height: Int -> callback(width.toUInt(), height.toUInt()) }
+			)
+		}
 
 	@OptIn(LowLevelGlfwApi::class)
 	actual override suspend fun close(): Unit = Glfw {

@@ -7,6 +7,9 @@ include(
 	"example",
 	"glfw",
 	"lwjgl",
+	"math",
+	"math-base",
+	"math-codegen",
 	"toolkit",
 	"util"
 )

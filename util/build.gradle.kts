@@ -19,6 +19,7 @@ kotlin {
 		commonMain.dependencies {
 			api(libs.kotlinx.coroutines)
 			api(libs.kotlinLogging)
+			api(libs.kotlinx.immutableCollections)
 		}
 
 		commonTest.dependencies {

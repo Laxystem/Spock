@@ -74,6 +74,12 @@ public class MyRenderer(
 				module = shaders,
 				entryPoint = "fragmentMain",
 				targets = listOf(RenderPipelineDescriptor.FragmentState.ColorTargetState(format))
+			),
+			primitive = RenderPipelineDescriptor.PrimitiveState(
+				topology = PrimitiveTopology.trianglelist,
+				stripIndexFormat = null,
+				frontFace = FrontFace.ccw,
+				cullMode = CullMode.none
 			)
 		)
 	)
