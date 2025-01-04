@@ -148,91 +148,89 @@ public infix fun <V, S> Vector2<V, S>.zw(zw: V): Vector4<V, S> where S : Space<V
 	space.vectorOf(x, y, zw, zw)
 
 /**
- * Creates a [Vector4] whose first, second and third elements are taken from [this], with{
-return super.toString()
-} [w] as its fourth.
+ * Creates a [Vector4] whose first, second and third elements are taken from [this], with [w] as its fourth.
  *
  * @since 0.0.1-alpha.4
  */
 public infix fun <V, S> Vector3<V, S>.w(w: V): Vector4<V, S> where S : Space<V> = space.vectorOf(x, y, z, w)
 
-private fun ConstantVector<*, *>.stringify() = "$space($value...)"
+private fun UniformVector<*, *>.stringify() = "$space($value...)"
 
-private data class TypedConstantVector<V, out S>(
+private data class TypedUniformVector<V, out S>(
 	override val space: S,
 	override val value: V
-) : ConstantVector<V, S> where S : Space<V> {
+) : UniformVector<V, S> where S : Space<V> {
 	override fun toString(): String = stringify()
 }
 
 /**
- * Creates a [ConstantVector] whose elements are all equal to [value].
+ * Creates a [UniformVector] whose elements are all equal to [value].
  * 
  * @since 0.0.1-alpha.4
  * @see vectorOfZeros
  * @see vectorOfOnes
  */
-public fun <V, S> S.constantVectorOf(value: V): ConstantVector<V, S> where S : Space<V> = TypedConstantVector(this, value)
+public fun <V, S> S.uniformVectorOf(value: V): UniformVector<V, S> where S : Space<V> = TypedUniformVector(this, value)
 
 @JvmInline
-private value class TypedZeroVector<V, S>(override val space: S) : ConstantVector<V, S> where S : Space<V> {
+private value class TypedZeroVector<V, S>(override val space: S) : UniformVector<V, S> where S : Space<V> {
 	override val value: V get() = space.zero
 
 	override fun toString(): String = stringify()
 }
 
 /**
- * Creates a [ConstantVector] of [Space.zero]s.
+ * Creates a [UniformVector] of [Space.zero]s.
  *
  * @since 0.0.1-alpha.4
- * @see constantVectorOf
+ * @see uniformVectorOf
  * @see vectorOfOnes
  */
-public fun <V, S> S.vectorOfZeros(): ConstantVector<V, S> where S : Space<V> = TypedZeroVector(this)
+public fun <V, S> S.vectorOfZeros(): UniformVector<V, S> where S : Space<V> = TypedZeroVector(this)
 
 @JvmInline
-private value class TypedUnitVector<V, S>(override val space: S) : ConstantVector<V, S> where S : Space<V> {
+private value class TypedUnitVector<V, S>(override val space: S) : UniformVector<V, S> where S : Space<V> {
 	override val value: V get() = space.unit
 
 	override fun toString(): String = stringify()
 }
 
 /**
- * Creates a [ConstantVector] of [Space.unit]s.
+ * Creates a [UniformVector] of [Space.unit]s.
  *
  * @since 0.0.1-alpha.4
- * @see constantVectorOf
+ * @see uniformVectorOf
  * @see vectorOfZeros
  */
-public fun <V, S> S.vectorOfOnes(): ConstantVector<V, S> where S : Space<V> = TypedUnitVector(this)
+public fun <V, S> S.vectorOfOnes(): UniformVector<V, S> where S : Space<V> = TypedUnitVector(this)
 
 /**
- * Creates a [Vector1] whose elements all equal to [this.value][ConstantVector.value].
+ * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> ConstantVector<V, S>.asVector1() where S : Space<V> = space x value
+public fun <V, S> UniformVector<V, S>.asVector1() where S : Space<V> = space x value
 
 /**
- * Creates a [Vector1] whose elements all equal to [this.value][ConstantVector.value].
+ * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> ConstantVector<V, S>.asVector2() where S : Space<V> = space.vectorOf(value, value)
+public fun <V, S> UniformVector<V, S>.asVector2() where S : Space<V> = space.vectorOf(value, value)
 
 /**
- * Creates a [Vector1] whose elements all equal to [this.value][ConstantVector.value].
+ * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> ConstantVector<V, S>.asVector3() where S : Space<V> = space.vectorOf(value, value, value)
+public fun <V, S> UniformVector<V, S>.asVector3() where S : Space<V> = space.vectorOf(value, value, value)
 
 /**
- * Creates a [Vector1] whose elements all equal to [this.value][ConstantVector.value].
+ * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> ConstantVector<V, S>.asVector4() where S : Space<V> = space.vectorOf(value, value, value, value)
+public fun <V, S> UniformVector<V, S>.asVector4() where S : Space<V> = space.vectorOf(value, value, value, value)
 
 /**
  * Retrieves the first element of this vector.

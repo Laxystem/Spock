@@ -7,6 +7,6 @@ package quest.laxla.spock.math
  * 
  * @since 0.0.1-alpha.4
  * @see Space.x
- * @see ConstantVector.asVector1
+ * @see UniformVector.asVector1
  */
 public interface Vector1<V, out S> : VectorWithX<V, S> where S : Space<V>

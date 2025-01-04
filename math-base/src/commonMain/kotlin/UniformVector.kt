@@ -9,6 +9,6 @@ package quest.laxla.spock.math
  * @see asVector3
  * @see asVector4
  */
-public interface ConstantVector<V, out S> : Vector<V, S> where S : Space<V> {
+public interface UniformVector<V, out S> : Vector<V, S> where S : Space<V> {
 	public val value: V
 }

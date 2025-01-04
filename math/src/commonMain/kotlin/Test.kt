@@ -9,5 +9,5 @@ public fun test() {
 	
 	-vector4 mod 2
 
-	IntSpace.constantVectorOf(64).asVector2()
+	IntSpace.uniformVectorOf(64).asVector2()
 }
