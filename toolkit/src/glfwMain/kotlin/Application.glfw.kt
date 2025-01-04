@@ -6,7 +6,6 @@ import io.ygdrasil.wgpu.Surface
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
 import quest.laxla.spock.Closer
-import quest.laxla.spock.SuspendCloseable
 import quest.laxla.spock.glfw.*
 
 private val logger = KotlinLogging.logger {  }

@@ -6,7 +6,6 @@ import cnames.structs.GLFWwindow
 import glfw.glfwCreateWindow
 import glfw.glfwDestroyWindow
 import glfw.glfwGetWindowSize
-import glfw.glfwSetFramebufferSizeCallback
 import glfw.glfwWindowShouldClose
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
