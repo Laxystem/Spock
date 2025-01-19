@@ -39,19 +39,20 @@ body:
     attributes:
       label: Affected modules
       placeholder: e.g. utilities, math, core...
+  - type: checkboxes
+    attributes:
+      label: Affected targets
+      description: The targets the bug appears at, if relevant.
+      options:
+        - label: JVM or Android
+        - label: Native
+        - label: WasmJS
   - type: input
     attributes:
       label: Operating system
       placeholder: e.g. Windows 11, Android 15...
     validations:
       required: true
-  - type: checkboxes
-    attributes:
-      label: Affected targets
-      options:
-        - label: JVM or Android
-        - label: Native
-        - label: WasmJS
   - type: textarea
     attributes:
       label: Additional context
