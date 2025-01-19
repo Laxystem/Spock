@@ -108,6 +108,19 @@ body:
       required: true
   - type: dropdown
     attributes:
+      label: GPU class
+      description: Select all categories that fit a GPU you've encountered this bug on, if relevant.
+      multiple: true
+      options:
+        - AMD Dedicated
+        - AMD Integrated
+        - AMD SoC
+        - Apple SoC
+        - Intel Dedicated
+        - Intel Integrated
+        - Qualcomm SoC
+  - type: dropdown
+    attributes:
       label: Windowing protocol
       description: |
         Select all windowing protocols you've encountered this bug on.
