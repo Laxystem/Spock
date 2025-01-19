@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest an idea for this project
+labels:
+  - enhancement
+  - triage
+body:
+  - type: textarea
+    attributes:
+      label: Feature description
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Use-cases
+      description: Describe why you, or anyone else, would need this feature, and how you intend on using it.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternatives
+      description: Describe alternatives solutions or features you've considered.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context

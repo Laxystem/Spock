@@ -1,6 +1,8 @@
 name: Bug report
 description: Report unexpected behaviour that should be fixed
-labels: bug
+labels:
+  - bug
+  - triage
 body:
   - type: textarea
     attributes:
@@ -26,8 +28,8 @@ body:
       required: true
   - type: input
     attributes:
-      label: Log
-      description: Link to the log, if any (you can use a [GitHub gist](https://gists.github.com)).
+      label: Logs
+      description: Link to logs, if any (you can use a [GitHub gist](https://gists.github.com), it accepts multiple files).
   - type: input
     attributes:
       label: Spock version
@@ -35,25 +37,78 @@ body:
       placeholder: e.g. 0.0.1-alpha.4
     validations:
       required: true
-  - type: input
+  - type: dropdown
     attributes:
       label: Affected modules
-      placeholder: e.g. utilities, math, core...
-  - type: checkboxes
+      description: The modules this problem applies to. If you don't know what this means, feel free to ignore this.
+      multiple: true
+      options:
+        - Core
+        - Documentation
+        - Examples
+        - Glfw
+        - Math
+        - Math Codegen
+        - Toolkit
+        - Utilities
+        - Windowing
+        - Spock Build Process
+  - type: input
+    attributes:
+      label: Kotlin version
+  - type: dropdown
     attributes:
       label: Affected targets
       description: The targets the bug appears at, if relevant.
+      multiple: true
       options:
-        - label: JVM or Android
-        - label: Native
-        - label: WasmJS
-  - type: input
+        - Android
+        - JVM
+        - Native
+        - WasmJS
+  - type: dropdown
     attributes:
       label: Operating system
-      placeholder: e.g. Windows 11, Android 15...
+      description: Select all operating systems you've encountered this bug on.
+      multiple: true
+      options:
+        - Android
+        - Android TV
+        - Android Wear OS
+        - Apple iOS
+        - Apple iPadOS
+        - Apple macOS
+        - Apple tvOS
+        - Apple watchOS
+        - ChromeOS
+        - ChromeOS Flex
+        - FreeBSD
+        - Linux
+        - Linux via Wine/Proton
+        - Windows
     validations:
       required: true
+  - type: dropdown
+    attributes:
+      label: Architecture
+      description: Select all architectures you've encountered this bug on.
+      multiple: true
+      options:
+        - x64
+        - Arm64
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Windowing protocol
+      description: You can ignore this if you aren't using Linux or FreeBSD, or if you don't know what it means.
+      multiple: true
+      options:
+        - Wayland
+        - X11
   - type: textarea
     attributes:
       label: Additional context
-      description: Screenshots, JVM version, Browser, etc.
+      description: |
+        Operating system version/distro, screenshots, JVM version, Kotlin version, gradle version,
+        browser and version, etc.
