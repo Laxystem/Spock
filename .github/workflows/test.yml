@@ -2,13 +2,16 @@ name: Test
 
 on: pull_request
 
+permissions:
+  contents: read
+
 jobs:
   linux:
     name: Test on Linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
