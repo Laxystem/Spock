@@ -18,6 +18,7 @@ body:
     attributes:
       label: Resulting behaviour
       description: What happens?
+      placeholder: Description, screenshots, exceptions...
     validations:
       required: true
   - type: textarea
@@ -29,7 +30,8 @@ body:
   - type: input
     attributes:
       label: Logs
-      description: Link to logs, if any (you can use a [GitHub gist](https://gists.github.com), it accepts multiple files).
+      description: Link to logs, if any. You can upload to [GitHub gist](https://gist.github.com)—it accepts multiple files.
+      placeholder: https://gist.github.com/user/...
   - type: input
     attributes:
       label: Spock version
@@ -39,10 +41,10 @@ body:
   - type: dropdown
     attributes:
       label: Affected modules
-      description: The modules this bug affects. If you don't know what this means, feel free to ignore this.
+      description: Select the Spock modules this bug relates to. If you don't know, select other.
       multiple: true
       options:
-        - Build Process
+        - Build process
         - Core
         - Documentation
         - Examples
@@ -52,7 +54,7 @@ body:
         - Toolkit
         - Utilities
         - Windowing
-        - Other
+        - Other...
     validations:
       required: true
   - type: input
@@ -63,13 +65,15 @@ body:
   - type: dropdown
     attributes:
       label: Affected targets
-      description: The targets the bug appears at, if relevant.
+      description: Kotlin targets the bug affects. Note Android Native counts as Kotlin/Native, not Kotlin/Android.
       multiple: true
       options:
         - Android
         - JVM
         - Native
         - WasmJS
+    validations:
+      required: true
   - type: dropdown
     attributes:
       label: Operating system
@@ -107,7 +111,7 @@ body:
       label: Windowing protocol
       description: |
         Select all windowing protocols you've encountered this bug on.
-        You can ignore this if you aren't using Linux or FreeBSD, or if you don't know what it means.
+        Feel free to leave this empty if you aren't using Linux or FreeBSD, or if you don't know what it means.
       multiple: true
       options:
         - Wayland
