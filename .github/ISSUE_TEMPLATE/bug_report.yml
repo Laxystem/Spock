@@ -48,10 +48,10 @@ body:
   - type: checkboxes
     attributes:
       label: Affected targets
-    options:
-      - label: JVM or Android
-      - label: Native
-      - label: WasmJS
+      options:
+        - label: JVM or Android
+        - label: Native
+        - label: WasmJS
   - type: textarea
     attributes:
       label: Additional context
