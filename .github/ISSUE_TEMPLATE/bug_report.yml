@@ -118,7 +118,9 @@ body:
         - Apple SoC
         - Intel Dedicated
         - Intel Integrated
+        - Nvidia Dedicated
         - Qualcomm SoC
+        - Samsung SoC
   - type: dropdown
     attributes:
       label: Windowing protocol
