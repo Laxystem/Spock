@@ -1,0 +1,58 @@
+name: Bug report
+description: Report unexpected behaviour that should be fixed
+labels: bug
+body:
+  - type: textarea
+    attributes:
+      label: Reproduction steps
+      description: What did you do to trigger this bug?
+      placeholder: |
+        1. Go to...
+        2. Click on...
+        3. Scroll down to...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Resulting behaviour
+      description: What happens?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Log
+      description: Link to the log, if any (you can use a [GitHub gist](https://gists.github.com)).
+  - type: input
+    attributes:
+      label: Spock version
+      description: What Spock version do you use?
+      placeholder: e.g. 0.0.1-alpha.4
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Affected modules
+      placeholder: e.g. utilities, math, core...
+  - type: input
+    attributes:
+      label: Operating system
+      placeholder: e.g. Windows 11, Android 15...
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Affected targets
+    options:
+      - label: JVM or Android
+      - label: Native
+      - label: WasmJS
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Screenshots, JVM version, Browser, etc.
