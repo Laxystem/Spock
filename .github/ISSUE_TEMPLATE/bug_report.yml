@@ -65,7 +65,9 @@ body:
   - type: dropdown
     attributes:
       label: Affected targets
-      description: Kotlin targets the bug affects. Note Android Native counts as Kotlin/Native, not Kotlin/Android.
+      description: |
+        Select all Kotlin targets you've encountered this bug on.
+        Note Android Native counts as Kotlin/Native, not Kotlin/Android.
       multiple: true
       options:
         - Android
