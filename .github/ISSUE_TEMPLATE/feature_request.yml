@@ -11,8 +11,8 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Use-cases
-      description: Describe why you, or anyone else, would need this feature, and how you intend on using it.
+      label: Use cases
+      description: Describe why you need this feature, and how you intend on using it.
     validations:
       required: true
   - type: textarea

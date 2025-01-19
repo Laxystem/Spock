@@ -33,16 +33,16 @@ body:
   - type: input
     attributes:
       label: Spock version
-      description: What Spock version do you use?
       placeholder: e.g. 0.0.1-alpha.4
     validations:
       required: true
   - type: dropdown
     attributes:
       label: Affected modules
-      description: The modules this problem applies to. If you don't know what this means, feel free to ignore this.
+      description: The modules this bug affects. If you don't know what this means, feel free to ignore this.
       multiple: true
       options:
+        - Build Process
         - Core
         - Documentation
         - Examples
@@ -52,10 +52,14 @@ body:
         - Toolkit
         - Utilities
         - Windowing
-        - Spock Build Process
+        - Other
+    validations:
+      required: true
   - type: input
     attributes:
       label: Kotlin version
+    validations:
+      required: true
   - type: dropdown
     attributes:
       label: Affected targets
@@ -101,7 +105,9 @@ body:
   - type: dropdown
     attributes:
       label: Windowing protocol
-      description: You can ignore this if you aren't using Linux or FreeBSD, or if you don't know what it means.
+      description: |
+        Select all windowing protocols you've encountered this bug on.
+        You can ignore this if you aren't using Linux or FreeBSD, or if you don't know what it means.
       multiple: true
       options:
         - Wayland
