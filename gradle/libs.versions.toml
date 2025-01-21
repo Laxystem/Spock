@@ -14,7 +14,7 @@ logback = "1.5.15"
 lwjgl = "3.3.5"
 mavenPublish = "0.30.0"
 truthish = "1.0.3-SNAPSHOT"
-wgpu4k = "0.0.1"
+wgpu4k = "0.0.2"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
 
