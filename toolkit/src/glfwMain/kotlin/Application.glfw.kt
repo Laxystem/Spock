@@ -1,8 +1,7 @@
 package quest.laxla.spock.toolkit
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ygdrasil.wgpu.Device
-import io.ygdrasil.wgpu.Surface
+import io.ygdrasil.webgpu.Device
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
 import quest.laxla.spock.Closer
@@ -27,15 +26,15 @@ internal actual suspend fun Closer.webGpuApplication(
 	glfwWindowHint(GlfwClientApi, GlfwNoApi)
 	val window = +Window(preferredWidth, preferredHeight, title)
 	val wgpu = +Wgpu()
-	val surface = wgpu.createSurface(window)
+	val surface = +wgpu.createSurface(window)
 	val adapter = +wgpu.requestAdapter(surface)
-	val device = adapter.requestDevice() ?: error("Failed acquiring WebGPU device")
+	val device = +adapter.requestDeviceOrThrow()
 	val render = +renderer(device, surface)
 
 	while (currentCoroutineContext().isActive && !window.shouldClose) {
 		Glfw.pollEvents()
 		render()
-		surface.present()
+		surface.presentFrame()
 		device.poll()
 	}
 }

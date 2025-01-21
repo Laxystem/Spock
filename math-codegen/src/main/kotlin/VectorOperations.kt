@@ -12,18 +12,22 @@ import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.ksp.*
+import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.at
 import quest.laxla.spock.math.*
+
+public fun Resolver.getVectorOperations() = getSymbolsWithAnnotation<VectorOperation>()
+	.filterIsInstance<KSFunctionDeclaration>()
 
 public val KSAnnotated.vectorization: Vectorization.Kind
 	get() = getAllAnnotations<Vectorization>().firstOrNull()?.kind ?: Vectorization.Kind.Disabled
 
-// TODO: replace MathPackage for non-built-in processors
-@OptIn(KspExperimental::class)
-public fun Resolver.generateVectorOperations(): FileSpec = file(MathPackage, "VectorOperations") {
+// TODO: fix this whateverness
+@OptIn(KspExperimental::class, ExperimentalSpockApi::class)
+public fun Resolver.generateVectorOperations(packageName: String): FileSpec = file(packageName, "VectorOperations") {
 	val space = getDeclarationOf(Space::class)!!.asStarProjectedType()
 
-	for (operation in getSymbolsWithAnnotation(VectorOperation::class.qualifiedName!!).filterIsInstance<KSFunctionDeclaration>()) {
+	for (operation in getVectorOperations()) {
 		val parentDeclaration = operation.parentDeclaration as? KSClassDeclaration ?: continue
 		if (!space.isAssignableFrom(parentDeclaration.asStarProjectedType())) continue
 		val parentDeclarationClassName = parentDeclaration.toClassName()
@@ -31,10 +35,10 @@ public fun Resolver.generateVectorOperations(): FileSpec = file(MathPackage, "Ve
 		val subject = parentDeclaration.typeParameters.singleOrNull() ?: parentDeclaration.typeParameters.single {
 			it.isAnnotationPresent(VectorSubject::class)
 		}
-		
+
 		val typeParameters = (operation.typeParameters + (operation.parentDeclaration?.typeParameters
 			?: emptyList())).toTypeParameterResolver()
-		
+
 		val subjectType = subject.toTypeVariableName(typeParameters)
 		val subjectSpaceType = parentDeclarationClassName.asSpaceTypeParameter(subjectType)
 
@@ -104,7 +108,7 @@ public fun Resolver.generateVectorOperations(): FileSpec = file(MathPackage, "Ve
 			for ((index, parameter) in operation.parameters.withIndex()) {
 				parameters.getOrNull(index)?.let(::addParameter) ?: parameter(
 					name = parameter.name?.asString()!!,
-					type = when (parameterVectorization[index]) {
+					returnType = when (parameterVectorization[index]) {
 						Vectorization.Kind.Exact -> parameterTypes[index].let { (type, spaceType) ->
 							exactClass.parameterizedBy(type, spaceType)
 						}

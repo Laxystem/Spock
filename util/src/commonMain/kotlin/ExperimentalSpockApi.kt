@@ -7,7 +7,13 @@ import kotlin.annotation.Target
  * 
  * @since 0.0.1-alpha.1
  */
-@RequiresOptIn
 @MustBeDocumented
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY, AnnotationTarget.PROPERTY_SETTER)
+@RequiresOptIn("Experimental API may break backwards compatibility without notice.")
+@Target(
+	AnnotationTarget.CLASS,
+	AnnotationTarget.CONSTRUCTOR,
+	AnnotationTarget.FUNCTION,
+	AnnotationTarget.PROPERTY,
+	AnnotationTarget.PROPERTY_SETTER
+)
 public annotation class ExperimentalSpockApi

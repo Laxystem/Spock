@@ -8,6 +8,11 @@ plugins {
 	alias(libs.plugins.publish)
 }
 
+repositories.maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
+	name = "Maven Central Snapshots"
+	mavenContent { includeGroup("com.varabyte.truthish") }
+}
+
 kotlin {
 	jvm()
 	linuxArm64()
@@ -17,19 +22,22 @@ kotlin {
 
 	sourceSets {
 		commonMain.dependencies {
-			api(libs.kotlinx.coroutines)
 			api(libs.kotlinLogging)
+			api(libs.kotlinx.coroutines)
 			api(libs.kotlinx.immutableCollections)
+			api(libs.kotlinx.io.bytestring)
+			api(libs.kotlinx.serialization)
 		}
 
 		commonTest.dependencies {
 			api(kotlin("test"))
+			api(libs.truthish)
 		}
-		
+
 		jvmMain.dependencies {
 			runtimeOnly(libs.logback)
 		}
-		
+
 		wasmJsMain.dependencies {
 			api(libs.kotlinx.browser)
 		}

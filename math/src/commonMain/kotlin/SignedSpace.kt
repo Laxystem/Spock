@@ -19,7 +19,6 @@ public interface SignedSpace<@Vectorization(kind = Exact) V> : NumeralSpace<V> w
 	@VectorOperation
 	public operator fun V.unaryPlus(): V = this
 
-
 	/**
 	 * Calculates the remainder of flooring division of [this] value (dividend) by the [divisor].
 	 *

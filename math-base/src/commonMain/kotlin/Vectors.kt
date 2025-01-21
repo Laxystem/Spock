@@ -183,8 +183,8 @@ private value class TypedZeroVector<V, S>(override val space: S) : UniformVector
  * Creates a [UniformVector] of [Space.zero]s.
  *
  * @since 0.0.1-alpha.4
- * @see uniformVectorOf
  * @see vectorOfOnes
+ * @see uniformVectorOf
  */
 public fun <V, S> S.vectorOfZeros(): UniformVector<V, S> where S : Space<V> = TypedZeroVector(this)
 
@@ -199,8 +199,8 @@ private value class TypedUnitVector<V, S>(override val space: S) : UniformVector
  * Creates a [UniformVector] of [Space.unit]s.
  *
  * @since 0.0.1-alpha.4
- * @see uniformVectorOf
  * @see vectorOfZeros
+ * @see uniformVectorOf
  */
 public fun <V, S> S.vectorOfOnes(): UniformVector<V, S> where S : Space<V> = TypedUnitVector(this)
 

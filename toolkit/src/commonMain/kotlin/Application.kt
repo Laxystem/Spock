@@ -1,8 +1,7 @@
 package quest.laxla.spock.toolkit
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ygdrasil.wgpu.Device
-import io.ygdrasil.wgpu.Surface
+import io.ygdrasil.webgpu.Device
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

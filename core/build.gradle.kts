@@ -10,6 +10,7 @@ plugins {
 }
 
 dependencies {
+	commonMainApi(projects.math)
 	commonMainApi(projects.util)
 }
 

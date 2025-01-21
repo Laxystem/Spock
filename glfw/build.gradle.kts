@@ -11,13 +11,12 @@ plugins {
 kotlin {
 	jvm()
 	linuxX64()
-	
-	compilerOptions {
-		freeCompilerArgs.add("-Xexpect-actual-classes")
-	}
 
 	sourceSets {
 		commonMain.dependencies {
+			api(projects.math)
+
+			// TODO: remove, KT-57 something something
 			api(projects.util)
 		}
 

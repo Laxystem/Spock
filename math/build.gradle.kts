@@ -5,12 +5,16 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
 	alias(libs.plugins.kotlinSymbolProcessing)
+	alias(libs.plugins.kotlinx.serialization)
 	multiplatform
 }
 
 dependencies {
 	commonMainApi(projects.mathBase)
 	kspCommonMainMetadata(projects.mathCodegen)
+
+	// TODO: KT-74152
+	commonMainApi(projects.util)
 }
 
 kotlin {
@@ -34,5 +38,5 @@ tasks.withType<KotlinCompilationTask<*>>().all {
 }
 
 ksp {
-	arg("builtIn", "true")
+	arg("package", "quest.laxla.spock.math")
 }

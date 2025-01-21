@@ -8,10 +8,13 @@ kotlinSymbolProcessing = "2.1.0-1.0.29"
 kotlinx-browser = "0.3"
 kotlinx-coroutines = "1.10.1"
 kotlinx-immutableCollections = "0.3.8"
+kotlinx-io = "0.6.0"
+kotlinx-serialization = "1.8.0-RC"
 logback = "1.5.15"
 lwjgl = "3.3.5"
 mavenPublish = "0.30.0"
-wgpu4k = "preview-3"
+truthish = "1.0.3-SNAPSHOT"
+wgpu4k = "0.0.1"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
 
@@ -29,13 +32,19 @@ kotlinSymbolProcessing = { group = "com.google.devtools.ksp", name = "symbol-pro
 kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinx-browser" }
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-immutableCollections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-immutableCollections" }
+kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
+kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "kotlinx-io"}
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 lwjgl = { group = "org.lwjgl", name = "lwjgl", version.ref = "lwjgl" }
 lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl" }
+truthish = { group = "com.varabyte.truthish", name = "truthish", version.ref = "truthish" }
 wgpu4k = { group = "io.ygdrasil", name = "wgpu4k", version.ref = "wgpu4k" }
 wgpu4k-glfw = { group = "io.ygdrasil", name = "glfw-native", version.ref = "wgpu4k-glfw" }
 wgpu4k-rococoa = { group = "io.ygdrasil", name = "rococoa", version.ref = "wgpu4k-rococoa" }
 
 [plugins]
 kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

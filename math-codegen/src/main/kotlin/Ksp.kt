@@ -14,6 +14,8 @@ import kotlin.reflect.KClass
 public fun Resolver.getDeclarationOf(kClass: KClass<*>): KSClassDeclaration? =
 	kClass.qualifiedName?.let(::getKotlinClassByName)
 
+public inline fun <reified T> Resolver.getSymbolsWithAnnotation() = getSymbolsWithAnnotation(T::class.qualifiedName!!)
+
 @OptIn(KspExperimental::class)
 public inline fun <reified A : Annotation> KSAnnotated.getAnnotations(): Sequence<A> = getAnnotationsByType(A::class)
 
@@ -26,10 +28,12 @@ public fun <A : Annotation> KSTypeReference.getAllAnnotationsByType(annotationKC
 	getAnnotationsByType(annotationKClass) + resolve().declaration.getAllAnnotationsByType(annotationKClass)
 
 @OptIn(KspExperimental::class)
-public fun <A : Annotation> KSAnnotated.getAllAnnotationsByType(annotationKClass: KClass<A>): Sequence<A> = when(this) {
-	is KSTypeReference -> getAllAnnotationsByType(annotationKClass)
-	is KSValueParameter -> getAllAnnotationsByType(annotationKClass)
-	else -> getAnnotationsByType(annotationKClass)
-}
+public fun <A : Annotation> KSAnnotated.getAllAnnotationsByType(annotationKClass: KClass<A>): Sequence<A> =
+	when (this) {
+		is KSTypeReference -> getAllAnnotationsByType(annotationKClass)
+		is KSValueParameter -> getAllAnnotationsByType(annotationKClass)
+		else -> getAnnotationsByType(annotationKClass)
+	}
 
-public inline fun <reified A : Annotation> KSAnnotated.getAllAnnotations(): Sequence<A> = getAllAnnotationsByType(A::class)
+public inline fun <reified A : Annotation> KSAnnotated.getAllAnnotations(): Sequence<A> =
+	getAllAnnotationsByType(A::class)

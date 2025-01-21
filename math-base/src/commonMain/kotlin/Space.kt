@@ -3,7 +3,11 @@ package quest.laxla.spock.math
 /**
  * Details operations that can be performed on a [Vector].
  * 
+ * Spaces are deeply immutable and thread-safe.
+ * 
  * @since 0.0.1-alpha.4
+ * @see VectorOperation
+ * @see Typealiased
  */
 public interface Space<V> {
 	/**

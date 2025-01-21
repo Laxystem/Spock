@@ -6,41 +6,41 @@ import com.sun.jna.platform.win32.Kernel32
 import darwin.CAMetalLayer
 import darwin.NSWindow
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ygdrasil.wgpu.Adapter
-import io.ygdrasil.wgpu.Surface
-import io.ygdrasil.wgpu.WGPU
+import io.ygdrasil.webgpu.Adapter
+import io.ygdrasil.webgpu.NativeSurface
+import io.ygdrasil.webgpu.WGPU
 import org.lwjgl.glfw.GLFWNativeCocoa.glfwGetCocoaWindow
+import org.lwjgl.glfw.GLFWNativeWayland.glfwGetWaylandDisplay
+import org.lwjgl.glfw.GLFWNativeWayland.glfwGetWaylandWindow
 import org.lwjgl.glfw.GLFWNativeWin32
 import org.lwjgl.glfw.GLFWNativeX11.glfwGetX11Display
 import org.lwjgl.glfw.GLFWNativeX11.glfwGetX11Window
-import quest.laxla.spock.ExperimentalSpockApi
-import quest.laxla.spock.KTarget
-import quest.laxla.spock.OperatingSystem
-import quest.laxla.spock.current
-import quest.laxla.spock.glfw.LowLevelGlfwApi
+import quest.laxla.spock.*
 import quest.laxla.spock.glfw.Window
-import java.lang.foreign.MemorySegment
 
 public actual typealias Wgpu = WGPU
 
 private val logger = KotlinLogging.logger { }
 
-internal actual fun createWgpu(): Wgpu? = WGPU.createInstance()
+internal actual fun createWebGpuOrNull(): Wgpu? = WGPU.createInstance()
 
 private const val SessionType = "XDG_SESSION_TYPE"
 private const val Wayland = "wayland"
 private const val X11 = "x11"
 
 @OptIn(ExperimentalSpockApi::class)
-@LowLevelGlfwApi
-private fun Wgpu.getRawSurfaceOrNull(window: Window): MemorySegment? = when (KTarget.current.operatingSystem) {
+@RawSpockApi
+internal actual fun Wgpu.getRawSurfaceOrNull(window: Window): NativeSurface? = when (KTarget.current.operatingSystem) {
 	OperatingSystem.Linux, OperatingSystem.FreeBsd -> when (val sessionType = System.getenv(SessionType)) {
 		X11 -> getSurfaceFromX11Window(
-			glfwGetX11Display().toMemorySegment(),
-			glfwGetX11Window(window.raw)
+			glfwGetX11Display().toNativeAddress(),
+			glfwGetX11Window(window.raw).toULong()
 		)
 
-		Wayland -> TODO("Wayland session support")
+		Wayland -> getSurfaceFromWaylandWindow(
+			glfwGetWaylandDisplay().toNativeAddress(),
+			glfwGetWaylandWindow(window.raw).toNativeAddress()
+		)
 
 		else -> {
 			logger.error { "Unsupported $SessionType '$sessionType'; needs to be '$X11' or '$Wayland'" }
@@ -50,8 +50,8 @@ private fun Wgpu.getRawSurfaceOrNull(window: Window): MemorySegment? = when (KTa
 
 	OperatingSystem.Windows -> {
 		getSurfaceFromWindows(
-			Kernel32.INSTANCE.GetModuleHandle(null).pointer.toMemorySegment(),
-			GLFWNativeWin32.glfwGetWin32Window(window.raw).toMemorySegment()
+			Kernel32.INSTANCE.GetModuleHandle(null).pointer.toNativeAddress(),
+			GLFWNativeWin32.glfwGetWin32Window(window.raw).toNativeAddress()
 		)
 	}
 
@@ -61,20 +61,10 @@ private fun Wgpu.getRawSurfaceOrNull(window: Window): MemorySegment? = when (KTa
 			setLayer(id().toLong().toPointer())
 		}
 
-		getSurfaceFromMetalLayer(id().toLong().toMemorySegment())
+		getSurfaceFromMetalLayer(id().toLong().toNativeAddress())
 	}
 
 	else -> null
-}?.takeUnless { it == MemorySegment.NULL }
-
-@OptIn(LowLevelGlfwApi::class)
-public actual fun Wgpu.createSurfaceOrNull(window: Window, width: UInt, height: UInt): Surface? =
-	getRawSurfaceOrNull(window)?.let { raw ->
-		Surface(raw) {
-			width.toInt() to height.toInt()
-		}
-	}
-
-public actual fun Wgpu.requestAdapterOrNull(surface: Surface): Adapter? = requestAdapter(surface)?.also { adapter ->
-	surface.computeSurfaceCapabilities(adapter)
 }
+
+internal actual fun Wgpu.requestAdapter(surface: NativeSurface): Adapter? = requestAdapter(nativeSurface = surface)

@@ -9,10 +9,6 @@ plugins {
 	multiplatform
 }
 
-repositories.maven(url = "https://gitlab.com/api/v4/projects/25805863/packages/maven") { // TODO: remove
-	name = "Wgpu4k"
-}
-
 kotlin {
 	applyDefaultHierarchyTemplate {
 		common {

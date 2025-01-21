@@ -7,46 +7,41 @@ import glfw.glfwCreateWindow
 import glfw.glfwDestroyWindow
 import glfw.glfwGetWindowSize
 import glfw.glfwWindowShouldClose
-import kotlinx.cinterop.CPointer
-import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.IntVar
-import kotlinx.cinterop.alloc
-import kotlinx.cinterop.memScoped
-import kotlinx.cinterop.ptr
-import kotlinx.cinterop.staticCFunction
-import kotlinx.cinterop.value
+import kotlinx.cinterop.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
+import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.SuspendCloseable
+import quest.laxla.spock.math.UIntSpace
+import quest.laxla.spock.math.Vector2ui
+import quest.laxla.spock.math.vectorOf
 
-public actual class Window(@LowLevelGlfwApi public val raw: CPointer<GLFWwindow>) : SuspendCloseable {
+@OptIn(RawSpockApi::class)
+public actual class Window(@RawSpockApi public val raw: CPointer<GLFWwindow>) : SuspendCloseable {
 	public actual constructor(width: UInt, height: UInt, title: String) :
 			this(glfwCreateWindow(width.toInt(), height.toInt(), title, null, null)!!)
 
-	@OptIn(LowLevelGlfwApi::class)
 	public actual val shouldClose: Boolean get() = glfwWindowShouldClose(raw) == GlfwTrue
 
-	@OptIn(LowLevelGlfwApi::class)
-	public actual val size: Deferred<Pair<UInt, UInt>> = Glfw.async {
+	public actual val size: Deferred<Vector2ui> = Glfw.async {
 		memScoped {
 			val width = alloc<IntVar>()
 			val height = alloc<IntVar>()
 			glfwGetWindowSize(raw, width.ptr, height.ptr)
 
-			width.value.toUInt() to height.value.toUInt()
+			UIntSpace.vectorOf(width.value.toUInt(), height.value.toUInt())
 		}
 	}
-
-	@OptIn(LowLevelGlfwApi::class)
 	public actual inline fun setFramebufferSizeCallback(crossinline callback: Window.(width: UInt, height: UInt) -> Unit): Job =
 		Glfw.launch {
-			glfw.glfwSetFramebufferSizeCallback(
+
+			TODO()
+			/*glfw.glfwSetFramebufferSizeCallback(
 				raw,
-				staticCFunction { _, width: Int, height: Int -> callback(width.toUInt(), height.toUInt()) }
-			)
+				staticCFunction { raw, width: Int, height: Int -> Window(raw!!).callback(width.toUInt(), height.toUInt()) }
+			)*/
 		}
 
-	@OptIn(LowLevelGlfwApi::class)
 	actual override suspend fun close(): Unit = Glfw {
 		glfwDestroyWindow(raw)
 	}

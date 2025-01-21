@@ -1,24 +1,22 @@
 package quest.laxla.spock.example
 
-import io.ygdrasil.wgpu.*
-import quest.laxla.spock.Closer
-import quest.laxla.spock.ExperimentalSpockApi
-import quest.laxla.spock.asSuspendCloseable
-import quest.laxla.spock.autoclose
+import io.ygdrasil.webgpu.*
+import quest.laxla.spock.*
+import quest.laxla.spock.toolkit.Surface
 import quest.laxla.spock.toolkit.WebGpuRenderer
 
-private val Surface.canvasFormat
-	get() = preferredCanvasFormat
-		?: TextureFormat.rgba8unorm.takeIf { it in supportedFormats }
-		?: TextureFormat.bgra8unorm.takeIf { it in supportedFormats }
-		?: supportedFormats.first()
+private val Surface.textureFormat
+	get() = preferredTextureFormat
+		?: TextureFormat.RGBA8Unorm.takeIf { it in supportedTextureFormats }
+		?: TextureFormat.BGRA8Unorm.takeIf { it in supportedTextureFormats }
+		?: supportedTextureFormats.first()
 
 @OptIn(ExperimentalSpockApi::class)
 public class MyRenderer(
 	override val device: Device,
 	override val surface: Surface,
-	override val format: TextureFormat = surface.canvasFormat,
-) : WebGpuRenderer, Closer by Closer(surface.asSuspendCloseable(), device.asSuspendCloseable()) {
+	override val format: TextureFormat = surface.textureFormat
+) : WebGpuRenderer, Closer by Closer() {
 	private val vertices = floatArrayOf(
 		-0.8f, -0.8f,
 		+0.8f, -0.8f,
@@ -26,20 +24,18 @@ public class MyRenderer(
 
 		-0.8f, -0.8f,
 		+0.8f, +0.8f,
-		-0.8f, +0.8f,
+		-0.8f, +0.8f
 	)
 
-	init {
-		surface.configure(CanvasConfiguration(device, format))
-	}
+	private val isConfigured = Flag()
 
 	private val vertexBufferLayout = RenderPipelineDescriptor.VertexState.VertexBufferLayout(
-		arrayStride = Float.SIZE_BYTES * 2L,
+		arrayStride = Float.SIZE_BYTES.toULong() * 2uL,
 		attributes = listOf(
 			RenderPipelineDescriptor.VertexState.VertexBufferLayout.VertexAttribute(
-				format = VertexFormat.float32x2,
-				offset = 0,
-				shaderLocation = 0
+				format = VertexFormat.Float32x2,
+				offset = 0u,
+				shaderLocation = 0u
 			)
 		)
 	)
@@ -47,7 +43,7 @@ public class MyRenderer(
 	private val shaders = +device.createShaderModule(
 		ShaderModuleDescriptor(
 			label = "shader",
-			//language=wgsl
+			// language=wgsl
 			code = """
 				@vertex
 				fn vertexMain(@location(0) position: vec2f) -> @builtin(position) vec4f {
@@ -76,10 +72,10 @@ public class MyRenderer(
 				targets = listOf(RenderPipelineDescriptor.FragmentState.ColorTargetState(format))
 			),
 			primitive = RenderPipelineDescriptor.PrimitiveState(
-				topology = PrimitiveTopology.trianglelist,
+				topology = PrimitiveTopology.TriangleList,
 				stripIndexFormat = null,
-				frontFace = FrontFace.ccw,
-				cullMode = CullMode.none
+				frontFace = FrontFace.CCW,
+				cullMode = CullMode.None
 			)
 		)
 	)
@@ -87,29 +83,35 @@ public class MyRenderer(
 	private val vertexBuffer = +device.createBuffer(
 		BufferDescriptor(
 			label = "Vertices",
-			size = vertices.size * Float.SIZE_BYTES.toLong(),
-			usage = setOf(BufferUsage.vertex, BufferUsage.copydst)
+			size = vertices.size.toULong() * Float.SIZE_BYTES.toULong(),
+			usage = setOf(BufferUsage.Vertex, BufferUsage.CopyDst)
 		)
 	)
 
 	override suspend fun invoke(): Unit = autoclose {
+		isConfigured.set {
+			surface.configure(SurfaceConfiguration(device, format))
+		}
+
 		val encoder = +device.createCommandEncoder()
 
-		device.queue.writeBuffer(vertexBuffer, bufferOffset = 0, vertices)
+		device.queue.writeBuffer(vertexBuffer, bufferOffset = 0u, vertices)
 
-		encoder.beginRenderPass(RenderPassDescriptor(
-			colorAttachments = listOf(
-				RenderPassDescriptor.ColorAttachment(
-					view = +surface.getCurrentTexture().createView(),
-					loadOp = LoadOp.clear,
-					clearValue = Color(0.2, 0.40, 0.84, alpha = 1.0),
-					storeOp = StoreOp.store
+		encoder.beginRenderPass(
+			RenderPassDescriptor(
+				colorAttachments = listOf(
+					RenderPassDescriptor.ColorAttachment(
+						view = +surface.currentTexture.texture.createView(),
+						loadOp = LoadOp.Clear,
+						clearValue = Color(0.2, 0.40, 0.84, alpha = 1.0),
+						storeOp = StoreOp.Store
+					)
 				)
 			)
-		)).apply {
+		).apply {
 			setPipeline(renderPipeline)
-			setVertexBuffer(0, vertexBuffer)
-			draw(vertices.size / 2)
+			setVertexBuffer(0u, vertexBuffer)
+			draw(vertices.size.toUInt() / 2u)
 
 			end()
 		}

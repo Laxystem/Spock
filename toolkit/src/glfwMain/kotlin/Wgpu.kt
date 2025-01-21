@@ -2,32 +2,61 @@
 
 package quest.laxla.spock.toolkit
 
-import io.ygdrasil.wgpu.Adapter
-import io.ygdrasil.wgpu.Surface
+import io.ygdrasil.webgpu.Adapter
+import io.ygdrasil.webgpu.Device
+import io.ygdrasil.webgpu.DeviceDescriptor
+import io.ygdrasil.webgpu.NativeSurface
+import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.glfw.Window
 
+/**
+ * An instance of the wgpu WebGpu implementation, a [Surface] and [Adapter] factory.
+ *
+ * @since 0.0.1-alpha.1
+ */
 public expect class Wgpu : AutoCloseable {
 	override fun close()
 }
 
-internal expect fun createWgpu(): Wgpu?
-public fun Wgpu(): Wgpu = createWgpu() ?: error("Failed creating wgpu instance")
+internal expect fun createWebGpuOrNull(): Wgpu?
 
-private fun surfaceError(window: Window): Nothing = error("Failed creating surface for window $window")
+/**
+ * Creates a new [Wgpu] instance.
+ *
+ * @since 0.0.1-alpha.1
+ */
+public fun Wgpu(): Wgpu = createWebGpuOrNull() ?: error("Failed creating WebGpu instance")
 
-public expect fun Wgpu.createSurfaceOrNull(window: Window, width: UInt, height: UInt): Surface?
-public fun Wgpu.createSurface(window: Window, width: UInt, height: UInt): Surface =
-	createSurfaceOrNull(window, width, height) ?: surfaceError(window)
+internal expect fun Wgpu.getRawSurfaceOrNull(window: Window): NativeSurface?
 
-public suspend fun Wgpu.createSurfaceOrNull(window: Window): Surface? {
-	val (width, height) = window.size.await()
+/**
+ * Creates a new [Surface] for this [window].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public fun Wgpu.createSurface(window: Window): Surface = getRawSurfaceOrNull(window)?.let { raw ->
+	Surface(raw, window)
+} ?: error("Failed creating surface for window $window")
 
-	return createSurfaceOrNull(window, width, height)
-}
+internal expect fun Wgpu.requestAdapter(surface: NativeSurface): Adapter?
 
-public suspend fun Wgpu.createSurface(window: Window): Surface = createSurfaceOrNull(window) ?: surfaceError(window)
+/**
+ * Requests an [Adapter] for this [surface] from the operating system.
+ *
+ * If successful, this operation calibrates the surface for the new [Adapter],
+ * breaking any previous usages.
+ *
+ * @since 0.0.1-alpha.4
+ */
+@OptIn(RawSpockApi::class)
+public fun Wgpu.requestAdapter(surface: Surface): Adapter = requestAdapter(surface.raw)?.also { adapter ->
+	surface.raw.computeSurfaceCapabilities(adapter)
+} ?: error("Failed creating WebGPU adapter for surface $surface")
 
-
-public expect fun Wgpu.requestAdapterOrNull(surface: Surface): Adapter?
-public fun Wgpu.requestAdapter(surface: Surface): Adapter =
-	requestAdapterOrNull(surface) ?: error("Failed creating adapter for surface $surface")
+/**
+ * Requests a [Device] matching the provided descriptor from this [Adapter].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public suspend fun Adapter.requestDeviceOrThrow(device: DeviceDescriptor = DeviceDescriptor()): Device =
+	requestDevice(device) ?: error("Failed creating WebGPU device $device for adapter $this")

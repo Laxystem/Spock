@@ -1,9 +1,10 @@
 package quest.laxla.spock.glfw
 
 import org.lwjgl.glfw.GLFW
+import quest.laxla.spock.RawSpockApi
 
-@LowLevelGlfwApi public actual fun glfwInit(): Unit? = Unit.takeIf { GLFW.glfwInit() }
-@LowLevelGlfwApi public actual fun glfwTerminate() {
+@RawSpockApi public actual fun glfwInit(): Unit? = Unit.takeIf { GLFW.glfwInit() }
+@RawSpockApi public actual fun glfwTerminate() {
 	GLFW.glfwTerminate()
 }
 
