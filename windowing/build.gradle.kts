@@ -3,31 +3,24 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
+	alias(libs.plugins.publish)
 	dokka
 	multiplatform
-	alias(libs.plugins.publish)
 }
 
 kotlin {
 	jvm()
+	linuxArm64()
 	linuxX64()
+	mingwX64()
+	wasmJs().browser()
 
 	sourceSets {
 		commonMain.dependencies {
-			api(projects.windowing)
+			api(projects.math)
 
 			// TODO: remove
 			api(projects.util)
-		}
-
-		jvmMain.dependencies {
-			implementation(libs.lwjgl)
-			implementation(libs.lwjgl.glfw)
-			runtimeOnly(projects.lwjgl)
-		}
-
-		nativeMain.dependencies {
-			implementation(libs.wgpu4k.glfw)
 		}
 	}
 }

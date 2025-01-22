@@ -16,7 +16,7 @@ import org.lwjgl.glfw.GLFWNativeWin32
 import org.lwjgl.glfw.GLFWNativeX11.glfwGetX11Display
 import org.lwjgl.glfw.GLFWNativeX11.glfwGetX11Window
 import quest.laxla.spock.*
-import quest.laxla.spock.glfw.Window
+import quest.laxla.spock.glfw.GlfwWindow
 
 public actual typealias Wgpu = WGPU
 
@@ -30,7 +30,7 @@ private const val X11 = "x11"
 
 @OptIn(ExperimentalSpockApi::class)
 @RawSpockApi
-internal actual fun Wgpu.getRawSurfaceOrNull(window: Window): NativeSurface? = when (KTarget.current.operatingSystem) {
+internal actual fun Wgpu.getRawSurfaceOrNull(window: GlfwWindow): NativeSurface? = when (KTarget.current.operatingSystem) {
 	OperatingSystem.Linux, OperatingSystem.FreeBsd -> when (val sessionType = System.getenv(SessionType)) {
 		X11 -> getSurfaceFromX11Window(
 			glfwGetX11Display().toNativeAddress(),

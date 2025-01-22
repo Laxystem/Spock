@@ -24,7 +24,7 @@ internal actual suspend fun Closer.webGpuApplication(
 	
 	glfwWindowHint(GlfwResizable, GlfwFalse)
 	glfwWindowHint(GlfwClientApi, GlfwNoApi)
-	val window = +Window(preferredWidth, preferredHeight, title)
+	val window = +GlfwWindow(preferredWidth, preferredHeight, title)
 	val wgpu = +Wgpu()
 	val surface = +wgpu.createSurface(window)
 	val adapter = +wgpu.requestAdapter(surface)

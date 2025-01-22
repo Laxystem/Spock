@@ -7,7 +7,7 @@ import io.ygdrasil.webgpu.Device
 import io.ygdrasil.webgpu.DeviceDescriptor
 import io.ygdrasil.webgpu.NativeSurface
 import quest.laxla.spock.RawSpockApi
-import quest.laxla.spock.glfw.Window
+import quest.laxla.spock.glfw.GlfwWindow
 
 /**
  * An instance of the wgpu WebGpu implementation, a [Surface] and [Adapter] factory.
@@ -27,14 +27,14 @@ internal expect fun createWebGpuOrNull(): Wgpu?
  */
 public fun Wgpu(): Wgpu = createWebGpuOrNull() ?: error("Failed creating WebGpu instance")
 
-internal expect fun Wgpu.getRawSurfaceOrNull(window: Window): NativeSurface?
+internal expect fun Wgpu.getRawSurfaceOrNull(window: GlfwWindow): NativeSurface?
 
 /**
  * Creates a new [Surface] for this [window].
  *
  * @since 0.0.1-alpha.4
  */
-public fun Wgpu.createSurface(window: Window): Surface = getRawSurfaceOrNull(window)?.let { raw ->
+public fun Wgpu.createSurface(window: GlfwWindow): Surface = getRawSurfaceOrNull(window)?.let { raw ->
 	Surface(raw, window)
 } ?: error("Failed creating surface for window $window")
 

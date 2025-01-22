@@ -5,8 +5,7 @@ import io.ygdrasil.webgpu.SurfaceConfiguration
 import io.ygdrasil.webgpu.SurfaceTexture
 import io.ygdrasil.webgpu.TextureFormat
 import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.coroutines.Deferred
-import quest.laxla.spock.math.Vector2ui
+import quest.laxla.spock.windowing.Window
 
 /**
  * Represents a platform-specific surface (e.g., a window) onto which rendered images may be presented.
@@ -15,11 +14,11 @@ import quest.laxla.spock.math.Vector2ui
  */
 public expect class Surface : AutoCloseable {
 	/**
-	 * The size of this surface.
+	 * The window onto which this [Surface] is drawn.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public val size: Deferred<Vector2ui>
+	public val window: Window
 
 	/**
 	 * The optimal [TextureFormat] for the current system.
