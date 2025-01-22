@@ -4,9 +4,6 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 import kotlin.jvm.JvmInline
-import kotlin.jvm.JvmName
-import kotlin.properties.ReadWriteProperty
-import kotlin.reflect.KProperty
 
 /**
  * Executes the given [block] function on this resource
@@ -61,20 +58,3 @@ private value class SuspendingAutoCloseable(val autoCloseable: AutoCloseable) : 
  * @since 0.0.1-alpha.1
  */
 public fun AutoCloseable.asSuspendCloseable() = this as? SuspendCloseable ?: SuspendingAutoCloseable(this)
-
-public inline fun <T> holding(value: T, crossinline close: (T) -> Unit): ReadWriteProperty<Any?, T> =
-	object : ReadWriteProperty<Any?, T> {
-		private var _value: T = value
-
-		override fun getValue(thisRef: Any?, property: KProperty<*>): T = _value
-
-		override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
-			val old = _value
-			_value = value
-			close(old)
-		}
-	}
-
-@JvmName("holdingCloseable")
-public fun <T : AutoCloseable> holding(value: T): ReadWriteProperty<Any?, T> =
-	holding(value, AutoCloseable::close)
