@@ -11,7 +11,8 @@ include(
 	"math-base",
 	"math-codegen",
 	"toolkit",
-	"util"
+	"util",
+	"windowing"
 )
 
 @Suppress("UnstableApiUsage")

@@ -10,6 +10,7 @@ kotlin {
 	explicitApi()
 	jvmToolchain(jvm.toInt())
 	compilerOptions {
+		allWarningsAsErrors = true
 		freeCompilerArgs.add("-Xexpect-actual-classes")
 	}
 
