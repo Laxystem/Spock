@@ -54,9 +54,11 @@ public inline fun Flag.ifSet(block: () -> Unit) {
  * If this [Flag] is not set, executes the given [action],
  * and if it succeeds, [set]s the flag.
  *
+ * This function is not thread-safe.
+ * Use [setWithLock] instead if you don't want [action] to execute twice.
+ *
  * @return the thrown exception, if any.
  * @since 0.0.1-alpha.4
- * @see setWithLock
  */
 @OptIn(ExperimentalContracts::class)
 public inline fun Flag.set(action: () -> Unit): Throwable? {
