@@ -2,7 +2,6 @@ package quest.laxla.spock
 
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
@@ -14,12 +13,11 @@ import kotlin.contracts.contract
 @OptIn(ExperimentalSpockApi::class)
 private class CloserImpl(vararg closeables: SuspendCloseable) : Closer {
 	private val suspendCloseables = mutableSetOf(*closeables)
-	private lateinit var closedMarker: Unit
-	private val isClosed get() = ::closedMarker.isInitialized
+	private val isClosed = Flag()
 	private val closeMutex = Mutex()
 
 	override fun <T> T.unaryPlus(): T where T : SuspendCloseable = also { suspendCloseable ->
-		if (isClosed) error("Cannot add $this into a closed closer.")
+		if (isClosed()) error("Cannot add $this into a closed closer.")
 
 		if (this@CloserImpl === suspendCloseable || suspendCloseable is Closer && this@CloserImpl in suspendCloseable)
 			throw UnsupportedOperationException("Cannot have closer close itself!")
@@ -34,10 +32,7 @@ private class CloserImpl(vararg closeables: SuspendCloseable) : Closer {
 	override fun contains(suspendCloseable: SuspendCloseable): Boolean = suspendCloseable in suspendCloseables
 
 	override suspend fun close(): Unit = withContext(NonCancellable) {
-		closeMutex.withLock {
-			if (isClosed) return@withContext
-			else closedMarker = Unit
-
+		isClosed.setWithLock(closeMutex) {
 			val exceptions = mutableSetOf<Throwable>()
 
 			for (closeable in suspendCloseables.reversed()) try {
@@ -79,23 +74,6 @@ public fun Closer(vararg closeables: AutoCloseable): Closer = Closer(*closeables
 public fun Closer(): Closer = CloserImpl(*emptyArray<SuspendCloseable>())
 
 /**
- * Creates a [Closer] scope out of the provided closer and automatically [closes][SuspendCloseable.close] it.
- *
- * @since 0.0.1-alpha.4
- * @see use
- */
-@OptIn(ExperimentalContracts::class)
-public suspend inline fun <R> Closer.autoclose(block: Closer.() -> R): R {
-	contract {
-		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
-	}
-
-	return use {
-		it.block()
-	}
-}
-
-/**
  * Creates a [Closer] scope and automatically [closes][SuspendCloseable.close] it.
  *
  * @since 0.0.1-alpha.1
@@ -107,7 +85,7 @@ public suspend inline fun <R> autoclose(block: Closer.() -> R): R {
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer().autoclose(block)
+	return Closer().use(block)
 }
 
 /**
@@ -122,7 +100,7 @@ public suspend inline fun <R> autoclose(vararg closeables: SuspendCloseable, blo
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer(*closeables).autoclose(block)
+	return Closer(*closeables).use(block)
 }
 
 /**
@@ -137,7 +115,7 @@ public suspend inline fun <R> autoclose(vararg closeables: AutoCloseable, block:
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer(*closeables).autoclose(block)
+	return Closer(*closeables).use(block)
 }
 
 /**

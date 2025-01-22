@@ -1,5 +1,7 @@
 package quest.laxla.spock
 
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -49,19 +51,21 @@ public inline fun Flag.ifSet(block: () -> Unit) {
 }
 
 /**
- * If this [Flag] is not set, executes [block], and if it succeeds, [set]s the flag.
+ * If this [Flag] is not set, executes the given [action],
+ * and if it succeeds, [set]s the flag.
  *
  * @return the thrown exception, if any.
  * @since 0.0.1-alpha.4
+ * @see setWithLock
  */
 @OptIn(ExperimentalContracts::class)
-public inline fun Flag.set(block: () -> Unit): Throwable? {
+public inline fun Flag.set(action: () -> Unit): Throwable? {
 	contract {
-		callsInPlace(block, InvocationKind.AT_MOST_ONCE)
+		callsInPlace(action, InvocationKind.AT_MOST_ONCE)
 	}
 
 	if (!this()) try {
-		block()
+		action()
 		set()
 	} catch (e: Throwable) {
 		return e
@@ -69,6 +73,23 @@ public inline fun Flag.set(block: () -> Unit): Throwable? {
 
 	return null
 }
+
+/**
+ * If this [Flag] is not set, executes the given [action] under the given [mutex]'s lock,
+ * and if its succeeds, [set]s the flag.
+ *
+ * @param owner Optional owner token for debugging.
+ * When specified (non-`null` value) and the [mutex] is already locked with the same token (same identity),
+ * this function throws [IllegalStateException].
+ * @return the thrown exception, if any.
+ * @since 0.0.1-alpha.4
+ * @see set
+ * @see Mutex.withLock
+ */
+public suspend inline fun Flag.setWithLock(mutex: Mutex, owner: Any? = null, action: () -> Unit): Throwable? =
+	mutex.withLock(owner) {
+		set(action)
+	}
 
 private fun Flag.throwIfClosed() = ifSet {
 	throw UnsupportedOperationException("This resource was closed, and can no longer be used.")
