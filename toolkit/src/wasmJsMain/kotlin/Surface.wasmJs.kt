@@ -8,10 +8,12 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import org.w3c.dom.HTMLCanvasElement
+import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.math.UIntSpace
 import quest.laxla.spock.math.Vector2ui
 import quest.laxla.spock.math.vectorOf
+import quest.laxla.spock.windowing.Window
 
 private val SupportedTextureFormats = persistentSetOf(
 	TextureFormat.BGRA8Unorm,
@@ -26,9 +28,24 @@ private val SupportedAlphaModes = persistentSetOf(
 
 private val scope = CoroutineScope(Dispatchers.Default)
 
+private class CanvasSurfaceWindow(val surface: Surface) : Window { // todo: improve upon this cursedness
+	override val shouldClose: Boolean
+		get() = false
+
+	@OptIn(RawSpockApi::class)
+	@ExperimentalSpockApi
+	override val size: Deferred<Vector2ui>
+		get() = scope.async { UIntSpace.vectorOf(surface.raw.width, surface.raw.height) }
+
+	override suspend fun close() {
+		// no-op on WasmJS
+	}
+
+}
+
 @OptIn(RawSpockApi::class)
 public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCloseable {
-	public actual val size: Deferred<Vector2ui> = scope.async { UIntSpace.vectorOf(raw.width, raw.height) }
+	public actual val window: Window = CanvasSurfaceWindow(this)
 
 	public actual val preferredTextureFormat: TextureFormat? = raw.preferredCanvasFormat
 
@@ -59,3 +76,4 @@ public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCl
 		raw.close()
 	}
 }
+
