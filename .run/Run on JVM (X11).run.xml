@@ -1,9 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run on Linux" type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="Run on JVM (X11)" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
       <option name="env">
         <map>
           <entry key="RUST_BACKTRACE" value="full" />
+          <entry key="XDG_SESSION_TYPE" value="x11" />
         </map>
       </option>
       <option name="executionName" />
@@ -15,7 +16,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="example:runDebugExecutableLinuxX64" />
+          <option value=":example:jvmRun" />
         </list>
       </option>
       <option name="vmOptions" />
