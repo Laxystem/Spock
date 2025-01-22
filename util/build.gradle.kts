@@ -3,9 +3,9 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
+	alias(libs.plugins.publish)
 	dokka
 	multiplatform
-	alias(libs.plugins.publish)
 }
 
 repositories.maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/") {

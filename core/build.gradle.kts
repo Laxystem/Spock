@@ -4,9 +4,9 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-	multiplatform
-	dokka
 	alias(libs.plugins.publish)
+	dokka
+	multiplatform
 }
 
 dependencies {

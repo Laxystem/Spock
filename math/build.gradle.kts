@@ -6,6 +6,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 plugins {
 	alias(libs.plugins.kotlinSymbolProcessing)
 	alias(libs.plugins.kotlinx.serialization)
+	alias(libs.plugins.publish)
+	dokka
 	multiplatform
 }
 
