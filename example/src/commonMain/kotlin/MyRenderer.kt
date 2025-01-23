@@ -5,7 +5,7 @@ import quest.laxla.spock.*
 import quest.laxla.spock.toolkit.Surface
 import quest.laxla.spock.toolkit.WebGpuRenderer
 
-private val Surface.textureFormat
+internal val Surface.textureFormat
 	get() = preferredTextureFormat
 		?: TextureFormat.RGBA8Unorm.takeIf { it in supportedTextureFormats }
 		?: TextureFormat.BGRA8Unorm.takeIf { it in supportedTextureFormats }

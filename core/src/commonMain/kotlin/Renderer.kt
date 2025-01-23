@@ -6,9 +6,10 @@ package quest.laxla.spock
 @SubclassOptInRequired(ExperimentalSpockApi::class)
 public interface Renderer : Closer {
 	/**
-	 * Render a frame.
+	 * Renders a frame.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
+	@Throws(UnsupportedShaderException::class)
 	public suspend operator fun invoke()
 }

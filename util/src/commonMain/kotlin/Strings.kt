@@ -11,8 +11,15 @@ import kotlin.contracts.contract
  */
 public fun emptyString(): String = ""
 
+/**
+ * If `null`, returns an empty [String];
+ * otherwise, returns the result of [block].
+ *
+ * @since 0.0.1-alpha.4
+ * @see String.orEmpty
+ */
 @OptIn(ExperimentalContracts::class)
-public inline fun String?.letOrEmpty(block: (String) -> String = { it }): String {
+public inline fun String?.letOrEmpty(block: (String) -> String): String {
 	contract {
 		callsInPlace(block, InvocationKind.AT_MOST_ONCE)
 	}

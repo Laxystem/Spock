@@ -33,4 +33,11 @@ public interface Cache<in Descriptor, Product> : SuspendCloseable {
 	 * @since 0.0.1-alpha.4
 	 */
 	public suspend fun remove(descriptor: Descriptor): Unit?
+
+	/**
+	 * Ensures all provided [descriptors] have a [Product] cached under them.
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	public suspend fun cacheAll(descriptors: Sequence<Descriptor>)
 }
