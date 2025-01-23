@@ -1,5 +1,8 @@
 # Spock Contribution Guide
 
+> [!NOTE]
+> This contribution guide is still work-in-progress.
+
 ## Useful Commands
 
 > [!TIP]
@@ -33,7 +36,8 @@ usually [on port 63342](http://localhost:63342/spock/docs/current/index.html).
 
 ### Run Native Example
 
-Replace `Platform` below with your operating system; for example, `LinuxX64`.
+> [!NOTE]
+> Replace `Platform` below with your operating system; for example, `LinuxX64`.
 
 #### Debug
 
