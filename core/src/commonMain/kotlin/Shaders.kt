@@ -108,12 +108,12 @@ public val Shader.kind: Shader.Kind<*, *> get() = Shader.Kind<Shader.Language, S
  * @since 0.0.1-alpha.4
  * @see Shader.isOfAnyKindOutputtedBy
  * @see Shader.Transpiler.Dynamic.outputKinds
- * @see Shader.Transpiler.SingleTarget.outputKind
+ * @see Shader.Transpiler.Simple.outputKind
  */
 public val <L, F> Shader.Transpiler<L, F>.outputKinds: ImmutableSet<Shader.Kind<L, F>> where L : Shader.Language, F : Shader.FormFactor
 	get() = when (this) {
 		is Shader.Transpiler.Dynamic -> outputKinds
-		is Shader.Transpiler.SingleTarget -> persistentHashSetOf(outputKind)
+		is Shader.Transpiler.Simple -> persistentHashSetOf(outputKind)
 	}
 
 /**
@@ -124,7 +124,7 @@ private inline fun Shader.isAnyKindOutputtedBy(
 	predicate: Shader.(Shader.Kind<*, *>) -> Boolean
 ) = when (transpiler) {
 	is Shader.Transpiler.Dynamic -> transpiler.outputKinds.any { predicate(it) }
-	is Shader.Transpiler.SingleTarget -> predicate(transpiler.outputKind)
+	is Shader.Transpiler.Simple -> predicate(transpiler.outputKind)
 }
 
 /**

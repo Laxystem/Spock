@@ -17,7 +17,7 @@ public class AdvancedRenderer<Vertex : Any>(
 	override val format: TextureFormat = surface.textureFormat,
 	public val scene: RenderScene<Vertex>,
 	public val vertexKind: VertexKind<Vertex>,
-	transpiler: Shader.Transpiler.SingleTarget<Wgsl, StringShader.FormFactor>
+	transpiler: Shader.Transpiler.Simple<Wgsl, StringShader.FormFactor>
 ) : WebGpuRenderer, Closer by Closer(surface, device) {
 	private val shaders = +ShaderCache(transpiler)
 	private val shaderDescriptors = +ManualCache<Shader, ShaderModuleDescriptor> {

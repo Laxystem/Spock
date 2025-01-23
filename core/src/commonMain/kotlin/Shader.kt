@@ -143,7 +143,7 @@ public interface Shader {
 		 * @see Transpiler
 		 * @see Transpiler.Dynamic
 		 */
-		public interface SingleTarget<out L, out F> : Transpiler<L, F> where L : Language, F : FormFactor {
+		public interface Simple<out L, out F> : Transpiler<L, F> where L : Language, F : FormFactor {
 			/**
 			 * The [Kind] of all [Shader]s outputted by this [Transpiler].
 			 *
@@ -153,11 +153,13 @@ public interface Shader {
 		}
 
 		/**
-		 * Transpile [Shader]s to any of the pre-selected [outputKinds].
+		 * Transpiles [Shader]s to any of the pre-selected [outputKinds].
 		 *
 		 * It is up to the implementation to select the optimal [Kind].
 		 *
 		 * @see 0.0.1-alpha.4
+		 * @see Transpiler
+		 * @see Transpiler.Simple
 		 */
 		public interface Dynamic<out L, out F> : Transpiler<L, F> where L : Language, F : FormFactor {
 			/**
