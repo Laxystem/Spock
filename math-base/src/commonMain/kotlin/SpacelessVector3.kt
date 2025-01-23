@@ -12,7 +12,6 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
-import quest.laxla.spock.Definitive
 import quest.laxla.spock.RawSpockApi
 
 /**
@@ -20,7 +19,6 @@ import quest.laxla.spock.RawSpockApi
  *
  * @since 0.0.1-alpha.4
  */
-@Definitive(since = "0.0.1-alpha.4")
 @RawSpockApi
 @Serializable(SpacelessVector3.Serializer::class)
 public data class SpacelessVector3<V>(public val x: V, public val y: V, public val z: V) {
