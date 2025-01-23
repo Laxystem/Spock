@@ -197,8 +197,7 @@ public fun <Vertex : Any> wgslVertexShaderOf(
  */
 public fun ShaderCache(transpiler: Shader.Transpiler<*, *>): Cache<Shader, Shader?> =
 	object : Cache<Shader, Shader?> {
-		private val transpiledShaders =
-			ManualCache<Shader, Shader?> { transpiler(it)?.takeIf(Shader::isCarryingRequiredMetadata) }
+		private val transpiledShaders = ManualCache<Shader, Shader?>(transpiler::transpile)
 
 		/**
 		 * @author Laxystem
