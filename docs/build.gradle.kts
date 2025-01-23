@@ -6,6 +6,9 @@ dependencies {
 	dokka(projects.core)
 	dokka(projects.glfw)
 	dokka(projects.util)
+	dokka(projects.windowing)
+	dokka(projects.math)
+	dokka(projects.mathBase)
 	
 	dokkaHtmlPlugin(libs.dokka.versioning)
 }
