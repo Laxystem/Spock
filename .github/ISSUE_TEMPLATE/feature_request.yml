@@ -17,8 +17,8 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Alternatives
-      description: Describe alternatives solutions or features you've considered.
+      label: Alternatives and prior art
+      description: Describe alternative solutions or features you've considered, and if relevant, prior art justifying or exemplifying all options and your choice.
     validations:
       required: true
   - type: textarea
