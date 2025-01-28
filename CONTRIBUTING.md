@@ -21,7 +21,7 @@
 ```
 
 > [!IMPORTANT]
-> Do not commit the [`docs/history`](docs/history) yourself;
+> Do not commit the [`docs/history`](docs/history) directory yourself;
 > It'll be generated automatically.
 
 A link to the documentation link will be provided in the console,
