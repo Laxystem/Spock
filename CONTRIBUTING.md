@@ -1,7 +1,12 @@
 # Spock Contribution Guide
 
+Don't fear. I won't abandon your proposal to the backlog unless I have a really good reason;
+contributions are welcome and accepted.
+
 > [!NOTE]
-> This contribution guide is still work-in-progress.
+> This project is mainly developed [on Codeberg](https://codeberg.org/Laxystem/Spock);
+> Please don't create pull requests on GitHub.
+> I'll try to review them properly if you do, but it's a lot easier for me if everything is in one place.
 
 ## Useful Commands
 
