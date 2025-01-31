@@ -1,7 +1,7 @@
 # Spock Game Engine
 
 > [!NOTE]
-> Spock is developed [on Codeberg](https://codeberg.org/Laxystem/Spock), and [mirrored on GitHub](https://GitHub.com/Laxystem/Spock).
+> Spock is [developed on Codeberg](https://codeberg.org/Laxystem/Spock), and [mirrored on GitHub](https://GitHub.com/Laxystem/Spock).
 
 > [!CAUTION]
 > Spock is in alpha.
