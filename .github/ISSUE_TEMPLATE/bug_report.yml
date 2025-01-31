@@ -1,8 +1,8 @@
 name: Bug report
 description: Report unexpected behaviour that should be fixed
 labels:
-  - bug
-  - triage
+  - kind/bug
+  - state/triage
 body:
   - type: textarea
     attributes:
