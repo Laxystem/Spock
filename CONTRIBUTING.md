@@ -11,15 +11,26 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 
 ### APIs
 
-APIs should be thread-safe and immutable. Expensive operations should be `suspend fun`s.
+* APIs should be thread-safe and immutable.
+* Expensive operations should be `suspend fun`s.
+* To create a new API, *always* declare an interface or (for immutable data) a data class. If possible, declare it as a `fun interface` (see [Interfaces, Functional Interfaces, or Typealiases](#interfaces-functional-interfaces-or-typealiases) below).
+* Implementations should be instantiated via extension functions (e.g. `ByteArray.appender()`) or functions named the same or as if they were a subtype of as the interface (e.g. `ByteAppender()`, `NonThrowingByteAppender()`).
+* If an implementation accepts a lambda as a parameter (e.g. `EverlastingMutex(producer: (Descriptor) -> Product)`), it should be implemented, with the lambda marked `crossinline`. Otherwise, declare a private class (usually called `FooImpl`).
+    * Mark the implementation class (or if inline, the function) with the `@author` KDoc tag.
+* Always expose everything necessary for users to reimplement a built-in API. If some API is lower-level and should not be used except for this specific purpsoe, mark it with `@RawSpockApi`.
+* If an API allows easily breaking the contract of another, mark it with `@DelicateSpockApi`.
+* If you're unsure about an API, mark it with `@ExperimentalSpockApi`.
+* Document your APIs, and always use the `@since` KDoc tag.
+   * When removing the `@ExprimentalSpockApi` annotation, don't change the `@since` tag.
+   * When breaking ABI *or* API compatibility, reset the `@since` tag.
+* Always use `@Throws` when applicable, including the `@throws` KDoc tag.
 
-To create a new API, *always* declare an interface or (for immutable data) a data class. If possible, declare it as a `fun interface` (see [Interfaces, Functional Interfaces, or Typealiases](#interfaces-functional-interfaces-or-typealiases) below).
+#### Interfaces, Functional Interfaces, or Typealiases
 
-Implementations should be creatable via extension functions (e.g. `ByteArray.appender()`) or functions named the same or as if they were a subtype of as the interface (e.g. `ByteAppender()`, `NonThrowingByteAppender()`).
-
-If the implementation accepts a function as a parameter (e.g. `EverlastingMutex(producer: (Descriptor) -> Product)`), it should be implemented as an object expression using `crossinline` on the lamabdas. Otherwise, declare a private class (usually called `FooImpl`).
-
-#### Interfaces, functional interfaces, or typealiases.
+* First, decide on your interface's contract.
+* If you intend on declaring extensions on the interface, or having a complex contract, do not use a typealias.
+* If you're unsure about a function's signature, mark it with `@ExperimentalSpockApi`.
+* If you're sure about the current API, but not sure if you want to add more functions later, mark it with `@RequiresSubclassOptIn(ExperimentalSpockApi::class)`.
 
 If you need to choose between having more than one function on your interface and `fun`ness, rhe non-functional interface is likely the better choice. 
 
@@ -30,6 +41,11 @@ If an interface can be made functional, make it so.
 Prefer a `@RequiresSubclassOptIn` annotation over `fun`ness.
 
 See the [Kotlin documentation](https://kotlinlang.org/docs/fun-interfaces.html#functional-interfaces-vs-type-aliases) on the topic.
+
+### Implementation
+
+* Prefer nullability over `::prop.isInitialized`.
+* Prefer `Flag` over `lateinit var: Unit`.
 
 ## Useful Commands
 
