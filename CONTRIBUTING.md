@@ -24,6 +24,10 @@ Contributions are welcome and accepted. Please create issues or pull requests!
    * When removing the `@ExprimentalSpockApi` annotation, don't change the `@since` tag.
    * When breaking ABI *or* API compatibility, reset the `@since` tag.
 * Always use `@Throws` when applicable, including the `@throws` KDoc tag.
+* Prefer descriptive type parameter names; for example, `Key` and `Value` are better than `K` and `V`.
+    * Prefer an existing type variable convention  (`K` and `V` for maps) over creating your own.
+* Except for `: Any`, prefer usinf `where` for type variables.
+* For type variables, prefer using `T & Any` over `T : Any`, unless you use a type that explicitly bounds `T` to extend `Any` (not be nullable).
 
 #### Interfaces, Functional Interfaces, or Typealiases
 
