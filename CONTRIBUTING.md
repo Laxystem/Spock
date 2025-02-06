@@ -1,12 +1,35 @@
 # Spock Contribution Guide
 
-Don't fear. I won't abandon your proposal to the backlog unless I have a really good reason;
-contributions are welcome and accepted.
+Contributions are welcome and accepted. Please create issues or pull requests!
 
 > [!NOTE]
 > This project is mainly developed [on Codeberg](https://codeberg.org/Laxystem/Spock);
 > Please don't create pull requests on GitHub.
 > I'll try to review them properly if you do, but it's a lot easier for me if everything is in one place.
+
+## Kotlin Style Guide
+
+### APIs
+
+APIs should be thread-safe and immutable. Expensive operations should be `suspend fun`s.
+
+To create a new API, *always* declare an interface or (for immutable data) a data class. If possible, declare it as a `fun interface` (see [Interfaces, Functional Interfaces, or Typealiases](#interfaces-functional-interfaces-or-typealiases) below).
+
+Implementations should be creatable via extension functions (e.g. `ByteArray.appender()`) or functions named the same or as if they were a subtype of as the interface (e.g. `ByteAppender()`, `NonThrowingByteAppender()`).
+
+If the implementation accepts a function as a parameter (e.g. `EverlastingMutex(producer: (Descriptor) -> Product)`), it should be implemented as an object expression using `crossinline` on the lamabdas. Otherwise, declare a private class (usually called `FooImpl`).
+
+#### Interfaces, functional interfaces, or typealiases.
+
+If you need to choose between having more than one function on your interface and `fun`ness, rhe non-functional interface is likely the better choice. 
+
+If you intend on declaring extensions on the interface, do not use a typealias.
+
+If an interface can be made functional, make it so.
+
+Prefer a `@RequiresSubclassOptIn` annotation over `fun`ness.
+
+See the [Kotlin documentation](https://kotlinlang.org/docs/fun-interfaces.html#functional-interfaces-vs-type-aliases) on the topic.
 
 ## Useful Commands
 
