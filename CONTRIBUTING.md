@@ -29,18 +29,13 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 
 * First, decide on your interface's contract.
 * If you intend on declaring extensions on the interface, or having a complex contract, do not use a typealias.
-* If you're unsure about a function's signature, mark it with `@ExperimentalSpockApi`.
+* If you're unsure about a member function's signature, mark it with `@ExperimentalSpockApi`.
 * If you're sure about the current API, but not sure if you want to add more functions later, mark it with `@RequiresSubclassOptIn(ExperimentalSpockApi::class)`.
-
-If you need to choose between having more than one function on your interface and `fun`ness, rhe non-functional interface is likely the better choice. 
-
-If you intend on declaring extensions on the interface, do not use a typealias.
-
-If an interface can be made functional, make it so.
-
-Prefer a `@RequiresSubclassOptIn` annotation over `fun`ness.
-
-See the [Kotlin documentation](https://kotlinlang.org/docs/fun-interfaces.html#functional-interfaces-vs-type-aliases) on the topic.
+* Do not insist on only having one function.
+* Do not insist on using an `operator fun invoke`.
+* Do not insist on using a function in favor or a property.
+* If the interface can be made functional, make it so.
+* See the [Kotlin documentation](https://kotlinlang.org/docs/fun-interfaces.html#functional-interfaces-vs-type-aliases) on the topic.
 
 ### Implementation
 
