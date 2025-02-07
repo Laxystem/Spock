@@ -14,6 +14,9 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 * APIs should be thread-safe and immutable.
 * Expensive operations should be `suspend fun`s.
 * To create a new API, *always* declare an interface or (for immutable data) a data class. If possible, declare it as a `fun interface` (see [Interfaces, Functional Interfaces, or Typealiases](#interfaces-functional-interfaces-or-typealiases) below).
+    * *Never* expose non-`annotation`, non-`data` classes as public API, especially `abstract` ones.
+    * Take care when exposing `data` classes as public API: if you intend on giving them more properties, annotate them with `@ExperimentalSpockApi`, and the constructor with `@JvmOverloads`; The automatically-generated `copy` function will break when adding more properties.
+    * Prefer composition (e.g. [interface delegation](https://kotlinlang.org/docs/delegation.html)) over inheritance.
 * Implementations should be instantiated via extension functions (e.g. `ByteArray.appender()`) or functions named the same or as if they were a subtype of as the interface (e.g. `ByteAppender()`, `NonThrowingByteAppender()`).
 * If an implementation accepts a lambda as a parameter (e.g. `EverlastingMutex(producer: (Descriptor) -> Product)`), it should be implemented, with the lambda marked `crossinline`. Otherwise, declare a private class (usually called `FooImpl`).
     * Mark the implementation class (or if inline, the function) with the `@author` KDoc tag.
