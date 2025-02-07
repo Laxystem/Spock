@@ -3,11 +3,14 @@
 Contributions are welcome and accepted. Please create issues or pull requests!
 
 > [!NOTE]
-> This project is mainly developed [on Codeberg](https://codeberg.org/Laxystem/Spock);
-> Please don't create pull requests on GitHub.
-> I'll try to review them properly if you do, but it's a lot easier for me if everything is in one place.
+> This project is developed [on Codeberg](https://codeberg.org/Laxystem/Spock);
+> Due to [technical limitations](https://codeberg.org/forgejo/forgejo/issues/6829#issuecomment-2701381),
+> pull requests aren't accepted from GitHub—any commit on the codeberg repository immeidately overrides any unmerged changed from GitHub.
+> Migrating your repository to Codeberg [is easy](https://codeberg.org/repo/migrate?service_type=2&org=&mirror=), and you can create an account simply by logging in with your GitHub one.
 
 ## Kotlin Style Guide
+
+*Don't worry too much about this part, tweaking an API to match the style guide is a relatively easy task.*
 
 ### APIs
 
