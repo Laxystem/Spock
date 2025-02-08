@@ -5,7 +5,7 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 > [!NOTE]
 > This project is developed [on Codeberg](https://codeberg.org/Laxystem/Spock);
 > Due to [technical limitations](https://codeberg.org/forgejo/forgejo/issues/6829#issuecomment-2701381),
-> pull requests aren't accepted from GitHub—any commit on the codeberg repository immeidately overrides any unmerged changed from GitHub.
+> pull requests aren't accepted from GitHub—any commit on the codeberg repository immeidately overrides any unmerged changes on GitHub.
 > Migrating your repository to Codeberg [is easy](https://codeberg.org/repo/migrate?service_type=2&org=&mirror=), and you can create an account simply by logging in with your GitHub one.
 
 ## Kotlin Style Guide
@@ -14,7 +14,7 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 
 ### APIs
 
-* APIs should be thread-safe and immutable.
+* APIs should be thread-safe and immutable by default.
 * Expensive operations should be `suspend fun`s.
 * To create a new API, *always* declare an interface or (for immutable data) a data class. If possible, declare it as a `fun interface` (see [Interfaces, Functional Interfaces, or Typealiases](#interfaces-functional-interfaces-or-typealiases) below).
     * *Never* expose non-`annotation`, non-`data` classes as public API, especially `abstract` ones.
@@ -73,7 +73,7 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 > Do not commit the [`docs/history`](docs/history) directory yourself;
 > It'll be generated automatically.
 
-A link to the documentation link will be provided in the console,
+A link to the rendered documentation will be provided in the console,
 in the form of `localhost:PORT/spock/docs/current/index.html`,
 usually [on port 63342](http://localhost:63342/spock/docs/current/index.html).
 
