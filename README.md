@@ -11,8 +11,6 @@
 
 All modules are available on maven central.
 
-<!-- TODO: support snapshot repo, separate release.yml to pages and publish jobs and move maven central secrets to another env -->
-
 ```kotlin
 // build.gradle.kts
 
