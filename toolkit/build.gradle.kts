@@ -52,3 +52,7 @@ kotlin {
 		}
 	}
 }
+
+tasks.named("wasmJsBrowserProductionLibraryDistribution") {
+	dependsOn(":core:wasmJsProductionLibraryCompileSync")
+}
