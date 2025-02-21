@@ -130,7 +130,7 @@ public interface Cache<in Descriptor, out Product> : SuspendCloseable {
 
 			@DelicateSpockApi
 			override suspend fun close(): Unit = cache.put(original)
-				?: throw IllegalStateException(message = "Borrowed cache entry was not accepted back: $this")
+				?: throw IllegalStateException("Borrowed cache entry was not accepted back: $this")
 		}
 
 		/**

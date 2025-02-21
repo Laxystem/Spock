@@ -355,7 +355,7 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
 	override fun descriptorOf(product: Product): Descriptor = inferrer(product)
 
 	override suspend fun put(entry: Cache.Entry<Product>) = mutex.withLock {
-		if (this lent entry) throw UnsupportedOperationException(message = "Cannot lend an entry to a cache it was borrowed from: $entry")
+		if (this lent entry) throw UnsupportedOperationException("Cannot lend an entry to a cache it was borrowed from: $entry")
 		else inferrer(entry.product).products += entry
 	}
 
@@ -504,7 +504,8 @@ public inline fun <Descriptor, Product> PruningPool(
  * @since 0.0.1-alpha.4
  */
 @FutureErrorType
-private object Empty
+@PublishedApi
+internal object Empty
 
 /**
  * Creates a [Cache] that only remembers a single [Product] of a *single* [Descriptor],

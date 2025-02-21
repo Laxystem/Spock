@@ -34,6 +34,6 @@ public interface InferringCache<Descriptor, Product> : Cache<Descriptor, Product
 	@Throws(UnsupportedOperationException::class, CancellationException::class)
 	@OptIn(DelicateSpockApi::class)
 	public suspend fun put(entry: Cache.Entry<Product>): Unit? =
-		if (this lent entry) throw UnsupportedOperationException(message = "Cannot lend an entry to a cache it was borrowed from: $entry")
+		if (this lent entry) throw UnsupportedOperationException("Cannot lend an entry to a cache it was borrowed from: $entry")
 		else entry.close()
 }
