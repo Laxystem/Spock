@@ -1,0 +1,389 @@
+public abstract interface class quest/laxla/spock/ByteAppender {
+	public abstract fun append (B)V
+	public abstract fun append ([BII)V
+	public abstract fun getCapacity ()I
+	public abstract fun getOffset ()I
+	public abstract fun getRemainingCapacity ()I
+	public abstract fun toByteString ()Lkotlinx/io/bytestring/ByteString;
+}
+
+public final class quest/laxla/spock/ByteAppender$DefaultImpls {
+	public static synthetic fun append$default (Lquest/laxla/spock/ByteAppender;[BIIILjava/lang/Object;)V
+}
+
+public final class quest/laxla/spock/ByteAppendersKt {
+	public static final fun ByteAppender (I)Lquest/laxla/spock/ByteAppender;
+	public static final fun append (Lkotlinx/io/bytestring/ByteStringBuilder;Lkotlin/jvm/functions/Function1;)V
+	public static final fun append ([BILkotlin/jvm/functions/Function1;)V
+	public static synthetic fun append$default ([BILkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static final fun appendToByteArray (ILkotlin/jvm/functions/Function1;)[B
+	public static final fun appendToByteString (ILkotlin/jvm/functions/Function1;)Lkotlinx/io/bytestring/ByteString;
+	public static final fun appender ([BI)Lquest/laxla/spock/ByteAppender;
+	public static synthetic fun appender$default ([BIILjava/lang/Object;)Lquest/laxla/spock/ByteAppender;
+	public static final fun asAppender (Lkotlinx/io/bytestring/ByteStringBuilder;)Lquest/laxla/spock/ByteAppender;
+}
+
+public abstract interface class quest/laxla/spock/Cache : quest/laxla/spock/SuspendCloseable {
+	public abstract fun cacheAll (Lkotlin/sequences/Sequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun contains (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun forget (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getAndRemove (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getEntry (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun tick (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/Cache$DefaultImpls {
+	public static fun cacheAll (Lquest/laxla/spock/Cache;Lkotlin/sequences/Sequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun tick (Lquest/laxla/spock/Cache;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/Cache$Entry : quest/laxla/spock/SuspendCloseable {
+	public abstract fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getProduct ()Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/Cache$Entry$Borrowed : quest/laxla/spock/Cache$Entry {
+	public fun <init> (Lquest/laxla/spock/InferringCache;Lquest/laxla/spock/Cache$Entry;)V
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun component1 ()Lquest/laxla/spock/InferringCache;
+	public final fun component2 ()Lquest/laxla/spock/Cache$Entry;
+	public final fun copy (Lquest/laxla/spock/InferringCache;Lquest/laxla/spock/Cache$Entry;)Lquest/laxla/spock/Cache$Entry$Borrowed;
+	public static synthetic fun copy$default (Lquest/laxla/spock/Cache$Entry$Borrowed;Lquest/laxla/spock/InferringCache;Lquest/laxla/spock/Cache$Entry;ILjava/lang/Object;)Lquest/laxla/spock/Cache$Entry$Borrowed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCache ()Lquest/laxla/spock/InferringCache;
+	public final fun getOriginal ()Lquest/laxla/spock/Cache$Entry;
+	public fun getProduct ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/Cache$Entry$Direct : quest/laxla/spock/Cache$Entry {
+}
+
+public final class quest/laxla/spock/Cache$Entry$Direct$Auto : quest/laxla/spock/Cache$Entry$Direct {
+	public static final synthetic fun box-impl (Ljava/lang/AutoCloseable;)Lquest/laxla/spock/Cache$Entry$Direct$Auto;
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun close-impl (Ljava/lang/AutoCloseable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun constructor-impl (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/AutoCloseable;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/AutoCloseable;Ljava/lang/AutoCloseable;)Z
+	public fun getProduct ()Ljava/lang/AutoCloseable;
+	public synthetic fun getProduct ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/AutoCloseable;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/AutoCloseable;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/AutoCloseable;
+}
+
+public final class quest/laxla/spock/Cache$Entry$Direct$Suspend : quest/laxla/spock/Cache$Entry$Direct, quest/laxla/spock/SuspendCloseable {
+	public static final synthetic fun box-impl (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/Cache$Entry$Direct$Suspend;
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun close-impl (Lquest/laxla/spock/SuspendCloseable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun constructor-impl (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Lquest/laxla/spock/SuspendCloseable;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Lquest/laxla/spock/SuspendCloseable;Lquest/laxla/spock/SuspendCloseable;)Z
+	public synthetic fun getProduct ()Ljava/lang/Object;
+	public fun getProduct ()Lquest/laxla/spock/SuspendCloseable;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Lquest/laxla/spock/SuspendCloseable;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Lquest/laxla/spock/SuspendCloseable;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Lquest/laxla/spock/SuspendCloseable;
+}
+
+public final class quest/laxla/spock/Cache$Entry$Reference : quest/laxla/spock/Cache$Entry {
+	public static final synthetic fun box-impl (Ljava/lang/Object;)Lquest/laxla/spock/Cache$Entry$Reference;
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun close-impl (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun constructor-impl (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun getProduct ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/Object;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/Object;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/CachesKt {
+	public static final fun CacheEntry (Ljava/lang/Object;)Lquest/laxla/spock/Cache$Entry;
+	public static final fun EverlastingCache (Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/sync/Mutex;Ljava/util/Map;)Lquest/laxla/spock/Cache;
+	public static final fun EverlastingCache (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/Cache;
+	public static synthetic fun EverlastingCache$default (Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/sync/Mutex;Ljava/util/Map;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static synthetic fun EverlastingCache$default (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static final fun NoopCache (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/InferringCache;
+	public static final fun Pool (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/InferringCache;
+	public static final fun Pool (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/InferringCache;
+	public static synthetic fun Pool$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/InferringCache;
+	public static synthetic fun Pool$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/InferringCache;
+	public static final fun PruningCache (Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/Cache;
+	public static final fun PruningCache (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/Cache;
+	public static synthetic fun PruningCache$default (Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static synthetic fun PruningCache$default (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static final fun PruningPool (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/InferringCache;
+	public static final fun PruningPool (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/InferringCache;
+	public static synthetic fun PruningPool$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/InferringCache;
+	public static synthetic fun PruningPool$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/InferringCache;
+	public static final fun SingleValueCache (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun SingleValueCache (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/Cache;
+	public static synthetic fun SingleValueCache$default (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun SingleValueCache$default (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static final fun borrow (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun borrow (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun closeIfCloseable (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final synthetic fun closeValuesAndClear (Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun component1 (Lquest/laxla/spock/Cache$Entry;)Ljava/lang/Object;
+	public static final fun component2 (Lquest/laxla/spock/Cache$Entry;)Lquest/laxla/spock/SuspendCloseable;
+	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun lent (Lquest/laxla/spock/Cache;Lquest/laxla/spock/Cache$Entry;)Z
+	public static final fun put (Lquest/laxla/spock/Cache;Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun put (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun put$default (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun putCloseable (Lquest/laxla/spock/Cache;Ljava/lang/AutoCloseable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun putCloseable (Lquest/laxla/spock/Cache;Lquest/laxla/spock/SuspendCloseable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun putReferenceTo (Lquest/laxla/spock/Cache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun then (Lquest/laxla/spock/Cache;Lquest/laxla/spock/Cache;)Lquest/laxla/spock/Cache;
+	public static final fun then (Lquest/laxla/spock/InferringCache;Lquest/laxla/spock/InferringCache;)Lquest/laxla/spock/InferringCache;
+}
+
+public abstract interface class quest/laxla/spock/Closer : quest/laxla/spock/SuspendCloseable {
+	public abstract fun contains (Lquest/laxla/spock/SuspendCloseable;)Z
+	public abstract fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
+	public abstract fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
+}
+
+public final class quest/laxla/spock/ClosersKt {
+	public static final fun Closer ()Lquest/laxla/spock/Closer;
+	public static final fun Closer ([Ljava/lang/AutoCloseable;)Lquest/laxla/spock/Closer;
+	public static final fun Closer ([Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/Closer;
+	public static final fun autoclose (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun autoclose ([Ljava/lang/AutoCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun autoclose ([Lquest/laxla/spock/SuspendCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun plusAssign (Lquest/laxla/spock/Closer;Ljava/lang/AutoCloseable;)V
+	public static final fun plusAssign (Lquest/laxla/spock/Closer;Lquest/laxla/spock/SuspendCloseable;)V
+}
+
+public abstract interface annotation class quest/laxla/spock/DelicateSpockApi : java/lang/annotation/Annotation {
+	public abstract fun replaceWith ()Lkotlin/ReplaceWith;
+}
+
+public final class quest/laxla/spock/Empty {
+	public static final field INSTANCE Lquest/laxla/spock/Empty;
+}
+
+public abstract interface annotation class quest/laxla/spock/ExperimentalSpockApi : java/lang/annotation/Annotation {
+}
+
+public abstract interface class quest/laxla/spock/Flag {
+	public abstract fun invoke ()Z
+	public abstract fun set ()V
+}
+
+public final class quest/laxla/spock/FlagsKt {
+	public static final fun Flag ()Lquest/laxla/spock/Flag;
+	public static final fun ifSet (Lquest/laxla/spock/Flag;Lkotlin/jvm/functions/Function0;)V
+	public static final fun set (Lquest/laxla/spock/Flag;Lkotlin/jvm/functions/Function0;)Ljava/lang/Throwable;
+	public static final fun setWithLock (Lquest/laxla/spock/Flag;Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setWithLock$default (Lquest/laxla/spock/Flag;Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun takeIfSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;
+	public static final fun takeUnlessSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;
+	public static final fun throwIfClosed (Ljava/lang/AutoCloseable;Lquest/laxla/spock/Flag;)V
+	public static final fun throwIfClosed (Lquest/laxla/spock/SuspendCloseable;Lquest/laxla/spock/Flag;)V
+}
+
+public abstract interface annotation class quest/laxla/spock/FutureContextFunction : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class quest/laxla/spock/FutureErrorType : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class quest/laxla/spock/FutureImmutableArray : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class quest/laxla/spock/FutureValueClass : java/lang/annotation/Annotation {
+}
+
+public abstract interface class quest/laxla/spock/InferringCache : quest/laxla/spock/Cache {
+	public abstract fun descriptorOf (Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun put (Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/InferringCache$DefaultImpls {
+	public static fun cacheAll (Lquest/laxla/spock/InferringCache;Lkotlin/sequences/Sequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun put (Lquest/laxla/spock/InferringCache;Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun tick (Lquest/laxla/spock/InferringCache;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/IterableRangesKt {
+	public static final fun at (Lkotlin/ranges/IntRange;Ljava/util/List;)Ljava/util/List;
+	public static final fun from (Ljava/util/List;I)Ljava/util/List;
+	public static final fun skipFirst (Ljava/util/List;)Ljava/util/List;
+	public static final fun step-Qn1smSk (Lkotlin/ranges/UIntProgression;I)Lkotlin/ranges/UIntProgression;
+	public static final fun step-Qn1smSk (Lkotlin/ranges/ULongProgression;I)Lkotlin/ranges/ULongProgression;
+}
+
+public abstract interface class quest/laxla/spock/KTarget {
+	public static final field Companion Lquest/laxla/spock/KTarget$Companion;
+	public abstract fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+}
+
+public final class quest/laxla/spock/KTarget$Android : quest/laxla/spock/KTarget$JvmBased {
+	public static final field INSTANCE Lquest/laxla/spock/KTarget$Android;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$Android;
+	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
+	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/KTarget$Companion {
+}
+
+public final class quest/laxla/spock/KTarget$Jvm : quest/laxla/spock/KTarget$JvmBased {
+	public fun <init> ()V
+	public fun <init> (Lquest/laxla/spock/OperatingSystem$JvmSupported;)V
+	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem$JvmSupported;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/OperatingSystem$JvmSupported;
+	public final fun copy (Lquest/laxla/spock/OperatingSystem$JvmSupported;)Lquest/laxla/spock/KTarget$Jvm;
+	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$Jvm;Lquest/laxla/spock/OperatingSystem$JvmSupported;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$Jvm;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$JvmSupported;
+	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
+	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/KTarget$JvmBased : quest/laxla/spock/KTarget {
+	public abstract fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
+}
+
+public final class quest/laxla/spock/KTarget$Native : quest/laxla/spock/KTarget {
+	public fun <init> ()V
+	public fun <init> (Lquest/laxla/spock/OperatingSystem;)V
+	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/OperatingSystem;
+	public final fun copy (Lquest/laxla/spock/OperatingSystem;)Lquest/laxla/spock/KTarget$Native;
+	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$Native;Lquest/laxla/spock/OperatingSystem;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$Native;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/KTarget$WasmJs : quest/laxla/spock/KTarget {
+	public fun <init> ()V
+	public fun <init> (Lquest/laxla/spock/OperatingSystem;)V
+	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/OperatingSystem;
+	public final fun copy (Lquest/laxla/spock/OperatingSystem;)Lquest/laxla/spock/KTarget$WasmJs;
+	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$WasmJs;Lquest/laxla/spock/OperatingSystem;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$WasmJs;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/KTarget$WasmWasi : quest/laxla/spock/KTarget {
+	public fun <init> ()V
+	public fun <init> (Lquest/laxla/spock/OperatingSystem;)V
+	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/OperatingSystem;
+	public final fun copy (Lquest/laxla/spock/OperatingSystem;)Lquest/laxla/spock/KTarget$WasmWasi;
+	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$WasmWasi;Lquest/laxla/spock/OperatingSystem;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$WasmWasi;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/MutexKt {
+	public static final fun coroutineScopeWithLock (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun coroutineScopeWithLock$default (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/OperatingSystem {
+	public static final field Companion Lquest/laxla/spock/OperatingSystem$Companion;
+}
+
+public final class quest/laxla/spock/OperatingSystem$Android : quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Android;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/OperatingSystem$Companion {
+}
+
+public final class quest/laxla/spock/OperatingSystem$FreeBsd : quest/laxla/spock/OperatingSystem$JvmSupported {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$FreeBsd;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/OperatingSystem$JvmSupported : quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased {
+}
+
+public final class quest/laxla/spock/OperatingSystem$Linux : quest/laxla/spock/OperatingSystem$JvmSupported {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Linux;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/OperatingSystem$MacOS : quest/laxla/spock/OperatingSystem$JvmSupported {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$MacOS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased : quest/laxla/spock/OperatingSystem {
+}
+
+public final class quest/laxla/spock/OperatingSystem$Windows : quest/laxla/spock/OperatingSystem$JvmSupported {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Windows;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/OperatingSystem$iOS {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$iOS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/Platforms_jvmKt {
+	public static final fun getCurrent (Lquest/laxla/spock/KTarget$Companion;)Lquest/laxla/spock/KTarget;
+}
+
+public abstract interface annotation class quest/laxla/spock/RawSpockApi : java/lang/annotation/Annotation {
+	public abstract fun replaceWith ()Lkotlin/ReplaceWith;
+}
+
+public final class quest/laxla/spock/StringsKt {
+	public static final fun emptyString ()Ljava/lang/String;
+	public static final fun letOrEmpty (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/SuspendCloseable {
+	public abstract fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/SuspendCloseablesKt {
+	public static final fun asSuspendCloseable (Ljava/lang/AutoCloseable;)Lquest/laxla/spock/SuspendCloseable;
+	public static final fun closeFinally (Lquest/laxla/spock/SuspendCloseable;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun use (Lquest/laxla/spock/SuspendCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

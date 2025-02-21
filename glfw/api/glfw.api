@@ -1,0 +1,46 @@
+public final class quest/laxla/spock/glfw/Events_jvmKt {
+	public static final fun pollEvents (Lquest/laxla/spock/glfw/Glfw;)Lkotlinx/coroutines/Job;
+}
+
+public final class quest/laxla/spock/glfw/Glfw : kotlin/coroutines/CoroutineContext, quest/laxla/spock/SuspendCloseable {
+	public static final field INSTANCE Lquest/laxla/spock/glfw/Glfw;
+	public final fun async (Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Deferred;
+	public static synthetic fun async$default (Lquest/laxla/spock/glfw/Glfw;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/Deferred;
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun execute (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun fold (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;
+	public fun get (Lkotlin/coroutines/CoroutineContext$Key;)Lkotlin/coroutines/CoroutineContext$Element;
+	public final fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public final fun invoke (Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun invoke$default (Lquest/laxla/spock/glfw/Glfw;Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun launch (Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Job;
+	public static synthetic fun launch$default (Lquest/laxla/spock/glfw/Glfw;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
+	public final fun launchAndJoin (Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun launchAndJoin$default (Lquest/laxla/spock/glfw/Glfw;Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun minusKey (Lkotlin/coroutines/CoroutineContext$Key;)Lkotlin/coroutines/CoroutineContext;
+	public fun plus (Lkotlin/coroutines/CoroutineContext;)Lkotlin/coroutines/CoroutineContext;
+}
+
+public final class quest/laxla/spock/glfw/GlfwWindow : quest/laxla/spock/windowing/Window {
+	public synthetic fun <init> (IILjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (J)V
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getRaw ()J
+	public fun getShouldClose ()Z
+	public fun getSize ()Lkotlinx/coroutines/Deferred;
+}
+
+public final class quest/laxla/spock/glfw/Glfw_jvmKt {
+	public static final fun getGlfwFalse ()I
+	public static final fun getGlfwTrue ()I
+	public static final fun glfwInit ()Lkotlin/Unit;
+	public static final fun glfwTerminate ()V
+}
+
+public final class quest/laxla/spock/glfw/WindowHint_jvmKt {
+	public static final fun getGlfwClientApi ()I
+	public static final fun getGlfwNoApi ()I
+	public static final fun getGlfwResizable ()I
+	public static final fun glfwWindowHint (II)V
+}
+

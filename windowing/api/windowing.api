@@ -1,0 +1,5 @@
+public abstract interface class quest/laxla/spock/windowing/Window : quest/laxla/spock/SuspendCloseable {
+	public abstract fun getShouldClose ()Z
+	public abstract fun getSize ()Lkotlinx/coroutines/Deferred;
+}
+

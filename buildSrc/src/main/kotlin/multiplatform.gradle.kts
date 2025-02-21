@@ -23,6 +23,7 @@ kotlin {
 apiValidation {
 	@OptIn(ExperimentalBCVApi::class)
 	klib {
-		enabled = true
+		// TODO: KT-75378
+		// enabled = true
 	}
 }

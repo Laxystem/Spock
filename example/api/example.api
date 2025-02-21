@@ -1,0 +1,36 @@
+public final class quest/laxla/spock/example/AdvancedRenderer : quest/laxla/spock/Closer, quest/laxla/spock/toolkit/WebGpuRenderer {
+	public fun <init> (Lio/ygdrasil/webgpu/Device;Lquest/laxla/spock/toolkit/Surface;Lio/ygdrasil/webgpu/TextureFormat;Lquest/laxla/spock/RenderScene;Lquest/laxla/spock/Shader$Transpiler$Simple;ZLquest/laxla/spock/InferringCache;)V
+	public synthetic fun <init> (Lio/ygdrasil/webgpu/Device;Lquest/laxla/spock/toolkit/Surface;Lio/ygdrasil/webgpu/TextureFormat;Lquest/laxla/spock/RenderScene;Lquest/laxla/spock/Shader$Transpiler$Simple;ZLquest/laxla/spock/InferringCache;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun contains (Lquest/laxla/spock/SuspendCloseable;)Z
+	public fun getDevice ()Lio/ygdrasil/webgpu/Device;
+	public fun getFormat ()Lio/ygdrasil/webgpu/TextureFormat;
+	public final fun getScene ()Lquest/laxla/spock/RenderScene;
+	public fun getSurface ()Lquest/laxla/spock/toolkit/Surface;
+	public fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
+	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
+}
+
+public final class quest/laxla/spock/example/MainKt {
+	public static final fun main (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun main ([Ljava/lang/String;)V
+}
+
+public final class quest/laxla/spock/example/MyApplicationKt {
+	public static final fun myApplication (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/example/MyRenderer : quest/laxla/spock/Closer, quest/laxla/spock/toolkit/WebGpuRenderer {
+	public fun <init> (Lio/ygdrasil/webgpu/Device;Lquest/laxla/spock/toolkit/Surface;Lio/ygdrasil/webgpu/TextureFormat;)V
+	public synthetic fun <init> (Lio/ygdrasil/webgpu/Device;Lquest/laxla/spock/toolkit/Surface;Lio/ygdrasil/webgpu/TextureFormat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun contains (Lquest/laxla/spock/SuspendCloseable;)Z
+	public fun getDevice ()Lio/ygdrasil/webgpu/Device;
+	public fun getFormat ()Lio/ygdrasil/webgpu/TextureFormat;
+	public fun getSurface ()Lquest/laxla/spock/toolkit/Surface;
+	public fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
+	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
+}
+

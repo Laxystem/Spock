@@ -1,0 +1,782 @@
+public abstract interface class quest/laxla/spock/math/BooleanicSpace : quest/laxla/spock/math/Space {
+	public abstract fun and (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun not (Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun or (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun xor (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/math/BufferableSpace : quest/laxla/spock/math/SizedSpace {
+	public abstract fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+}
+
+public final class quest/laxla/spock/math/BufferableSpacesKt {
+	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector1;)V
+	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector2;)V
+	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector3;)V
+	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector4;)V
+	public static final fun getByteSize (Lquest/laxla/spock/math/SizedSpace;)I
+}
+
+public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FractionalSpace, quest/laxla/spock/math/SignedSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/DoubleSpace;
+	public fun abs (D)Ljava/lang/Double;
+	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun append (Lquest/laxla/spock/ByteAppender;D)V
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun div (DD)Ljava/lang/Double;
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public fun getUnit ()Ljava/lang/Double;
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getZero ()Ljava/lang/Double;
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun minus (DD)Ljava/lang/Double;
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun mod (DD)Ljava/lang/Double;
+	public synthetic fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus (DD)Ljava/lang/Double;
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun pow (DD)Ljava/lang/Double;
+	public synthetic fun pow (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem (DD)Ljava/lang/Double;
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun sqrt (D)Ljava/lang/Double;
+	public synthetic fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times (DD)Ljava/lang/Double;
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryMinus (D)Ljava/lang/Double;
+	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (D)Ljava/lang/Double;
+	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FractionalSpace, quest/laxla/spock/math/SignedSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/FloatSpace;
+	public fun abs (F)Ljava/lang/Float;
+	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun append (Lquest/laxla/spock/ByteAppender;F)V
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun div (FF)Ljava/lang/Float;
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public fun getUnit ()Ljava/lang/Float;
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getZero ()Ljava/lang/Float;
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun minus (FF)Ljava/lang/Float;
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun mod (FF)Ljava/lang/Float;
+	public synthetic fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus (FF)Ljava/lang/Float;
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun pow (FF)Ljava/lang/Float;
+	public synthetic fun pow (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem (FF)Ljava/lang/Float;
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun sqrt (F)Ljava/lang/Float;
+	public synthetic fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times (FF)Ljava/lang/Float;
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryMinus (F)Ljava/lang/Float;
+	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (F)Ljava/lang/Float;
+	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public abstract interface class quest/laxla/spock/math/FractionalSpace : quest/laxla/spock/math/NumeralSpace {
+	public abstract fun pow (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public final class quest/laxla/spock/math/IntSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/SignedSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/IntSpace;
+	public fun abs (I)Ljava/lang/Integer;
+	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun append (Lquest/laxla/spock/ByteAppender;I)V
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun div (II)Ljava/lang/Integer;
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public fun getUnit ()Ljava/lang/Integer;
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getZero ()Ljava/lang/Integer;
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun minus (II)Ljava/lang/Integer;
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun mod (II)Ljava/lang/Integer;
+	public synthetic fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus (II)Ljava/lang/Integer;
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem (II)Ljava/lang/Integer;
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times (II)Ljava/lang/Integer;
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun toString ()Ljava/lang/String;
+	public fun unaryMinus (I)Ljava/lang/Integer;
+	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (I)Ljava/lang/Integer;
+	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public final class quest/laxla/spock/math/LongSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/SignedSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/LongSpace;
+	public fun abs (J)Ljava/lang/Long;
+	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun append (Lquest/laxla/spock/ByteAppender;J)V
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun div (JJ)Ljava/lang/Long;
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public fun getUnit ()Ljava/lang/Long;
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getZero ()Ljava/lang/Long;
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun minus (JJ)Ljava/lang/Long;
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun mod (JJ)Ljava/lang/Long;
+	public synthetic fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus (JJ)Ljava/lang/Long;
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem (JJ)Ljava/lang/Long;
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times (JJ)Ljava/lang/Long;
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun toString ()Ljava/lang/String;
+	public fun unaryMinus (J)Ljava/lang/Long;
+	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (J)Ljava/lang/Long;
+	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public abstract interface class quest/laxla/spock/math/NumeralSpace : quest/laxla/spock/math/Space {
+	public abstract fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public abstract interface class quest/laxla/spock/math/SignedSpace : quest/laxla/spock/math/NumeralSpace {
+	public abstract fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public abstract fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public final class quest/laxla/spock/math/SignedSpace$DefaultImpls {
+	public static fun unaryMinus (Lquest/laxla/spock/math/SignedSpace;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public static fun unaryPlus (Lquest/laxla/spock/math/SignedSpace;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
+public abstract interface class quest/laxla/spock/math/SizedSpace : quest/laxla/spock/math/Space {
+	public abstract fun getSizeInBits-pVg5ArA ()I
+	public abstract fun getSizeInBytes-pVg5ArA ()I
+}
+
+public final class quest/laxla/spock/math/SwizzlersKt {
+	public static final fun getWw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getWww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWwww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWwxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWwyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWwzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWwzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getWxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWxww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWxxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWxyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWxzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWxzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getWyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWyww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWywx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWywy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWywz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWyxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWyyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWyzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWyzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getWzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWzww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWzxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWzyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getWzzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getWzzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getXww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXwww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXwxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXwyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXwzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXwzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXx (Lquest/laxla/spock/math/VectorWithX;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getXxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXxww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxx (Lquest/laxla/spock/math/VectorWithX;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXxxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxxx (Lquest/laxla/spock/math/VectorWithX;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXxyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXxzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXxzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getXyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXyww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXywx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXywy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXywz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXyxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyxx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXyyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXyzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXyzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getXzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXzww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXzxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXzyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getXzzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getXzzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getYww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYwww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYwxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYwyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYwzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYwzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getYxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYxww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYxxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxxx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYxyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYxzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYxzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getYyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYyww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYywx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYywy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYywz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYyxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyxx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyxy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYyyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyyx (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyyy (Lquest/laxla/spock/math/VectorWithY;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYyzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYyzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getYzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYzww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYzxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYzyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getYzzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getYzzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getZww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZwww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZwxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwxx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwxy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwxz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZwyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwyx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwyy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwyz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZwzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwzx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwzy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZwzz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getZxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZxww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZxxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZxyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZxzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZxzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getZyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZyww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZywx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZywy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZywz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZyxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZyyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZyzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZyzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getZzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZzww (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzwx (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzwy (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzwz (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZzxw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzxx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzxy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzxz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZzyw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzyx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzyy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzyz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector3;
+	public static final fun getZzzw (Lquest/laxla/spock/math/VectorWithW;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzzx (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzzy (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+	public static final fun getZzzz (Lquest/laxla/spock/math/VectorWithZ;)Lquest/laxla/spock/math/Vector4;
+}
+
+public final class quest/laxla/spock/math/UIntSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/NumeralSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/UIntSpace;
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun append-Qn1smSk (Lquest/laxla/spock/ByteAppender;I)V
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun div-YcLip9I (II)I
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getUnit-pVg5ArA ()I
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun getZero-pVg5ArA ()I
+	public fun hashCode ()I
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun minus-YcLip9I (II)I
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus-YcLip9I (II)I
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem-YcLip9I (II)I
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times-YcLip9I (II)I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/math/Vector1dSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1dSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector1fSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1fSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector1iSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1iSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector1lSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1lSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector1uiSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1uiSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector2dSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2dSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
+}
+
+public final class quest/laxla/spock/math/Vector2fSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2fSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
+}
+
+public final class quest/laxla/spock/math/Vector2iSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2iSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
+}
+
+public final class quest/laxla/spock/math/Vector2lSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2lSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
+}
+
+public final class quest/laxla/spock/math/Vector2uiSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2uiSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
+}
+
+public final class quest/laxla/spock/math/Vector3dSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3dSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector3fSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3fSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector3iSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3iSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector3lSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3lSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector3uiSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3uiSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector4dSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4dSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
+}
+
+public final class quest/laxla/spock/math/Vector4fSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4fSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
+}
+
+public final class quest/laxla/spock/math/Vector4iSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4iSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
+}
+
+public final class quest/laxla/spock/math/Vector4lSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4lSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
+}
+
+public final class quest/laxla/spock/math/Vector4uiSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4uiSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
+}
+
+public final class quest/laxla/spock/math/VectorOperationsKt {
+	public static final fun abs (Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun abs (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun abs (Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun abs (Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun and (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun and (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun and (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun and (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun div (Lquest/laxla/spock/math/Vector1;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector1;
+	public static final fun div (Lquest/laxla/spock/math/Vector2;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector2;
+	public static final fun div (Lquest/laxla/spock/math/Vector3;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector3;
+	public static final fun div (Lquest/laxla/spock/math/Vector4;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector4;
+	public static final fun minus (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun minus (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun minus (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun minus (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun mod (Lquest/laxla/spock/math/Vector1;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector1;
+	public static final fun mod (Lquest/laxla/spock/math/Vector2;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector2;
+	public static final fun mod (Lquest/laxla/spock/math/Vector3;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector3;
+	public static final fun mod (Lquest/laxla/spock/math/Vector4;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector4;
+	public static final fun not (Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun not (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun not (Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun not (Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun or (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun or (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun or (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun or (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun plus (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun plus (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun plus (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun plus (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun rem (Lquest/laxla/spock/math/Vector1;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector1;
+	public static final fun rem (Lquest/laxla/spock/math/Vector2;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector2;
+	public static final fun rem (Lquest/laxla/spock/math/Vector3;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector3;
+	public static final fun rem (Lquest/laxla/spock/math/Vector4;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector4;
+	public static final fun times (Lquest/laxla/spock/math/Vector1;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector1;
+	public static final fun times (Lquest/laxla/spock/math/Vector2;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector2;
+	public static final fun times (Lquest/laxla/spock/math/Vector3;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector3;
+	public static final fun times (Lquest/laxla/spock/math/Vector4;Ljava/lang/Comparable;)Lquest/laxla/spock/math/Vector4;
+	public static final fun unaryMinus (Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun unaryMinus (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun unaryMinus (Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun unaryMinus (Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun unaryPlus (Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun unaryPlus (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun unaryPlus (Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun unaryPlus (Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+	public static final fun xor (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun xor (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun xor (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector3;
+	public static final fun xor (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/Vector4;
+}
+

@@ -1,0 +1,31 @@
+public final class quest/laxla/spock/toolkit/ApplicationKt {
+	public static final fun webGpuApplication-qNPu7Do (Ljava/lang/String;IILkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun webGpuApplication-qNPu7Do$default (Ljava/lang/String;IILkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/toolkit/Surface : java/lang/AutoCloseable {
+	public fun close ()V
+	public final fun configure (Lio/ygdrasil/webgpu/SurfaceConfiguration;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCurrentTexture ()Lio/ygdrasil/webgpu/SurfaceTexture;
+	public final fun getPreferredTextureFormat ()Lio/ygdrasil/webgpu/TextureFormat;
+	public final fun getRaw ()Lio/ygdrasil/webgpu/NativeSurface;
+	public final fun getSupportedAlphaModes ()Lkotlinx/collections/immutable/ImmutableSet;
+	public final fun getSupportedTextureFormats ()Lkotlinx/collections/immutable/ImmutableSet;
+	public final fun getWindow ()Lquest/laxla/spock/windowing/Window;
+	public final fun presentFrame ()V
+}
+
+public abstract interface class quest/laxla/spock/toolkit/WebGpuRenderer : quest/laxla/spock/Renderer {
+	public abstract fun getDevice ()Lio/ygdrasil/webgpu/Device;
+	public abstract fun getFormat ()Lio/ygdrasil/webgpu/TextureFormat;
+	public abstract fun getSurface ()Lquest/laxla/spock/toolkit/Surface;
+}
+
+public final class quest/laxla/spock/toolkit/WgpuKt {
+	public static final fun Wgpu ()Lio/ygdrasil/webgpu/WGPU;
+	public static final fun createSurface (Lio/ygdrasil/webgpu/WGPU;Lquest/laxla/spock/glfw/GlfwWindow;)Lquest/laxla/spock/toolkit/Surface;
+	public static final fun requestAdapter (Lio/ygdrasil/webgpu/WGPU;Lquest/laxla/spock/toolkit/Surface;)Lio/ygdrasil/webgpu/Adapter;
+	public static final fun requestDeviceOrThrow (Lio/ygdrasil/webgpu/Adapter;Lio/ygdrasil/webgpu/DeviceDescriptor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun requestDeviceOrThrow$default (Lio/ygdrasil/webgpu/Adapter;Lio/ygdrasil/webgpu/DeviceDescriptor;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
