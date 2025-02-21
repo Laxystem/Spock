@@ -14,7 +14,11 @@ kotlin {
 	linuxArm64()
 	linuxX64()
 	mingwX64()
-	wasmJs().browser()
+	wasmJs().browser {
+		testTask {
+			useKarma().useChromiumHeadless()
+		}
+	}
 
 	sourceSets {
 		commonMain.dependencies {
