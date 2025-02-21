@@ -1,5 +1,8 @@
+import kotlinx.validation.ExperimentalBCVApi
+
 plugins {
 	kotlin("multiplatform")
+	id("org.jetbrains.kotlinx.binary-compatibility-validator")
 }
 
 repositories.mavenCentral()
@@ -15,4 +18,11 @@ kotlin {
 	}
 
 	withSourcesJar(publish = true)
+}
+
+apiValidation {
+	@OptIn(ExperimentalBCVApi::class)
+	klib {
+		enabled = true
+	}
 }

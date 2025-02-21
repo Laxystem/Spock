@@ -6,11 +6,7 @@ plugins {
 	alias(libs.plugins.publish)
 	dokka
 	multiplatform
-}
-
-repositories.maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-	name = "Maven Central Snapshots"
-	mavenContent { includeGroup("com.varabyte.truthish") }
+	powerAssert
 }
 
 kotlin {
@@ -24,14 +20,14 @@ kotlin {
 		commonMain.dependencies {
 			api(libs.kotlinLogging)
 			api(libs.kotlinx.coroutines)
-			api(libs.kotlinx.immutableCollections)
+			api(libs.kotlinx.collections.immutable)
 			api(libs.kotlinx.io.bytestring)
 			api(libs.kotlinx.serialization)
 		}
 
 		commonTest.dependencies {
 			api(kotlin("test"))
-			api(libs.truthish)
+			api(libs.kotlinx.coroutines.test)
 		}
 
 		jvmMain.dependencies {

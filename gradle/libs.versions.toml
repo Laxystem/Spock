@@ -5,46 +5,48 @@ kotlin = "2.1.10"
 kotlinLogging = "7.0.3"
 kotlinPoet = "2.0.0"
 kotlinSymbolProcessing = "2.1.10-1.0.30"
+kotlinx-binaryCompatibilityValidator = "0.17.0"
 kotlinx-browser = "0.3"
+kotlinx-collections-immutable = "0.3.8"
 kotlinx-coroutines = "1.10.1"
-kotlinx-immutableCollections = "0.3.8"
 kotlinx-io = "0.6.0"
 kotlinx-serialization = "1.8.0"
 logback = "1.5.16"
 lwjgl = "3.3.6"
 mavenPublish = "0.30.0"
-truthish = "1.0.3-SNAPSHOT"
 wgpu4k = "0.0.3"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
 
 [libraries]
-dokka = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version.ref = "dokka" }
 dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin" }
 javaNativeAccess = { group = "net.java.dev.jna", name = "jna", version.ref = "javaNativeAccess" }
 javaNativeAccess-platform = { group = "net.java.dev.jna", name = "jna-platform", version.ref = "javaNativeAccess" }
-kotlinJvm = { group = "org.jetbrains.kotlin.jvm", name = "org.jetbrains.kotlin.jvm.gradle.plugin", version.ref = "kotlin" }
 kotlinLogging = { group = "io.github.oshai", name = "kotlin-logging", version.ref = "kotlinLogging" }
-kotlinMultiplatform = { group = "org.jetbrains.kotlin.multiplatform", name = "org.jetbrains.kotlin.multiplatform.gradle.plugin", version.ref = "kotlin" }
 kotlinPoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinPoet" }
 kotlinPoet-kotlinSymbolProcessing = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinPoet" }
 kotlinSymbolProcessing = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "kotlinSymbolProcessing" }
 kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinx-browser" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-immutableCollections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-immutableCollections" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
-kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "kotlinx-io"}
+kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "kotlinx-io" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 lwjgl = { group = "org.lwjgl", name = "lwjgl", version.ref = "lwjgl" }
 lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl" }
-truthish = { group = "com.varabyte.truthish", name = "truthish", version.ref = "truthish" }
 wgpu4k = { group = "io.ygdrasil", name = "wgpu4k", version.ref = "wgpu4k" }
 wgpu4k-glfw = { group = "io.ygdrasil", name = "glfw-native", version.ref = "wgpu4k-glfw" }
 wgpu4k-rococoa = { group = "io.ygdrasil", name = "rococoa", version.ref = "wgpu4k-rococoa" }
 
 [plugins]
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
+kotlinx-binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibilityValidator" }
+kotlinx-powerAssert = { id = "org.jetbrains.kotlin.plugin.power-assert", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

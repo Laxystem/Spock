@@ -1,0 +1,254 @@
+public abstract interface class quest/laxla/spock/math/Space {
+	public abstract fun getUnit ()Ljava/lang/Object;
+	public abstract fun getZero ()Ljava/lang/Object;
+}
+
+public abstract interface annotation class quest/laxla/spock/math/SpaceProvider : java/lang/annotation/Annotation {
+}
+
+public final class quest/laxla/spock/math/SpacelessVector1 {
+	public static final field Companion Lquest/laxla/spock/math/SpacelessVector1$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector1;
+	public static final fun component1-impl (Ljava/lang/Object;)Ljava/lang/Object;
+	public static fun constructor-impl (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public final fun getX ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/Object;)I
+	public static final fun space-impl (Ljava/lang/Object;Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/Vector1;
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/Object;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector1$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector1$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-CZwm3-w (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-SolwQz8 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class quest/laxla/spock/math/SpacelessVector2 {
+	public static final field Companion Lquest/laxla/spock/math/SpacelessVector2$Companion;
+	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector2;
+	public static synthetic fun copy$default (Lquest/laxla/spock/math/SpacelessVector2;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getX ()Ljava/lang/Object;
+	public final fun getY ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public final fun space (Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/Vector2;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector2$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector2$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector2;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector2;)V
+}
+
+public final class quest/laxla/spock/math/SpacelessVector3 {
+	public static final field Companion Lquest/laxla/spock/math/SpacelessVector3$Companion;
+	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/Object;
+	public final fun component3 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector3;
+	public static synthetic fun copy$default (Lquest/laxla/spock/math/SpacelessVector3;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector3;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getX ()Ljava/lang/Object;
+	public final fun getY ()Ljava/lang/Object;
+	public final fun getZ ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public final fun space (Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/Vector3;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector3$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector3$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector3;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector3;)V
+}
+
+public final class quest/laxla/spock/math/SpacelessVector4 {
+	public static final field Companion Lquest/laxla/spock/math/SpacelessVector4$Companion;
+	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/Object;
+	public final fun component3 ()Ljava/lang/Object;
+	public final fun component4 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector4;
+	public static synthetic fun copy$default (Lquest/laxla/spock/math/SpacelessVector4;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Lquest/laxla/spock/math/SpacelessVector4;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getW ()Ljava/lang/Object;
+	public final fun getX ()Ljava/lang/Object;
+	public final fun getY ()Ljava/lang/Object;
+	public final fun getZ ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public final fun space (Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/Vector4;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector4$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector4$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector4;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector4;)V
+}
+
+public abstract interface annotation class quest/laxla/spock/math/Typealiased : java/lang/annotation/Annotation {
+	public abstract fun name ()Ljava/lang/String;
+	public abstract fun type ()Ljava/lang/Class;
+}
+
+public abstract interface class quest/laxla/spock/math/UniformVector : quest/laxla/spock/math/Vector {
+	public abstract fun getValue ()Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/math/Vector {
+	public abstract fun getSpace ()Lquest/laxla/spock/math/Space;
+}
+
+public abstract interface class quest/laxla/spock/math/Vector1 : quest/laxla/spock/math/VectorWithX {
+	public static final field Companion Lquest/laxla/spock/math/Vector1$Companion;
+}
+
+public final class quest/laxla/spock/math/Vector1$Companion {
+}
+
+public abstract interface class quest/laxla/spock/math/Vector2 : quest/laxla/spock/math/VectorWithY {
+	public static final field Companion Lquest/laxla/spock/math/Vector2$Companion;
+}
+
+public final class quest/laxla/spock/math/Vector2$Companion {
+}
+
+public abstract interface class quest/laxla/spock/math/Vector3 : quest/laxla/spock/math/VectorWithZ {
+	public static final field Companion Lquest/laxla/spock/math/Vector3$Companion;
+}
+
+public final class quest/laxla/spock/math/Vector3$Companion {
+}
+
+public abstract interface class quest/laxla/spock/math/Vector4 : quest/laxla/spock/math/VectorWithW {
+	public static final field Companion Lquest/laxla/spock/math/Vector4$Companion;
+}
+
+public final class quest/laxla/spock/math/Vector4$Companion {
+}
+
+public abstract interface annotation class quest/laxla/spock/math/VectorOperation : java/lang/annotation/Annotation {
+}
+
+public final class quest/laxla/spock/math/VectorSerializersKt {
+	public static final fun serializer (Lquest/laxla/spock/math/Vector1$Companion;Ljava/lang/String;Lquest/laxla/spock/math/Space;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+	public static final fun serializer (Lquest/laxla/spock/math/Vector2$Companion;Ljava/lang/String;Lquest/laxla/spock/math/Space;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+	public static final fun serializer (Lquest/laxla/spock/math/Vector3$Companion;Ljava/lang/String;Lquest/laxla/spock/math/Space;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+	public static final fun serializer (Lquest/laxla/spock/math/Vector4$Companion;Ljava/lang/String;Lquest/laxla/spock/math/Space;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+	public static final fun withoutSpace (Lquest/laxla/spock/math/Vector1;)Ljava/lang/Object;
+	public static final fun withoutSpace (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/SpacelessVector2;
+	public static final fun withoutSpace (Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/SpacelessVector3;
+	public static final fun withoutSpace (Lquest/laxla/spock/math/Vector4;)Lquest/laxla/spock/math/SpacelessVector4;
+}
+
+public abstract interface annotation class quest/laxla/spock/math/VectorSubject : java/lang/annotation/Annotation {
+}
+
+public abstract interface class quest/laxla/spock/math/VectorWithW : quest/laxla/spock/math/VectorWithZ {
+	public abstract fun getW ()Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/math/VectorWithX : quest/laxla/spock/math/Vector {
+	public abstract fun getX ()Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/math/VectorWithY : quest/laxla/spock/math/VectorWithX {
+	public abstract fun getY ()Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/math/VectorWithZ : quest/laxla/spock/math/VectorWithY {
+	public abstract fun getZ ()Ljava/lang/Object;
+}
+
+public abstract interface annotation class quest/laxla/spock/math/Vectorization : java/lang/annotation/Annotation {
+	public abstract fun kind ()Lquest/laxla/spock/math/Vectorization$Kind;
+}
+
+public final class quest/laxla/spock/math/Vectorization$Kind : java/lang/Enum {
+	public static final field Disabled Lquest/laxla/spock/math/Vectorization$Kind;
+	public static final field Exact Lquest/laxla/spock/math/Vectorization$Kind;
+	public static final field Minimum Lquest/laxla/spock/math/Vectorization$Kind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lquest/laxla/spock/math/Vectorization$Kind;
+	public static fun values ()[Lquest/laxla/spock/math/Vectorization$Kind;
+}
+
+public final class quest/laxla/spock/math/VectorsKt {
+	public static final fun asVector1 (Lquest/laxla/spock/math/UniformVector;)Lquest/laxla/spock/math/Vector1;
+	public static final fun asVector2 (Lquest/laxla/spock/math/UniformVector;)Lquest/laxla/spock/math/Vector2;
+	public static final fun asVector3 (Lquest/laxla/spock/math/UniformVector;)Lquest/laxla/spock/math/Vector3;
+	public static final fun asVector4 (Lquest/laxla/spock/math/UniformVector;)Lquest/laxla/spock/math/Vector4;
+	public static final fun component1 (Lquest/laxla/spock/math/VectorWithX;)Ljava/lang/Object;
+	public static final fun component2 (Lquest/laxla/spock/math/VectorWithY;)Ljava/lang/Object;
+	public static final fun component3 (Lquest/laxla/spock/math/VectorWithZ;)Ljava/lang/Object;
+	public static final fun component4 (Lquest/laxla/spock/math/VectorWithW;)Ljava/lang/Object;
+	public static final fun uniformVectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/UniformVector;
+	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector1;
+	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector2;
+	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector3;
+	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector4;
+	public static final fun vectorOfOnes (Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/UniformVector;
+	public static final fun vectorOfZeros (Lquest/laxla/spock/math/Space;)Lquest/laxla/spock/math/UniformVector;
+	public static final fun w (Lquest/laxla/spock/math/Vector3;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector4;
+	public static final fun x (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector1;
+	public static final fun xy (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector2;
+	public static final fun xyz (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector3;
+	public static final fun xyzw (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector4;
+	public static final fun y (Lquest/laxla/spock/math/Vector1;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector2;
+	public static final fun yz (Lquest/laxla/spock/math/Vector1;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector3;
+	public static final fun yz (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector3;
+	public static final fun yzw (Lquest/laxla/spock/math/Vector1;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector4;
+	public static final fun yzw (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Vector3;)Lquest/laxla/spock/math/Vector4;
+	public static final fun z (Lquest/laxla/spock/math/Vector2;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector3;
+	public static final fun zw (Lquest/laxla/spock/math/Vector2;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector4;
+	public static final fun zw (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector4;
+}
+

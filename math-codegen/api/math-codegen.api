@@ -1,0 +1,76 @@
+public final class quest/laxla/spock/math/codegen/ConstantsKt {
+	public static final fun asSpaceTypeParameter (Lcom/squareup/kotlinpoet/ClassName;Lcom/squareup/kotlinpoet/TypeName;)Lcom/squareup/kotlinpoet/TypeVariableName;
+	public static synthetic fun asSpaceTypeParameter$default (Lcom/squareup/kotlinpoet/ClassName;Lcom/squareup/kotlinpoet/TypeName;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeVariableName;
+	public static final fun getSpaceTypeParameter ()Lcom/squareup/kotlinpoet/TypeVariableName;
+	public static final fun getVectorTypeParameter ()Lcom/squareup/kotlinpoet/TypeVariableName;
+	public static final fun parameterized (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Lcom/squareup/kotlinpoet/TypeVariableName;)V
+	public static final fun parameterized (Lkotlin/reflect/KClass;Lcom/squareup/kotlinpoet/TypeVariableName;)Lcom/squareup/kotlinpoet/ParameterizedTypeName;
+	public static synthetic fun parameterized$default (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Lcom/squareup/kotlinpoet/TypeVariableName;ILjava/lang/Object;)V
+	public static synthetic fun parameterized$default (Lkotlin/reflect/KClass;Lcom/squareup/kotlinpoet/TypeVariableName;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/ParameterizedTypeName;
+}
+
+public final class quest/laxla/spock/math/codegen/KPoetKt {
+	public static final fun annotation (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/AnnotationSpec;
+	public static synthetic fun annotation$default (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/AnnotationSpec;
+	public static final fun file (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
+	public static final fun function (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FunSpec;
+	public static final fun getter (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FunSpec;
+	public static final fun objectType (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun objectType$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun parameter (Lcom/squareup/kotlinpoet/FunSpec$Builder;Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/ParameterSpec;
+	public static synthetic fun parameter$default (Lcom/squareup/kotlinpoet/FunSpec$Builder;Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/ParameterSpec;
+	public static final fun property (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeName;[Lcom/squareup/kotlinpoet/KModifier;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/PropertySpec;
+	public static final fun typeAlias (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeAliasSpec;
+	public static synthetic fun typeAlias$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeAliasSpec;
+}
+
+public final class quest/laxla/spock/math/codegen/KspKt {
+	public static final fun getAllAnnotationsByType (Lcom/google/devtools/ksp/symbol/KSAnnotated;Lkotlin/reflect/KClass;)Lkotlin/sequences/Sequence;
+	public static final fun getAllAnnotationsByType (Lcom/google/devtools/ksp/symbol/KSTypeReference;Lkotlin/reflect/KClass;)Lkotlin/sequences/Sequence;
+	public static final fun getAllAnnotationsByType (Lcom/google/devtools/ksp/symbol/KSValueParameter;Lkotlin/reflect/KClass;)Lkotlin/sequences/Sequence;
+	public static final fun getDeclarationOf (Lcom/google/devtools/ksp/processing/Resolver;Lkotlin/reflect/KClass;)Lcom/google/devtools/ksp/symbol/KSClassDeclaration;
+}
+
+public final class quest/laxla/spock/math/codegen/Processor : com/google/devtools/ksp/processing/SymbolProcessor {
+	public fun <init> (Lcom/google/devtools/ksp/processing/CodeGenerator;Lcom/google/devtools/ksp/processing/KSPLogger;Ljava/lang/String;)V
+	public final fun getGenerator ()Lcom/google/devtools/ksp/processing/CodeGenerator;
+	public final fun getLogger ()Lcom/google/devtools/ksp/processing/KSPLogger;
+	public final fun getPackageName ()Ljava/lang/String;
+	public fun process (Lcom/google/devtools/ksp/processing/Resolver;)Ljava/util/List;
+}
+
+public final class quest/laxla/spock/math/codegen/ProcessorProvider : com/google/devtools/ksp/processing/SymbolProcessorProvider {
+	public fun <init> ()V
+	public fun create (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;)Lcom/google/devtools/ksp/processing/SymbolProcessor;
+}
+
+public final class quest/laxla/spock/math/codegen/SwizzlersKt {
+	public static final fun generateSwizzlers ()Lcom/squareup/kotlinpoet/FileSpec;
+}
+
+public final class quest/laxla/spock/math/codegen/TypealiasesKt {
+	public static final fun generateTypealiases (Lcom/google/devtools/ksp/processing/Resolver;Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec;
+	public static final fun getTypealiasedClassDeclarations (Lcom/google/devtools/ksp/processing/Resolver;)Lkotlin/sequences/Sequence;
+}
+
+public final class quest/laxla/spock/math/codegen/VectorOperationsKt {
+	public static final fun generateVectorOperations (Lcom/google/devtools/ksp/processing/Resolver;Ljava/lang/String;)Lcom/squareup/kotlinpoet/FileSpec;
+	public static final fun getVectorOperations (Lcom/google/devtools/ksp/processing/Resolver;)Lkotlin/sequences/Sequence;
+	public static final fun getVectorization (Lcom/google/devtools/ksp/symbol/KSAnnotated;)Lquest/laxla/spock/math/Vectorization$Kind;
+}
+
+public final class quest/laxla/spock/math/codegen/VectorTier : java/lang/Enum {
+	public static final field W Lquest/laxla/spock/math/codegen/VectorTier;
+	public static final field X Lquest/laxla/spock/math/codegen/VectorTier;
+	public static final field Y Lquest/laxla/spock/math/codegen/VectorTier;
+	public static final field Z Lquest/laxla/spock/math/codegen/VectorTier;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getExactClass ()Lkotlin/reflect/KClass;
+	public final fun getMinimumClass ()Lkotlin/reflect/KClass;
+	public final fun getProperties ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun getProperty ()Lkotlin/reflect/KProperty1;
+	public final fun getSpacelessClass ()Lkotlin/reflect/KClass;
+	public static fun valueOf (Ljava/lang/String;)Lquest/laxla/spock/math/codegen/VectorTier;
+	public static fun values ()[Lquest/laxla/spock/math/codegen/VectorTier;
+}
+
