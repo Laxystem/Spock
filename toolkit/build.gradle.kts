@@ -36,9 +36,6 @@ kotlin {
 			api(libs.wgpu4k)
 			api(projects.core)
 			api(projects.windowing)
-
-			// TODO: remove below dependencies, KT-74152
-			api(projects.util)
 		}
 
 		named("glfwMain").dependencies {

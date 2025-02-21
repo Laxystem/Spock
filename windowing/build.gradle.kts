@@ -18,9 +18,6 @@ kotlin {
 	sourceSets {
 		commonMain.dependencies {
 			api(projects.math)
-
-			// TODO: remove
-			api(projects.util)
 		}
 	}
 }

@@ -15,9 +15,6 @@ kotlin {
 	sourceSets {
 		commonMain.dependencies {
 			api(projects.windowing)
-
-			// TODO: remove
-			api(projects.util)
 		}
 
 		jvmMain.dependencies {

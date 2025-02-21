@@ -14,9 +14,6 @@ plugins {
 dependencies {
 	commonMainApi(projects.mathBase)
 	kspCommonMainMetadata(projects.mathCodegen)
-
-	// TODO: KT-74152
-	commonMainApi(projects.util)
 }
 
 kotlin {

@@ -8,17 +8,8 @@ plugins {
 	multiplatform
 }
 
-repositories.maven(url = "https://gitlab.com/api/v4/projects/25805863/packages/maven") { // TODO: remove
-	name = "Wgpu4k"
-}
-
 dependencies {
 	commonMainApi(projects.toolkit)
-
-	// TODO: remove below dependencies, KT-74152
-	commonMainApi(projects.core)
-	commonMainApi(projects.util)
-	commonMainApi(libs.wgpu4k)
 }
 
 kotlin {
