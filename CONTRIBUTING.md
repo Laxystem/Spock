@@ -114,3 +114,8 @@ usually [on port 63342](http://localhost:63342/spock/docs/current/index.html).
 ./gradlew :example:wasmJsBrowserDevelopmentRun --quiet --stacktrace
 ```
 
+### Dump ABI
+
+```bash
+./gradlew apiDump --quiet --stacktrace
+```
