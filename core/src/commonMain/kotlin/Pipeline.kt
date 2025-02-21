@@ -15,7 +15,7 @@ public data class Pipeline<Vertex : Any>(
 	 * Represents a 'batch' of data to be sent to the GPU.
 	 *
 	 * Note this is an abstraction;
-	 * [Renderer]s may manipulate this data before sending it to the GPU to increase performance.
+	 * [Renderer]s may manipulate this data before sending it to the GPU to improve performance.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
