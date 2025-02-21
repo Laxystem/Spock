@@ -1,6 +1,9 @@
 *.log
 docs/current
 
+### Memory Dumps ###
+*.hprof
+
 ### Gradle ###
 .gradle
 build/
