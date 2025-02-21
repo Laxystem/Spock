@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 plugins {
+	id("org.jetbrains.kotlinx.kover")
 	kotlin("plugin.power-assert")
 }
 

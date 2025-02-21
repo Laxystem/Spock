@@ -119,3 +119,9 @@ usually [on port 63342](http://localhost:63342/spock/docs/current/index.html).
 ```bash
 ./gradlew apiDump --quiet --stacktrace
 ```
+
+### Generate Test Coverage Report
+
+```bash
+./gradlew koverHtmlReport --quiet --stacktrace
+```

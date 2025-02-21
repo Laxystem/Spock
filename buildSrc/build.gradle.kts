@@ -9,6 +9,7 @@ dependencies {
 	implementation(libs.plugins.dokka.asLibrary())
 	implementation(libs.plugins.kotlin.jvm.asLibrary())
 	implementation(libs.plugins.kotlin.multiplatform.asLibrary())
-	implementation(libs.plugins.kotlinx.powerAssert.asLibrary())
 	implementation(libs.plugins.kotlinx.binaryCompatibilityValidator.asLibrary())
+	implementation(libs.plugins.kotlinx.kover.asLibrary())
+	implementation(libs.plugins.kotlinx.powerAssert.asLibrary())
 }

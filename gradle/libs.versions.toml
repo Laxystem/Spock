@@ -10,6 +10,7 @@ kotlinx-browser = "0.3"
 kotlinx-collections-immutable = "0.3.8"
 kotlinx-coroutines = "1.10.1"
 kotlinx-io = "0.6.0"
+kotlinx-kover = "0.9.1"
 kotlinx-serialization = "1.8.0"
 logback = "1.5.16"
 lwjgl = "3.3.6"
@@ -47,6 +48,7 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
 kotlinx-binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibilityValidator" }
+kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
 kotlinx-powerAssert = { id = "org.jetbrains.kotlin.plugin.power-assert", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
