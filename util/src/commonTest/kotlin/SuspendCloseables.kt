@@ -71,4 +71,15 @@ class SuspendCloseables {
 		assertIs<NullPointerException>(exception)
 		assertTrue(exception.suppressedExceptions.any { it is IllegalStateException })
 	}
+
+	@Test
+	fun `autocloseable conversion`() = runTest {
+		var executed = false
+
+		AutoCloseable {
+			executed = true
+		}.asSuspendCloseable().close()
+
+		assertTrue(executed)
+	}
 }
