@@ -9,7 +9,7 @@ import kotlinx.io.bytestring.ByteStringBuilder
  *
  * @since 0.0.1-alpha.4
  */
-public interface VertexKind<Vertex : Any> {
+public interface VertexKind<in Vertex : Any> {
 	/**
 	 * @since 0.0.1-alpha.4
 	 */
@@ -20,14 +20,14 @@ public interface VertexKind<Vertex : Any> {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun ByteStringBuilder.append(vertex: Vertex)
+	public fun ByteAppender.append(vertex: Vertex)
 
 	/**
 	 * An object that requires a [VertexKind].
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public interface Bound<Vertex : Any> {
+	public interface Bound<in Vertex : Any> {
 		/**
 		 * @since 0.0.1-alpha.4
 		 * @see VertexKind

@@ -15,6 +15,7 @@ public interface Closer : SuspendCloseable {
 	 * @since 0.0.1-alpha.1
 	 */
 	@Throws(IllegalStateException::class)
+	@FutureContextFunction
 	public operator fun <T> T.unaryPlus(): T where T : AutoCloseable
 
 	/**
@@ -25,6 +26,7 @@ public interface Closer : SuspendCloseable {
 	 * @since 0.0.1-alpha.1
 	 */
 	@Throws(UnsupportedOperationException::class, IllegalStateException::class)
+	@FutureContextFunction
 	public operator fun <T> T.unaryPlus(): T where T : SuspendCloseable
 
 	/**

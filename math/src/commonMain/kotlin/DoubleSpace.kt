@@ -2,7 +2,7 @@
 
 package quest.laxla.spock.math
 
-import kotlinx.io.bytestring.ByteStringBuilder
+import quest.laxla.spock.ByteAppender
 import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.LongSpace.append
 import kotlin.math.absoluteValue
@@ -40,5 +40,5 @@ public object DoubleSpace : FractionalSpace<Double>, SignedSpace<Double>, Buffer
 
 	override fun Double.sqrt(): Double = kotlin.math.sqrt(this)
 
-	override fun ByteStringBuilder.append(double: Double) = append(double.toBits())
+	override fun ByteAppender.append(value: Double) = append(value.toBits())
 }

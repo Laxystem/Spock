@@ -1,7 +1,9 @@
 package quest.laxla.spock
 
+import kotlinx.collections.immutable.ImmutableList
 
-public interface RenderScene<Vertex : Any> {
-	@OptIn(ExperimentalSpockApi::class)
-	public val pipelines: Sequence<Pipeline<Vertex>>
+
+@ExperimentalSpockApi
+public fun interface RenderScene {
+	public operator fun invoke(): ImmutableList<Pipeline.Batch<*>>
 }

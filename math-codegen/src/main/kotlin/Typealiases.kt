@@ -25,6 +25,7 @@ public fun Resolver.generateTypealiases(packageName: String): FileSpec = file(pa
 	addFileComment("\nnot using OptIn as it cannot be referenced in the code generator")
 
 	addAnnotation(annotation<Suppress> {
+		addMember(format = "%S", "OPT_IN_USAGE")
 		addMember(format = "%S", "OPT_IN_USAGE_ERROR")
 	})
 

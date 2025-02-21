@@ -11,13 +11,13 @@ import kotlinx.collections.immutable.persistentListOf
  *
  * @since 0.0.1-alpha.1
  */
-public interface Mesh<Vertex : Any> {
+public data class Mesh<out Vertex : Any>(
 	/**
 	 * The actual data of this mesh.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public val vertices: @FutureImmutableArray ImmutableList<Vertex>
+	public val vertices: @FutureImmutableArray ImmutableList<Vertex>,
 
 	/**
 	 * Stores the order in which [vertices] will be accounted for by the GPU,
@@ -43,5 +43,5 @@ public interface Mesh<Vertex : Any> {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public val indices: @FutureImmutableArray ImmutableList<UInt> get() = persistentListOf<UInt>()
-}
+	public val indices: @FutureImmutableArray ImmutableList<UInt> = persistentListOf()
+)

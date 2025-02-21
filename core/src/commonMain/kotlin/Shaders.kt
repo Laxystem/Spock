@@ -1,8 +1,11 @@
 package quest.laxla.spock
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.persistentHashSetOf
+import kotlinx.collections.immutable.persistentMapOf
+import kotlinx.collections.immutable.toImmutableMap
 
 private val logger = KotlinLogging.logger {}
 
@@ -150,13 +153,21 @@ public infix fun Shader.isAcceptedByAnyKindOutputtedBy(transpiler: Shader.Transp
 	isAnyKindOutputtedBy(transpiler) { it accepts this }
 
 /**
- * Transpiles this [shader]
+ * Transpiles this [shader], logging failures.
+ *
+ * @return `null` if the outputted shader does not [carry required metadata][isCarryingRequiredMetadata].
  */
 public suspend fun <L, F> Shader.Transpiler<L, F>.transpile(shader: Shader): Shader.Transpiled<L, F>? where L : Shader.Language, F : Shader.FormFactor =
-	invoke(input = shader)?.let { output ->
+	runCatching {
+		invoke(input = shader)
+	}.let { result ->
+		val output = result.getOrNull()
+
 		when {
-			!(output.language accepts output) -> logger.warn { output.transpilationTraceToString() + ": transpilation result missing metadata required by language" }
-			!(output.formFactor accepts output) -> logger.warn { output.transpilationTraceToString() + ": transpilation result missing metadata required by form factor" }
+			result.isFailure -> logger.warn(result.exceptionOrNull()) { shader.transpilationTraceToString() + ": $this failed transpiling this shader" }
+			output == null -> logger.debug(result.exceptionOrNull()) { shader.transpilationTraceToString() + ": $this refused transpiling this shader" }
+			!(output.language accepts output) -> logger.warn(result.exceptionOrNull()) { output.transpilationTraceToString() + ": transpilation result missing metadata required by language" }
+			!(output.formFactor accepts output) -> logger.warn(result.exceptionOrNull()) { output.transpilationTraceToString() + ": transpilation result missing metadata required by form factor" }
 			else -> return output
 		}
 
@@ -171,12 +182,14 @@ private data class WgslVertexShader<Vertex : Any>(
 	override val vertexKind: VertexKind<Vertex>,
 	override val code: String,
 	override val entrypoint: String,
-	override val label: String?
+	override val label: String?,
+	override val constants: ImmutableMap<String, Double>
 ) : VertexShader<Vertex>, Wgsl.Shader, StringShader
 
 /**
  * Creates a [Wgsl]&nbsp;[VertexShader] from a [String].
  *
+ * @param wgsl the [StringShader.code] of this shader.
  * @since 0.0.1-alpha.4
  */
 @ExperimentalSpockApi
@@ -184,20 +197,39 @@ public fun <Vertex : Any> wgslVertexShaderOf(
 	wgsl: String,
 	vertexKind: VertexKind<Vertex>,
 	entrypoint: String,
-	label: String? = null
-): VertexShader<Vertex> = WgslVertexShader(vertexKind, wgsl, entrypoint, label)
+	label: String? = null,
+	vararg constants: Pair<String, Double>
+): VertexShader<Vertex> = WgslVertexShader(vertexKind, wgsl, entrypoint, label, persistentMapOf(*constants))
+
+/**
+ * Creates a [Wgsl]&nbsp;[VertexShader] from a [String].
+ *
+ * @param wgsl the [StringShader.code] of this shader.
+ * @since 0.0.1-alpha.4
+ */
+@ExperimentalSpockApi
+public fun <Vertex : Any> wgslVertexShaderOf(
+	wgsl: String,
+	vertexKind: VertexKind<Vertex>,
+	entrypoint: String,
+	label: String? = null,
+	constants: Map<String, Double>
+): VertexShader<Vertex> = WgslVertexShader(vertexKind, wgsl, entrypoint, label, constants.toImmutableMap())
 
 /**
  * Caches transpilation results, filters unsupported shaders and
  * fallbacks to the [original][Shader.Transpiled.original] for [transpiled][Shader.Transpiled] shaders.
  *
- * Similarly to a [ManualCache], transpiled shaders are not forgotten unless manually [remove][Cache.remove]d.
+ * Similarly to a [EverlastingCache], transpiled shaders are not forgotten unless manually [remove][Cache.forget]d.
  *
  * @since 0.0.1-alpha.4
  */
 public fun ShaderCache(transpiler: Shader.Transpiler<*, *>): Cache<Shader, Shader?> =
 	object : Cache<Shader, Shader?> {
-		private val transpiledShaders = ManualCache<Shader, Shader?>(transpiler::transpile)
+		private val transpiledShaders = EverlastingCache(
+			producer = transpiler::transpile,
+			entryKind = Cache.Entry<Shader>::Reference
+		)
 
 		/**
 		 * @author Laxystem
@@ -210,19 +242,25 @@ public fun ShaderCache(transpiler: Shader.Transpiler<*, *>): Cache<Shader, Shade
 
 		private fun findAccepted(shader: Shader): Shader? = findAccepted(shader, ::findAccepted)
 
-		override suspend fun get(shader: Shader): Shader? =
-			findAccepted(shader) { get(it) } ?: transpiledShaders[shader]
+		@RawSpockApi
+		override suspend fun getEntry(shader: Shader): Cache.Entry<Shader?> =
+			findAccepted(shader) { get(it) }?.let(Cache.Entry<Shader>::Reference) ?: transpiledShaders.getEntry(shader)
+
+		override suspend fun getAndRemove(shader: Shader): Cache.Entry<Shader?> =
+			findAccepted(shader) { getAndRemove(it).product }?.let(Cache.Entry<Shader>::Reference)
+				?: transpiledShaders.getAndRemove(shader)
 
 		override suspend fun contains(shader: Shader): Boolean =
 			shader in transpiledShaders || shader is Shader.Transpiled<*, *> && shader.original in this
 
-		override suspend fun remove(descriptor: Shader): Unit? {
+		override suspend fun forget(descriptor: Shader): Unit? {
 			var result: Unit? = null
-			if (descriptor is Shader.Transpiled<*, *>) result = remove(descriptor)
-			result = transpiledShaders.remove(descriptor) ?: result
+			if (descriptor is Shader.Transpiled<*, *>) result = forget(descriptor.original)
+			result = transpiledShaders.forget(descriptor) ?: result
 			return result
 		}
 
+		@ExperimentalSpockApi
 		override suspend fun cacheAll(shaders: Sequence<Shader>) {
 			transpiledShaders.cacheAll(shaders.mapNotNull(::findAccepted))
 		}

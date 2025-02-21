@@ -2,7 +2,7 @@
 
 package quest.laxla.spock.math
 
-import kotlinx.io.bytestring.ByteStringBuilder
+import quest.laxla.spock.ByteAppender
 import kotlin.math.absoluteValue
 
 /**
@@ -33,5 +33,5 @@ public data object IntSpace : SignedSpace<Int>, BufferableSpace<Int> {
 
 	override val sizeInBits: UInt get() = Int.SIZE_BITS.toUInt()
 
-	override fun ByteStringBuilder.append(int: Int) = append(int, sizeInBytes)
+	override fun ByteAppender.append(value: Int) = append(value, sizeInBytes)
 }

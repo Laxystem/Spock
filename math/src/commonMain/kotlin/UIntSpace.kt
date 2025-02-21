@@ -2,7 +2,7 @@
 
 package quest.laxla.spock.math
 
-import kotlinx.io.bytestring.ByteStringBuilder
+import quest.laxla.spock.ByteAppender
 import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.IntSpace.append
 
@@ -31,5 +31,5 @@ public data object UIntSpace : NumeralSpace<UInt>, BufferableSpace<UInt> {
 	
 	override val sizeInBits: UInt get() = UInt.SIZE_BITS.toUInt()
 
-	override fun ByteStringBuilder.append(uInt: UInt) = append(uInt.toInt())
+	override fun ByteAppender.append(uInt: UInt) = append(uInt.toInt())
 }

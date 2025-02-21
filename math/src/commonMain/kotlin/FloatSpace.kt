@@ -2,7 +2,7 @@
 
 package quest.laxla.spock.math
 
-import kotlinx.io.bytestring.ByteStringBuilder
+import quest.laxla.spock.ByteAppender
 import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.IntSpace.append
 import kotlin.math.absoluteValue
@@ -28,7 +28,7 @@ public object FloatSpace : FractionalSpace<Float>, SignedSpace<Float>, Bufferabl
 	override fun Float.rem(other: Float): Float = this % other
 
 	override val unit: Float get() = 1f
-	
+
 	override val zero: Float get() = 0f
 
 	override fun Float.mod(divisor: Float): Float = mod(other = divisor)
@@ -40,5 +40,5 @@ public object FloatSpace : FractionalSpace<Float>, SignedSpace<Float>, Bufferabl
 
 	override fun Float.sqrt(): Float = kotlin.math.sqrt(this)
 
-	override fun ByteStringBuilder.append(float: Float) = append(float.toBits())
+	override fun ByteAppender.append(value: Float) = append(value.toBits())
 }

@@ -11,7 +11,7 @@ import kotlin.contracts.contract
  * @author Laxystem
  */
 @OptIn(ExperimentalSpockApi::class)
-private class CloserImpl(vararg closeables: SuspendCloseable) : Closer {
+private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
 	private val suspendCloseables = mutableSetOf(*closeables)
 	private val isClosed = Flag()
 	private val closeMutex = Mutex()
@@ -29,7 +29,8 @@ private class CloserImpl(vararg closeables: SuspendCloseable) : Closer {
 		suspendCloseables += autoCloseable.asSuspendCloseable()
 	}
 
-	override fun contains(suspendCloseable: SuspendCloseable): Boolean = suspendCloseable in suspendCloseables
+	override fun contains(suspendCloseable: SuspendCloseable): Boolean =
+		suspendCloseable in suspendCloseables || suspendCloseables.any { it is Closer && suspendCloseable in it }
 
 	override suspend fun close(): Unit = withContext(NonCancellable) {
 		isClosed.setWithLock(closeMutex) {
@@ -57,21 +58,21 @@ private fun Array<out AutoCloseable>.asSuspendCloseables() = Array(size) { index
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(vararg closeables: SuspendCloseable): Closer = CloserImpl(*closeables)
+public fun Closer(vararg closeables: SuspendCloseable): Closer = CloserImpl(closeables)
 
 /**
  * Creates a new [Closer] and adds [closeables] to it.
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(vararg closeables: AutoCloseable): Closer = Closer(*closeables.asSuspendCloseables())
+public fun Closer(vararg closeables: AutoCloseable): Closer = CloserImpl(closeables.asSuspendCloseables())
 
 /**
  * Create a new empty [Closer].
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(): Closer = CloserImpl(*emptyArray<SuspendCloseable>())
+public fun Closer(): Closer = CloserImpl(emptyArray<SuspendCloseable>())
 
 /**
  * Creates a [Closer] scope and automatically [closes][SuspendCloseable.close] it.

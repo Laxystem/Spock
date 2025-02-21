@@ -7,4 +7,4 @@ package quest.laxla.spock
  */
 @MustBeDocumented
 @Target(AnnotationTarget.CLASS)
-public annotation class FutureError
+public annotation class FutureErrorType
