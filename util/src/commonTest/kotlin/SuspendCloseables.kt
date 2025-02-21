@@ -3,7 +3,6 @@ package quest.laxla.spock
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
 
-
 class SuspendCloseables {
 	@Test
 	fun `errorless execution`() = runTest {

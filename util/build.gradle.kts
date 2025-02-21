@@ -38,6 +38,10 @@ kotlin {
 			runtimeOnly(libs.logback)
 		}
 
+		jvmTest.dependencies {
+			api(kotlin("test-junit5"))
+		}
+
 		wasmJsMain.dependencies {
 			api(libs.kotlinx.browser)
 		}

@@ -19,3 +19,5 @@ powerAssert {
 	)
 	functions.add("kotlin.test.assertTrue")
 }
+
+tasks.withType<Test> { useJUnitPlatform() }
