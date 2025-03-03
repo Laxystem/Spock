@@ -32,7 +32,7 @@ private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
 	override fun contains(suspendCloseable: SuspendCloseable): Boolean =
 		suspendCloseable in suspendCloseables || suspendCloseables.any { it is Closer && suspendCloseable in it }
 
-	override suspend fun close(): Unit = withContext(NonCancellable) {
+	override suspend fun close() = withContext(NonCancellable) {
 		isClosed.setWithLock(closeMutex) {
 			val exceptions = mutableSetOf<Throwable>()
 
@@ -42,11 +42,20 @@ private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
 				exceptions += e
 			}
 
-			if (exceptions.isNotEmpty()) throw RuntimeException("Closer encountered exceptions when trying to close").apply {
-				for (exception in exceptions) addSuppressed(exception)
+			suspendCloseables.clear()
+
+			// return exception instead of throwing so that the setWithLock succeeds and the JVM doesn't forget the exception
+			return@withContext when (exceptions.size) {
+				0 -> null
+				1 -> exceptions.single()
+				else -> RuntimeException("Closer encountered exceptions when trying to close").apply {
+					for (exception in exceptions) addSuppressed(exception)
+				}
 			}
 		}
-	}
+
+		null
+	}.let { if (it != null) throw it }
 }
 
 private fun Array<out AutoCloseable>.asSuspendCloseables() = Array(size) { index ->

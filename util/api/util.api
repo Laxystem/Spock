@@ -188,7 +188,7 @@ public abstract interface class quest/laxla/spock/Flag {
 public final class quest/laxla/spock/FlagsKt {
 	public static final fun Flag ()Lquest/laxla/spock/Flag;
 	public static final fun ifSet (Lquest/laxla/spock/Flag;Lkotlin/jvm/functions/Function0;)V
-	public static final fun set (Lquest/laxla/spock/Flag;Lkotlin/jvm/functions/Function0;)Ljava/lang/Throwable;
+	public static final fun set (Lquest/laxla/spock/Flag;Lkotlin/jvm/functions/Function0;)V
 	public static final fun setWithLock (Lquest/laxla/spock/Flag;Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun setWithLock$default (Lquest/laxla/spock/Flag;Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun takeIfSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;

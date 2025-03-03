@@ -3,7 +3,7 @@ package quest.laxla.spock
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
 
-class SuspendCloseables {
+class SuspendCloseableTest {
 	@Test
 	fun `errorless execution`() = runTest {
 		var closed = false
@@ -25,51 +25,55 @@ class SuspendCloseables {
 			closed = true
 		}
 
-		assertFailsWith(IllegalStateException::class) {
+		val usageError = IllegalStateException("error in usage!")
+
+		val exception = assertFails {
 			closeable.use {
-				error("error!")
+				throw usageError
 			}
 		}
 
+		assertSame(exception, usageError)
 		assertTrue(closed)
 	}
 
 	@Test
 	fun `exception in closure`() = runTest {
-		var executed = false
+		val closureError = IllegalStateException("error in closure!")
+
 		val closeable = SuspendCloseable {
-			error("error in closure!")
+			throw closureError
 		}
 
-		assertFailsWith(IllegalStateException::class) {
+		var executed = false
+
+		val exception = assertFails {
 			closeable.use {
 				executed = true
 			}
 		}
 
+		assertSame(exception, closureError)
 		assertTrue(executed)
 	}
 
 	@Test
-	@Suppress("VariableInitializerIsRedundant")
 	fun `exception in closure and usage`() = runTest {
+		val closureError = IllegalStateException("error in closure!")
+		val usageError = IllegalStateException("error in usage!")
+
 		val closeable = SuspendCloseable {
-			error("error in closure!")
+			throw closureError
 		}
 
-		var exception: Throwable? = null
-
-		try {
+		val exception = assertFails {
 			closeable.use {
-				null!!
+				throw usageError
 			}
-		} catch (e: Throwable) {
-			exception = e
 		}
 
-		assertNotNull(exception)
-		assertIs<NullPointerException>(exception)
-		assertTrue(exception.suppressedExceptions.any { it is IllegalStateException })
+		assertSame(exception, usageError)
+		assertContains(exception.suppressedExceptions, closureError)
 	}
 
 	@Test

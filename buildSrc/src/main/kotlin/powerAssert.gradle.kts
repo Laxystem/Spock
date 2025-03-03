@@ -9,7 +9,8 @@ plugins {
 }
 
 powerAssert {
-	includedSourceSets.addAll(project
+	includedSourceSets.addAll(
+		project
 		.the<SourceSetContainer>()
 		.asSequence()
 		.filterIsInstance<KotlinSourceSet>()
@@ -17,7 +18,13 @@ powerAssert {
 		.filter { it.contains("test", ignoreCase = true) }
 		.toList()
 	)
-	functions.add("kotlin.test.assertTrue")
+	functions.addAll(
+		"kotlin.test.assertTrue",
+		"kotlin.test.assertFalse",
+		"kotlin.test.assertEquals",
+		"kotlin.test.assertSame",
+		"kotlin.test.assertContains"
+	)
 }
 
 tasks.withType<Test> { useJUnitPlatform() }

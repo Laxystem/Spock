@@ -61,19 +61,22 @@ public inline fun Flag.ifSet(block: () -> Unit) {
  * @since 0.0.1-alpha.4
  */
 @OptIn(ExperimentalContracts::class)
-public inline fun Flag.set(action: () -> Unit): Throwable? {
+public inline fun Flag.set(action: () -> Unit) {
 	contract {
 		callsInPlace(action, InvocationKind.AT_MOST_ONCE)
 	}
 
+	var exception: Throwable? = null
+
 	if (!this()) try {
 		action()
-		set()
 	} catch (e: Throwable) {
-		return e
+		exception = e
+		throw e
+	} finally {
+		// this way, non-local break, continue and returns still work
+		if (exception == null) set()
 	}
-
-	return null
 }
 
 /**
@@ -88,10 +91,11 @@ public inline fun Flag.set(action: () -> Unit): Throwable? {
  * @see set
  * @see Mutex.withLock
  */
-public suspend inline fun Flag.setWithLock(mutex: Mutex, owner: Any? = null, action: () -> Unit): Throwable? =
+public suspend inline fun Flag.setWithLock(mutex: Mutex, owner: Any? = null, action: () -> Unit) {
 	mutex.withLock(owner) {
 		set(action)
 	}
+}
 
 private fun Flag.throwIfClosed() = ifSet {
 	throw UnsupportedOperationException("This resource was closed, and can no longer be used.")
@@ -100,8 +104,13 @@ private fun Flag.throwIfClosed() = ifSet {
 /**
  * Throws an [UnsupportedOperationException] declaring this resource was closed if the given [Flag] is set.
  *
+ * Note: this function is intended to be used by implementations,
+ * and does not perform any actual state-checking besides accessing [flag].
+ *
  * @since 0.0.1-alpha.4
  */
+@Suppress("UnusedReceiverParameter")
+@RawSpockApi
 public fun SuspendCloseable.throwIfClosed(flag: Flag) {
 	flag.throwIfClosed()
 }
@@ -109,8 +118,13 @@ public fun SuspendCloseable.throwIfClosed(flag: Flag) {
 /**
  * Throws an [UnsupportedOperationException] declaring this resource was closed if the given [Flag] is set.
  *
+ * Note: this function is intended to be used by implementations,
+ * and does not perform any actual state-checking besides accessing [flag].
+ *
  * @since 0.0.1-alpha.4
  */
+@Suppress("UnusedReceiverParameter")
+@RawSpockApi
 public fun AutoCloseable.throwIfClosed(flag: Flag) {
 	flag.throwIfClosed()
 }
