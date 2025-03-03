@@ -12,8 +12,6 @@ import kotlin.contracts.contract
 /**
  * Executes the given [action] within a [CoroutineScope] under this mutex's lock.
  *
- * TODO: also explain [coroutineScope] semantics.
- *
  * @param owner Optional owner token for debugging. When `owner` is specified (non-null value) and this mutex
  *        is already locked with the same (as in `==`) token, this function throws an [IllegalStateException].
  *
