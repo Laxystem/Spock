@@ -78,7 +78,7 @@ public class AdvancedRenderer(
 			fragment = it.fragmentShader?.let { shader ->
 				RenderPipelineDescriptor.FragmentState(
 					module = shaderModules[shaderDescriptors[shader.transpile()]],
-					entryPoint = (it.vertexShader as Wgsl.Shader).entrypoint,
+					entryPoint = (shader as Wgsl.Shader).entrypoint,
 					// TODO: support converting texture formats
 					targets = listOf(RenderPipelineDescriptor.FragmentState.ColorTargetState(shader.textureFormat))
 				)
@@ -87,6 +87,12 @@ public class AdvancedRenderer(
 				depthWriteEnabled = true,
 				depthCompare = CompareFunction.Less,
 				format = TextureFormat.Depth24Plus
+			),
+			primitive = RenderPipelineDescriptor.PrimitiveState(
+				topology = PrimitiveTopology.TriangleList,
+				stripIndexFormat = null,
+				frontFace = FrontFace.CCW,
+				cullMode = CullMode.None
 			)
 		)
 	} then +PruningCache(producer = device::createRenderPipeline)
@@ -118,13 +124,14 @@ public class AdvancedRenderer(
 		inferrer = Buffer::size
 	)
 
-	private val indexBuffers =
-		+BorrowingCache<Mesh<*>, GPUSize64, Buffer>(from = indexBufferPool) { it.indices.size.toULong() }
+	private val indexBuffers = +BorrowingCache<Mesh<*>, GPUSize64, Buffer>(from = indexBufferPool) {
+		it.indices.size.toULong() * UInt.SIZE_BYTES.toULong()
+	}
 
 	private val depthTexture = suspendLazy {
 		+device.createTexture(
 			TextureDescriptor(
-				size = (surface.window.size.await() z 0u).asSize3D(),
+				size = (surface.window.size.await() z 1u).asSize3D(),
 				format = TextureFormat.Depth24Plus,
 				usage = setOf(TextureUsage.RenderAttachment)
 			)
@@ -188,7 +195,7 @@ public class AdvancedRenderer(
 
 				renderPass.setPipeline(renderPipelines[pipeline])
 				renderPass.setIndexBuffer(indexBuffer, IndexFormat.Uint32)
-				renderPass.drawIndexed(indexBuffer.size.toUInt())
+				renderPass.drawIndexed(mesh.indices.size.toUInt())
 			}
 
 			renderPass.end()

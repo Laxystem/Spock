@@ -24,7 +24,7 @@ internal class MeshStorage<in Vertex : Any>(
 
 	private val vertexSize = vertexKind.attributes.sumOf(VertexFormat::sizeInBytes)
 
-	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray = appendToByteArray(mesh.indices.size) {
+	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray = appendToByteArray(mesh.indices.size * UInt.SIZE_BYTES) {
 		for (index in mesh.indices) append(
 			vertexIndices[mesh.vertices[index.toInt()]]
 				?: throw IllegalArgumentException("Vertex ${mesh.vertices[index.toInt()]} at index $index not found in mesh storage; This is an engine error.")

@@ -1,5 +1,6 @@
 package quest.laxla.spock.example
 
+import io.ygdrasil.webgpu.Color
 import kotlinx.collections.immutable.persistentListOf
 import quest.laxla.spock.*
 import quest.laxla.spock.math.FloatSpace
@@ -15,7 +16,7 @@ private const val shader = """
 				
 	@fragment
 	fn fragmentMain() -> @location(0) vec4f {
-		return vec4f(0, 0, 0, 1);
+		return vec4f(1, 1, 1, 1);
 	}
 """
 
@@ -35,18 +36,21 @@ public suspend fun myApplication(title: String): Unit = webGpuApplication(title)
 				entrypoint = "fragmentMain"
 			),
 			vertices = persistentListOf(
-				FloatSpace.vectorOf(0f, 0f),
-				FloatSpace.vectorOf(0f, 1f),
-				FloatSpace.vectorOf(1f, 0f),
-				FloatSpace.vectorOf(1f, 1f)
+				FloatSpace.vectorOf(-.8f, -.8f),
+				FloatSpace.vectorOf(+.8f, -.8f),
+				FloatSpace.vectorOf(+.8f, +.8f),
+				FloatSpace.vectorOf(-.8f, +.8f)
 			),
-			indices = persistentListOf(0u, 1u, 2u, 1u, 2u, 3u)
+			indices = persistentListOf(0u, 1u, 2u, 0u, 2u, 3u)
 		)
 	)
 
 	AdvancedRenderer(
 		device,
 		surface,
-		NoopShaderTranspiler(kind)
+		NoopShaderTranspiler(kind),
+		backgroundColor = Color(0.2, 0.40, 0.84, alpha = 1.0)
 	) { batches }
+
+	//MyRenderer(device, surface)
 }
