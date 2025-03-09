@@ -32,7 +32,7 @@ public interface StringShader : Shader {
 		/**
 		 * Kotlin [gives data objects constant hash codes](https://kotlinlang.org/docs/object-declarations.html#data-objects);
 		 * This is the only way to reproduce this,
-		 * as [FormFactor] itself cannot be made into a data object since it is a companion object.
+		 * as [FormFactor] itself cannot be made into a data object as it is a companion object.
 		 *
 		 * @author Laxystem
 		 */
