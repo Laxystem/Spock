@@ -51,6 +51,4 @@ public suspend fun myApplication(title: String): Unit = webGpuApplication(title)
 		NoopShaderTranspiler(kind),
 		backgroundColor = Color(0.2, 0.40, 0.84, alpha = 1.0)
 	) { batches }
-
-	//MyRenderer(device, surface)
 }
