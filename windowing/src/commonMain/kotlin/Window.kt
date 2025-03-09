@@ -6,6 +6,10 @@ import quest.laxla.spock.SuspendCloseable
 import quest.laxla.spock.math.Vector2ui
 
 /**
+ * Represents a logical window, that is, an interactable window that contains some sort of contents.
+ *
+ * This may be a GLFW window, an HTML `canvas` element, or an in-game panel.
+ *
  * @since 0.0.1-alpha.4
  */
 public interface Window : SuspendCloseable {
