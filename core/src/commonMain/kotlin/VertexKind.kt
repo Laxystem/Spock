@@ -5,7 +5,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.io.bytestring.ByteStringBuilder
 
 /**
- * Serializes [Vertex] into buffers to be sent to the GPU.
+ * Serializes [vertices][Vertex] into buffers to be sent to the GPU.
  *
  * @since 0.0.1-alpha.4
  */

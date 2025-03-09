@@ -2,6 +2,7 @@ package quest.laxla.spock
 
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toPersistentList
 
 /**
  * Represents a [Mesh], that is, [vertices] and [indices] to be rendered on the GPU via a [Pipeline].
@@ -44,4 +45,15 @@ public data class Mesh<out Vertex : Any>(
 	 * @since 0.0.1-alpha.4
 	 */
 	public val indices: @FutureImmutableArray ImmutableList<UInt> = persistentListOf()
-)
+) {
+	/**
+	 * @since 0.0.1-alpha.4
+	 */
+	public constructor(vararg vertices: Vertex) : this(persistentListOf(*vertices))
+
+	/**
+	 * @since 0.0.1-alpha.4
+	 */
+	@ExperimentalUnsignedTypes
+	public constructor(vertices: ImmutableList<Vertex>, vararg indices: UInt) : this(vertices, indices.toPersistentList())
+}

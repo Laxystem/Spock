@@ -94,8 +94,8 @@ public interface Shader {
 	 * @see Shader.kind
 	 */
 	public data class Kind<out L, out F>(
-		val language: Language,
-		val formFactor: FormFactor
+		val language: L,
+		val formFactor: F
 	) where L : Language, F : FormFactor
 
 	/**
@@ -170,4 +170,9 @@ public interface Shader {
 			public val outputKinds: ImmutableSet<Kind<L, F>>
 		}
 	}
+
+	/**
+	 * @since 0.0.1-alpha.4
+	 */
+	public companion object
 }

@@ -4,7 +4,6 @@ import io.ygdrasil.webgpu.VertexFormat
 import io.ygdrasil.webgpu.sizeInBytes
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.sync.Mutex
 import quest.laxla.spock.*
 import quest.laxla.spock.math.IntSpace.append
@@ -25,10 +24,11 @@ internal class MeshStorage<in Vertex : Any>(
 
 	private val vertexSize = vertexKind.attributes.sumOf(VertexFormat::sizeInBytes)
 
-	suspend inline fun reconstructIndices(indices: Flow<Int>, bufferSize: Int, crossinline vertices: (Int) -> Vertex): ByteArray? = appendToByteArray(bufferSize) {
-		indices.collect { index ->
-			append(vertexIndices[vertices(index)] ?: throw IllegalArgumentException())
-		}
+	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray = appendToByteArray(mesh.indices.size) {
+		for (index in mesh.indices) append(
+			vertexIndices[mesh.vertices[index.toInt()]]
+				?: throw IllegalArgumentException("Vertex ${mesh.vertices[index.toInt()]} at index $index not found in mesh storage; This is an engine error.")
+		)
 	}
 
 	private suspend fun update(meshes: ImmutableSet<Mesh<Vertex>>) {

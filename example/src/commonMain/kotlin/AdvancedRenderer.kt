@@ -6,15 +6,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import quest.laxla.spock.*
+import quest.laxla.spock.math.z
 import quest.laxla.spock.toolkit.Surface
 import quest.laxla.spock.toolkit.WebGpuRenderer
+import quest.laxla.spock.toolkit.asSize3D
 import kotlin.uuid.ExperimentalUuidApi
-
-@Suppress("UNCHECKED_CAST")
-private suspend operator fun <T : Any> Cache<VertexKind<T>, MeshStorage<*>>.get(
-	vertexKind: VertexKind<T>,
-	meshes: Collection<Mesh<*>>
-): ByteArray = (this[vertexKind] as MeshStorage<Any>)[meshes]
 
 /**
  * [WebGpuRenderer] supporting multiple [VertexKind]s.
@@ -28,14 +24,15 @@ private suspend operator fun <T : Any> Cache<VertexKind<T>, MeshStorage<*>>.get(
 public class AdvancedRenderer(
 	override val device: Device,
 	override val surface: Surface,
-	override val format: TextureFormat = surface.textureFormat,
-	public val scene: RenderScene,
 	transpiler: Shader.Transpiler.Simple<Wgsl, StringShader.FormFactor>,
+	override val format: TextureFormat = surface.textureFormat,
+	public val backgroundColor: Color = Color(.0, .0, .0, 1.0),
 	enableDebugLabels: Boolean = true,
 	private val byteArrayPool: InferringCache<Int, ByteArray> = NoopCache(
 		producer = ::ByteArray,
 		inferrer = ByteArray::size
-	)
+	),
+	public val scene: RenderScene
 ) : WebGpuRenderer, Closer by Closer(surface, device) {
 	private val isConfigured = Flag()
 	private val shaders = +ShaderCache(transpiler)
@@ -75,13 +72,26 @@ public class AdvancedRenderer(
 			vertex = RenderPipelineDescriptor.VertexState(
 				module = shaderModules[shaderDescriptors[it.vertexShader.transpile()]],
 				entryPoint = (it.vertexShader as Wgsl.Shader).entrypoint,
-				constants = (it.vertexShader as Wgsl.Shader).constants,
+				constants = it.vertexShader.constants,
 				buffers = listOf(vertexLayouts[it.vertexShader.vertexKind])
+			),
+			fragment = it.fragmentShader?.let { shader ->
+				RenderPipelineDescriptor.FragmentState(
+					module = shaderModules[shaderDescriptors[shader.transpile()]],
+					entryPoint = (it.vertexShader as Wgsl.Shader).entrypoint,
+					// TODO: support converting texture formats
+					targets = listOf(RenderPipelineDescriptor.FragmentState.ColorTargetState(shader.textureFormat))
+				)
+			},
+			depthStencil = RenderPipelineDescriptor.DepthStencilState(
+				depthWriteEnabled = true,
+				depthCompare = CompareFunction.Less,
+				format = TextureFormat.Depth24Plus
 			)
 		)
 	} then +PruningCache(producer = device::createRenderPipeline)
 
-	private val buffers = +PruningPool(
+	private val vertexBufferPool = +PruningPool(
 		producer = {
 			device.createBuffer(
 				descriptor = BufferDescriptor(
@@ -93,6 +103,34 @@ public class AdvancedRenderer(
 		inferrer = Buffer::size
 	)
 
+	private val vertexBuffers =
+		+BorrowingCache<Pair<VertexKind<*>, GPUSize64>, GPUSize64, Buffer>(from = vertexBufferPool) { (_, size) -> size }
+
+	private val indexBufferPool = +PruningPool(
+		producer = {
+			device.createBuffer(
+				descriptor = BufferDescriptor(
+					size = it,
+					usage = setOf(BufferUsage.Index, BufferUsage.CopyDst)
+				)
+			)
+		},
+		inferrer = Buffer::size
+	)
+
+	private val indexBuffers =
+		+BorrowingCache<Mesh<*>, GPUSize64, Buffer>(from = indexBufferPool) { it.indices.size.toULong() }
+
+	private val depthTexture = suspendLazy {
+		+device.createTexture(
+			TextureDescriptor(
+				size = (surface.window.size.await() z 0u).asSize3D(),
+				format = TextureFormat.Depth24Plus,
+				usage = setOf(TextureUsage.RenderAttachment)
+			)
+		)
+	}
+
 	override suspend fun invoke(): Unit = autoclose {
 		isConfigured.set {
 			surface.configure(SurfaceConfiguration(device, format))
@@ -103,20 +141,59 @@ public class AdvancedRenderer(
 		withContext(Dispatchers.Default) {
 			launch { meshBuffers.tick() }
 			launch { renderPipelines.tick() }
-			launch { shaders.cacheAll(batches.asSequence().map { it.pipeline.vertexShader }) }
+			launch {
+				shaders.cacheAll(
+					emptySequence<Shader>()
+							+ batches.asSequence().map { it.pipeline.vertexShader }
+							+ batches.asSequence().mapNotNull { it.pipeline.fragmentShader }
+				)
+			}
 		}
 
 		val encoder = +device.createCommandEncoder()
 
-		for ((vertexKind, meshes) in batches.groupBy(
-			keySelector = { it.pipeline.vertexShader.vertexKind },
-			valueTransform = { it.mesh }
-		)) {
-			val data = meshBuffers[vertexKind, meshes]
+		for ((vertexKind, batches) in batches.groupBy { it.pipeline.vertexShader.vertexKind }) {
+			val meshes = batches.map { it.mesh }
+			val storage = meshBuffers[vertexKind]
 
-			val buffer = device.queue.writeBuffer(buffers[data.size.toULong()], bufferOffset = 0uL, data)
+			@Suppress("UNCHECKED_CAST")
+			val data = (storage as MeshStorage<Any>)[meshes]
+			val vertexBuffer = vertexBuffers[vertexKind, data.size.toULong()]
+			device.queue.writeBuffer(vertexBuffer, bufferOffset = 0uL, data)
 
-			TODO("render passes")
+			val renderPass = encoder.beginRenderPass(
+				RenderPassDescriptor(
+					listOf(
+						RenderPassDescriptor.ColorAttachment(
+							view = surface.currentTexture.texture.createView(),
+							loadOp = LoadOp.Clear,
+							clearValue = backgroundColor,
+							storeOp = StoreOp.Store
+						)
+					),
+					depthStencilAttachment = RenderPassDescriptor.DepthStencilAttachment(
+						view = depthTexture().createView(),
+						depthClearValue = 1.0f,
+						depthLoadOp = LoadOp.Clear,
+						depthStoreOp = StoreOp.Store
+					)
+				)
+			)
+
+			renderPass.setVertexBuffer(0u, vertexBuffer)
+
+			for ((pipeline, mesh) in batches) {
+				val indexBuffer = indexBuffers[mesh]
+				device.queue.writeBuffer(indexBuffer, bufferOffset = 0uL, storage.reconstructIndices(mesh))
+
+				renderPass.setPipeline(renderPipelines[pipeline])
+				renderPass.setIndexBuffer(indexBuffer, IndexFormat.Uint32)
+				renderPass.drawIndexed(indexBuffer.size.toUInt())
+			}
+
+			renderPass.end()
 		}
+
+		device.queue.submit(listOf(encoder.finish()))
 	}
 }

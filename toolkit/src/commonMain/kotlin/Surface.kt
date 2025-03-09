@@ -14,7 +14,7 @@ import quest.laxla.spock.windowing.Window
  */
 public expect class Surface : AutoCloseable {
 	/**
-	 * The window onto which this [Surface] is drawn.
+	 * The logical window onto which this [Surface] is drawn.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
