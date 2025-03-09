@@ -65,14 +65,14 @@ public fun <V, S> ByteAppender.append(vector: Vector4<V, S>): Unit where S : Buf
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-internal fun ByteAppender.append(int: Int, sizeInBytes: UInt) {
-	for (i in 0u..<sizeInBytes step Byte.SIZE_BITS) append((int shr i.toInt()).toByte())
+internal fun ByteAppender.append(int: Int, sizeInBits: UInt) {
+	for (i in 0u..<sizeInBits step Byte.SIZE_BITS) append((int shr i.toInt()).toByte())
 }
 
 /**
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-internal fun ByteAppender.append(long: Long, sizeInBytes: UInt) {
-	for (i in 0u..<sizeInBytes step Byte.SIZE_BITS) append((long shr i.toInt()).toByte())
+internal fun ByteAppender.append(long: Long, sizeInBits: UInt) {
+	for (i in 0u..<sizeInBits step Byte.SIZE_BITS) append((long shr i.toInt()).toByte())
 }

@@ -14,7 +14,7 @@ import kotlin.math.pow
  */
 @OptIn(ExperimentalSpockApi::class)
 @Typealiased("#d", Double::class)
-public object DoubleSpace : FractionalSpace<Double>, SignedSpace<Double>, BufferableSpace<Double> {
+public data object DoubleSpace : FractionalSpace<Double>, SignedSpace<Double>, BufferableSpace<Double> {
 	override fun Double.pow(exponent: Double): Double = pow(x = exponent)
 
 	override fun Double.minus(other: Double): Double = this - other

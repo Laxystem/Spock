@@ -35,5 +35,5 @@ public data object LongSpace : SignedSpace<Long>, BufferableSpace<Long> {
 	
 	override val sizeInBits: UInt get() = Long.SIZE_BITS.toUInt()
 
-	override fun ByteAppender.append(value: Long) = append(value, sizeInBytes)
+	override fun ByteAppender.append(value: Long) = append(value, sizeInBits)
 }
