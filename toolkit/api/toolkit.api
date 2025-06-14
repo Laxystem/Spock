@@ -1,6 +1,11 @@
-public final class quest/laxla/spock/toolkit/ApplicationKt {
+public final class quest/laxla/spock/toolkit/Application_glfwKt {
 	public static final fun webGpuApplication-qNPu7Do (Ljava/lang/String;IILkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun webGpuApplication-qNPu7Do$default (Ljava/lang/String;IILkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class quest/laxla/spock/toolkit/SizesKt {
+	public static final fun asSize3D (Lquest/laxla/spock/math/Vector3;)Lio/ygdrasil/webgpu/Size3D;
+	public static final fun asVector3 (Lio/ygdrasil/webgpu/Size3D;)Lquest/laxla/spock/math/Vector3;
 }
 
 public final class quest/laxla/spock/toolkit/Surface : java/lang/AutoCloseable {

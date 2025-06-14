@@ -111,6 +111,10 @@ public final class quest/laxla/spock/Cache$Entry$Reference : quest/laxla/spock/C
 }
 
 public final class quest/laxla/spock/CachesKt {
+	public static final fun BorrowingCache (Lquest/laxla/spock/InferringCache;Lkotlinx/coroutines/sync/Mutex;)Lquest/laxla/spock/Cache;
+	public static final fun BorrowingCache (Lquest/laxla/spock/InferringCache;Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/Cache;
+	public static synthetic fun BorrowingCache$default (Lquest/laxla/spock/InferringCache;Lkotlinx/coroutines/sync/Mutex;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
+	public static synthetic fun BorrowingCache$default (Lquest/laxla/spock/InferringCache;Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
 	public static final fun CacheEntry (Ljava/lang/Object;)Lquest/laxla/spock/Cache$Entry;
 	public static final fun EverlastingCache (Lkotlin/jvm/functions/Function2;Lkotlinx/coroutines/sync/Mutex;Ljava/util/Map;)Lquest/laxla/spock/Cache;
 	public static final fun EverlastingCache (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/Cache;
@@ -135,12 +139,13 @@ public final class quest/laxla/spock/CachesKt {
 	public static synthetic fun SingleValueCache$default (Lkotlinx/coroutines/sync/Mutex;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lquest/laxla/spock/Cache;
 	public static final fun borrow (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun borrow (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun closeIfCloseable (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun borrowDual (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final synthetic fun closeValuesAndClear (Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun component1 (Lquest/laxla/spock/Cache$Entry;)Ljava/lang/Object;
 	public static final fun component2 (Lquest/laxla/spock/Cache$Entry;)Lquest/laxla/spock/SuspendCloseable;
 	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getDual (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun lent (Lquest/laxla/spock/Cache;Lquest/laxla/spock/Cache$Entry;)Z
 	public static final fun put (Lquest/laxla/spock/Cache;Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun put (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -159,14 +164,24 @@ public abstract interface class quest/laxla/spock/Closer : quest/laxla/spock/Sus
 }
 
 public final class quest/laxla/spock/ClosersKt {
-	public static final fun Closer ()Lquest/laxla/spock/Closer;
-	public static final fun Closer ([Ljava/lang/AutoCloseable;)Lquest/laxla/spock/Closer;
-	public static final fun Closer ([Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/Closer;
-	public static final fun autoclose (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun autoclose ([Ljava/lang/AutoCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun autoclose ([Lquest/laxla/spock/SuspendCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun Closer (Lio/github/oshai/kotlinlogging/Level;)Lquest/laxla/spock/Closer;
+	public static final fun Closer ([Ljava/lang/AutoCloseable;Lio/github/oshai/kotlinlogging/Level;)Lquest/laxla/spock/Closer;
+	public static final fun Closer ([Lquest/laxla/spock/SuspendCloseable;Lio/github/oshai/kotlinlogging/Level;)Lquest/laxla/spock/Closer;
+	public static synthetic fun Closer$default (Lio/github/oshai/kotlinlogging/Level;ILjava/lang/Object;)Lquest/laxla/spock/Closer;
+	public static synthetic fun Closer$default ([Ljava/lang/AutoCloseable;Lio/github/oshai/kotlinlogging/Level;ILjava/lang/Object;)Lquest/laxla/spock/Closer;
+	public static synthetic fun Closer$default ([Lquest/laxla/spock/SuspendCloseable;Lio/github/oshai/kotlinlogging/Level;ILjava/lang/Object;)Lquest/laxla/spock/Closer;
+	public static final fun autoclose (Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun autoclose ([Ljava/lang/AutoCloseable;Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun autoclose ([Lquest/laxla/spock/SuspendCloseable;Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun autoclose$default (Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun autoclose$default ([Ljava/lang/AutoCloseable;Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun autoclose$default ([Lquest/laxla/spock/SuspendCloseable;Lio/github/oshai/kotlinlogging/Level;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun plusAssign (Lquest/laxla/spock/Closer;Ljava/lang/AutoCloseable;)V
 	public static final fun plusAssign (Lquest/laxla/spock/Closer;Lquest/laxla/spock/SuspendCloseable;)V
+}
+
+public final class quest/laxla/spock/CoroutineContextKt {
+	public static final fun getDispatcher (Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/CoroutineDispatcher;
 }
 
 public abstract interface annotation class quest/laxla/spock/DelicateSpockApi : java/lang/annotation/Annotation {
@@ -204,6 +219,9 @@ public abstract interface annotation class quest/laxla/spock/FutureErrorType : j
 }
 
 public abstract interface annotation class quest/laxla/spock/FutureImmutableArray : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class quest/laxla/spock/FutureSuspendProperty : java/lang/annotation/Annotation {
 }
 
 public abstract interface annotation class quest/laxla/spock/FutureValueClass : java/lang/annotation/Annotation {
@@ -304,9 +322,30 @@ public final class quest/laxla/spock/KTarget$WasmWasi : quest/laxla/spock/KTarge
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class quest/laxla/spock/LazyKt {
+	public static final fun suspendLazy (Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/SuspendLazy;
+}
+
+public abstract interface class quest/laxla/spock/Loggable {
+	public abstract fun getSubjectiveLogLevel ()Lio/github/oshai/kotlinlogging/Level;
+	public abstract fun setSubjectiveLogLevel (Lio/github/oshai/kotlinlogging/Level;)V
+}
+
+public final class quest/laxla/spock/LoggableKt {
+	public static final fun debugVia (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun debugVia$default (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static final fun getSubjectiveLogLevel (Ljava/lang/Object;)Lio/github/oshai/kotlinlogging/Level;
+	public static final fun traceVia (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun traceVia$default (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
 public final class quest/laxla/spock/MutexKt {
 	public static final fun coroutineScopeWithLock (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun coroutineScopeWithLock$default (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun coroutineScopeWithLockIfAny (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun coroutineScopeWithLockIfAny$default (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun withLockIfAny (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun withLockIfAny$default (Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public abstract interface class quest/laxla/spock/OperatingSystem {
@@ -385,5 +424,12 @@ public final class quest/laxla/spock/SuspendCloseablesKt {
 	public static final fun asSuspendCloseable (Ljava/lang/AutoCloseable;)Lquest/laxla/spock/SuspendCloseable;
 	public static final fun closeFinally (Lquest/laxla/spock/SuspendCloseable;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun use (Lquest/laxla/spock/SuspendCloseable;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/SuspendLazy : kotlin/coroutines/jvm/internal/SuspendFunction, kotlin/jvm/functions/Function1 {
+}
+
+public final class quest/laxla/spock/Uninitialized {
+	public static final field INSTANCE Lquest/laxla/spock/Uninitialized;
 }
 

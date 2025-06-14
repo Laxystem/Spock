@@ -5,7 +5,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 private val logger = KotlinLogging.logger {  }
 
 public suspend fun Glfw.pollEvents() {
-	logger.debug { "Polling GLFW events..." }
+	logger.trace { "Polling GLFW events..." }
 
 	pollEventsWithoutLogging()
 }

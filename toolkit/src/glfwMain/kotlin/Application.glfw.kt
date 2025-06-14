@@ -38,17 +38,17 @@ public actual suspend fun webGpuApplication(
 	while (currentCoroutineContext().isActive && !window.shouldClose) {
 		Glfw.pollEvents()
 
-		logger.trace { "Polling device events..." + window.shouldClose }
+		logger.trace { "Polling device events..." }
 		device.poll()
 
-		logger.debug { "Rendering..." + window.shouldClose }
+		logger.trace { "Rendering..." }
 		render()
 
-		logger.debug { "Presenting frame..." + window.shouldClose }
+		logger.trace { "Presenting frame..." }
 		surface.presentFrame()
 	}
 
-	logger.debug { "Closing resources..." }
+	logger.info { "Closing resources..." }
 }.also {
 	logger.debug { "Render loop ended" }
 }

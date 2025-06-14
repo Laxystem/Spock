@@ -1,10 +1,9 @@
 package quest.laxla.spock.glfw
 
+import io.github.oshai.kotlinlogging.Level
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFW.glfwGetWindowSize
 import org.lwjgl.glfw.GLFW.glfwWindowShouldClose
@@ -12,15 +11,18 @@ import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil.NULL
 import quest.laxla.spock.DelicateSpockApi
 import quest.laxla.spock.ExperimentalSpockApi
+import quest.laxla.spock.Loggable
 import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.math.UIntSpace
 import quest.laxla.spock.math.Vector2ui
 import quest.laxla.spock.math.vectorOf
 import quest.laxla.spock.windowing.Window
-import kotlin.system.exitProcess
 
 @OptIn(RawSpockApi::class)
-public actual class GlfwWindow(@RawSpockApi public val raw: Long) : Window {
+public actual class GlfwWindow(
+	@RawSpockApi public val raw: Long,
+	override var subjectiveLogLevel: Level = Level.OFF
+) : Window, Loggable {
 	public actual constructor(width: UInt, height: UInt, title: String) :
 			this(GLFW.glfwCreateWindow(width.toInt(), height.toInt(), title, NULL, NULL))
 
@@ -38,11 +40,7 @@ public actual class GlfwWindow(@RawSpockApi public val raw: Long) : Window {
 	}
 
 	@OptIn(ExperimentalSpockApi::class, DelicateCoroutinesApi::class, DelicateSpockApi::class)
-	actual override suspend fun close(): Unit {
-		Glfw.launch {
-			println("closing window")
-			GLFW.glfwDestroyWindow(raw)
-			println("window closed")
-		}
+	actual override suspend fun close(): Unit = Glfw {
+		GLFW.glfwDestroyWindow(raw)
 	}
 }

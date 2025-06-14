@@ -17,6 +17,39 @@ public final class quest/laxla/spock/math/BufferableSpacesKt {
 	public static final fun getByteSize (Lquest/laxla/spock/math/SizedSpace;)I
 }
 
+public final class quest/laxla/spock/math/ByteSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/SignedSpace {
+	public static final field INSTANCE Lquest/laxla/spock/math/ByteSpace;
+	public fun abs (B)Ljava/lang/Byte;
+	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun append (Lquest/laxla/spock/ByteAppender;B)V
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun div (BB)Ljava/lang/Byte;
+	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSizeInBits-pVg5ArA ()I
+	public fun getSizeInBytes-pVg5ArA ()I
+	public fun getUnit ()Ljava/lang/Byte;
+	public synthetic fun getUnit ()Ljava/lang/Object;
+	public fun getZero ()Ljava/lang/Byte;
+	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun minus (BB)Ljava/lang/Byte;
+	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun mod (BB)Ljava/lang/Byte;
+	public synthetic fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun plus (BB)Ljava/lang/Byte;
+	public synthetic fun plus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun rem (BB)Ljava/lang/Byte;
+	public synthetic fun rem (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun times (BB)Ljava/lang/Byte;
+	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun toString ()Ljava/lang/String;
+	public fun unaryMinus (B)Ljava/lang/Byte;
+	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (B)Ljava/lang/Byte;
+	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+}
+
 public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FractionalSpace, quest/laxla/spock/math/SignedSpace {
 	public static final field INSTANCE Lquest/laxla/spock/math/DoubleSpace;
 	public fun abs (D)Ljava/lang/Double;
@@ -25,12 +58,14 @@ public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/B
 	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
 	public fun div (DD)Ljava/lang/Double;
 	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getSizeInBits-pVg5ArA ()I
 	public fun getSizeInBytes-pVg5ArA ()I
 	public fun getUnit ()Ljava/lang/Double;
 	public synthetic fun getUnit ()Ljava/lang/Object;
 	public fun getZero ()Ljava/lang/Double;
 	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun hashCode ()I
 	public fun minus (DD)Ljava/lang/Double;
 	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun mod (DD)Ljava/lang/Double;
@@ -45,6 +80,7 @@ public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/B
 	public synthetic fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun times (DD)Ljava/lang/Double;
 	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun toString ()Ljava/lang/String;
 	public fun unaryMinus (D)Ljava/lang/Double;
 	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun unaryPlus (D)Ljava/lang/Double;
@@ -59,12 +95,14 @@ public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/Bu
 	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
 	public fun div (FF)Ljava/lang/Float;
 	public synthetic fun div (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getSizeInBits-pVg5ArA ()I
 	public fun getSizeInBytes-pVg5ArA ()I
 	public fun getUnit ()Ljava/lang/Float;
 	public synthetic fun getUnit ()Ljava/lang/Object;
 	public fun getZero ()Ljava/lang/Float;
 	public synthetic fun getZero ()Ljava/lang/Object;
+	public fun hashCode ()I
 	public fun minus (FF)Ljava/lang/Float;
 	public synthetic fun minus (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun mod (FF)Ljava/lang/Float;
@@ -79,6 +117,7 @@ public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/Bu
 	public synthetic fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun times (FF)Ljava/lang/Float;
 	public synthetic fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun toString ()Ljava/lang/String;
 	public fun unaryMinus (F)Ljava/lang/Float;
 	public synthetic fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public fun unaryPlus (F)Ljava/lang/Float;
@@ -545,6 +584,15 @@ public final class quest/laxla/spock/math/UIntSpace : quest/laxla/spock/math/Buf
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class quest/laxla/spock/math/Vector1bSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector1bSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector1;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
 public final class quest/laxla/spock/math/Vector1dSerializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Lquest/laxla/spock/math/Vector1dSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
@@ -588,6 +636,15 @@ public final class quest/laxla/spock/math/Vector1uiSerializer : kotlinx/serializ
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector1;)V
+}
+
+public final class quest/laxla/spock/math/Vector2bSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector2bSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector2;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
 }
 
 public final class quest/laxla/spock/math/Vector2dSerializer : kotlinx/serialization/KSerializer {
@@ -635,6 +692,15 @@ public final class quest/laxla/spock/math/Vector2uiSerializer : kotlinx/serializ
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector2;)V
 }
 
+public final class quest/laxla/spock/math/Vector3bSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector3bSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector3;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
 public final class quest/laxla/spock/math/Vector3dSerializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Lquest/laxla/spock/math/Vector3dSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
@@ -678,6 +744,15 @@ public final class quest/laxla/spock/math/Vector3uiSerializer : kotlinx/serializ
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector3;)V
+}
+
+public final class quest/laxla/spock/math/Vector4bSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/math/Vector4bSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/Vector4;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/Vector4;)V
 }
 
 public final class quest/laxla/spock/math/Vector4dSerializer : kotlinx/serialization/KSerializer {
