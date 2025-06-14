@@ -5,11 +5,8 @@ package quest.laxla.spock.glfw
 import kotlinx.cinterop.ExperimentalForeignApi
 import quest.laxla.spock.RawSpockApi
 
-@RawSpockApi
-public actual fun glfwInit(): Unit? = Unit.takeIf { glfw.glfwInit() == GlfwTrue }
-
-@RawSpockApi
-public actual fun glfwTerminate() {
+internal actual fun glfwInit(): Unit? = Unit.takeIf { glfw.glfwInit() == GlfwTrue }
+internal actual fun glfwTerminate() {
 	glfw.glfwTerminate()
 }
 

@@ -1,5 +1,6 @@
 package quest.laxla.spock.example
 
+import io.github.oshai.kotlinlogging.Level
 import io.ygdrasil.webgpu.*
 import io.ygdrasil.webgpu.RenderPipelineDescriptor.VertexState.VertexBufferLayout
 import kotlinx.coroutines.Dispatchers
@@ -32,8 +33,10 @@ public class AdvancedRenderer(
 		producer = ::ByteArray,
 		inferrer = ByteArray::size
 	),
+	logLevel: Level = Level.DEBUG,
+	private val renderLogLevel: Level = Level.OFF,
 	public val scene: RenderScene
-) : WebGpuRenderer, Closer by Closer(surface, device) {
+) : WebGpuRenderer, Closer by Closer(surface, device, logLevel = logLevel) {
 	private val isConfigured = Flag()
 	private val shaders = +ShaderCache(transpiler)
 	private val shaderDescriptors = +EverlastingCache<Shader, ShaderModuleDescriptor> {
@@ -138,7 +141,7 @@ public class AdvancedRenderer(
 		)
 	}
 
-	override suspend fun invoke(): Unit = autoclose {
+	override suspend fun invoke(): Unit = autoclose(renderLogLevel) {
 		isConfigured.set {
 			surface.configure(SurfaceConfiguration(device, format))
 		}

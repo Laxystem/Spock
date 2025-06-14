@@ -10,6 +10,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
 import quest.laxla.spock.Closer
+import quest.laxla.spock.autoclose
 import kotlin.math.max
 import quest.laxla.spock.math.component1
 import quest.laxla.spock.math.component2
@@ -50,12 +51,12 @@ private const val CanvasElementId = "SpockTarget"
 
 private suspend fun Adapter.requestDeviceOrThrow(): Device = requestDevice() ?: error("Failed acquiring WebGPU device")
 
-public actual suspend fun Closer.webGpuApplication(
+public actual suspend fun webGpuApplication(
 	title: String,
 	preferredWidth: UInt,
 	preferredHeight: UInt,
 	renderer: (Device, Surface) -> WebGpuRenderer,
-) {
+): Unit = autoclose {
 	document.title = title
 
 	val adapter = +requestAdapterOrThrow()

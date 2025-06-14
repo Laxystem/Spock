@@ -1,68 +1,115 @@
 package quest.laxla.spock.glfw
 
 import kotlinx.coroutines.*
-import quest.laxla.spock.RawSpockApi
+import quest.laxla.spock.DelicateSpockApi
+import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.SuspendCloseable
+import quest.laxla.spock.dispatcher
+import quest.laxla.spock.glfw.Glfw.close
+import quest.laxla.spock.glfw.Glfw.initialize
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
-import kotlin.js.JsName
-import kotlin.jvm.JvmName
 
-// TODO: allow other dispatchers to use this thread, would need a custom dispatcher
-@OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
-private val glfwContext = newSingleThreadContext("Glfw")
+/**
+ * Manages GLFW initialization and closure thread-safely.
+ *
+ * @since 0.0.1-alpha.4
+ * @see initialize
+ * @see close
+ */
+public data object Glfw : CoroutineScope, SuspendCloseable {
+	private var context: CoroutineContext? = null
 
-public object Glfw : CoroutineContext by @OptIn(ExperimentalCoroutinesApi::class) glfwContext, SuspendCloseable {
-	
-	@PublishedApi
-	internal val scope: CoroutineScope = CoroutineScope(Glfw + SupervisorJob())
-	
-	@PublishedApi
-	internal suspend inline fun <R> CoroutineScope.execute(block: suspend CoroutineScope.() -> R): R {
-		@OptIn(RawSpockApi::class)
-		glfwInit() ?: error("Failed initializing GLFW")
-		return block()
+	// @get:Throws(IllegalStateException::class) TODO: crashes on native
+	override val coroutineContext: CoroutineContext get() = context ?: error("Glfw is not initialized")
+
+	private suspend fun newCoroutineContext() =
+		currentCoroutineContext().dispatcher + (context?.get(Job)?.takeIf { it.isActive } ?: SupervisorJob())
+
+	private fun closeCoroutineContext(message: String) {
+		context?.job?.cancel(message)
+		context = null
 	}
 
-	public inline fun <R> async(
-		context: CoroutineContext = EmptyCoroutineContext,
-		start: CoroutineStart = CoroutineStart.DEFAULT,
-		crossinline block: suspend CoroutineScope.() -> R,
-	): Deferred<R> = scope.async(context, start) {
-		execute(block)
+	/**
+	 * Initializes [Glfw] thread-safely.
+	 *
+	 * On macOS, This function must be executed on the same thread as the main function.
+	 *
+	 * Glfw calls will be executed on the same dispatcher as this function is executed from.
+	 *
+	 * If GLFW is already initialized, new GLFW calls will be called on the current dispatcher instead of the previous one.
+	 *
+	 * @throws GlfwException if GLFW reported an initialization failure.
+	 * @since 0.0.1-alpha.4
+	 */
+	@Throws(GlfwException::class, CancellationException::class)
+	public suspend fun initialize() {
+		val contextWasNull = context == null
+		if (contextWasNull) context = newCoroutineContext()
+
+		if (async { glfwInit() }.await() == null) {
+			val error = GlfwException("Failed initializing GLFW")
+
+			if (contextWasNull) closeCoroutineContext("Context was created as part of a failing GLFW initialization")
+			else throw AssertionError(FailedInitializationWithExistingCoroutineContext).apply {
+				addSuppressed(error)
+			}
+
+			throw error
+		}
 	}
 
-	public suspend inline operator fun <R> invoke(
+	/**
+	 * Steps into a [Glfw] context.
+	 *
+	 * Unlike [async], [launch], and other functions that use [Glfw] as a [CoroutineScope],
+	 * code executed this way **will not** be cancelled by [close].
+	 *
+	 * This function is [experimental][ExperimentalSpockApi], as its use-case is not yet known.
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	@DelicateCoroutinesApi
+	@DelicateSpockApi
+	@ExperimentalSpockApi
+	public suspend operator fun <T> invoke(
 		context: CoroutineContext = EmptyCoroutineContext,
-		crossinline block: suspend CoroutineScope.() -> R,
-	): R = async(context, block = block).await()
+		block: suspend CoroutineScope.() -> T
+	): T = withContext(context + coroutineContext, block)
 
-	public inline fun launch(
-		context: CoroutineContext = EmptyCoroutineContext,
-		start: CoroutineStart = CoroutineStart.DEFAULT,
-		crossinline block: suspend CoroutineScope.() -> Unit,
-	): Job = scope.launch(context, start) {
-		execute(block)
+	/**
+	 * Terminates [Glfw] and cancels all coroutines that used it.
+	 *
+	 * If [Glfw] is not initialized, this function has no effect.
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	@OptIn(DelicateCoroutinesApi::class, DelicateSpockApi::class, ExperimentalSpockApi::class)
+	override suspend fun close() {
+		Glfw(NonCancellable) { glfwTerminate() }
+		closeCoroutineContext("GLFW was terminated")
 	}
-	
-	@JvmName("launchAndJoin")
-	@JsName("launchAndAwait")
-	public suspend inline operator fun invoke(
-		context: CoroutineContext = EmptyCoroutineContext,
-		crossinline block: suspend CoroutineScope.() -> Unit,
-	): Unit = launch(context, block = block).join()
 
-	override suspend fun close(): Unit = scope.launch { // doesn't use invoke to prevent init
-		@OptIn(RawSpockApi::class)
-		glfwTerminate()
-	}.join()
+	override fun toString(): String = "Glfw(coroutineContext=$coroutineContext)"
 }
 
-@RawSpockApi
-public expect fun glfwInit(): Unit?
+internal expect fun glfwInit(): Unit?
+internal expect fun glfwTerminate()
 
-@RawSpockApi
-public expect fun glfwTerminate()
-
+/**
+ * The integer [Glfw] treats as `true`.
+ *
+ * @since 0.0.1-alpha.4
+ */
 public expect val GlfwTrue: Int
+
+/**
+ * The integer [Glfw] treats as `false`.
+ *
+ * @since 0.0.1-alpha.4
+ */
 public expect val GlfwFalse: Int
+private const val FailedInitializationWithExistingCoroutineContext =
+	"GLFW initialization should not fail when a GLFW coroutine context already exists, " +
+			"as presumably, GLFW is already initialized."

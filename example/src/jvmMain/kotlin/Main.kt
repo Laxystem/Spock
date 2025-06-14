@@ -1,3 +1,14 @@
 package quest.laxla.spock.example
 
-public suspend fun main(): Unit = myApplication("Spock Engine | Jvm")
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+
+@OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class)
+public fun main(): Unit = runBlocking {
+	withContext(newSingleThreadContext("blah")) {
+		myApplication("Spock Engine | Jvm")
+	}
+}

@@ -1,17 +1,25 @@
 package quest.laxla.spock
 
+import io.github.oshai.kotlinlogging.KotlinLogging
+import io.github.oshai.kotlinlogging.Level
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.withContext
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
+import kotlin.math.log
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * @author Laxystem
  */
 @OptIn(ExperimentalSpockApi::class)
-private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
+private class CloserImpl(
+	closeables: Array<out SuspendCloseable>,
+	override var subjectiveLogLevel: Level = Level.OFF
+) : Closer, Loggable {
 	private val suspendCloseables = mutableSetOf(*closeables)
 	private val isClosed = Flag()
 	private val closeMutex = Mutex()
@@ -22,23 +30,27 @@ private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
 		if (this@CloserImpl === suspendCloseable || suspendCloseable is Closer && this@CloserImpl in suspendCloseable)
 			throw UnsupportedOperationException("Cannot have closer close itself!")
 
+		traceVia(logger) { "added $suspendCloseable to closer" }
 		suspendCloseables += suspendCloseable
 	}
 
 	override fun <T> T.unaryPlus(): T where T : AutoCloseable = also { autoCloseable ->
+		traceVia(logger) { "added $autoCloseable to closer" }
 		suspendCloseables += autoCloseable.asSuspendCloseable()
 	}
 
-	override fun contains(suspendCloseable: SuspendCloseable): Boolean =
-		suspendCloseable in suspendCloseables || suspendCloseables.any { it is Closer && suspendCloseable in it }
+	override fun contains(closeable: SuspendCloseable): Boolean =
+		closeable in suspendCloseables || suspendCloseables.any { it is Closer && closeable in it }
 
 	override suspend fun close() = withContext(NonCancellable) {
 		isClosed.setWithLock(closeMutex) {
 			val exceptions = mutableSetOf<Throwable>()
 
 			for (closeable in suspendCloseables.reversed()) try {
+ 				debugVia(logger) { "closing $closeable..." }
 				closeable.close()
 			} catch (e: Throwable) {
+				debugVia(logger, e) { "Encountered exception while closing $closeable" }
 				exceptions += e
 			}
 
@@ -56,6 +68,8 @@ private class CloserImpl(closeables: Array<out SuspendCloseable>) : Closer {
 
 		null
 	}.let { if (it != null) throw it }
+
+	override fun toString(): String = if (isClosed()) "Closer(closed)" else "Closer($suspendCloseables)"
 }
 
 private fun Array<out AutoCloseable>.asSuspendCloseables() = Array(size) { index ->
@@ -67,21 +81,23 @@ private fun Array<out AutoCloseable>.asSuspendCloseables() = Array(size) { index
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(vararg closeables: SuspendCloseable): Closer = CloserImpl(closeables)
+public fun Closer(vararg closeables: SuspendCloseable, logLevel: Level = Level.OFF): Closer =
+	CloserImpl(closeables, logLevel)
 
 /**
  * Creates a new [Closer] and adds [closeables] to it.
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(vararg closeables: AutoCloseable): Closer = CloserImpl(closeables.asSuspendCloseables())
+public fun Closer(vararg closeables: AutoCloseable, logLevel: Level = Level.OFF): Closer =
+	CloserImpl(closeables.asSuspendCloseables(), logLevel)
 
 /**
  * Create a new empty [Closer].
  *
  * @since 0.0.1-alpha.1
  */
-public fun Closer(): Closer = CloserImpl(emptyArray<SuspendCloseable>())
+public fun Closer(logLevel: Level = Level.OFF): Closer = CloserImpl(emptyArray<SuspendCloseable>(), logLevel)
 
 /**
  * Creates a [Closer] scope and automatically [closes][SuspendCloseable.close] it.
@@ -90,12 +106,12 @@ public fun Closer(): Closer = CloserImpl(emptyArray<SuspendCloseable>())
  * @see use
  */
 @OptIn(ExperimentalContracts::class)
-public suspend inline fun <R> autoclose(block: Closer.() -> R): R {
+public suspend inline fun <R> autoclose(logLevel: Level = Level.OFF, block: Closer.() -> R): R {
 	contract {
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer().use(block)
+	return Closer(logLevel).use(block)
 }
 
 /**
@@ -105,12 +121,16 @@ public suspend inline fun <R> autoclose(block: Closer.() -> R): R {
  * @see use
  */
 @OptIn(ExperimentalContracts::class)
-public suspend inline fun <R> autoclose(vararg closeables: SuspendCloseable, block: Closer.() -> R): R {
+public suspend inline fun <R> autoclose(
+	vararg closeables: SuspendCloseable,
+	logLevel: Level = Level.OFF,
+	block: Closer.() -> R
+): R {
 	contract {
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer(*closeables).use(block)
+	return Closer(*closeables, logLevel = logLevel).use(block)
 }
 
 /**
@@ -120,12 +140,16 @@ public suspend inline fun <R> autoclose(vararg closeables: SuspendCloseable, blo
  * @see use
  */
 @OptIn(ExperimentalContracts::class)
-public suspend inline fun <R> autoclose(vararg closeables: AutoCloseable, block: Closer.() -> R): R {
+public suspend inline fun <R> autoclose(
+	vararg closeables: AutoCloseable,
+	logLevel: Level = Level.OFF,
+	block: Closer.() -> R
+): R {
 	contract {
 		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
 	}
 
-	return Closer(*closeables).use(block)
+	return Closer(*closeables, logLevel = logLevel).use(block)
 }
 
 /**

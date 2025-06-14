@@ -3,6 +3,7 @@
     <ExternalSystemSettings>
       <option name="env">
         <map>
+          <entry key="MALLOC_CHECK_" value="3" />
           <entry key="RUST_BACKTRACE" value="full" />
         </map>
       </option>

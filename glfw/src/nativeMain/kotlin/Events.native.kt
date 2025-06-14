@@ -4,8 +4,11 @@ package quest.laxla.spock.glfw
 
 import glfw.glfwPollEvents
 import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.DelicateCoroutinesApi
+import quest.laxla.spock.DelicateSpockApi
+import quest.laxla.spock.ExperimentalSpockApi
 
-public actual fun Glfw.pollEvents(): Job = launch {
+@OptIn(DelicateCoroutinesApi::class, DelicateSpockApi::class, ExperimentalSpockApi::class)
+public actual suspend fun Glfw.pollEventsWithoutLogging(): Unit = Glfw {
 	glfwPollEvents()
 }

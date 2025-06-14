@@ -56,28 +56,6 @@ public tailrec infix fun Cache<*, *>.lent(entry: Cache.Entry<*>): Boolean =
 	entry is Cache.Entry.Borrowed<*, *> && (entry.cache === this || this lent entry.original)
 
 /**
- * If `this` is [SuspendCloseable] or [AutoCloseable], closes it.
- *
- * This function accepts `Any?` as input as "close a `null` if you can"
- * is a valid operation that therefore should return [Unit].
- *
- * Classes that implement both [SuspendCloseable] and [AutoCloseable] are considered undefined behaviour.
- *
- * @author Laxystem
- * @since 0.0.1-alpha.4
- * @see SuspendCloseable.close
- * @see AutoCloseable.close
- */
-@Deprecated(level = DeprecationLevel.ERROR, message = "Replace with Cache.Entry.close")
-@RawSpockApi
-public suspend fun Any?.closeIfCloseable() {
-	when (this) {
-		is SuspendCloseable -> close()
-		is AutoCloseable -> close()
-	}
-}
-
-/**
  * Adds the provided [entry] onto this [Cache].
  *
  * @return `null` if the provided [entry] does not fulfill this cache's requirements, if any.
@@ -205,6 +183,8 @@ public inline fun <Descriptor, Product> EverlastingCache(
 	override suspend fun close() = mutex.withLockIfAny {
 		contents.closeValuesAndClear()
 	}
+
+	override fun toString(): String = "EverlastingCache($contents)"
 }
 
 /**
@@ -280,6 +260,8 @@ public inline fun <Descriptor, Product> PruningCache(
 		previousContents.closeValuesAndClear()
 		currentContents.closeValuesAndClear()
 	}
+
+	override fun toString(): String = "PruningCache(unaccessed=$previousContents,safe=$currentContents)"
 }
 
 /**
@@ -365,6 +347,8 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
 			set.clear()
 		}
 	}
+
+	override fun toString(): String = "Pool($contents)"
 }
 
 /**
@@ -477,6 +461,8 @@ internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how t
 			set.clear()
 		}
 	}
+
+	override fun toString(): String = "PruningPool(unaccessed=$previousContents,safe=$currentContents)"
 }
 
 /**
@@ -557,6 +543,8 @@ public inline fun <Descriptor, Product> SingleValueCache(
 	}
 
 	override suspend fun close() = mutex.withLockIfAny { closeWithoutLock() }
+
+	override fun toString(): String = "SingleValueCache(descriptor=$currentDescriptor,entry=$value)"
 }
 
 /**
@@ -595,6 +583,8 @@ public inline fun <Descriptor, Product> NoopCache(
 	override fun descriptorOf(product: Product): Descriptor = inferrer(product)
 
 	override suspend fun close() {}
+
+	override fun toString(): String = "NoopCache"
 }
 
 

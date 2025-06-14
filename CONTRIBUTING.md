@@ -8,6 +8,21 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 > pull requests aren't accepted from GitHub—any commit on the codeberg repository immeidately overrides any unmerged changes on GitHub.
 > Migrating your repository to Codeberg [is easy](https://codeberg.org/repo/migrate?service_type=2&org=&mirror=), and you can create an account simply by logging in with your GitHub one.
 
+## Dependencies
+
+To build Spock for a particular target, your machine needs to have:
+* For any platform 
+  * JVM v22 (any distribution is supported)
+* For WasmJS
+  * Chromium
+  * Firefox
+* For Linux
+  * `libcrypt.so.1`
+      * `core/libxcrypt-compat` on Arch
+      * `libxcrypt-static` and `libxcrypt-compat` on Fedora
+
+It is recommended to install all dependencies, even if you don't intend on using some targets.
+
 ## Kotlin Style Guide
 
 *Don't worry too much about this part, tweaking an API to match the style guide is a relatively easy task.*

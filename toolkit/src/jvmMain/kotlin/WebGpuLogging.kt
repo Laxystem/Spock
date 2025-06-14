@@ -5,7 +5,7 @@ import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.github.oshai.kotlinlogging.Level
 import io.ygdrasil.wgpu.*
-import quest.laxla.spock.Closer
+import java.lang.classfile.ClassFile
 
 
 private val logger = KotlinLogging.logger { }
@@ -32,7 +32,6 @@ private fun Level.toWgpuLogLevel(): WGPULogLevel = when (this) {
 	Level.ERROR -> WGPULogLevel_Error
 }
 
-@Suppress("KotlinConstantConditions") // false
 private fun WGPULogLevel.toKotlinLoggingLevel(): Level? = when (this) {
 	WGPULogLevel_Off -> Level.OFF
 	WGPULogLevel_Trace -> Level.TRACE
@@ -41,7 +40,7 @@ private fun WGPULogLevel.toKotlinLoggingLevel(): Level? = when (this) {
 	WGPULogLevel_Warn -> Level.WARN
 	WGPULogLevel_Error -> Level.ERROR
 	else -> {
-		logger.warn { "Cannot convert wgpu log level" }
+		logger.warn { "Cannot convert wgpu log level $this" }
 		null
 	}
 }
@@ -58,7 +57,7 @@ private val wgpuLogCallback by lazy {
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-internal fun Closer.setupWgpuLogging() {
+internal fun setupWgpuLogging() {
 	val logLevel = logger.level ?: Level.INFO
 
 	wgpuSetLogLevel(logLevel.toWgpuLogLevel())

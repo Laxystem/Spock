@@ -6,9 +6,14 @@ import cnames.structs.GLFWwindow
 import glfw.glfwCreateWindow
 import glfw.glfwDestroyWindow
 import glfw.glfwGetWindowSize
+import glfw.glfwSetWindowCloseCallback
 import glfw.glfwWindowShouldClose
 import kotlinx.cinterop.*
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.async
+import quest.laxla.spock.DelicateSpockApi
 import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.math.UIntSpace
@@ -34,7 +39,8 @@ public actual class GlfwWindow(@RawSpockApi public val raw: CPointer<GLFWwindow>
 		}
 	}
 
-	actual override suspend fun close(): Unit = Glfw {
+	@OptIn(ExperimentalSpockApi::class, DelicateCoroutinesApi::class, DelicateSpockApi::class)
+	actual override suspend fun close(): Unit = Glfw(NonCancellable) {
 		glfwDestroyWindow(raw)
 	}
 }

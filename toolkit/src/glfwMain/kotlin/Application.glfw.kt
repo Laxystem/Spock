@@ -1,31 +1,35 @@
 package quest.laxla.spock.toolkit
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import io.github.oshai.kotlinlogging.Level
 import io.ygdrasil.webgpu.Device
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
 import quest.laxla.spock.Closer
+import quest.laxla.spock.ExperimentalSpockApi
+import quest.laxla.spock.autoclose
 import quest.laxla.spock.glfw.*
 
 private val logger = KotlinLogging.logger {  }
 
 internal expect suspend fun Closer.initializeWebGpu()
 
-internal actual suspend fun Closer.webGpuApplication(
+@OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class, ExperimentalSpockApi::class)
+public actual suspend fun webGpuApplication(
 	title: String,
 	preferredWidth: UInt,
 	preferredHeight: UInt,
 	renderer: (Device, Surface) -> WebGpuRenderer
-) {
-	+Glfw
-	Glfw { logger.debug { "Initialized Glfw" } }
-	
+): Unit = autoclose(Level.DEBUG) {
+	(+Glfw).initialize()
 	initializeWebGpu()
 	
 	glfwWindowHint(GlfwResizable, GlfwFalse)
 	glfwWindowHint(GlfwClientApi, GlfwNoApi)
-	val window = +GlfwWindow(preferredWidth, preferredHeight, title)
 	val wgpu = +Wgpu()
+	val window = +GlfwWindow(preferredWidth, preferredHeight, title)
 	val surface = +wgpu.createSurface(window)
 	val adapter = +wgpu.requestAdapter(surface)
 	val device = +adapter.requestDeviceOrThrow()
@@ -33,8 +37,18 @@ internal actual suspend fun Closer.webGpuApplication(
 
 	while (currentCoroutineContext().isActive && !window.shouldClose) {
 		Glfw.pollEvents()
-		render()
-		surface.presentFrame()
+
+		logger.trace { "Polling device events..." + window.shouldClose }
 		device.poll()
+
+		logger.debug { "Rendering..." + window.shouldClose }
+		render()
+
+		logger.debug { "Presenting frame..." + window.shouldClose }
+		surface.presentFrame()
 	}
+
+	logger.debug { "Closing resources..." }
+}.also {
+	logger.debug { "Render loop ended" }
 }

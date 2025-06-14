@@ -227,7 +227,10 @@ private data class WgslVertexShader<Vertex : Any>(
 	override val entrypoint: String,
 	override val label: String?,
 	override val constants: ImmutableMap<String, Double>
-) : VertexShader<Vertex>, Wgsl.Shader, StringShader
+) : VertexShader<Vertex>, Wgsl.Shader, StringShader {
+	override fun toString(): String =
+		"WgslVertexShader(vertexKind=$vertexKind, entrypoint=$entrypoint, label=$label, constants=$constants)"
+}
 
 /**
  * Creates a [Wgsl]&nbsp;[VertexShader] from a [String].
@@ -264,7 +267,9 @@ private data class WgslFragmentShader(
 	override val code: String,
 	override val entrypoint: String,
 	override val label: String?
-) : FragmentShader, Wgsl.Shader, StringShader
+) : FragmentShader, Wgsl.Shader, StringShader {
+	override fun toString(): String = "WgslFragmentShader(textureFormat=$textureFormat, entrypoint=$entrypoint, label=$label)"
+}
 
 /**
  * Creates a [Wgsl] [FragmentShader] from a [String].
