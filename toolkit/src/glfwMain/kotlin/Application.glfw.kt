@@ -2,7 +2,8 @@ package quest.laxla.spock.toolkit
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.github.oshai.kotlinlogging.Level
-import io.ygdrasil.webgpu.Device
+import io.ygdrasil.webgpu.GPUDevice
+import io.ygdrasil.webgpu.poll
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.currentCoroutineContext
@@ -21,7 +22,7 @@ public actual suspend fun webGpuApplication(
 	title: String,
 	preferredWidth: UInt,
 	preferredHeight: UInt,
-	renderer: (Device, Surface) -> WebGpuRenderer
+	renderer: (GPUDevice, Surface) -> WebGpuRenderer
 ): Unit = autoclose(Level.DEBUG) {
 	(+Glfw).initialize()
 	initializeWebGpu()
@@ -39,7 +40,9 @@ public actual suspend fun webGpuApplication(
 		Glfw.pollEvents()
 
 		logger.trace { "Polling device events..." }
-		device.poll()
+		device.poll().onFailure {
+			logger.error(it) { "Encountered error while polling device events" }
+		}
 
 		logger.trace { "Rendering..." }
 		render()

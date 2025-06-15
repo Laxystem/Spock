@@ -1,12 +1,8 @@
 package quest.laxla.spock
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ygdrasil.webgpu.TextureFormat
-import kotlinx.collections.immutable.ImmutableMap
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentHashSetOf
-import kotlinx.collections.immutable.persistentMapOf
-import kotlinx.collections.immutable.toImmutableMap
+import io.ygdrasil.webgpu.GPUTextureFormat
+import kotlinx.collections.immutable.*
 import kotlin.experimental.ExperimentalTypeInference
 
 private val logger = KotlinLogging.logger {}
@@ -17,14 +13,13 @@ private val logger = KotlinLogging.logger {}
  * @since 0.0.1-alpha.4
  * @see transpilationTraceToString
  */
-public val Shader.readableName
-	get() = buildString {
-		append(formFactor)
-		append('(')
-		append("language = $language")
-		if (label != null) append(", label = \"$label\"")
-		append(')')
-	}
+public fun Shader.toTranspilationStepString() = buildString {
+	append(formFactor)
+	append('(')
+	append("language = $language")
+	if (label.isNotBlank()) append(", label = \"$label\"")
+	append(')')
+}
 
 /**
  * @author Laxystem
@@ -35,7 +30,7 @@ private fun StringBuilder.appendTranspilationTrace(shader: Shader) {
 		append(" =>> ")
 	}
 
-	append(shader.readableName)
+	append(shader.toTranspilationStepString())
 }
 
 /**
@@ -43,7 +38,7 @@ private fun StringBuilder.appendTranspilationTrace(shader: Shader) {
  * including what shaders it was transpiled from, if any.
  *
  * @since 0.0.1-alpha.4
- * @see readableName
+ * @see toTranspilationStepString
  */
 public fun Shader.transpilationTraceToString(): String = buildString {
 	appendTranspilationTrace(this@transpilationTraceToString)
@@ -111,7 +106,7 @@ private data class TranspiledShader<L, F>(
 	override val original: Shader,
 	override val language: L,
 	override val formFactor: F,
-	override val label: String? = null
+	override val label: String = emptyString()
 ) : Shader.Transpiled<L, F> where L : Shader.Language, F : Shader.FormFactor
 
 /**
@@ -225,7 +220,7 @@ private data class WgslVertexShader<Vertex : Any>(
 	override val vertexKind: VertexKind<Vertex>,
 	override val code: String,
 	override val entrypoint: String,
-	override val label: String?,
+	override val label: String = emptyString(),
 	override val constants: ImmutableMap<String, Double>
 ) : VertexShader<Vertex>, Wgsl.Shader, StringShader {
 	override fun toString(): String =
@@ -243,7 +238,7 @@ public fun <Vertex : Any> wgslVertexShaderOf(
 	wgsl: String,
 	vertexKind: VertexKind<Vertex>,
 	entrypoint: String,
-	label: String? = null,
+	label: String = emptyString(),
 	vararg constants: Pair<String, Double>
 ): VertexShader<Vertex> = WgslVertexShader(vertexKind, wgsl, entrypoint, label, persistentMapOf(*constants))
 
@@ -258,15 +253,15 @@ public fun <Vertex : Any> wgslVertexShaderOf(
 	wgsl: String,
 	vertexKind: VertexKind<Vertex>,
 	entrypoint: String,
-	label: String? = null,
+	label: String = emptyString(),
 	constants: Map<String, Double>
 ): VertexShader<Vertex> = WgslVertexShader(vertexKind, wgsl, entrypoint, label, constants.toImmutableMap())
 
 private data class WgslFragmentShader(
-	override val textureFormat: TextureFormat,
+	override val textureFormat: GPUTextureFormat,
 	override val code: String,
 	override val entrypoint: String,
-	override val label: String?
+	override val label: String = emptyString()
 ) : FragmentShader, Wgsl.Shader, StringShader {
 	override fun toString(): String = "WgslFragmentShader(textureFormat=$textureFormat, entrypoint=$entrypoint, label=$label)"
 }
@@ -279,9 +274,9 @@ private data class WgslFragmentShader(
  */
 public fun wgslFragmentShaderOf(
 	wgsl: String,
-	textureFormat: TextureFormat,
+	textureFormat: GPUTextureFormat,
 	entrypoint: String,
-	label: String? = null
+	label: String = emptyString()
 ): FragmentShader = WgslFragmentShader(textureFormat, wgsl, entrypoint, label)
 
 /**
@@ -312,15 +307,15 @@ public fun ShaderCache(
 	private fun findAccepted(shader: Shader): Shader? = findAccepted(shader, ::findAccepted)
 
 	@RawSpockApi
-	override suspend fun getEntry(shader: Shader): Cache.Entry<Shader?> =
-		findAccepted(shader) { get(it) }?.let(Cache.Entry<Shader>::Reference) ?: transpiledShaders.getEntry(shader)
+	override suspend fun getEntry(descriptor: Shader): Cache.Entry<Shader?> =
+		findAccepted(descriptor) { get(it) }?.let(Cache.Entry<Shader>::Reference) ?: transpiledShaders.getEntry(descriptor)
 
-	override suspend fun getAndRemove(shader: Shader): Cache.Entry<Shader?> =
-		findAccepted(shader) { getAndRemove(it).product }?.let(Cache.Entry<Shader>::Reference)
-			?: transpiledShaders.getAndRemove(shader)
+	override suspend fun getAndRemove(descriptor: Shader): Cache.Entry<Shader?> =
+		findAccepted(descriptor) { getAndRemove(it).product }?.let(Cache.Entry<Shader>::Reference)
+			?: transpiledShaders.getAndRemove(descriptor)
 
-	override suspend fun contains(shader: Shader): Boolean =
-		shader in transpiledShaders || shader is Shader.Transpiled<*, *> && shader.original in this
+	override suspend fun contains(descriptor: Shader): Boolean =
+		descriptor in transpiledShaders || descriptor is Shader.Transpiled<*, *> && descriptor.original in this
 
 	override suspend fun forget(descriptor: Shader): Unit? {
 		var result: Unit? = null
@@ -330,8 +325,8 @@ public fun ShaderCache(
 	}
 
 	@ExperimentalSpockApi
-	override suspend fun cacheAll(shaders: Sequence<Shader>) {
-		transpiledShaders.cacheAll(shaders.filter { findAccepted(it) == null })
+	override suspend fun cacheAll(descriptors: Sequence<Shader>) {
+		transpiledShaders.cacheAll(descriptors.filter { findAccepted(it) == null })
 	}
 
 	override suspend fun close() = transpiledShaders.close()

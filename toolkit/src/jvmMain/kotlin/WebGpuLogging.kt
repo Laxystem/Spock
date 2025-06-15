@@ -5,7 +5,6 @@ import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.github.oshai.kotlinlogging.Level
 import io.ygdrasil.wgpu.*
-import java.lang.classfile.ClassFile
 
 
 private val logger = KotlinLogging.logger { }
@@ -48,7 +47,7 @@ private fun WGPULogLevel.toKotlinLoggingLevel(): Level? = when (this) {
 private val wgpuLogCallback by lazy {
 	WGPULogCallback.allocate(globalMemory) { level, cMessage, data ->
 		logger.at(level.toKotlinLoggingLevel() ?: Level.INFO) {
-			message = cMessage?.toKString()
+			message = cMessage?.data?.toKString()
 		}
 	}
 }

@@ -7,15 +7,15 @@ import quest.laxla.spock.toolkit.WebGpuRenderer
 
 internal val Surface.textureFormat
 	get() = preferredTextureFormat
-		?: TextureFormat.RGBA8Unorm.takeIf { it in supportedTextureFormats }
-		?: TextureFormat.BGRA8Unorm.takeIf { it in supportedTextureFormats }
+		?: GPUTextureFormat.RGBA8Unorm.takeIf { it in supportedTextureFormats }
+		?: GPUTextureFormat.BGRA8Unorm.takeIf { it in supportedTextureFormats }
 		?: supportedTextureFormats.first()
 
 @OptIn(ExperimentalSpockApi::class)
 public class MyRenderer(
-	override val device: Device,
+	override val device: GPUDevice,
 	override val surface: Surface,
-	override val format: TextureFormat = surface.textureFormat
+	override val format: GPUTextureFormat = surface.textureFormat
 ) : WebGpuRenderer, Closer by Closer() {
 	private val vertices = floatArrayOf(
 		-0.8f, -0.8f,
@@ -29,11 +29,11 @@ public class MyRenderer(
 
 	private val isConfigured = Flag()
 
-	private val vertexBufferLayout = RenderPipelineDescriptor.VertexState.VertexBufferLayout(
+	private val vertexBufferLayout = VertexBufferLayout(
 		arrayStride = Float.SIZE_BYTES.toULong() * 2uL,
 		attributes = listOf(
-			RenderPipelineDescriptor.VertexState.VertexBufferLayout.VertexAttribute(
-				format = VertexFormat.Float32x2,
+			VertexAttribute(
+				format = GPUVertexFormat.Float32x2,
 				offset = 0u,
 				shaderLocation = 0u
 			)
@@ -61,21 +61,21 @@ public class MyRenderer(
 	private val renderPipeline = +device.createRenderPipeline(
 		RenderPipelineDescriptor(
 			label = "pipeline",
-			vertex = RenderPipelineDescriptor.VertexState(
+			vertex = VertexState(
 				module = shaders,
 				entryPoint = "vertexMain",
 				buffers = listOf(vertexBufferLayout)
 			),
-			fragment = RenderPipelineDescriptor.FragmentState(
+			fragment = FragmentState(
 				module = shaders,
 				entryPoint = "fragmentMain",
-				targets = listOf(RenderPipelineDescriptor.FragmentState.ColorTargetState(format))
+				targets = listOf(ColorTargetState(format))
 			),
-			primitive = RenderPipelineDescriptor.PrimitiveState(
-				topology = PrimitiveTopology.TriangleList,
+			primitive = PrimitiveState(
+				topology = GPUPrimitiveTopology.TriangleList,
 				stripIndexFormat = null,
-				frontFace = FrontFace.CCW,
-				cullMode = CullMode.None
+				frontFace = GPUFrontFace.CCW,
+				cullMode = GPUCullMode.None
 			)
 		)
 	)
@@ -84,7 +84,7 @@ public class MyRenderer(
 		BufferDescriptor(
 			label = "Vertices",
 			size = vertices.size.toULong() * Float.SIZE_BYTES.toULong(),
-			usage = setOf(BufferUsage.Vertex, BufferUsage.CopyDst)
+			usage = setOf(GPUBufferUsage.Vertex, GPUBufferUsage.CopyDst)
 		)
 	)
 
@@ -95,16 +95,17 @@ public class MyRenderer(
 
 		val encoder = +device.createCommandEncoder()
 
+		@Suppress("DEPRECATION") // TODO: fix this
 		device.queue.writeBuffer(vertexBuffer, bufferOffset = 0u, vertices)
 
 		encoder.beginRenderPass(
 			RenderPassDescriptor(
 				colorAttachments = listOf(
-					RenderPassDescriptor.ColorAttachment(
+					RenderPassColorAttachment(
 						view = +surface.currentTexture.texture.createView(),
-						loadOp = LoadOp.Clear,
-						clearValue = Color(0.2, 0.40, 0.84, alpha = 1.0),
-						storeOp = StoreOp.Store
+						loadOp = GPULoadOp.Clear,
+						clearValue = Color(0.2, 0.40, 0.84, a = 1.0),
+						storeOp = GPUStoreOp.Store
 					)
 				)
 			)

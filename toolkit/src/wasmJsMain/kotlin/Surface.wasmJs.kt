@@ -16,9 +16,9 @@ import quest.laxla.spock.math.vectorOf
 import quest.laxla.spock.windowing.Window
 
 private val SupportedTextureFormats = persistentSetOf(
-	TextureFormat.BGRA8Unorm,
-	TextureFormat.RGBA8Unorm,
-	TextureFormat.RGBA16Float
+	GPUTextureFormat.BGRA8Unorm,
+	GPUTextureFormat.RGBA8Unorm,
+	GPUTextureFormat.RGBA16Float
 )
 
 private val SupportedAlphaModes = persistentSetOf(
@@ -47,9 +47,9 @@ private class CanvasSurfaceWindow(val surface: Surface) : Window { // todo: impr
 public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCloseable {
 	public actual val window: Window = CanvasSurfaceWindow(this)
 
-	public actual val preferredTextureFormat: TextureFormat? = raw.preferredCanvasFormat
+	public actual val preferredTextureFormat: GPUTextureFormat? = raw.preferredCanvasFormat
 
-	public actual val supportedTextureFormats: ImmutableSet<TextureFormat> = SupportedTextureFormats
+	public actual val supportedTextureFormats: ImmutableSet<GPUTextureFormat> = SupportedTextureFormats
 	public actual val supportedAlphaModes: ImmutableSet<CompositeAlphaMode> = SupportedAlphaModes
 
 	public actual val currentTexture: SurfaceTexture = raw.getCurrentTexture()
@@ -58,10 +58,13 @@ public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCl
 	 * Create a new [quest.laxla.spock.toolkit.Surface] for this [canvas].
 	 *
 	 * @since 0.0.1-alpha.4
-	 * @see HTMLCanvasElement.getCanvasSurface
+	 * @see io.ygdrasil.webgpu.HTMLCanvasElement.getCanvasSurface
 	 */
 	public constructor(canvas: HTMLCanvasElement) : this(
-		raw = canvas.getCanvasSurface() ?: error("Failed creating surface for canvas $canvas")
+		raw = canvas
+			.unsafeCast<io.ygdrasil.webgpu.HTMLCanvasElement>()
+			.getCanvasSurface()
+			.let(::CanvasSurface)
 	)
 
 	public actual fun presentFrame() {

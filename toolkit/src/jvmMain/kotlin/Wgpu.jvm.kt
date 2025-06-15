@@ -67,4 +67,4 @@ internal actual fun Wgpu.getRawSurfaceOrNull(window: GlfwWindow): NativeSurface?
 	else -> null
 }
 
-internal actual fun Wgpu.requestAdapter(surface: NativeSurface): Adapter? = requestAdapter(nativeSurface = surface)
+internal actual fun Wgpu.requestAdapter(surface: NativeSurface): Adapter? = requestAdapter(surface)

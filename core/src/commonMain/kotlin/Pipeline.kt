@@ -13,7 +13,7 @@ import kotlinx.collections.immutable.toPersistentList
 public data class Pipeline<Vertex : Any>(
 	public val vertexShader: VertexShader<Vertex>,
 	public val fragmentShader: FragmentShader?,
-	public val label: String? = null
+	public val label: String = ""
 ) {
 	/**
 	 * Represents a 'batch' of data to be sent to the GPU.
@@ -35,7 +35,7 @@ public data class Pipeline<Vertex : Any>(
 			vertexShader: VertexShader<Vertex>,
 			fragmentShader: FragmentShader?,
 			mesh: Mesh<Vertex>,
-			pipelineLabel: String? = null
+			pipelineLabel: String = ""
 		) : this(Pipeline(vertexShader, fragmentShader, pipelineLabel), mesh)
 
 		/**
@@ -46,7 +46,7 @@ public data class Pipeline<Vertex : Any>(
 			fragmentShader: FragmentShader?,
 			vertices: ImmutableList<Vertex>,
 			indices: ImmutableList<UInt>,
-			pipelineLabel: String? = null
+			pipelineLabel: String = ""
 		) : this(vertexShader, fragmentShader, Mesh(vertices, indices), pipelineLabel)
 
 		/**
@@ -56,7 +56,7 @@ public data class Pipeline<Vertex : Any>(
 			vertexShader: VertexShader<Vertex>,
 			fragmentShader: FragmentShader?,
 			vararg vertices: Vertex,
-			pipelineLabel: String? = null
+			pipelineLabel: String = ""
 		) : this(vertexShader, fragmentShader, Mesh(*vertices), pipelineLabel)
 
 		/**
@@ -68,7 +68,7 @@ public data class Pipeline<Vertex : Any>(
 			fragmentShader: FragmentShader?,
 			vertices: ImmutableList<Vertex>,
 			vararg indices: UInt,
-			pipelineLabel: String? = null
+			pipelineLabel: String = ""
 		) : this(vertexShader, fragmentShader, vertices, indices.toPersistentList(), pipelineLabel)
 
 		/**

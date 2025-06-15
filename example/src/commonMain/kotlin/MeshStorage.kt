@@ -1,6 +1,6 @@
 package quest.laxla.spock.example
 
-import io.ygdrasil.webgpu.VertexFormat
+import io.ygdrasil.webgpu.GPUVertexFormat
 import io.ygdrasil.webgpu.sizeInBytes
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
@@ -22,7 +22,7 @@ internal class MeshStorage<in Vertex : Any>(
 	private val vertexIndices = hashMapOf<Vertex, Int>()
 	private var previousMeshes: ImmutableSet<Mesh<Vertex>>? = null
 
-	private val vertexSize = vertexKind.attributes.sumOf(VertexFormat::sizeInBytes)
+	private val vertexSize = vertexKind.attributes.sumOf(GPUVertexFormat::sizeInBytes)
 
 	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray = appendToByteArray(mesh.indices.size * UInt.SIZE_BYTES) {
 		for (index in mesh.indices) append(

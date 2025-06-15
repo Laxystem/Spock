@@ -41,7 +41,7 @@ public interface Shader {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public val label: String? get() = null
+	public val label: String get() = emptyString()
 
 	/**
 	 * Represents a shading language, such as [WGSL][Wgsl] or GLSL.

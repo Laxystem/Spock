@@ -19,9 +19,9 @@ public actual class Surface internal constructor(
 	@RawSpockApi public val raw: NativeSurface,
 	public actual val window: Window
 ) : AutoCloseable by raw {
-	public actual val preferredTextureFormat: TextureFormat? = null
+	public actual val preferredTextureFormat: GPUTextureFormat? = null
 
-	public actual val supportedTextureFormats: ImmutableSet<TextureFormat>
+	public actual val supportedTextureFormats: ImmutableSet<GPUTextureFormat>
 		get() = raw.supportedFormats.toImmutableSet()
 
 	public actual val supportedAlphaModes: ImmutableSet<CompositeAlphaMode>

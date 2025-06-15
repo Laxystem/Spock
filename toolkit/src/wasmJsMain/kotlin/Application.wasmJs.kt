@@ -2,23 +2,21 @@ package quest.laxla.spock.toolkit
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ygdrasil.webgpu.Adapter
-import io.ygdrasil.webgpu.Device
+import io.ygdrasil.webgpu.GPUDevice
 import kotlinx.browser.document
 import kotlinx.browser.window
-import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
-import quest.laxla.spock.Closer
 import quest.laxla.spock.autoclose
-import kotlin.math.max
 import quest.laxla.spock.math.component1
 import quest.laxla.spock.math.component2
 import quest.laxla.spock.math.times
+import kotlin.math.max
 
 private val logger = KotlinLogging.logger { }
 
-private suspend inline fun Closer.createResizeObserver(
+private suspend inline fun createResizeObserver(
 	canvas: HTMLCanvasElement,
 	crossinline render: suspend () -> Unit,
 ): Unit = coroutineScope {
@@ -33,7 +31,7 @@ private suspend inline fun Closer.createResizeObserver(
 			target.height = max(1, height.toInt())
 		}
 
-		launch(start = CoroutineStart.ATOMIC) {
+		launch {
 			render()
 		}
 	}
@@ -49,13 +47,13 @@ private suspend inline fun Closer.createResizeObserver(
 
 private const val CanvasElementId = "SpockTarget"
 
-private suspend fun Adapter.requestDeviceOrThrow(): Device = requestDevice() ?: error("Failed acquiring WebGPU device")
+private suspend fun Adapter.requestDeviceOrThrow(): GPUDevice = requestDevice().getOrThrow()
 
 public actual suspend fun webGpuApplication(
 	title: String,
 	preferredWidth: UInt,
 	preferredHeight: UInt,
-	renderer: (Device, Surface) -> WebGpuRenderer,
+	renderer: (GPUDevice, Surface) -> WebGpuRenderer,
 ): Unit = autoclose {
 	document.title = title
 

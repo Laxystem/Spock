@@ -12,4 +12,4 @@ public actual typealias Wgpu = WGPU
 
 internal actual fun createWebGpuOrNull(): Wgpu? = WGPU.createInstance()
 
-public actual fun Wgpu.requestAdapter(surface: NativeSurface): Adapter? = requestAdapter(nativeSurface = surface)
+public actual fun Wgpu.requestAdapter(surface: NativeSurface): Adapter? = requestAdapter(surface = surface)

@@ -24,7 +24,7 @@ kotlin {
 	linuxX64()
 
 	wasmJs {
-		moduleName = "spock"
+		outputModuleName = "spock"
 
 		binaries.library()
 		browser()

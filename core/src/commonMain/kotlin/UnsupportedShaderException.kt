@@ -7,4 +7,4 @@ public open class UnsupportedShaderException(
 	public val shader: Shader,
 	message: String? = null,
 	cause: Throwable? = null
-) : IllegalArgumentException(shader.transpilationTraceToString() + message.letOrEmpty { ": $it" }, cause)
+) : IllegalArgumentException(shader.transpilationTraceToString() + message?.let { ": $it" }.orEmpty(), cause)

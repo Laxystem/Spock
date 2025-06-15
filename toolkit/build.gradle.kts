@@ -25,7 +25,7 @@ kotlin {
 	linuxX64()
 
 	wasmJs {
-		moduleName = "spock"
+		outputModuleName = "spock"
 
 		binaries.library()
 		browser()
@@ -34,6 +34,8 @@ kotlin {
 	sourceSets {
 		commonMain.dependencies {
 			api(libs.wgpu4k)
+			api(libs.wgpu4k.ktypes)
+			api(libs.wgpu4k.ktypes.descriptors)
 			api(projects.core)
 			api(projects.windowing)
 		}
@@ -50,6 +52,8 @@ kotlin {
 	}
 }
 
+
+// TODO: document whatever this means
 tasks.named("wasmJsBrowserProductionLibraryDistribution") {
 	dependsOn(":core:wasmJsProductionLibraryCompileSync")
 }

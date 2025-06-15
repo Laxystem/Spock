@@ -413,7 +413,6 @@ public abstract interface annotation class quest/laxla/spock/RawSpockApi : java/
 
 public final class quest/laxla/spock/StringsKt {
 	public static final fun emptyString ()Ljava/lang/String;
-	public static final fun letOrEmpty (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
 }
 
 public abstract interface class quest/laxla/spock/SuspendCloseable {

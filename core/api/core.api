@@ -1,5 +1,5 @@
 public abstract interface class quest/laxla/spock/FragmentShader : quest/laxla/spock/Shader {
-	public abstract fun getTextureFormat ()Lio/ygdrasil/webgpu/TextureFormat;
+	public abstract fun getTextureFormat ()Lio/ygdrasil/webgpu/GPUTextureFormat;
 }
 
 public final class quest/laxla/spock/FragmentShader$DefaultImpls {
@@ -140,15 +140,15 @@ public final class quest/laxla/spock/ShadersKt {
 	public static final fun getKind (Lquest/laxla/spock/Shader$Transpiled;)Lquest/laxla/spock/Shader$Kind;
 	public static final fun getKind (Lquest/laxla/spock/Shader;)Lquest/laxla/spock/Shader$Kind;
 	public static final fun getOutputKinds (Lquest/laxla/spock/Shader$Transpiler;)Lkotlinx/collections/immutable/ImmutableSet;
-	public static final fun getReadableName (Lquest/laxla/spock/Shader;)Ljava/lang/String;
 	public static final fun isAcceptedByAnyKindOutputtedBy (Lquest/laxla/spock/Shader;Lquest/laxla/spock/Shader$Transpiler;)Z
 	public static final fun isCarryingRequiredMetadata (Lquest/laxla/spock/Shader;)Z
 	public static final fun isOfAnyKindOutputtedBy (Lquest/laxla/spock/Shader;Lquest/laxla/spock/Shader$Transpiler;)Z
 	public static final fun isOfKind (Lquest/laxla/spock/Shader;Lquest/laxla/spock/Shader$Kind;)Z
+	public static final fun toTranspilationStepString (Lquest/laxla/spock/Shader;)Ljava/lang/String;
 	public static final fun transpilationTraceToString (Lquest/laxla/spock/Shader;)Ljava/lang/String;
 	public static final fun transpile (Lquest/laxla/spock/Shader$Transpiler;Lquest/laxla/spock/Shader;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun wgslFragmentShaderOf (Ljava/lang/String;Lio/ygdrasil/webgpu/TextureFormat;Ljava/lang/String;Ljava/lang/String;)Lquest/laxla/spock/FragmentShader;
-	public static synthetic fun wgslFragmentShaderOf$default (Ljava/lang/String;Lio/ygdrasil/webgpu/TextureFormat;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lquest/laxla/spock/FragmentShader;
+	public static final fun wgslFragmentShaderOf (Ljava/lang/String;Lio/ygdrasil/webgpu/GPUTextureFormat;Ljava/lang/String;Ljava/lang/String;)Lquest/laxla/spock/FragmentShader;
+	public static synthetic fun wgslFragmentShaderOf$default (Ljava/lang/String;Lio/ygdrasil/webgpu/GPUTextureFormat;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lquest/laxla/spock/FragmentShader;
 	public static final fun wgslVertexShaderOf (Ljava/lang/String;Lquest/laxla/spock/VertexKind;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lquest/laxla/spock/VertexShader;
 	public static final fun wgslVertexShaderOf (Ljava/lang/String;Lquest/laxla/spock/VertexKind;Ljava/lang/String;Ljava/lang/String;[Lkotlin/Pair;)Lquest/laxla/spock/VertexShader;
 	public static synthetic fun wgslVertexShaderOf$default (Ljava/lang/String;Lquest/laxla/spock/VertexKind;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lquest/laxla/spock/VertexShader;
@@ -221,7 +221,7 @@ public abstract interface class quest/laxla/spock/VertexKind$Bound {
 }
 
 public final class quest/laxla/spock/VertexKindsKt {
-	public static final fun VertexKind ([Lio/ygdrasil/webgpu/VertexFormat;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/VertexKind;
+	public static final fun VertexKind ([Lio/ygdrasil/webgpu/GPUVertexFormat;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/VertexKind;
 }
 
 public abstract interface class quest/laxla/spock/VertexShader : quest/laxla/spock/Shader, quest/laxla/spock/VertexKind$Bound {

@@ -1,23 +1,24 @@
 [versions]
 dokka = "2.0.0"
-javaNativeAccess = "5.16.0"
-kotlin = "2.1.10"
-kotlinLogging = "7.0.3"
-kotlinPoet = "2.0.0"
-kotlinSymbolProcessing = "2.1.10-1.0.30"
+javaNativeAccess = "5.17.0"
+kotlin = "2.1.21"
+kotlinLogging = "7.0.7"
+kotlinPoet = "2.2.0"
+kotlinSymbolProcessing = "2.1.21-2.0.2"
 kotlinx-binaryCompatibilityValidator = "0.17.0"
 kotlinx-browser = "0.3"
-kotlinx-collections-immutable = "0.3.8"
-kotlinx-coroutines = "1.10.1"
-kotlinx-io = "0.6.0"
+kotlinx-collections-immutable = "0.4.0"
+kotlinx-coroutines = "1.10.2"
+kotlinx-io = "0.7.0"
 kotlinx-kover = "0.9.1"
-kotlinx-serialization = "1.8.0"
-logback = "1.5.16"
+kotlinx-serialization = "1.8.1"
+logback = "1.5.18"
 lwjgl = "3.3.6"
-mavenPublish = "0.30.0"
-wgpu4k = "0.0.3"
+mavenPublish = "0.32.0"
+wgpu4k = "0.1.1"
 wgpu4k-glfw = "0.0.1"
 wgpu4k-rococoa = "0.0.1"
+wgpu4k-ktypes = "0.0.7"
 
 [libraries]
 dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin" }
@@ -41,6 +42,8 @@ lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl" }
 wgpu4k = { group = "io.ygdrasil", name = "wgpu4k", version.ref = "wgpu4k" }
 wgpu4k-glfw = { group = "io.ygdrasil", name = "glfw-native", version.ref = "wgpu4k-glfw" }
 wgpu4k-rococoa = { group = "io.ygdrasil", name = "rococoa", version.ref = "wgpu4k-rococoa" }
+wgpu4k-ktypes-descriptors = { group = "io.ygdrasil", name = "webgpu-ktypes-descriptors", version.ref = "wgpu4k-ktypes" }
+wgpu4k-ktypes = { group = "io.ygdrasil", name = "webgpu-ktypes", version.ref = "wgpu4k-ktypes" }
 
 [plugins]
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

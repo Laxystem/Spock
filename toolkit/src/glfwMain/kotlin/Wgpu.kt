@@ -5,6 +5,7 @@ package quest.laxla.spock.toolkit
 import io.ygdrasil.webgpu.Adapter
 import io.ygdrasil.webgpu.Device
 import io.ygdrasil.webgpu.DeviceDescriptor
+import io.ygdrasil.webgpu.GPUDevice
 import io.ygdrasil.webgpu.NativeSurface
 import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.glfw.GlfwWindow
@@ -58,5 +59,5 @@ public fun Wgpu.requestAdapter(surface: Surface): Adapter = requestAdapter(surfa
  *
  * @since 0.0.1-alpha.4
  */
-public suspend fun Adapter.requestDeviceOrThrow(device: DeviceDescriptor = DeviceDescriptor()): Device =
-	requestDevice(device) ?: error("Failed creating WebGPU device $device for adapter $this")
+public suspend fun Adapter.requestDeviceOrThrow(device: DeviceDescriptor = DeviceDescriptor()): GPUDevice =
+	requestDevice(device).getOrThrow()

@@ -1,6 +1,6 @@
 package quest.laxla.spock
 
-import io.ygdrasil.webgpu.VertexFormat
+import io.ygdrasil.webgpu.GPUVertexFormat
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.io.bytestring.ByteStringBuilder
 
@@ -13,7 +13,7 @@ public interface VertexKind<in Vertex : Any> {
 	/**
 	 * @since 0.0.1-alpha.4
 	 */
-	public val attributes: @FutureImmutableArray ImmutableList<VertexFormat>
+	public val attributes: @FutureImmutableArray ImmutableList<GPUVertexFormat>
 
 	/**
 	 * Appends this [vertex] into this [ByteStringBuilder].
