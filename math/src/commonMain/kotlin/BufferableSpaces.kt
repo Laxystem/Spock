@@ -2,18 +2,6 @@ package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
 import quest.laxla.spock.appendToByteString
-import quest.laxla.spock.ExperimentalSpockApi
-
-/**
- * Calculates byte size based on [bit count][quest.laxla.spock.math.SizedSpace.sizeInBits]
- * and [byte count][quest.laxla.spock.math.SizedSpace.sizeInBytes].
- *
- * This function is experimental, as its necessity is not known.
- *
- * @since 0.0.1-alpha.4
- */
-@ExperimentalSpockApi
-public val SizedSpace<*>.byteSize: UInt get() = sizeInBits / sizeInBytes
 
 /**
  * Appends the contents of this [Vector1] into this [appendToByteString].
