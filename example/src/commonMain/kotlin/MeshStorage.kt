@@ -53,7 +53,7 @@ internal class MeshStorage<in Vertex : Any>(
 			vertexBuffer!!.append {
 				with(vertexKind) {
 					for (vertex in vertices) if (vertex !in vertexIndices) {
-						vertexIndices[vertex] = offset
+						vertexIndices[vertex] = offset / vertexSize
 						append(vertex)
 					}
 				}
