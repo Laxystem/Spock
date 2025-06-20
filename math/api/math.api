@@ -14,7 +14,6 @@ public final class quest/laxla/spock/math/BufferableSpacesKt {
 	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector2;)V
 	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector3;)V
 	public static final fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector4;)V
-	public static final fun getByteSize (Lquest/laxla/spock/math/SizedSpace;)I
 }
 
 public final class quest/laxla/spock/math/ByteSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/SignedSpace {
