@@ -230,6 +230,10 @@ public final class quest/laxla/spock/math/VectorsKt {
 	public static final fun component2 (Lquest/laxla/spock/math/VectorWithY;)Ljava/lang/Object;
 	public static final fun component3 (Lquest/laxla/spock/math/VectorWithZ;)Ljava/lang/Object;
 	public static final fun component4 (Lquest/laxla/spock/math/VectorWithW;)Ljava/lang/Object;
+	public static final fun map (Lquest/laxla/spock/math/Vector1;Lquest/laxla/spock/math/Space;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/math/Vector1;
+	public static final fun map (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Space;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/math/Vector2;
+	public static final fun map (Lquest/laxla/spock/math/Vector3;Lquest/laxla/spock/math/Space;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/math/Vector3;
+	public static final fun map (Lquest/laxla/spock/math/Vector4;Lquest/laxla/spock/math/Space;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/math/Vector4;
 	public static final fun uniformVectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/UniformVector;
 	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector1;
 	public static final fun vectorOf (Lquest/laxla/spock/math/Space;Ljava/lang/Object;Ljava/lang/Object;)Lquest/laxla/spock/math/Vector2;

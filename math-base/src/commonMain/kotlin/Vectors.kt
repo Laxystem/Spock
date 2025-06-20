@@ -165,7 +165,7 @@ private data class TypedUniformVector<V, out S>(
 
 /**
  * Creates a [UniformVector] whose elements are all equal to [value].
- * 
+ *
  * @since 0.0.1-alpha.4
  * @see vectorOfZeros
  * @see vectorOfOnes
@@ -263,3 +263,35 @@ public operator fun <V> VectorWithZ<V, *>.component3() = z
  * @see VectorWithW.w
  */
 public operator fun <V> VectorWithW<V, *>.component4() = w
+
+/**
+ * Maps this [Vector] into the provided [space].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public inline fun <T, R, S : Space<R>> Vector1<T, *>.map(space: S, transform: (T) -> R): Vector1<R, S> =
+	space.vectorOf(transform(x))
+
+/**
+ * Maps this [Vector] into the provided [space].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public inline fun <T, R, S : Space<R>> Vector2<T, *>.map(space: S, transform: (T) -> R): Vector2<R, S> =
+	space.vectorOf(transform(x), transform(y))
+
+/**
+ * Maps this [Vector] into the provided [space].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public inline fun <T, R, S : Space<R>> Vector3<T, *>.map(space: S, transform: (T) -> R): Vector3<R, S> =
+	space.vectorOf(transform(x), transform(y), transform(z))
+
+/**
+ * Maps this [Vector] into the provided [space].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public inline fun <T, R, S : Space<R>> Vector4<T, *>.map(space: S, transform: (T) -> R): Vector4<R, S> =
+	space.vectorOf(transform(x), transform(y), transform(z), transform(w))
