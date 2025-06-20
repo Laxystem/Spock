@@ -19,7 +19,7 @@
           <option value=":example:jvmRun" />
         </list>
       </option>
-      <option name="vmOptions" value="-ea" />
+      <option name="vmOptions" value="-ea -Dkotlinx.coroutines.debug" />
     </ExternalSystemSettings>
     <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
