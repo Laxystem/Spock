@@ -77,7 +77,7 @@ private fun Array<out AutoCloseable>.asSuspendCloseables() = Array(size) { index
 }
 
 /**
- * Create a new [Closer] and add [closeables] to it.
+ * Creates a new [Closer] and adds [closeables] to it.
  *
  * @since 0.0.1-alpha.1
  */
