@@ -49,7 +49,7 @@ public final class quest/laxla/spock/math/ByteSpace : quest/laxla/spock/math/Buf
 	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
 
-public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FractionalSpace, quest/laxla/spock/math/SignedSpace {
+public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FloatingPointSpace, quest/laxla/spock/math/SignedSpace {
 	public static final field INSTANCE Lquest/laxla/spock/math/DoubleSpace;
 	public fun abs (D)Ljava/lang/Double;
 	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
@@ -86,7 +86,7 @@ public final class quest/laxla/spock/math/DoubleSpace : quest/laxla/spock/math/B
 	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
 
-public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FractionalSpace, quest/laxla/spock/math/SignedSpace {
+public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/BufferableSpace, quest/laxla/spock/math/FloatingPointSpace, quest/laxla/spock/math/SignedSpace {
 	public static final field INSTANCE Lquest/laxla/spock/math/FloatSpace;
 	public fun abs (F)Ljava/lang/Float;
 	public synthetic fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
@@ -123,7 +123,7 @@ public final class quest/laxla/spock/math/FloatSpace : quest/laxla/spock/math/Bu
 	public synthetic fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
 
-public abstract interface class quest/laxla/spock/math/FractionalSpace : quest/laxla/spock/math/NumeralSpace {
+public abstract interface class quest/laxla/spock/math/FloatingPointSpace : quest/laxla/spock/math/NumeralSpace {
 	public abstract fun pow (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public abstract fun sqrt (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
