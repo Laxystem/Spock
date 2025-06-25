@@ -66,7 +66,7 @@ public data class Mesh<out Vertex : Any>(
 	 * Retrieves the [indices] of this [quest.laxla.spock.Mesh] if provided,
 	 * and [vertices]' order as-is otherwise.
 	 *
-	 * When using the Spock toolkit, the resulting indices will be automatically optimized at the renderer level.
+	 * When using the Spock toolkit, duplicate vertices will be collapsed at the renderer-level.
 	 *
 	 * @author Laxystem
 	 * @since 0.0.1-alpha.4
