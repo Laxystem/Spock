@@ -22,7 +22,7 @@ import kotlin.uuid.ExperimentalUuidApi
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(ExperimentalSpockApi::class, ExperimentalUuidApi::class)
+@OptIn(ExperimentalUuidApi::class)
 public class AdvancedRenderer(
 	override val device: GPUDevice,
 	override val surface: Surface,
@@ -129,9 +129,10 @@ public class AdvancedRenderer(
 	)
 
 	private val indexBuffers = +BorrowingCache<Mesh<*>, GPUSize64, GPUBuffer>(from = indexBufferPool) {
-		it.indices.size.toULong() * UInt.SIZE_BYTES.toULong()
+		it.indicesOrVertexOrder.size.toULong() * UInt.SIZE_BYTES.toULong()
 	}
 
+	@OptIn(ExperimentalSpockApi::class)
 	private val depthTexture = suspendLazy {
 		+device.createTexture(
 			TextureDescriptor(
@@ -195,6 +196,10 @@ public class AdvancedRenderer(
 
 			renderPass.setVertexBuffer(0u, vertexBuffer)
 
+			// This cannot be a single draw call, as different meshes might have different shaders.
+			// TODO: consider merging meshes of the same pipeline into one?
+			// That'd be exclusively a matter of combining the index buffers; However:
+			// Will the extra CPU iteration be worth the memory transference savings?
 			for ((pipeline, mesh) in batches) {
 				val indexBuffer = indexBuffers[mesh]
 
@@ -203,7 +208,7 @@ public class AdvancedRenderer(
 
 				renderPass.setPipeline(renderPipelines[pipeline])
 				renderPass.setIndexBuffer(indexBuffer, GPUIndexFormat.Uint32)
-				renderPass.drawIndexed(mesh.indices.size.toUInt())
+				renderPass.drawIndexed(mesh.indicesOrVertexOrder.size.toUInt())
 			}
 
 			renderPass.end()

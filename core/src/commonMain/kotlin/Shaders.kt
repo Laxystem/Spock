@@ -215,7 +215,6 @@ public suspend fun <L, F> Shader.Transpiler<L, F>.transpile(shader: Shader): Sha
 /**
  * @author Laxystem
  */
-@ExperimentalSpockApi
 private data class WgslVertexShader<Vertex : Any>(
 	override val vertexKind: VertexKind<Vertex>,
 	override val code: String,
@@ -233,7 +232,6 @@ private data class WgslVertexShader<Vertex : Any>(
  * @param wgsl the [StringShader.code] of this shader.
  * @since 0.0.1-alpha.4
  */
-@ExperimentalSpockApi
 public fun <Vertex : Any> wgslVertexShaderOf(
 	wgsl: String,
 	vertexKind: VertexKind<Vertex>,

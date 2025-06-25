@@ -24,12 +24,13 @@ internal class MeshStorage<in Vertex : Any>(
 
 	private val vertexSize = vertexKind.attributes.sumOf(GPUVertexFormat::sizeInBytes)
 
-	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray = appendToByteArray(mesh.indices.size * UInt.SIZE_BYTES) {
-		for (index in mesh.indices) append(
-			vertexIndices[mesh.vertices[index.toInt()]]
-				?: throw IllegalArgumentException("Vertex ${mesh.vertices[index.toInt()]} at index $index not found in mesh storage; This is an engine error.")
-		)
-	}
+	fun reconstructIndices(mesh: Mesh<Vertex>): ByteArray =
+		appendToByteArray(mesh.indicesOrVertexOrder.size * UInt.SIZE_BYTES) {
+			for (index in mesh.indicesOrVertexOrder) append(
+				vertexIndices[mesh.vertices[index.toInt()]]
+					?: throw IllegalArgumentException("Vertex ${mesh.vertices[index.toInt()]} at index $index not found in mesh storage; This is an engine error.")
+			)
+		}
 
 	private suspend fun update(meshes: ImmutableSet<Mesh<Vertex>>) {
 		val vertices = meshes.flatMapTo(hashSetOf()) { it.vertices }

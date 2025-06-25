@@ -6,7 +6,7 @@ package quest.laxla.spock
  * @since 0.0.1-alpha.4
  */
 @RequiresOptIn(
-	"Delicate-contract API may cause unexpected issues, and should not be used unless you know what you're doing.",
+	"Delicate-contract API may cause unexpected issues and should not be used unless you know what you're doing.",
 	level = RequiresOptIn.Level.WARNING
 )
 @MustBeDocumented

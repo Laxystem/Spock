@@ -2,6 +2,7 @@ package quest.laxla.spock.windowing
 
 import kotlinx.coroutines.Deferred
 import quest.laxla.spock.ExperimentalSpockApi
+import quest.laxla.spock.FutureSuspendProperty
 import quest.laxla.spock.SuspendCloseable
 import quest.laxla.spock.math.Vector2ui
 
@@ -26,5 +27,6 @@ public interface Window : SuspendCloseable {
 	 * @since 0.0.1-alpha.4
 	 */
 	@ExperimentalSpockApi
+	@FutureSuspendProperty
 	public val size: Deferred<Vector2ui>
 }

@@ -20,7 +20,7 @@ private const val shader = """
 	}
 """
 
-@OptIn(ExperimentalSpockApi::class)
+@OptIn(ExperimentalUnsignedTypes::class)
 public suspend fun myApplication(title: String): Unit = webGpuApplication(title) { device, surface ->
 	val kind = Shader.Kind(Wgsl, StringShader)
 	val batches = persistentListOf(
@@ -39,9 +39,11 @@ public suspend fun myApplication(title: String): Unit = webGpuApplication(title)
 				FloatSpace.vectorOf(-.8f, -.8f),
 				FloatSpace.vectorOf(+.8f, -.8f),
 				FloatSpace.vectorOf(+.8f, +.8f),
+				FloatSpace.vectorOf(-.8f, -.8f), // saved
+				FloatSpace.vectorOf(+.8f, +.8f), // saved
 				FloatSpace.vectorOf(-.8f, +.8f)
 			),
-			indices = persistentListOf(0u, 1u, 2u, 0u, 2u, 3u)
+			//indices = persistentListOf(0u, 1u, 2u, 0u, 2u, 3u)
 		)
 	)
 

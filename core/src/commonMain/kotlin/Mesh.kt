@@ -46,6 +46,8 @@ public data class Mesh<out Vertex : Any>(
 	 */
 	public val indices: @FutureImmutableArray ImmutableList<UInt> = persistentListOf()
 ) {
+	private val generatedIndices by lazy { vertices.indices.map { it.toUInt() }.toPersistentList() }
+
 	/**
 	 * @since 0.0.1-alpha.4
 	 */
@@ -55,5 +57,19 @@ public data class Mesh<out Vertex : Any>(
 	 * @since 0.0.1-alpha.4
 	 */
 	@ExperimentalUnsignedTypes
-	public constructor(vertices: ImmutableList<Vertex>, vararg indices: UInt) : this(vertices, indices.toPersistentList())
+	public constructor(vertices: ImmutableList<Vertex>, vararg indices: UInt) : this(
+		vertices,
+		indices.toPersistentList()
+	)
+
+	/**
+	 * Retrieves the [indices] of this [quest.laxla.spock.Mesh] if provided,
+	 * and [vertices]' order as-is otherwise.
+	 *
+	 * When using the Spock toolkit, the resulting indices will be automatically optimized at the renderer level.
+	 *
+	 * @author Laxystem
+	 * @since 0.0.1-alpha.4
+	 */
+	val indicesOrVertexOrder: @FutureImmutableArray ImmutableList<UInt> get() = indices.ifEmpty { generatedIndices }
 }

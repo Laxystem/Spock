@@ -78,7 +78,6 @@ public interface Cache<in Descriptor, out Product> : SuspendCloseable {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	@ExperimentalSpockApi
 	public suspend fun cacheAll(descriptors: Sequence<Descriptor>) {}
 
 	/**

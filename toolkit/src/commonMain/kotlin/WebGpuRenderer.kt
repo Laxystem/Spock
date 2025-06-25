@@ -2,7 +2,6 @@ package quest.laxla.spock.toolkit
 
 import io.ygdrasil.webgpu.GPUDevice
 import io.ygdrasil.webgpu.GPUTextureFormat
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.Renderer
 
 /**
@@ -12,14 +11,12 @@ import quest.laxla.spock.Renderer
  *
  * @since 0.0.1-alpha.4
  */
-@SubclassOptInRequired(ExperimentalSpockApi::class)
 public interface WebGpuRenderer : Renderer {
 	/**
 	 * The GPU used by this [WebGpuRenderer].
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	@ExperimentalSpockApi
 	public val device: GPUDevice
 
 	/**
@@ -27,7 +24,6 @@ public interface WebGpuRenderer : Renderer {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	@ExperimentalSpockApi
 	public val surface: Surface
 
 	/**
@@ -35,6 +31,5 @@ public interface WebGpuRenderer : Renderer {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	@ExperimentalSpockApi
 	public val format: GPUTextureFormat
 }

@@ -17,6 +17,7 @@ public final class quest/laxla/spock/Mesh {
 	public static synthetic fun copy$default (Lquest/laxla/spock/Mesh;Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;ILjava/lang/Object;)Lquest/laxla/spock/Mesh;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getIndices ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun getIndicesOrVertexOrder ()Lkotlinx/collections/immutable/ImmutableList;
 	public final fun getVertices ()Lkotlinx/collections/immutable/ImmutableList;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

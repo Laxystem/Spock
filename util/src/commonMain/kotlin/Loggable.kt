@@ -42,7 +42,6 @@ public inline fun <T : Loggable> T.debugVia(
 	if (subjectiveLogLevel <= Level.DEBUG) logger.debug(throwable) { message() }
 }
 
-
 /**
  * @author Laxystem
  * @since 0.0.1-alpha.4

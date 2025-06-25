@@ -3,9 +3,12 @@ package quest.laxla.spock
 import kotlinx.coroutines.CancellationException
 
 /**
+ * Renders [vertices][VertexKind] onto a screen, and collects objects to be closed together with itself.
+ *
+ * @see Closer
+ * @see RenderScene
  * @since 0.0.1-alpha.4
  */
-@SubclassOptInRequired(ExperimentalSpockApi::class)
 public interface Renderer : Closer {
 	/**
 	 * Renders a frame.
