@@ -14,7 +14,7 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import quest.laxla.spock.math.Typealiased
 
-public fun Resolver.getTypealiasedClassDeclarations() = getSymbolsWithAnnotation<Typealiased>()
+public fun Resolver.getTypealiasedClassDeclarations(): Sequence<KSClassDeclaration> = getSymbolsWithAnnotation<Typealiased>()
 	.filterIsInstance<KSClassDeclaration>()
 	.filterNot { it.superTypes.count() == 0 }
 

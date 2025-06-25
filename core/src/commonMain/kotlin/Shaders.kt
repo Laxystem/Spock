@@ -13,7 +13,7 @@ private val logger = KotlinLogging.logger {}
  * @since 0.0.1-alpha.4
  * @see transpilationTraceToString
  */
-public fun Shader.toTranspilationStepString() = buildString {
+public fun Shader.toTranspilationStepString(): String = buildString {
 	append(formFactor)
 	append('(')
 	append("language = $language")
@@ -65,7 +65,7 @@ public val Shader.isCarryingRequiredMetadata: Boolean get() = language accepts t
  * @see Shader.isOfKind
  * @see Shader.isCarryingRequiredMetadata
  */
-public infix fun Shader.Kind<*, *>.accepts(shader: Shader) = language accepts shader && formFactor accepts shader
+public infix fun Shader.Kind<*, *>.accepts(shader: Shader): Boolean = language accepts shader && formFactor accepts shader
 
 /**
  * Does this [Shader] belong to this shader [kind]?
@@ -129,7 +129,7 @@ public fun <L, F> Shader.withKind(
  *
  * @since 0.0.1-alpha.4
  */
-public fun <L, F> Shader.withKind(shaderKind: Shader.Kind<L, F>) where L : Shader.Language, F : Shader.FormFactor =
+public fun <L, F> Shader.withKind(shaderKind: Shader.Kind<L, F>): Shader.Transpiled<L, F> where L : Shader.Language, F : Shader.FormFactor =
 	withKind(shaderKind.language, shaderKind.formFactor)
 
 /**
@@ -341,7 +341,7 @@ public fun ShaderCache(
 public inline fun <L, F> Shader.Companion.Transpiler(
 	outputKind: Shader.Kind<L, F>,
 	crossinline block: (Shader) -> Shader.Transpiled<L, F>?
-) where L : Shader.Language, F : Shader.FormFactor = object : Shader.Transpiler.Simple<L, F> {
+): Shader.Transpiler.Simple<L, F> where L : Shader.Language, F : Shader.FormFactor = object : Shader.Transpiler.Simple<L, F> {
 	override val outputKind: Shader.Kind<L, F> get() = outputKind
 	override suspend fun invoke(input: Shader): Shader.Transpiled<L, F>? = block(input)
 }
@@ -355,7 +355,7 @@ public inline fun <L, F> Shader.Companion.Transpiler(
 	language: L,
 	formFactor: F,
 	crossinline block: (Shader) -> Shader.Transpiled<L, F>?
-) where L : Shader.Language, F : Shader.FormFactor = Transpiler(Shader.Kind(language, formFactor), block)
+): Shader.Transpiler.Simple<L, F> where L : Shader.Language, F : Shader.FormFactor = Transpiler(Shader.Kind(language, formFactor), block)
 
 /**
  * Creates a [Shader.Transpiler] that rejects all shaders.

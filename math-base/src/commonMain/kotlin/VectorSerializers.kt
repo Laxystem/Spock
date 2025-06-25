@@ -38,7 +38,7 @@ private inline fun <V, S, Vec, NoS> createVectorSerializer(
  */
 
 @RawSpockApi
-public fun <V> Vector1<V, *>.withoutSpace() = SpacelessVector1(x)
+public fun <V> Vector1<V, *>.withoutSpace(): SpacelessVector1<V> = SpacelessVector1(x)
 
 /**
  * Creates a [KSerializer] for [Vector1]s of the given [Space].
@@ -66,7 +66,7 @@ public fun <V, S> Vector1.Companion.serializer(
  * @since 0.0.1-alpha.4
  */
 @RawSpockApi
-public fun <V> Vector2<V, *>.withoutSpace() = SpacelessVector2(x, y)
+public fun <V> Vector2<V, *>.withoutSpace(): SpacelessVector2<V> = SpacelessVector2(x, y)
 
 /**
  * Creates a [KSerializer] for [Vector2]s of the given [Space].
@@ -94,7 +94,7 @@ public fun <V, S> Vector2.Companion.serializer(
  * @since 0.0.1-alpha.4
  */
 @RawSpockApi
-public fun <V> Vector3<V, *>.withoutSpace() = SpacelessVector3(x, y, z)
+public fun <V> Vector3<V, *>.withoutSpace(): SpacelessVector3<V> = SpacelessVector3(x, y, z)
 
 /**
  * Creates a [KSerializer] for [Vector3]s of the given [Space].
@@ -122,7 +122,7 @@ public fun <V, S> Vector3.Companion.serializer(
  * @since 0.0.1-alpha.4
  */
 @RawSpockApi
-public fun <V> Vector4<V, *>.withoutSpace() = SpacelessVector4(x, y, z, w)
+public fun <V> Vector4<V, *>.withoutSpace(): SpacelessVector4<V> = SpacelessVector4(x, y, z, w)
 
 /**
  * Creates a [KSerializer] for [Vector3]s of the given [Space].

@@ -16,7 +16,7 @@ import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.at
 import quest.laxla.spock.math.*
 
-public fun Resolver.getVectorOperations() = getSymbolsWithAnnotation<VectorOperation>()
+public fun Resolver.getVectorOperations(): Sequence<KSFunctionDeclaration> = getSymbolsWithAnnotation<VectorOperation>()
 	.filterIsInstance<KSFunctionDeclaration>()
 
 public val KSAnnotated.vectorization: Vectorization.Kind

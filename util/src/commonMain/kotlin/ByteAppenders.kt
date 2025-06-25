@@ -94,4 +94,4 @@ private value class WrappedByteStringBuilder(private val builder: ByteStringBuil
 @OptIn(ExperimentalSpockApi::class)
 public fun ByteStringBuilder.asAppender(): ByteAppender = WrappedByteStringBuilder(this)
 
-public inline fun ByteStringBuilder.append(block: ByteAppender.() -> Unit) = asAppender().block()
+public inline fun ByteStringBuilder.append(block: ByteAppender.() -> Unit): Unit = asAppender().block()

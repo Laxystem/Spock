@@ -14,7 +14,7 @@ import kotlin.reflect.KClass
 public fun Resolver.getDeclarationOf(kClass: KClass<*>): KSClassDeclaration? =
 	kClass.qualifiedName?.let(::getKotlinClassByName)
 
-public inline fun <reified T> Resolver.getSymbolsWithAnnotation() = getSymbolsWithAnnotation(T::class.qualifiedName!!)
+public inline fun <reified T> Resolver.getSymbolsWithAnnotation(): Sequence<KSAnnotated> = getSymbolsWithAnnotation(T::class.qualifiedName!!)
 
 @OptIn(KspExperimental::class)
 public inline fun <reified A : Annotation> KSAnnotated.getAnnotations(): Sequence<A> = getAnnotationsByType(A::class)

@@ -76,7 +76,7 @@ public abstract interface class quest/laxla/spock/Renderer : quest/laxla/spock/C
 public abstract interface class quest/laxla/spock/Shader {
 	public static final field Companion Lquest/laxla/spock/Shader$Companion;
 	public abstract fun getFormFactor ()Lquest/laxla/spock/Shader$FormFactor;
-	public abstract fun getLabel ()Ljava/lang/String;
+	public fun getLabel ()Ljava/lang/String;
 	public abstract fun getLanguage ()Lquest/laxla/spock/Shader$Language;
 }
 
@@ -160,7 +160,8 @@ public final class quest/laxla/spock/ShadersKt {
 public abstract interface class quest/laxla/spock/StringShader : quest/laxla/spock/Shader {
 	public static final field FormFactor Lquest/laxla/spock/StringShader$FormFactor;
 	public abstract fun getCode ()Ljava/lang/String;
-	public abstract fun getFormFactor ()Lquest/laxla/spock/StringShader$FormFactor;
+	public synthetic fun getFormFactor ()Lquest/laxla/spock/Shader$FormFactor;
+	public fun getFormFactor ()Lquest/laxla/spock/StringShader$FormFactor;
 }
 
 public final class quest/laxla/spock/StringShader$DefaultImpls {
@@ -242,7 +243,8 @@ public final class quest/laxla/spock/Wgsl : quest/laxla/spock/Shader$Language {
 
 public abstract interface class quest/laxla/spock/Wgsl$Shader : quest/laxla/spock/Shader {
 	public abstract fun getEntrypoint ()Ljava/lang/String;
-	public abstract fun getLanguage ()Lquest/laxla/spock/Wgsl;
+	public synthetic fun getLanguage ()Lquest/laxla/spock/Shader$Language;
+	public fun getLanguage ()Lquest/laxla/spock/Wgsl;
 }
 
 public final class quest/laxla/spock/Wgsl$Shader$DefaultImpls {

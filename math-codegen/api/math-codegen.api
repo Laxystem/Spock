@@ -33,9 +33,11 @@ public final class quest/laxla/spock/math/codegen/KspKt {
 
 public final class quest/laxla/spock/math/codegen/Processor : com/google/devtools/ksp/processing/SymbolProcessor {
 	public fun <init> (Lcom/google/devtools/ksp/processing/CodeGenerator;Lcom/google/devtools/ksp/processing/KSPLogger;Ljava/lang/String;)V
+	public fun finish ()V
 	public final fun getGenerator ()Lcom/google/devtools/ksp/processing/CodeGenerator;
 	public final fun getLogger ()Lcom/google/devtools/ksp/processing/KSPLogger;
 	public final fun getPackageName ()Ljava/lang/String;
+	public fun onError ()V
 	public fun process (Lcom/google/devtools/ksp/processing/Resolver;)Ljava/util/List;
 }
 

@@ -37,7 +37,7 @@ public suspend fun <Descriptor, Product> InferringCache<Descriptor, Product>.bor
  *
  * @since 0.0.1-alpha.4
  */
-public operator fun <T> Cache.Entry<T>.component1() = product
+public operator fun <T> Cache.Entry<T>.component1(): T = product
 
 /**
  * Retrieves the operation that needs to be executed when forgetting this [Cache.Entry].
@@ -127,7 +127,7 @@ public fun <Product> CacheEntry(product: Product): Cache.Entry<Product> = when (
  * @throws UnsupportedOperationException if the provided [product] was [lent] from this [Cache].
  * @since 0.0.1-alpha.4
  */
-public suspend fun <Product> InferringCache<*, Product>.put(product: Product, autoclose: Boolean = true) =
+public suspend fun <Product> InferringCache<*, Product>.put(product: Product, autoclose: Boolean = true): Unit? =
 	put(if (autoclose) CacheEntry(product) else Cache.Entry.Reference(product))
 
 /**

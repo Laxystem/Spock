@@ -1,6 +1,7 @@
 public abstract interface class quest/laxla/spock/ByteAppender {
 	public abstract fun append (B)V
 	public abstract fun append ([BII)V
+	public static synthetic fun append$default (Lquest/laxla/spock/ByteAppender;[BIIILjava/lang/Object;)V
 	public abstract fun getCapacity ()I
 	public abstract fun getOffset ()I
 	public abstract fun getRemainingCapacity ()I
@@ -24,12 +25,12 @@ public final class quest/laxla/spock/ByteAppendersKt {
 }
 
 public abstract interface class quest/laxla/spock/Cache : quest/laxla/spock/SuspendCloseable {
-	public abstract fun cacheAll (Lkotlin/sequences/Sequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun cacheAll (Lkotlin/sequences/Sequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun contains (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun forget (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getAndRemove (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getEntry (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun tick (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun tick (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class quest/laxla/spock/Cache$DefaultImpls {
@@ -229,7 +230,7 @@ public abstract interface annotation class quest/laxla/spock/FutureValueClass : 
 
 public abstract interface class quest/laxla/spock/InferringCache : quest/laxla/spock/Cache {
 	public abstract fun descriptorOf (Ljava/lang/Object;)Ljava/lang/Object;
-	public abstract fun put (Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun put (Lquest/laxla/spock/Cache$Entry;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class quest/laxla/spock/InferringCache$DefaultImpls {
@@ -242,8 +243,8 @@ public final class quest/laxla/spock/IterableRangesKt {
 	public static final fun at (Lkotlin/ranges/IntRange;Ljava/util/List;)Ljava/util/List;
 	public static final fun from (Ljava/util/List;I)Ljava/util/List;
 	public static final fun skipFirst (Ljava/util/List;)Ljava/util/List;
+	public static final fun step-2TYgG_w (Lkotlin/ranges/ULongProgression;J)Lkotlin/ranges/ULongProgression;
 	public static final fun step-Qn1smSk (Lkotlin/ranges/UIntProgression;I)Lkotlin/ranges/UIntProgression;
-	public static final fun step-Qn1smSk (Lkotlin/ranges/ULongProgression;I)Lkotlin/ranges/ULongProgression;
 }
 
 public abstract interface class quest/laxla/spock/KTarget {

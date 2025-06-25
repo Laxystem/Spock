@@ -205,8 +205,8 @@ public abstract interface class quest/laxla/spock/math/NumeralSpace : quest/laxl
 public abstract interface class quest/laxla/spock/math/SignedSpace : quest/laxla/spock/math/NumeralSpace {
 	public abstract fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public abstract fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
-	public abstract fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
-	public abstract fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryMinus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
+	public fun unaryPlus (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
 
 public final class quest/laxla/spock/math/SignedSpace$DefaultImpls {

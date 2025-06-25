@@ -209,28 +209,28 @@ public fun <V, S> S.vectorOfOnes(): UniformVector<V, S> where S : Space<V> = Typ
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> UniformVector<V, S>.asVector1() where S : Space<V> = space x value
+public fun <V, S> UniformVector<V, S>.asVector1(): Vector1<V, S> where S : Space<V> = space x value
 
 /**
  * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> UniformVector<V, S>.asVector2() where S : Space<V> = space.vectorOf(value, value)
+public fun <V, S> UniformVector<V, S>.asVector2(): Vector2<V, S> where S : Space<V> = space.vectorOf(value, value)
 
 /**
  * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> UniformVector<V, S>.asVector3() where S : Space<V> = space.vectorOf(value, value, value)
+public fun <V, S> UniformVector<V, S>.asVector3(): Vector3<V, S> where S : Space<V> = space.vectorOf(value, value, value)
 
 /**
  * Creates a [Vector1] whose elements all equal to [this.value][UniformVector.value].
  *
  * @since 0.0.1-alpha.4
  */
-public fun <V, S> UniformVector<V, S>.asVector4() where S : Space<V> = space.vectorOf(value, value, value, value)
+public fun <V, S> UniformVector<V, S>.asVector4(): Vector4<V, S> where S : Space<V> = space.vectorOf(value, value, value, value)
 
 /**
  * Retrieves the first element of this vector.
@@ -238,7 +238,7 @@ public fun <V, S> UniformVector<V, S>.asVector4() where S : Space<V> = space.vec
  * @since 0.0.1-alpha.4
  * @see VectorWithX.x
  */
-public operator fun <V> VectorWithX<V, *>.component1() = x
+public operator fun <V> VectorWithX<V, *>.component1(): V = x
 
 /**
  * Retrieves the second element of this vector.
@@ -246,7 +246,7 @@ public operator fun <V> VectorWithX<V, *>.component1() = x
  * @since 0.0.1-alpha.4
  * @see VectorWithY.y
  */
-public operator fun <V> VectorWithY<V, *>.component2() = y
+public operator fun <V> VectorWithY<V, *>.component2(): V = y
 
 /**
  * Retrieves the third element of this vector.
@@ -254,7 +254,7 @@ public operator fun <V> VectorWithY<V, *>.component2() = y
  * @since 0.0.1-alpha.4
  * @see VectorWithZ.z
  */
-public operator fun <V> VectorWithZ<V, *>.component3() = z
+public operator fun <V> VectorWithZ<V, *>.component3(): V = z
 
 /**
  * Retrieves the fourth element of this vector.
@@ -262,7 +262,7 @@ public operator fun <V> VectorWithZ<V, *>.component3() = z
  * @since 0.0.1-alpha.4
  * @see VectorWithW.w
  */
-public operator fun <V> VectorWithW<V, *>.component4() = w
+public operator fun <V> VectorWithW<V, *>.component4(): V = w
 
 /**
  * Maps this [Vector] into the provided [space].

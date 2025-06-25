@@ -31,5 +31,5 @@ public data object UIntSpace : NumeralSpace<UInt>, BufferableSpace<UInt> {
 	
 	override val sizeInBits: UInt get() = UInt.SIZE_BITS.toUInt()
 
-	override fun ByteAppender.append(value: UInt) = append(value.toInt())
+	override fun ByteAppender.append(value: UInt): Unit = append(value.toInt())
 }

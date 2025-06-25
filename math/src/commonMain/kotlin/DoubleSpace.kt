@@ -40,5 +40,5 @@ public data object DoubleSpace : FloatingPointSpace<Double>, SignedSpace<Double>
 
 	override fun Double.sqrt(): Double = kotlin.math.sqrt(this)
 
-	override fun ByteAppender.append(value: Double) = append(value.toBits())
+	override fun ByteAppender.append(value: Double): Unit = append(value.toBits())
 }

@@ -40,5 +40,5 @@ public data object FloatSpace : FloatingPointSpace<Float>, SignedSpace<Float>, B
 
 	override fun Float.sqrt(): Float = kotlin.math.sqrt(this)
 
-	override fun ByteAppender.append(value: Float) = append(value.toBits())
+	override fun ByteAppender.append(value: Float): Unit = append(value.toBits())
 }

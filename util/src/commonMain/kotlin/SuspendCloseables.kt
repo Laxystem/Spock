@@ -57,4 +57,5 @@ private value class SuspendingAutoCloseable(val autoCloseable: AutoCloseable) : 
  *
  * @since 0.0.1-alpha.1
  */
-public fun AutoCloseable.asSuspendCloseable() = this as? SuspendCloseable ?: SuspendingAutoCloseable(this)
+public fun AutoCloseable.asSuspendCloseable(): SuspendCloseable =
+	this as? SuspendCloseable ?: SuspendingAutoCloseable(this)
