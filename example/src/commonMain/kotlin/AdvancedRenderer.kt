@@ -153,6 +153,8 @@ public class AdvancedRenderer(
 		withContext(Dispatchers.Default) {
 			launch { meshBuffers.tick() }
 			launch { renderPipelines.tick() }
+			launch { indexBuffers.tick() }
+			launch { indexBufferPool.tick() }
 			launch {
 				shaders.cacheAll(
 					emptySequence<Shader>()
