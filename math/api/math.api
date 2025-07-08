@@ -202,6 +202,13 @@ public abstract interface class quest/laxla/spock/math/NumeralSpace : quest/laxl
 	public abstract fun times (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
 }
 
+public final class quest/laxla/spock/math/ProductsKt {
+	public static final fun cross (Lquest/laxla/spock/math/Vector2;Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+	public static final fun getMagnitude (Lquest/laxla/spock/math/Vector2;)Ljava/lang/Comparable;
+	public static final fun getMagnitudeSquared (Lquest/laxla/spock/math/Vector2;)Ljava/lang/Comparable;
+	public static final fun normalized (Lquest/laxla/spock/math/Vector2;)Lquest/laxla/spock/math/Vector2;
+}
+
 public abstract interface class quest/laxla/spock/math/SignedSpace : quest/laxla/spock/math/NumeralSpace {
 	public abstract fun abs (Ljava/lang/Comparable;)Ljava/lang/Comparable;
 	public abstract fun mod (Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;
