@@ -8,11 +8,7 @@ import kotlinx.cinterop.CPointed
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.posix.size_t
-import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.glfw.GlfwWindow
 
-@OptIn(RawSpockApi::class)
-public val GlfwWindow.x11Display: CPointer<out CPointed>? get() = glfwGetX11Display(raw)
-
-@OptIn(RawSpockApi::class)
-public val GlfwWindow.x11Window: size_t? get() = glfwGetX11Window(raw).takeIf { it != 0uL }
+public val GlfwWindow.x11Display: CPointer<out CPointed>? get() = glfwGetX11Display(pointer)
+public val GlfwWindow.x11Window: size_t? get() = glfwGetX11Window(pointer).takeIf { it != 0uL }

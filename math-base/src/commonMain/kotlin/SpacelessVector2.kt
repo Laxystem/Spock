@@ -12,14 +12,12 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
-import quest.laxla.spock.RawSpockApi
 
 /**
  * Represents a [Vector2] without referencing a [Space].
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 @Serializable(SpacelessVector2.Serializer::class)
 public data class SpacelessVector2<V>(public val x: V, public val y: V) {
 	/**
@@ -33,10 +31,10 @@ public data class SpacelessVector2<V>(public val x: V, public val y: V) {
 	 * @author Laxystem
 	 * @since 0.0.1-alpha.4
 	 */
-	public class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector2<V>> {
+	private class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector2<V>> {
 		@OptIn(InternalSerializationApi::class)
 		override val descriptor: SerialDescriptor = buildSerialDescriptor(
-			SpacelessVector2::class.qualifiedName!!,
+			"quest.laxla.spock.math.Vector2",
 			StructureKind.LIST,
 			impl.descriptor
 		) {

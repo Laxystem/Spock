@@ -142,8 +142,8 @@ public final class quest/laxla/spock/CachesKt {
 	public static final fun borrow (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun borrowDual (Lquest/laxla/spock/InferringCache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final synthetic fun closeValuesAndClear (Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun component1 (Lquest/laxla/spock/Cache$Entry;)Ljava/lang/Object;
-	public static final fun component2 (Lquest/laxla/spock/Cache$Entry;)Lquest/laxla/spock/SuspendCloseable;
+	public static final synthetic fun component1 (Lquest/laxla/spock/Cache$Entry;)Ljava/lang/Object;
+	public static final synthetic fun component2 (Lquest/laxla/spock/Cache$Entry;)Lquest/laxla/spock/SuspendCloseable;
 	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun get (Lquest/laxla/spock/Cache;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getDual (Lquest/laxla/spock/Cache;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -209,8 +209,6 @@ public final class quest/laxla/spock/FlagsKt {
 	public static synthetic fun setWithLock$default (Lquest/laxla/spock/Flag;Lkotlinx/coroutines/sync/Mutex;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun takeIfSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;
 	public static final fun takeUnlessSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;
-	public static final fun throwIfClosed (Ljava/lang/AutoCloseable;Lquest/laxla/spock/Flag;)V
-	public static final fun throwIfClosed (Lquest/laxla/spock/SuspendCloseable;Lquest/laxla/spock/Flag;)V
 }
 
 public abstract interface annotation class quest/laxla/spock/FutureContextFunction : java/lang/annotation/Annotation {
@@ -256,7 +254,6 @@ public final class quest/laxla/spock/KTarget$Android : quest/laxla/spock/KTarget
 	public static final field INSTANCE Lquest/laxla/spock/KTarget$Android;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$Android;
-	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
 	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -267,21 +264,18 @@ public final class quest/laxla/spock/KTarget$Companion {
 
 public final class quest/laxla/spock/KTarget$Jvm : quest/laxla/spock/KTarget$JvmBased {
 	public fun <init> ()V
-	public fun <init> (Lquest/laxla/spock/OperatingSystem$JvmSupported;)V
-	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem$JvmSupported;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lquest/laxla/spock/OperatingSystem$JvmSupported;
-	public final fun copy (Lquest/laxla/spock/OperatingSystem$JvmSupported;)Lquest/laxla/spock/KTarget$Jvm;
-	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$Jvm;Lquest/laxla/spock/OperatingSystem$JvmSupported;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$Jvm;
+	public fun <init> (Lquest/laxla/spock/OperatingSystem;)V
+	public synthetic fun <init> (Lquest/laxla/spock/OperatingSystem;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/OperatingSystem;
+	public final fun copy (Lquest/laxla/spock/OperatingSystem;)Lquest/laxla/spock/KTarget$Jvm;
+	public static synthetic fun copy$default (Lquest/laxla/spock/KTarget$Jvm;Lquest/laxla/spock/OperatingSystem;ILjava/lang/Object;)Lquest/laxla/spock/KTarget$Jvm;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$JvmSupported;
-	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
-	public synthetic fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
+	public fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public abstract interface class quest/laxla/spock/KTarget$JvmBased : quest/laxla/spock/KTarget {
-	public abstract fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased;
 }
 
 public final class quest/laxla/spock/KTarget$Native : quest/laxla/spock/KTarget {
@@ -353,7 +347,7 @@ public abstract interface class quest/laxla/spock/OperatingSystem {
 	public static final field Companion Lquest/laxla/spock/OperatingSystem$Companion;
 }
 
-public final class quest/laxla/spock/OperatingSystem$Android : quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased {
+public final class quest/laxla/spock/OperatingSystem$Android : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Android;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
@@ -363,42 +357,43 @@ public final class quest/laxla/spock/OperatingSystem$Android : quest/laxla/spock
 public final class quest/laxla/spock/OperatingSystem$Companion {
 }
 
-public final class quest/laxla/spock/OperatingSystem$FreeBsd : quest/laxla/spock/OperatingSystem$JvmSupported {
+public final class quest/laxla/spock/OperatingSystem$FreeBsd : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$FreeBsd;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public abstract interface class quest/laxla/spock/OperatingSystem$JvmSupported : quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased {
-}
-
-public final class quest/laxla/spock/OperatingSystem$Linux : quest/laxla/spock/OperatingSystem$JvmSupported {
+public final class quest/laxla/spock/OperatingSystem$Linux : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Linux;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class quest/laxla/spock/OperatingSystem$MacOS : quest/laxla/spock/OperatingSystem$JvmSupported {
+public final class quest/laxla/spock/OperatingSystem$MacOS : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$MacOS;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public abstract interface class quest/laxla/spock/OperatingSystem$SupportedByAnyJvmBased : quest/laxla/spock/OperatingSystem {
-}
-
-public final class quest/laxla/spock/OperatingSystem$Windows : quest/laxla/spock/OperatingSystem$JvmSupported {
+public final class quest/laxla/spock/OperatingSystem$Windows : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$Windows;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class quest/laxla/spock/OperatingSystem$iOS {
+public final class quest/laxla/spock/OperatingSystem$iOS : quest/laxla/spock/OperatingSystem {
 	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$iOS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/OperatingSystem$iPadOS : quest/laxla/spock/OperatingSystem {
+	public static final field INSTANCE Lquest/laxla/spock/OperatingSystem$iPadOS;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -408,12 +403,9 @@ public final class quest/laxla/spock/Platforms_jvmKt {
 	public static final fun getCurrent (Lquest/laxla/spock/KTarget$Companion;)Lquest/laxla/spock/KTarget;
 }
 
-public abstract interface annotation class quest/laxla/spock/RawSpockApi : java/lang/annotation/Annotation {
-	public abstract fun replaceWith ()Lkotlin/ReplaceWith;
-}
-
 public final class quest/laxla/spock/StringsKt {
 	public static final fun emptyString ()Ljava/lang/String;
+	public static final fun escapeHtml (Ljava/lang/String;)Ljava/lang/String;
 }
 
 public abstract interface class quest/laxla/spock/SuspendCloseable {

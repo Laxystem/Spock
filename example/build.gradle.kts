@@ -10,15 +10,18 @@ plugins {
 
 dependencies {
 	commonMainApi(projects.toolkit)
+	commonMainImplementation(projects.init)
 }
 
 kotlin {
 	linuxX64().binaries.executable {
 		entryPoint = "quest.laxla.spock.example.main"
 	}
+
 	jvm().mainRun {
 		mainClass = "quest.laxla.spock.example.MainKt"
 	}
+
 	wasmJs {
 		binaries.executable()
 		browser {

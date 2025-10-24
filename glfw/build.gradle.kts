@@ -18,8 +18,8 @@ kotlin {
 		}
 
 		jvmMain.dependencies {
+			api(libs.lwjgl.glfw)
 			implementation(libs.lwjgl)
-			implementation(libs.lwjgl.glfw)
 			runtimeOnly(projects.lwjgl)
 		}
 

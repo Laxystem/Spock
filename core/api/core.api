@@ -158,6 +158,10 @@ public final class quest/laxla/spock/ShadersKt {
 	public static final fun withKind (Lquest/laxla/spock/Shader;Lquest/laxla/spock/Shader$Language;Lquest/laxla/spock/Shader$FormFactor;)Lquest/laxla/spock/Shader$Transpiled;
 }
 
+public final class quest/laxla/spock/SizesKt {
+	public static final fun asVector3 (Lio/ygdrasil/webgpu/GPUExtent3D;)Lquest/laxla/spock/math/Vector3;
+}
+
 public abstract interface class quest/laxla/spock/StringShader : quest/laxla/spock/Shader {
 	public static final field FormFactor Lquest/laxla/spock/StringShader$FormFactor;
 	public abstract fun getCode ()Ljava/lang/String;

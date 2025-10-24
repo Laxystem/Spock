@@ -7,50 +7,41 @@ package quest.laxla.spock
  * 
  * @since 0.0.1-alpha.1
  */
-public sealed interface OperatingSystem {
+public interface OperatingSystem {
 	/**
-	 * Any operating system supported by [Kotlin/Jvm][KTarget.Jvm] or [Android].
-	 *
 	 * @since 0.0.1-alpha.1
 	 */
-	public sealed interface SupportedByAnyJvmBased : OperatingSystem
-
-	/**
-	 * An operating directly supported by [Kotlin/Jvm][KTarget.Jvm].
-	 *
-	 * @since 0.0.1-alpha.1
-	 */
-	public sealed interface JvmSupported : SupportedByAnyJvmBased
+	public data object Android : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object Android : SupportedByAnyJvmBased
+	public data object FreeBsd : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object FreeBsd : JvmSupported
+	public data object Linux : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object Linux : JvmSupported
+	public data object MacOS : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object MacOS : JvmSupported
+	public data object Windows : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object Windows : JvmSupported
+	public data object iOS : OperatingSystem
 
 	/**
-	 * @since 0.0.1-alpha.1
+	 * @since 0.0.1-alpha.4
 	 */
-	public data object iOS
+	public data object iPadOS : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1

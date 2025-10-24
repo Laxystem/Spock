@@ -15,5 +15,4 @@ private val currentTarget = System.getProperty("os.name").run {
 	}
 }.let(KTarget::Jvm)
 
-@ExperimentalSpockApi
 public actual val KTarget.Companion.current: KTarget get() = currentTarget

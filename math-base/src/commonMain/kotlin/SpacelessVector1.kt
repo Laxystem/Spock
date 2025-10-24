@@ -12,7 +12,6 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
-import quest.laxla.spock.RawSpockApi
 import kotlin.jvm.JvmInline
 
 /**
@@ -21,7 +20,6 @@ import kotlin.jvm.JvmInline
  * @since 0.0.1-alpha.4
  */
 @JvmInline
-@RawSpockApi
 @Serializable(SpacelessVector1.Serializer::class)
 public value class SpacelessVector1<V>(public val x: V) {
 	/**
@@ -41,10 +39,10 @@ public value class SpacelessVector1<V>(public val x: V) {
 	 * @author Laxystem
 	 * @since 0.0.1-alpha.4
 	 */
-	public class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector1<V>> {
+	private class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector1<V>> {
 		@OptIn(InternalSerializationApi::class)
 		override val descriptor: SerialDescriptor = buildSerialDescriptor(
-			SpacelessVector1::class.qualifiedName!!,
+			"quest.laxla.spock.math.Vector1",
 			StructureKind.LIST,
 			impl.descriptor
 		) {

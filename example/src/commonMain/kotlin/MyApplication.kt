@@ -5,6 +5,7 @@ import io.ygdrasil.webgpu.GPUVertexFormat
 import kotlinx.collections.immutable.persistentListOf
 import quest.laxla.spock.*
 import quest.laxla.spock.math.*
+import quest.laxla.spock.toolkit.naïvelySelectTextureFormat
 import quest.laxla.spock.toolkit.webGpuApplication
 
 // do not use in shader; IntelliJ formatting shenanigans
@@ -61,7 +62,7 @@ public suspend fun myApplication(title: String): Unit = webGpuApplication(title)
 			),
 			fragmentShader = wgslFragmentShaderOf(
 				wgsl = shader,
-				textureFormat = surface.textureFormat,
+				textureFormat = surface.naïvelySelectTextureFormat(),
 				entrypoint = fragmentMain
 			),
 			vertices = persistentListOf(

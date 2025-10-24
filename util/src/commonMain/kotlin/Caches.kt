@@ -12,7 +12,6 @@ import kotlin.jvm.JvmSynthetic
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public suspend operator fun <Descriptor, Product> Cache<Descriptor, Product>.get(descriptor: Descriptor): Product =
 	getEntry(descriptor).product
 
@@ -37,6 +36,7 @@ public suspend fun <Descriptor, Product> InferringCache<Descriptor, Product>.bor
  *
  * @since 0.0.1-alpha.4
  */
+@JvmSynthetic
 public operator fun <T> Cache.Entry<T>.component1(): T = product
 
 /**
@@ -44,11 +44,12 @@ public operator fun <T> Cache.Entry<T>.component1(): T = product
  *
  * @since 0.0.1-alpha.4
  */
+@JvmSynthetic
 @DelicateSpockApi
 public operator fun <T> Cache.Entry<T>.component2(): SuspendCloseable = this
 
 /**
- * Was this [entry]&nbsp;[borrow]ed from this [Cache]?
+ * Was this [entry]&nbsp;[borrow]ed from the provided [Cache]?
  *
  * @since 0.0.1-alpha.4
  */
@@ -134,7 +135,6 @@ public suspend fun <Product> InferringCache<*, Product>.put(product: Product, au
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-@OptIn(DelicateSpockApi::class)
 @JvmSynthetic
 @DelicateSpockApi
 @PublishedApi
@@ -152,8 +152,6 @@ internal suspend fun <Product> MutableMap<*, Cache.Entry<Product>>.closeValuesAn
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
-@DelicateSpockApi
 public inline fun <Descriptor, Product> EverlastingCache(
 	crossinline producer: suspend (Descriptor) -> Cache.Entry<Product>,
 	mutex: Mutex? = Mutex(),
@@ -169,6 +167,7 @@ public inline fun <Descriptor, Product> EverlastingCache(
 
 	override suspend fun contains(descriptor: Descriptor): Boolean = mutex.withLockIfAny { descriptor in contents }
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor): Unit? = mutex.withLockIfAny {
 		contents[descriptor]?.close()
 	}
@@ -180,6 +179,7 @@ public inline fun <Descriptor, Product> EverlastingCache(
 		}
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun close() = mutex.withLockIfAny {
 		contents.closeValuesAndClear()
 	}
@@ -195,7 +195,6 @@ public inline fun <Descriptor, Product> EverlastingCache(
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(DelicateSpockApi::class, RawSpockApi::class)
 public inline fun <Descriptor, Product> EverlastingCache(
 	mutex: Mutex? = Mutex(),
 	crossinline entryKind: (Product) -> Cache.Entry<Product> = ::CacheEntry,
@@ -211,8 +210,6 @@ public inline fun <Descriptor, Product> EverlastingCache(
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-@OptIn(DelicateSpockApi::class)
-@RawSpockApi
 public inline fun <Descriptor, Product> PruningCache(
 	crossinline producer: suspend (Descriptor) -> Cache.Entry<Product>,
 	mutex: Mutex? = Mutex()
@@ -220,7 +217,6 @@ public inline fun <Descriptor, Product> PruningCache(
 	var previousContents = hashMapOf<Descriptor, Cache.Entry<Product>>()
 	var currentContents = hashMapOf<Descriptor, Cache.Entry<Product>>()
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<Product> = mutex.withLockIfAny {
 		currentContents.getOrPut(descriptor) { previousContents.remove(descriptor) ?: producer(descriptor) }
 	}
@@ -234,13 +230,14 @@ public inline fun <Descriptor, Product> PruningCache(
 				previousContents.remove(descriptor)?.also { currentContents[descriptor] = it } != null
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun tick() = mutex.withLockIfAny {
 		val emptyMap = previousContents.apply { closeValuesAndClear() }
 		previousContents = currentContents
 		currentContents = emptyMap
 	}
 
-	@DelicateSpockApi
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor): Unit? = mutex.withLockIfAny {
 		when (descriptor) {
 			in currentContents -> currentContents.remove(descriptor)?.close()
@@ -256,6 +253,7 @@ public inline fun <Descriptor, Product> PruningCache(
 		}
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun close() = mutex.withLockIfAny {
 		previousContents.closeValuesAndClear()
 		currentContents.closeValuesAndClear()
@@ -272,7 +270,6 @@ public inline fun <Descriptor, Product> PruningCache(
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public inline fun <Descriptor, Product> PruningCache(
 	mutex: Mutex? = Mutex(),
 	crossinline entryKind: (Product) -> Cache.Entry<Product> = ::CacheEntry,
@@ -288,9 +285,7 @@ public inline fun <Descriptor, Product> PruningCache(
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-@OptIn(DelicateSpockApi::class)
 @PublishedApi
-@RawSpockApi
 internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expose this
 	crossinline producer: suspend (Descriptor) -> Cache.Entry<Product>,
 	crossinline inferrer: (Product) -> Descriptor,
@@ -304,7 +299,6 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
 		!contents[descriptor].isNullOrEmpty()
 	}
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<Product> = mutex.withLockIfAny {
 		val products = descriptor.products
 
@@ -319,6 +313,7 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
 		else products.first().also { products -= it }
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor): Unit? = mutex.withLockIfAny {
 		val products = contents[descriptor]
 		if (products.isNullOrEmpty()) return null
@@ -341,6 +336,7 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
 		else inferrer(entry.product).products += entry
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun close() = mutex.withLockIfAny {
 		for (set in contents.values) {
 			for (product in set) product.close()
@@ -359,7 +355,6 @@ internal inline fun <Descriptor, Product> Pool( // TODO: figure out how to expos
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public inline fun <Descriptor, Product> Pool(
 	crossinline producer: suspend (Descriptor) -> Product,
 	crossinline inferrer: (Product) -> Descriptor,
@@ -381,8 +376,6 @@ public inline fun <Descriptor, Product> Pool(
  * @since 0.0.1-alpha.4
  * @author Laxystem
  */
-@OptIn(DelicateSpockApi::class)
-@RawSpockApi
 @PublishedApi
 internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how to expose this
 	crossinline producer: suspend (Descriptor) -> Cache.Entry<Product>,
@@ -411,7 +404,6 @@ internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how t
 
 	override fun descriptorOf(product: Product): Descriptor = inferrer(product)
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<Product> = mutex.withLockIfAny {
 		val products = descriptor.products
 
@@ -429,6 +421,7 @@ internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how t
 		!currentContents[descriptor].isNullOrEmpty() || !previousContents[descriptor].isNullOrEmpty()
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor) = mutex.withLockIfAny {
 		val currentProducts = currentContents[descriptor]
 		val previousProducts = previousContents[descriptor]
@@ -450,6 +443,7 @@ internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how t
 		result
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun close() = mutex.withLockIfAny {
 		for (set in previousContents.values) {
 			for (entry in set) entry.close()
@@ -474,7 +468,6 @@ internal inline fun <Descriptor, Product> PruningPool( // TODO: figure out how t
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public inline fun <Descriptor, Product> PruningPool(
 	crossinline producer: suspend (Descriptor) -> Product,
 	crossinline inferrer: (Product) -> Descriptor,
@@ -500,8 +493,6 @@ internal object Empty
  * @author Laxystem
  * @since 0.0.1-alpha.4
  */
-@OptIn(DelicateSpockApi::class)
-@RawSpockApi
 public inline fun <Descriptor, Product> SingleValueCache(
 	mutex: Mutex? = Mutex(),
 	crossinline producer: suspend (Descriptor) -> Cache.Entry<Product>
@@ -513,7 +504,7 @@ public inline fun <Descriptor, Product> SingleValueCache(
 		currentDescriptor == descriptor
 	}
 
-	@RawSpockApi
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<Product> = mutex.withLockIfAny {
 		if (currentDescriptor == descriptor) value!!
 		else {
@@ -532,16 +523,19 @@ public inline fun <Descriptor, Product> SingleValueCache(
 		} else producer(descriptor)
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	private suspend fun closeWithoutLock() {
 		currentDescriptor = Empty
 		value?.close()
 		value = null
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor) = mutex.withLockIfAny {
 		if (currentDescriptor == descriptor) closeWithoutLock()
 	}
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun close() = mutex.withLockIfAny { closeWithoutLock() }
 
 	override fun toString(): String = "SingleValueCache(descriptor=$currentDescriptor,entry=$value)"
@@ -553,7 +547,6 @@ public inline fun <Descriptor, Product> SingleValueCache(
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public suspend inline fun <Descriptor, Product> SingleValueCache(
 	mutex: Mutex? = Mutex(),
 	crossinline entryKind: (Product) -> Cache.Entry<Product>,
@@ -573,7 +566,6 @@ public inline fun <Descriptor, Product> NoopCache(
 ): InferringCache<Descriptor, Product> = object : InferringCache<Descriptor, Product> {
 	override suspend fun contains(descriptor: Descriptor): Boolean = false
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<Product> =
 		Cache.Entry.Reference(producer(descriptor))
 
@@ -647,14 +639,16 @@ public suspend fun <Descriptor1, Descriptor2, Product> InferringCache<Pair<Descr
  * For better control over this behaviour, it is recommended to use this function in combination with a [Closer],
  * like so:
  * ```kotlin
- * interface Foo : SuspendCloseable
- *
- * fun Foo(barCache: Cache<BarDescriptor, Bar>): Foo = object Foo : Closer by Closer() {
- *     // only the first cache will be closed
- *     val bars = +EverlastingCache<Foobar, BarDescriptor>(producer = foobar::toBarDescriptor()) then barCache
+ * // given:
+ * val foos = EverlastingCache<Foo, Bar>(producer = foo::toBar)
+ * val bars = EverlastingCache<Bar, Etc>(producer = foo:toEtc)
+ * // in:
+ * autoclose {
+ *     val cache = +foos then +bars
  *
  *     // etc
  * }
+ * // both caches will be closed in order when the autoclose block ends.
  * ```
  *
  * The returned cache has no state as of itself; It only operates on the caches provided to it.
@@ -662,7 +656,6 @@ public suspend fun <Descriptor1, Descriptor2, Product> InferringCache<Pair<Descr
  * @since 0.0.1-alpha.4
  * @author Laxystem
  */
-@OptIn(DelicateSpockApi::class)
 public infix fun <Descriptor, MidProduct, FinalProduct> Cache<Descriptor, MidProduct>.then(
 	cache: Cache<MidProduct, FinalProduct>
 ): Cache<Descriptor, FinalProduct> = object : Cache<Descriptor, FinalProduct> {
@@ -670,13 +663,13 @@ public infix fun <Descriptor, MidProduct, FinalProduct> Cache<Descriptor, MidPro
 
 	override suspend fun contains(descriptor: Descriptor): Boolean = baseCache[descriptor] in cache
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Descriptor): Cache.Entry<FinalProduct> =
 		cache.getEntry(baseCache[descriptor])
 
 	override suspend fun getAndRemove(descriptor: Descriptor): Cache.Entry<FinalProduct> =
 		cache.getAndRemove(baseCache[descriptor])
 
+	@OptIn(DelicateSpockApi::class)
 	override suspend fun forget(descriptor: Descriptor) {
 		while (descriptor in baseCache) baseCache.getAndRemove(descriptor).apply { cache.forget(product) }.close()
 	}
@@ -746,7 +739,6 @@ public infix fun <Descriptor, MidProduct, FinalProduct> InferringCache<Descripto
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public inline fun <Descriptor, MidDescriptor, Product> BorrowingCache(
 	from: InferringCache<MidDescriptor, Product>,
 	mutex: Mutex? = Mutex(),

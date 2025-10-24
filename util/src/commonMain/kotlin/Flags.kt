@@ -96,35 +96,3 @@ public suspend inline fun Flag.setWithLock(mutex: Mutex, owner: Any? = null, act
 		set(action)
 	}
 }
-
-private fun Flag.throwIfClosed() = ifSet {
-	throw UnsupportedOperationException("This resource was closed, and can no longer be used.")
-}
-
-/**
- * Throws an [UnsupportedOperationException] declaring this resource was closed if the given [Flag] is set.
- *
- * Note: this function is intended to be used by implementations,
- * and does not perform any actual state-checking besides accessing [flag].
- *
- * @since 0.0.1-alpha.4
- */
-@Suppress("UnusedReceiverParameter")
-@RawSpockApi
-public fun SuspendCloseable.throwIfClosed(flag: Flag) {
-	flag.throwIfClosed()
-}
-
-/**
- * Throws an [UnsupportedOperationException] declaring this resource was closed if the given [Flag] is set.
- *
- * Note: this function is intended to be used by implementations,
- * and does not perform any actual state-checking besides accessing [flag].
- *
- * @since 0.0.1-alpha.4
- */
-@Suppress("UnusedReceiverParameter")
-@RawSpockApi
-public fun AutoCloseable.throwIfClosed(flag: Flag) {
-	flag.throwIfClosed()
-}

@@ -2,12 +2,7 @@
 
 package quest.laxla.spock.toolkit
 
-import io.ygdrasil.webgpu.Adapter
-import io.ygdrasil.webgpu.Device
-import io.ygdrasil.webgpu.DeviceDescriptor
-import io.ygdrasil.webgpu.GPUDevice
-import io.ygdrasil.webgpu.NativeSurface
-import quest.laxla.spock.RawSpockApi
+import io.ygdrasil.webgpu.*
 import quest.laxla.spock.glfw.GlfwWindow
 
 /**
@@ -49,7 +44,6 @@ internal expect fun Wgpu.requestAdapter(surface: NativeSurface): Adapter?
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(RawSpockApi::class)
 public fun Wgpu.requestAdapter(surface: Surface): Adapter = requestAdapter(surface.raw)?.also { adapter ->
 	surface.raw.computeSurfaceCapabilities(adapter)
 } ?: error("Failed creating WebGPU adapter for surface $surface")

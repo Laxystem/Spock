@@ -41,7 +41,6 @@ kotlin {
 		}
 
 		named("glfwMain").dependencies {
-			implementation(libs.lwjgl.glfw)
 			implementation(projects.glfw)
 		}
 

@@ -43,7 +43,6 @@ public interface Cache<in Descriptor, out Product> : SuspendCloseable {
 	 * @see Cache.get
 	 * @see Cache.Entry
 	 */
-	@RawSpockApi(replaceWith = ReplaceWith(expression = "this.get(descriptor)"))
 	public suspend fun getEntry(descriptor: Descriptor): Entry<Product>
 
 	/**
@@ -104,7 +103,7 @@ public interface Cache<in Descriptor, out Product> : SuspendCloseable {
 	 * @see CacheEntry
 	 * @see Reference
 	 */
-	public sealed interface Entry<out T> : SuspendCloseable {
+	public interface Entry<out T> : SuspendCloseable {
 		/**
 		 * The [Cache] product this entry represents.
 		 *

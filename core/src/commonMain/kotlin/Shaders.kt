@@ -304,7 +304,6 @@ public fun ShaderCache(
 
 	private fun findAccepted(shader: Shader): Shader? = findAccepted(shader, ::findAccepted)
 
-	@RawSpockApi
 	override suspend fun getEntry(descriptor: Shader): Cache.Entry<Shader?> =
 		findAccepted(descriptor) { get(it) }?.let(Cache.Entry<Shader>::Reference) ?: transpiledShaders.getEntry(descriptor)
 

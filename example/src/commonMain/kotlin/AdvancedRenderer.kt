@@ -8,10 +8,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import quest.laxla.spock.*
 import quest.laxla.spock.math.z
+import quest.laxla.spock.toolkit.*
 import quest.laxla.spock.toolkit.ShaderModuleDescriptor
-import quest.laxla.spock.toolkit.Surface
-import quest.laxla.spock.toolkit.WebGpuRenderer
-import quest.laxla.spock.toolkit.asSize3D
 import kotlin.uuid.ExperimentalUuidApi
 
 /**
@@ -27,7 +25,7 @@ public class AdvancedRenderer(
 	override val device: GPUDevice,
 	override val surface: Surface,
 	transpiler: Shader.Transpiler.Simple<Wgsl, StringShader.FormFactor>,
-	override val format: GPUTextureFormat = surface.textureFormat,
+	override val format: GPUTextureFormat = surface.naïvelySelectTextureFormat(),
 	public val backgroundColor: GPUColor = Color(.0, .0, .0, 1.0),
 	enableDebugLabels: Boolean = true,
 	private val byteArrayPool: InferringCache<Int, ByteArray> = NoopCache(

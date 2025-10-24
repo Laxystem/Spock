@@ -1,21 +1,17 @@
-package quest.laxla.spock.example
+package quest.laxla.spock.renderTest
 
 import io.ygdrasil.webgpu.*
 import quest.laxla.spock.*
 import quest.laxla.spock.toolkit.Surface
 import quest.laxla.spock.toolkit.WebGpuRenderer
+import quest.laxla.spock.toolkit.naïvelySelectTextureFormat
 
-internal val Surface.textureFormat
-	get() = preferredTextureFormat
-		?: GPUTextureFormat.RGBA8Unorm.takeIf { it in supportedTextureFormats }
-		?: GPUTextureFormat.BGRA8Unorm.takeIf { it in supportedTextureFormats }
-		?: supportedTextureFormats.first()
 
 @OptIn(ExperimentalSpockApi::class)
-public class MyRenderer(
+public class BasicRenderer(
 	override val device: GPUDevice,
 	override val surface: Surface,
-	override val format: GPUTextureFormat = surface.textureFormat
+	override val format: GPUTextureFormat = surface.naïvelySelectTextureFormat()
 ) : WebGpuRenderer, Closer by Closer() {
 	private val vertices = floatArrayOf(
 		-0.8f, -0.8f,

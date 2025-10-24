@@ -24,16 +24,13 @@ public class quest/laxla/spock/glfw/GlfwException : java/lang/RuntimeException {
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 }
 
-public final class quest/laxla/spock/glfw/GlfwWindow : quest/laxla/spock/Loggable, quest/laxla/spock/windowing/Window {
+public final class quest/laxla/spock/glfw/GlfwWindow : quest/laxla/spock/windowing/Window {
 	public synthetic fun <init> (IILjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun <init> (JLio/github/oshai/kotlinlogging/Level;)V
-	public synthetic fun <init> (JLio/github/oshai/kotlinlogging/Level;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (J)V
 	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun getRaw ()J
+	public final fun getPointer ()J
 	public fun getShouldClose ()Z
 	public fun getSize ()Lkotlinx/coroutines/Deferred;
-	public fun getSubjectiveLogLevel ()Lio/github/oshai/kotlinlogging/Level;
-	public fun setSubjectiveLogLevel (Lio/github/oshai/kotlinlogging/Level;)V
 }
 
 public final class quest/laxla/spock/glfw/Glfw_jvmKt {

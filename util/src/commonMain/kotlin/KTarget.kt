@@ -5,7 +5,7 @@ package quest.laxla.spock
  * 
  * @since 0.0.1-alpha.1
  */
-public sealed interface KTarget {
+public interface KTarget {
 	/**
 	 * The current operating system if known.
 	 * 
@@ -29,16 +29,13 @@ public sealed interface KTarget {
 
 	/**
 	 * @since 0.0.1-alpha.1
-	 * @see OperatingSystem.SupportedByAnyJvmBased
 	 */
-	public sealed interface JvmBased : KTarget {
-		override val operatingSystem: OperatingSystem.SupportedByAnyJvmBased?
-	}
+	public sealed interface JvmBased : KTarget
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data class Jvm(override val operatingSystem: OperatingSystem.JvmSupported? = null) : JvmBased
+	public data class Jvm(override val operatingSystem: OperatingSystem? = null) : JvmBased
 
 	/**
 	 * @since 0.0.1-alpha.1

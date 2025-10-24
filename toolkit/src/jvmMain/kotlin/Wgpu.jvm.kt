@@ -28,18 +28,16 @@ private const val SessionType = "XDG_SESSION_TYPE"
 private const val Wayland = "wayland"
 private const val X11 = "x11"
 
-@OptIn(ExperimentalSpockApi::class)
-@RawSpockApi
 internal actual fun Wgpu.getRawSurfaceOrNull(window: GlfwWindow): NativeSurface? = when (KTarget.current.operatingSystem) {
 	OperatingSystem.Linux, OperatingSystem.FreeBsd -> when (val sessionType = System.getenv(SessionType)) {
 		X11 -> getSurfaceFromX11Window(
 			glfwGetX11Display().toNativeAddress(),
-			glfwGetX11Window(window.raw).toULong()
+			glfwGetX11Window(window.pointer).toULong()
 		)
 
 		Wayland -> getSurfaceFromWaylandWindow(
 			glfwGetWaylandDisplay().toNativeAddress(),
-			glfwGetWaylandWindow(window.raw).toNativeAddress()
+			glfwGetWaylandWindow(window.pointer).toNativeAddress()
 		)
 
 		else -> {
@@ -51,12 +49,12 @@ internal actual fun Wgpu.getRawSurfaceOrNull(window: GlfwWindow): NativeSurface?
 	OperatingSystem.Windows -> {
 		getSurfaceFromWindows(
 			Kernel32.INSTANCE.GetModuleHandle(null).pointer.toNativeAddress(),
-			GLFWNativeWin32.glfwGetWin32Window(window.raw).toNativeAddress()
+			GLFWNativeWin32.glfwGetWin32Window(window.pointer).toNativeAddress()
 		)
 	}
 
 	OperatingSystem.MacOS -> CAMetalLayer.layer().run {
-		glfwGetCocoaWindow(window.raw).rococoa<NSWindow>().contentView()?.apply {
+		glfwGetCocoaWindow(window.pointer).rococoa<NSWindow>().contentView()?.apply {
 			setWantsLayer(true)
 			setLayer(id().toLong().toPointer())
 		}

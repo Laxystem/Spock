@@ -9,12 +9,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import org.w3c.dom.HTMLCanvasElement
 import quest.laxla.spock.ExperimentalSpockApi
-import quest.laxla.spock.RawSpockApi
 import quest.laxla.spock.math.UIntSpace
 import quest.laxla.spock.math.Vector2ui
 import quest.laxla.spock.math.vectorOf
 import quest.laxla.spock.windowing.Window
 
+// TODO: actually check what texture formats and alpha modes are supported...
 private val SupportedTextureFormats = persistentSetOf(
 	GPUTextureFormat.BGRA8Unorm,
 	GPUTextureFormat.RGBA8Unorm,
@@ -32,7 +32,6 @@ private class CanvasSurfaceWindow(val surface: Surface) : Window { // todo: impr
 	override val shouldClose: Boolean
 		get() = false
 
-	@OptIn(RawSpockApi::class)
 	@ExperimentalSpockApi
 	override val size: Deferred<Vector2ui>
 		get() = scope.async { UIntSpace.vectorOf(surface.raw.width, surface.raw.height) }
@@ -43,8 +42,7 @@ private class CanvasSurfaceWindow(val surface: Surface) : Window { // todo: impr
 
 }
 
-@OptIn(RawSpockApi::class)
-public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCloseable {
+public actual class Surface(public val raw: CanvasSurface) : AutoCloseable {
 	public actual val window: Window = CanvasSurfaceWindow(this)
 
 	public actual val preferredTextureFormat: GPUTextureFormat? = raw.preferredCanvasFormat
@@ -52,7 +50,7 @@ public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCl
 	public actual val supportedTextureFormats: ImmutableSet<GPUTextureFormat> = SupportedTextureFormats
 	public actual val supportedAlphaModes: ImmutableSet<CompositeAlphaMode> = SupportedAlphaModes
 
-	public actual val currentTexture: SurfaceTexture = raw.getCurrentTexture()
+	public actual val currentTexture: SurfaceTexture get() = raw.getCurrentTexture()
 
 	/**
 	 * Create a new [quest.laxla.spock.toolkit.Surface] for this [canvas].
@@ -60,6 +58,7 @@ public actual class Surface(@RawSpockApi public val raw: CanvasSurface) : AutoCl
 	 * @since 0.0.1-alpha.4
 	 * @see io.ygdrasil.webgpu.HTMLCanvasElement.getCanvasSurface
 	 */
+	@OptIn(ExperimentalWasmJsInterop::class)
 	public constructor(canvas: HTMLCanvasElement) : this(
 		raw = canvas
 			.unsafeCast<io.ygdrasil.webgpu.HTMLCanvasElement>()

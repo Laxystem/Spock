@@ -4,7 +4,6 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import quest.laxla.spock.RawSpockApi
 
 /**
  * @param V [Vector] type
@@ -36,8 +35,6 @@ private inline fun <V, S, Vec, NoS> createVectorSerializer(
  *
  * @since 0.0.1-alpha.4
  */
-
-@RawSpockApi
 public fun <V> Vector1<V, *>.withoutSpace(): SpacelessVector1<V> = SpacelessVector1(x)
 
 /**
@@ -47,15 +44,14 @@ public fun <V> Vector1<V, *>.withoutSpace(): SpacelessVector1<V> = SpacelessVect
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V, S> Vector1.Companion.serializer(
 	name: String,
 	space: S,
-	impl: KSerializer<V>
+	elementSerializer: KSerializer<V>
 ): KSerializer<Vector1<V, S>> where S : Space<V> = createVectorSerializer(
 	name,
-	impl,
-	SpacelessVector1.serializer(impl),
+	elementSerializer,
+	SpacelessVector1.serializer(elementSerializer),
 	withSpace = { space(space) },
 	withoutSpace = { withoutSpace() }
 )
@@ -65,7 +61,6 @@ public fun <V, S> Vector1.Companion.serializer(
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V> Vector2<V, *>.withoutSpace(): SpacelessVector2<V> = SpacelessVector2(x, y)
 
 /**
@@ -75,15 +70,14 @@ public fun <V> Vector2<V, *>.withoutSpace(): SpacelessVector2<V> = SpacelessVect
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V, S> Vector2.Companion.serializer(
 	name: String,
 	space: S,
-	impl: KSerializer<V>
+	elementSerializer: KSerializer<V>
 ): KSerializer<Vector2<V, S>> where S : Space<V> = createVectorSerializer(
 	name,
-	impl,
-	SpacelessVector2.serializer(impl),
+	elementSerializer,
+	SpacelessVector2.serializer(elementSerializer),
 	withSpace = { space(space) },
 	withoutSpace = { withoutSpace() }
 )
@@ -93,7 +87,6 @@ public fun <V, S> Vector2.Companion.serializer(
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V> Vector3<V, *>.withoutSpace(): SpacelessVector3<V> = SpacelessVector3(x, y, z)
 
 /**
@@ -103,15 +96,14 @@ public fun <V> Vector3<V, *>.withoutSpace(): SpacelessVector3<V> = SpacelessVect
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V, S> Vector3.Companion.serializer(
 	name: String,
 	space: S,
-	impl: KSerializer<V>
+	elementSerializer: KSerializer<V>
 ): KSerializer<Vector3<V, S>> where S : Space<V> = createVectorSerializer(
 	name,
-	impl,
-	SpacelessVector3.serializer(impl),
+	elementSerializer,
+	SpacelessVector3.serializer(elementSerializer),
 	withSpace = { space(space) },
 	withoutSpace = { withoutSpace() }
 )
@@ -121,7 +113,6 @@ public fun <V, S> Vector3.Companion.serializer(
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V> Vector4<V, *>.withoutSpace(): SpacelessVector4<V> = SpacelessVector4(x, y, z, w)
 
 /**
@@ -131,15 +122,14 @@ public fun <V> Vector4<V, *>.withoutSpace(): SpacelessVector4<V> = SpacelessVect
  *
  * @since 0.0.1-alpha.4
  */
-@RawSpockApi
 public fun <V, S> Vector4.Companion.serializer(
 	name: String,
 	space: S,
-	impl: KSerializer<V>
+	elementSerializer: KSerializer<V>
 ): KSerializer<Vector4<V, S>> where S : Space<V> = createVectorSerializer(
 	name,
-	impl,
-	SpacelessVector4.serializer(impl),
+	elementSerializer,
+	SpacelessVector4.serializer(elementSerializer),
 	withSpace = { space(space) },
 	withoutSpace = { withoutSpace() }
 )

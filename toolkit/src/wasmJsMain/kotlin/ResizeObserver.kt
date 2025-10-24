@@ -1,4 +1,5 @@
 @file:Suppress("unused") // external
+@file:OptIn(ExperimentalWasmJsInterop::class)
 
 package quest.laxla.spock.toolkit
 
@@ -20,7 +21,8 @@ internal external interface ResizeObserverEntry : JsAny {
 	val target: Element
 }
 
-internal external class ResizeObserver(callback: (entries: JsArray<ResizeObserverEntry>, observer: ResizeObserver) -> Unit) : JsAny {
+internal external class ResizeObserver(callback: (entries: JsArray<ResizeObserverEntry>, observer: ResizeObserver) -> Unit) :
+	JsAny {
 	fun disconnect()
 	fun observe(element: Element, options: ResizeObserverOptions = definedExternally)
 	fun unobserve(element: Element, options: ResizeObserverOptions = definedExternally)

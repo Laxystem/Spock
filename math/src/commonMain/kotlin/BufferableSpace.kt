@@ -1,7 +1,6 @@
 package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
-import quest.laxla.spock.appendToByteString
 
 /**
  * [Space] whose [Vector]s can be serialized into a [ByteString][kotlinx.io.bytestring.ByteString].
@@ -10,7 +9,7 @@ import quest.laxla.spock.appendToByteString
  */
 public interface BufferableSpace<V> : SizedSpace<V> {
 	/**
-	 * Appends this [value] into this [appendToByteString].
+	 * Appends this [value] into this [ByteAppender].
 	 *
 	 * Concrete implementations are recommended to rename [value] to the concrete type [V] represents.
 	 *

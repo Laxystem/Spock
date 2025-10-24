@@ -6,10 +6,13 @@ include(
 	"docs",
 	"example",
 	"glfw",
+	"init",
 	"lwjgl",
 	"math",
 	"math-base",
 	"math-codegen",
+	"render-test",
+	"renderer-adaptive",
 	"toolkit",
 	"util",
 	"windowing"

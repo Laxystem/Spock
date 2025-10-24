@@ -20,6 +20,9 @@ To build Spock for a particular target, your machine needs to have:
   * `libcrypt.so.1`
       * `core/libxcrypt-compat` on Arch
       * `libxcrypt-static` and `libxcrypt-compat` on Fedora
+  * GLFW
+    * `glfw`, `glfw-devel`, and `glfw-doc` on Fedora
+
 
 It is recommended to install all dependencies, even if you don't intend on using some targets.
 
@@ -38,7 +41,7 @@ It is recommended to install all dependencies, even if you don't intend on using
 * Implementations should be instantiated via extension functions (e.g. `ByteArray.appender()`) or functions named the same or as if they were a subtype of as the interface (e.g. `ByteAppender()`, `NonThrowingByteAppender()`).
 * If an implementation accepts a lambda as a parameter (e.g. `EverlastingMutex(producer: (Descriptor) -> Product)`), it should be implemented, with the lambda marked `crossinline`. Otherwise, declare a private class (usually called `FooImpl`).
     * Mark the implementation class (or if inline, the function) with the `@author` KDoc tag.
-* Always expose everything necessary for users to reimplement a built-in API. If some API is lower-level and should not be used except for this specific purpsoe, mark it with `@RawSpockApi`.
+* Always attempt to allow users to re-implement parts of the API.
 * If an API allows easily breaking the contract of another, mark it with `@DelicateSpockApi`.
 * If you're unsure about an API, mark it with `@ExperimentalSpockApi`.
 * Document your APIs, and always use the `@since` KDoc tag.
@@ -58,14 +61,14 @@ It is recommended to install all dependencies, even if you don't intend on using
 * If you're sure about the current API, but not sure if you want to add more functions later, mark it with `@RequiresSubclassOptIn(ExperimentalSpockApi::class)`.
 * Do not insist on only having one function.
 * Do not insist on using an `operator fun invoke`.
-* Do not insist on using a function in favor or a property.
+* Do not insist on using a function in favor of a property.
 * If the interface can be made functional, make it so.
 * See the [Kotlin documentation](https://kotlinlang.org/docs/fun-interfaces.html#functional-interfaces-vs-type-aliases) on the topic.
 
 ### Implementation
 
-* Prefer nullability over `::prop.isInitialized`.
 * Prefer `Flag` over `lateinit var: Unit`.
+* Prefer nullability over `::prop.isInitialized`.
 
 ## Useful Commands
 
@@ -89,8 +92,8 @@ It is recommended to install all dependencies, even if you don't intend on using
 > It'll be generated automatically.
 
 A link to the rendered documentation will be provided in the console,
-in the form of `localhost:PORT/spock/docs/current/index.html`,
-usually [on port 63342](http://localhost:63342/spock/docs/current/index.html).
+in the form of `localhost:PORT/spock/spock.docs/current/index.html`,
+usually [on port 63342](http://localhost:63342/spock/spock.docs/current/index.html).
 
 ### Run JVM Example
 

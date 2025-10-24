@@ -22,7 +22,6 @@ public final class quest/laxla/spock/toolkit/ShaderModuleDescriptor : io/ygdrasi
 
 public final class quest/laxla/spock/toolkit/SizesKt {
 	public static final fun asSize3D (Lquest/laxla/spock/math/Vector3;)Lio/ygdrasil/webgpu/Extent3D;
-	public static final fun asVector3 (Lio/ygdrasil/webgpu/GPUExtent3D;)Lquest/laxla/spock/math/Vector3;
 }
 
 public final class quest/laxla/spock/toolkit/Surface : java/lang/AutoCloseable {
@@ -35,6 +34,11 @@ public final class quest/laxla/spock/toolkit/Surface : java/lang/AutoCloseable {
 	public final fun getSupportedTextureFormats ()Lkotlinx/collections/immutable/ImmutableSet;
 	public final fun getWindow ()Lquest/laxla/spock/windowing/Window;
 	public final fun presentFrame ()V
+}
+
+public final class quest/laxla/spock/toolkit/TextureFormatKt {
+	public static final fun naivelySelectTextureFormat (Lquest/laxla/spock/toolkit/Surface;)Lio/ygdrasil/webgpu/GPUTextureFormat;
+	public static final fun naïvelySelectTextureFormat (Lquest/laxla/spock/toolkit/Surface;)Lio/ygdrasil/webgpu/GPUTextureFormat;
 }
 
 public abstract interface class quest/laxla/spock/toolkit/WebGpuRenderer : quest/laxla/spock/Renderer {
