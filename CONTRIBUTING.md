@@ -13,7 +13,6 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 To build Spock for a particular target, your machine needs to have:
 * For any platform 
   * JVM v22 (any distribution is supported)
-  * 12GB+ of RAM
 * For WasmJS
   * Chromium
   * Firefox
