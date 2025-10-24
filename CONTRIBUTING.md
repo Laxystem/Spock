@@ -23,6 +23,9 @@ To build Spock for a particular target, your machine needs to have:
       * `libxcrypt-static` and `libxcrypt-compat` on Fedora
   * GLFW
     * `glfw`, `glfw-devel`, and `glfw-doc` on Fedora
+* For Apple targets
+  * MacOS installed.
+* Lots of patience (sorry).
 
 
 It is recommended to install all dependencies, even if you don't intend on using some targets.
