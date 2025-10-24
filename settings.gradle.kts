@@ -12,7 +12,6 @@ include(
 	"math-base",
 	"math-codegen",
 	"render-test",
-	"renderer-adaptive",
 	"toolkit",
 	"util",
 	"windowing"
