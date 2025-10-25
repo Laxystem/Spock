@@ -45,13 +45,14 @@ body:
       multiple: true
       options:
         - Build process
-        - Core
+        - Client
+        - Client Toolkit
         - Documentation
-        - Examples
+        - Examples (incl. Render Test)
         - Glfw
+        - Init
         - Math
         - Math Codegen
-        - Toolkit
         - Utilities
         - Windowing
         - Other...

@@ -1,0 +1,259 @@
+public abstract interface class quest/laxla/spock/client/FragmentShader : quest/laxla/spock/client/Shader {
+	public abstract fun getTextureFormat ()Lio/ygdrasil/webgpu/GPUTextureFormat;
+}
+
+public final class quest/laxla/spock/client/FragmentShader$DefaultImpls {
+	public static fun getLabel (Lquest/laxla/spock/client/FragmentShader;)Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Mesh {
+	public fun <init> (Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;)V
+	public synthetic fun <init> (Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/collections/immutable/ImmutableList;[ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> ([Ljava/lang/Object;)V
+	public final fun component1 ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun component2 ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun copy (Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;)Lquest/laxla/spock/client/Mesh;
+	public static synthetic fun copy$default (Lquest/laxla/spock/client/Mesh;Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;ILjava/lang/Object;)Lquest/laxla/spock/client/Mesh;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIndices ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun getIndicesOrVertexOrder ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun getVertices ()Lkotlinx/collections/immutable/ImmutableList;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Pipeline {
+	public fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Ljava/lang/String;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/client/VertexShader;
+	public final fun component2 ()Lquest/laxla/spock/client/FragmentShader;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Ljava/lang/String;)Lquest/laxla/spock/client/Pipeline;
+	public static synthetic fun copy$default (Lquest/laxla/spock/client/Pipeline;Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Ljava/lang/String;ILjava/lang/Object;)Lquest/laxla/spock/client/Pipeline;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFragmentShader ()Lquest/laxla/spock/client/FragmentShader;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getVertexShader ()Lquest/laxla/spock/client/VertexShader;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Pipeline$Batch {
+	public synthetic fun <init> (Lquest/laxla/spock/client/Pipeline;Lkotlinx/collections/immutable/ImmutableList;[ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lquest/laxla/spock/client/Pipeline;Lquest/laxla/spock/client/Mesh;)V
+	public fun <init> (Lquest/laxla/spock/client/Pipeline;[Ljava/lang/Object;)V
+	public fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;Ljava/lang/String;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lkotlinx/collections/immutable/ImmutableList;Lkotlinx/collections/immutable/ImmutableList;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lkotlinx/collections/immutable/ImmutableList;[ILjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lkotlinx/collections/immutable/ImmutableList;[ILjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lquest/laxla/spock/client/Mesh;Ljava/lang/String;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;Lquest/laxla/spock/client/Mesh;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;[Ljava/lang/Object;Ljava/lang/String;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/VertexShader;Lquest/laxla/spock/client/FragmentShader;[Ljava/lang/Object;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lquest/laxla/spock/client/Pipeline;
+	public final fun component2 ()Lquest/laxla/spock/client/Mesh;
+	public final fun copy (Lquest/laxla/spock/client/Pipeline;Lquest/laxla/spock/client/Mesh;)Lquest/laxla/spock/client/Pipeline$Batch;
+	public static synthetic fun copy$default (Lquest/laxla/spock/client/Pipeline$Batch;Lquest/laxla/spock/client/Pipeline;Lquest/laxla/spock/client/Mesh;ILjava/lang/Object;)Lquest/laxla/spock/client/Pipeline$Batch;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMesh ()Lquest/laxla/spock/client/Mesh;
+	public final fun getPipeline ()Lquest/laxla/spock/client/Pipeline;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/PipelinesKt {
+	public static final fun getVertexKind (Lquest/laxla/spock/client/Pipeline;)Lquest/laxla/spock/client/VertexKind;
+}
+
+public abstract interface class quest/laxla/spock/client/RenderScene {
+	public abstract fun invoke ()Lkotlinx/collections/immutable/ImmutableList;
+}
+
+public abstract interface class quest/laxla/spock/client/Renderer : quest/laxla/spock/Closer {
+	public abstract fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader {
+	public static final field Companion Lquest/laxla/spock/client/Shader$Companion;
+	public abstract fun getFormFactor ()Lquest/laxla/spock/client/Shader$FormFactor;
+	public fun getLabel ()Ljava/lang/String;
+	public abstract fun getLanguage ()Lquest/laxla/spock/client/Shader$Language;
+}
+
+public final class quest/laxla/spock/client/Shader$Companion {
+}
+
+public final class quest/laxla/spock/client/Shader$DefaultImpls {
+	public static fun getLabel (Lquest/laxla/spock/client/Shader;)Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$FormFactor {
+	public abstract fun accepts (Lquest/laxla/spock/client/Shader;)Z
+}
+
+public final class quest/laxla/spock/client/Shader$Kind {
+	public fun <init> (Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;)V
+	public final fun component1 ()Lquest/laxla/spock/client/Shader$Language;
+	public final fun component2 ()Lquest/laxla/spock/client/Shader$FormFactor;
+	public final fun copy (Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;)Lquest/laxla/spock/client/Shader$Kind;
+	public static synthetic fun copy$default (Lquest/laxla/spock/client/Shader$Kind;Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;ILjava/lang/Object;)Lquest/laxla/spock/client/Shader$Kind;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFormFactor ()Lquest/laxla/spock/client/Shader$FormFactor;
+	public final fun getLanguage ()Lquest/laxla/spock/client/Shader$Language;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$Language {
+	public abstract fun accepts (Lquest/laxla/spock/client/Shader;)Z
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$Transpiled : quest/laxla/spock/client/Shader {
+	public abstract fun getFormFactor ()Lquest/laxla/spock/client/Shader$FormFactor;
+	public abstract fun getLanguage ()Lquest/laxla/spock/client/Shader$Language;
+	public abstract fun getOriginal ()Lquest/laxla/spock/client/Shader;
+}
+
+public final class quest/laxla/spock/client/Shader$Transpiled$DefaultImpls {
+	public static fun getLabel (Lquest/laxla/spock/client/Shader$Transpiled;)Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$Transpiler {
+	public abstract fun invoke (Lquest/laxla/spock/client/Shader;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$Transpiler$Dynamic : quest/laxla/spock/client/Shader$Transpiler {
+	public abstract fun getOutputKinds ()Lkotlinx/collections/immutable/ImmutableSet;
+}
+
+public abstract interface class quest/laxla/spock/client/Shader$Transpiler$Simple : quest/laxla/spock/client/Shader$Transpiler {
+	public abstract fun getOutputKind ()Lquest/laxla/spock/client/Shader$Kind;
+}
+
+public final class quest/laxla/spock/client/ShadersKt {
+	public static final fun NoopShaderTranspiler (Lquest/laxla/spock/client/Shader$Kind;)Lquest/laxla/spock/client/Shader$Transpiler$Simple;
+	public static final fun NoopShaderTranspiler (Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;)Lquest/laxla/spock/client/Shader$Transpiler$Simple;
+	public static final fun ShaderCache (Lquest/laxla/spock/client/Shader$Transpiler;)Lquest/laxla/spock/Cache;
+	public static final fun Transpiler (Lquest/laxla/spock/client/Shader$Companion;Lquest/laxla/spock/client/Shader$Kind;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/client/Shader$Transpiler$Simple;
+	public static final fun Transpiler (Lquest/laxla/spock/client/Shader$Companion;Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/client/Shader$Transpiler$Simple;
+	public static final fun accepts (Lquest/laxla/spock/client/Shader$Kind;Lquest/laxla/spock/client/Shader;)Z
+	public static final fun getKind (Lquest/laxla/spock/client/Shader$Transpiled;)Lquest/laxla/spock/client/Shader$Kind;
+	public static final fun getKind (Lquest/laxla/spock/client/Shader;)Lquest/laxla/spock/client/Shader$Kind;
+	public static final fun getOutputKinds (Lquest/laxla/spock/client/Shader$Transpiler;)Lkotlinx/collections/immutable/ImmutableSet;
+	public static final fun isAcceptedByAnyKindOutputtedBy (Lquest/laxla/spock/client/Shader;Lquest/laxla/spock/client/Shader$Transpiler;)Z
+	public static final fun isCarryingRequiredMetadata (Lquest/laxla/spock/client/Shader;)Z
+	public static final fun isOfAnyKindOutputtedBy (Lquest/laxla/spock/client/Shader;Lquest/laxla/spock/client/Shader$Transpiler;)Z
+	public static final fun isOfKind (Lquest/laxla/spock/client/Shader;Lquest/laxla/spock/client/Shader$Kind;)Z
+	public static final fun toTranspilationStepString (Lquest/laxla/spock/client/Shader;)Ljava/lang/String;
+	public static final fun transpilationTraceToString (Lquest/laxla/spock/client/Shader;)Ljava/lang/String;
+	public static final fun transpile (Lquest/laxla/spock/client/Shader$Transpiler;Lquest/laxla/spock/client/Shader;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun wgslFragmentShaderOf (Ljava/lang/String;Lio/ygdrasil/webgpu/GPUTextureFormat;Ljava/lang/String;Ljava/lang/String;)Lquest/laxla/spock/client/FragmentShader;
+	public static synthetic fun wgslFragmentShaderOf$default (Ljava/lang/String;Lio/ygdrasil/webgpu/GPUTextureFormat;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lquest/laxla/spock/client/FragmentShader;
+	public static final fun wgslVertexShaderOf (Ljava/lang/String;Lquest/laxla/spock/client/VertexKind;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lquest/laxla/spock/client/VertexShader;
+	public static final fun wgslVertexShaderOf (Ljava/lang/String;Lquest/laxla/spock/client/VertexKind;Ljava/lang/String;Ljava/lang/String;[Lkotlin/Pair;)Lquest/laxla/spock/client/VertexShader;
+	public static synthetic fun wgslVertexShaderOf$default (Ljava/lang/String;Lquest/laxla/spock/client/VertexKind;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lquest/laxla/spock/client/VertexShader;
+	public static synthetic fun wgslVertexShaderOf$default (Ljava/lang/String;Lquest/laxla/spock/client/VertexKind;Ljava/lang/String;Ljava/lang/String;[Lkotlin/Pair;ILjava/lang/Object;)Lquest/laxla/spock/client/VertexShader;
+	public static final fun withKind (Lquest/laxla/spock/client/Shader;Lquest/laxla/spock/client/Shader$Kind;)Lquest/laxla/spock/client/Shader$Transpiled;
+	public static final fun withKind (Lquest/laxla/spock/client/Shader;Lquest/laxla/spock/client/Shader$Language;Lquest/laxla/spock/client/Shader$FormFactor;)Lquest/laxla/spock/client/Shader$Transpiled;
+}
+
+public final class quest/laxla/spock/client/SizesKt {
+	public static final fun asVector3 (Lio/ygdrasil/webgpu/GPUExtent3D;)Lquest/laxla/spock/math/Vector3;
+}
+
+public abstract interface class quest/laxla/spock/client/StringShader : quest/laxla/spock/client/Shader {
+	public static final field FormFactor Lquest/laxla/spock/client/StringShader$FormFactor;
+	public abstract fun getCode ()Ljava/lang/String;
+	public synthetic fun getFormFactor ()Lquest/laxla/spock/client/Shader$FormFactor;
+	public fun getFormFactor ()Lquest/laxla/spock/client/StringShader$FormFactor;
+}
+
+public final class quest/laxla/spock/client/StringShader$DefaultImpls {
+	public static fun getFormFactor (Lquest/laxla/spock/client/StringShader;)Lquest/laxla/spock/client/StringShader$FormFactor;
+	public static fun getLabel (Lquest/laxla/spock/client/StringShader;)Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/StringShader$FormFactor : quest/laxla/spock/client/Shader$FormFactor {
+	public fun accepts (Lquest/laxla/spock/client/Shader;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public class quest/laxla/spock/client/UnsupportedShaderException : java/lang/IllegalArgumentException {
+	public fun <init> (Lquest/laxla/spock/client/Shader;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lquest/laxla/spock/client/Shader;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getShader ()Lquest/laxla/spock/client/Shader;
+}
+
+public final class quest/laxla/spock/client/Vector1fVertexKind : quest/laxla/spock/client/VertexKind {
+	public static final field INSTANCE Lquest/laxla/spock/client/Vector1fVertexKind;
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector1;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAttributes ()Lkotlinx/collections/immutable/ImmutableList;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Vector2fVertexKind : quest/laxla/spock/client/VertexKind {
+	public static final field INSTANCE Lquest/laxla/spock/client/Vector2fVertexKind;
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector2;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAttributes ()Lkotlinx/collections/immutable/ImmutableList;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Vector3fVertexKind : quest/laxla/spock/client/VertexKind {
+	public static final field INSTANCE Lquest/laxla/spock/client/Vector3fVertexKind;
+	public synthetic fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public fun append (Lquest/laxla/spock/ByteAppender;Lquest/laxla/spock/math/Vector3;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAttributes ()Lkotlinx/collections/immutable/ImmutableList;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/client/VertexKind {
+	public abstract fun append (Lquest/laxla/spock/ByteAppender;Ljava/lang/Object;)V
+	public abstract fun getAttributes ()Lkotlinx/collections/immutable/ImmutableList;
+}
+
+public abstract interface class quest/laxla/spock/client/VertexKind$Bound {
+	public abstract fun getVertexKind ()Lquest/laxla/spock/client/VertexKind;
+}
+
+public final class quest/laxla/spock/client/VertexKindsKt {
+	public static final fun VertexKind ([Lio/ygdrasil/webgpu/GPUVertexFormat;Lkotlin/jvm/functions/Function2;)Lquest/laxla/spock/client/VertexKind;
+}
+
+public abstract interface class quest/laxla/spock/client/VertexShader : quest/laxla/spock/client/Shader, quest/laxla/spock/client/VertexKind$Bound {
+	public abstract fun getConstants ()Lkotlinx/collections/immutable/ImmutableMap;
+}
+
+public final class quest/laxla/spock/client/VertexShader$DefaultImpls {
+	public static fun getLabel (Lquest/laxla/spock/client/VertexShader;)Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/client/Wgsl : quest/laxla/spock/client/Shader$Language {
+	public static final field INSTANCE Lquest/laxla/spock/client/Wgsl;
+	public fun accepts (Lquest/laxla/spock/client/Shader;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/client/Wgsl$Shader : quest/laxla/spock/client/Shader {
+	public abstract fun getEntrypoint ()Ljava/lang/String;
+	public synthetic fun getLanguage ()Lquest/laxla/spock/client/Shader$Language;
+	public fun getLanguage ()Lquest/laxla/spock/client/Wgsl;
+}
+
+public final class quest/laxla/spock/client/Wgsl$Shader$DefaultImpls {
+	public static fun getLabel (Lquest/laxla/spock/client/Wgsl$Shader;)Ljava/lang/String;
+	public static fun getLanguage (Lquest/laxla/spock/client/Wgsl$Shader;)Lquest/laxla/spock/client/Wgsl;
+}
+

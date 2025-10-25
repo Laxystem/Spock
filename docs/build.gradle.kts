@@ -3,12 +3,12 @@ plugins {
 }
 
 dependencies {
-	dokka(projects.core)
+	dokka(projects.client)
+	dokka(projects.clientToolkit)
 	dokka(projects.glfw)
 	dokka(projects.init)
 	dokka(projects.math)
 	dokka(projects.mathBase)
-	dokka(projects.toolkit)
 	dokka(projects.util)
 	dokka(projects.windowing)
 

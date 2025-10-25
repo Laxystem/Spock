@@ -6,6 +6,8 @@ import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
 import kotlinx.coroutines.sync.Mutex
 import quest.laxla.spock.*
+import quest.laxla.spock.client.Mesh
+import quest.laxla.spock.client.VertexKind
 import quest.laxla.spock.math.IntSpace.append
 
 internal fun ByteArrayPool(mutex: Mutex = Mutex()) = Pool(

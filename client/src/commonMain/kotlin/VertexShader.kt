@@ -1,0 +1,17 @@
+package quest.laxla.spock.client
+
+import kotlinx.collections.immutable.ImmutableMap
+
+/**
+ * Shader of this [vertexKind].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public interface VertexShader<Vertex : Any> : VertexKind.Bound<Vertex>, Shader {
+	/**
+	 * Constants passed to the GPU available in the shader.
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	public val constants: ImmutableMap<String, Double>
+}

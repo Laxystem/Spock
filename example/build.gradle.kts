@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-	commonMainApi(projects.toolkit)
+	commonMainApi(projects.clientToolkit)
 	commonMainImplementation(projects.init)
 }
 

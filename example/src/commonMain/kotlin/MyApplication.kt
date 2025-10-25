@@ -4,9 +4,10 @@ import io.ygdrasil.webgpu.Color
 import io.ygdrasil.webgpu.GPUVertexFormat
 import kotlinx.collections.immutable.persistentListOf
 import quest.laxla.spock.*
+import quest.laxla.spock.client.*
 import quest.laxla.spock.math.*
-import quest.laxla.spock.toolkit.naïvelySelectTextureFormat
-import quest.laxla.spock.toolkit.webGpuApplication
+import quest.laxla.spock.client.toolkit.naïvelySelectTextureFormat
+import quest.laxla.spock.client.toolkit.webGpuApplication
 
 // do not use in shader; IntelliJ formatting shenanigans
 private const val vertexMain = "vertexMain"

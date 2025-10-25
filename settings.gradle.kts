@@ -2,7 +2,8 @@ rootProject.name = "spock"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
-	"core",
+	"client",
+	"client-toolkit",
 	"docs",
 	"example",
 	"glfw",
@@ -12,7 +13,6 @@ include(
 	"math-base",
 	"math-codegen",
 	"render-test",
-	"toolkit",
 	"util",
 	"windowing"
 )
