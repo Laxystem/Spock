@@ -15,6 +15,7 @@ dependencies {
 kotlin {
 	jvm()
 	linuxX64()
+	mingwX64()
 
 	wasmJs {
 		binaries.library()

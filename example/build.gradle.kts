@@ -14,12 +14,16 @@ dependencies {
 }
 
 kotlin {
+	jvm().mainRun {
+		mainClass = "quest.laxla.spock.example.MainKt"
+	}
+
 	linuxX64().binaries.executable {
 		entryPoint = "quest.laxla.spock.example.main"
 	}
 
-	jvm().mainRun {
-		mainClass = "quest.laxla.spock.example.MainKt"
+	mingwX64().binaries.executable {
+		entryPoint = "quest.laxla.spock.example.main"
 	}
 
 	wasmJs {
