@@ -45,7 +45,7 @@ private fun WGPULogLevel.toKotlinLoggingLevel(): Level? = when (this) {
 }
 
 private val wgpuLogCallback by lazy {
-	WGPULogCallback.allocate(globalMemory) { level, cMessage, data ->
+	WGPULogCallback.allocate(globalMemory) { level, cMessage, _ ->
 		logger.at(level.toKotlinLoggingLevel() ?: Level.INFO) {
 			message = cMessage?.data?.toKString()
 		}

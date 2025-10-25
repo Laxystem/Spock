@@ -53,7 +53,7 @@ public actual class Surface(public val raw: CanvasSurface) : AutoCloseable {
 	public actual val currentTexture: SurfaceTexture get() = raw.getCurrentTexture()
 
 	/**
-	 * Create a new [quest.laxla.spock.toolkit.Surface] for this [canvas].
+	 * Create a new [quest.laxla.spock.client.toolkit.Surface] for this [canvas].
 	 *
 	 * @since 0.0.1-alpha.4
 	 * @see io.ygdrasil.webgpu.HTMLCanvasElement.getCanvasSurface

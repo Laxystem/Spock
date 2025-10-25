@@ -64,7 +64,7 @@ public data class Mesh<out Vertex : Any>(
 	)
 
 	/**
-	 * Retrieves the [indices] of this [quest.laxla.spock.Mesh] if provided,
+	 * Retrieves the [indices] of this [quest.laxla.spock.client.Mesh] if provided,
 	 * and [vertices]' order as-is otherwise.
 	 *
 	 * When using the Spock toolkit, duplicate vertices will be collapsed at the renderer-level.
