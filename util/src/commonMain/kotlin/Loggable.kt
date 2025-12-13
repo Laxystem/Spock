@@ -23,13 +23,6 @@ public interface Loggable {
 /**
  * @author Laxystem
  * @since 0.0.1-alpha.4
- * @see Loggable
- */
-public val Any.subjectiveLogLevel: Level get() = if (this is Loggable) subjectiveLogLevel else Level.OFF
-
-/**
- * @author Laxystem
- * @since 0.0.1-alpha.4
  * @see KLogger.debug
  * @see Loggable
  */
