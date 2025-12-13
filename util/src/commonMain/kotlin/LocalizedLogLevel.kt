@@ -8,7 +8,7 @@ import io.github.oshai.kotlinlogging.Level
  *
  * @since 0.0.1-alpha.4
  */
-public interface Loggable {
+public interface LocalizedLogLevel {
 	/**
 	 * The log level this object restricts itself to.
 	 *
@@ -24,10 +24,10 @@ public interface Loggable {
  * @author Laxystem
  * @since 0.0.1-alpha.4
  * @see KLogger.debug
- * @see Loggable
+ * @see LocalizedLogLevel
  */
 @FutureContextFunction
-public inline fun <T : Loggable> T.debugVia(
+public inline fun <T : LocalizedLogLevel> T.debugVia(
 	logger: KLogger,
 	throwable: Throwable? = null,
 	crossinline message: T.() -> Any?
@@ -39,10 +39,10 @@ public inline fun <T : Loggable> T.debugVia(
  * @author Laxystem
  * @since 0.0.1-alpha.4
  * @see KLogger.trace
- * @see Loggable
+ * @see LocalizedLogLevel
  */
 @FutureContextFunction
-public inline fun <T : Loggable> T.traceVia(
+public inline fun <T : LocalizedLogLevel> T.traceVia(
 	logger: KLogger,
 	throwable: Throwable? = null,
 	crossinline message: T.() -> Any?

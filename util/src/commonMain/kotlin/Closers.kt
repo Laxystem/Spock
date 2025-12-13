@@ -18,7 +18,7 @@ private val logger = KotlinLogging.logger {}
 private class CloserImpl(
 	closeables: Array<out SuspendCloseable>,
 	override var subjectiveLogLevel: Level = Level.OFF
-) : Closer, Loggable {
+) : Closer, LocalizedLogLevel {
 	private val suspendCloseables = mutableSetOf(*closeables)
 	private val isClosed = Flag()
 	private val closeMutex = Mutex()
