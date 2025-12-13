@@ -239,6 +239,10 @@ public final class quest/laxla/spock/Resource : quest/laxla/spock/RawResource {
 	public fun toString ()Ljava/lang/String;
 }
 
+public abstract interface class quest/laxla/spock/ResourceDeserializationMethod {
+	public abstract fun deserialize-YNEx5aM (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public abstract interface class quest/laxla/spock/ResourceDeserializer {
 	public abstract fun deserialize (Lquest/laxla/spock/RawResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
@@ -256,41 +260,5 @@ public abstract interface class quest/laxla/spock/ResourceType {
 }
 
 public abstract interface class quest/laxla/spock/SnappedEcs : quest/laxla/spock/Ecs {
-}
-
-public final class quest/laxla/spock/VersionedEntityID {
-	public static final field Companion Lquest/laxla/spock/VersionedEntityID$Companion;
-	public static final synthetic fun box-impl (I)Lquest/laxla/spock/VersionedEntityID;
-	public static fun constructor-impl (I)I
-	public static fun constructor-impl (II)I
-	public static synthetic fun constructor-impl$default (IIILkotlin/jvm/internal/DefaultConstructorMarker;)I
-	public fun equals (Ljava/lang/Object;)Z
-	public static fun equals-impl (ILjava/lang/Object;)Z
-	public static final fun equals-impl0 (II)Z
-	public static final fun getOrdinal-pVg5ArA (I)I
-	public static final fun getVersion-pVg5ArA (I)I
-	public fun hashCode ()I
-	public static fun hashCode-impl (I)I
-	public static final fun nextOrdinal-pnzm3cA (I)I
-	public static final fun nextVersion-pnzm3cA (I)I
-	public fun toString ()Ljava/lang/String;
-	public static fun toString-impl (I)Ljava/lang/String;
-	public static final fun toUInt-pVg5ArA (I)I
-	public final synthetic fun unbox-impl ()I
-}
-
-public final synthetic class quest/laxla/spock/VersionedEntityID$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lquest/laxla/spock/VersionedEntityID$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize--18sVhU (Lkotlinx/serialization/encoding/Decoder;)I
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize-nTHR_eQ (Lkotlinx/serialization/encoding/Encoder;I)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class quest/laxla/spock/VersionedEntityID$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

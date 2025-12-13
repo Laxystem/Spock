@@ -183,6 +183,7 @@ public final class quest/laxla/spock/ClosersKt {
 
 public final class quest/laxla/spock/CoroutineContextKt {
 	public static final fun getDispatcher (Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/CoroutineDispatcher;
+	public static final fun minus (Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/CoroutineContext$Key;)Lkotlin/coroutines/CoroutineContext;
 }
 
 public abstract interface annotation class quest/laxla/spock/DelicateSpockApi : java/lang/annotation/Annotation {
