@@ -1,64 +1,76 @@
 package quest.laxla.spock
 
 /**
- * Provides a uniform error for using a foreign [Entity.Autonomous].
+ * Provides a uniform error for using a foreign [Entity].
  *
  * @since 0.0.1-alpha.4
  */
-public fun unknownEntity(entity: UInt, customMessage: String = emptyString()): Nothing = throw IllegalArgumentException(
-    customMessage.trimAndAppendIfNotBlank(suffix = ": ") +
-            "Unknown entity ${entity.toHexString(HexFormat.UpperCase)} does not belong to this ECS."
+public fun unknownEntity(entity: UInt, message: String = emptyString()): Nothing = throw IllegalArgumentException(
+	message.trimAndAppendIfNotBlank(suffix = ": ") +
+			"Unknown entity ${entity.toHexString(HexFormat.UpperCase)} does not belong to this ECS."
 )
 
 /**
- * Provides a uniform error for using a foreign [Entity.Autonomous].
+ * Provides a uniform error for using a foreign [Entity].
  *
  * @since 0.0.1-alpha.4
  */
-public fun unknownEntity(entity: Entity.Autonomous, message: String = emptyString()): Nothing =
-    unknownEntity(entity.id, message)
+public fun unknownEntity(entity: Entity.Reference, message: String = emptyString()): Nothing =
+	unknownEntity(entity.id, message)
 
 /**
  * Retrieves the [UInt] ID associated with this [entity],
  * or [UInt.MAX_VALUE] if none.
  *
  * @since 0.0.1-alpha.4
- * @see Entity.Autonomous.id
+ * @see ComponentType.Autonomous.id
  */
-public fun Ecs.idOf(entity: Entity<*>): UInt = when (entity) {
-    is Entity.Autonomous -> entity.id
-    is NamedEntity<*> -> idOf(entity.name)
+public fun Ecs.reference(entity: Entity): Entity.Reference = when (entity) {
+	is Entity.Reference -> entity
+	is ComponentType.Autonomous -> Entity.Reference(entity.id)
+	is NamedEntity<*> -> reference(entity.name)
 }
 
 /**
- * Retrieves the [UInt] ID associated with this [Entity],
- * or [UInt.MAX_VALUE] if none.
- *
- * @since 0.0.1-alpha.4
- * @see Ecs.idOf
- * @see Entity.Autonomous.id
- */
-context(ecs: Ecs)
-public val Entity<*>.id: UInt get() = ecs.idOf(this)
-
-/**
- * The default value for [this] component type within this [ecs], overruling [Entity.default].
+ * Retrieves the [ComponentType] this opaque [entity] refers to, or throws if it does not exist.
  *
  * @since 0.0.1-alpha.4
  */
-context(ecs: Ecs)
-public val <T> Entity<T>.currentDefault: T get() = ecs.getDefaultOf(this)
+public fun Ecs.dereferenceOrThrow(
+	entity: Entity.Reference,
+	message: String = "Could not dereference entity"
+): ComponentType<*> = dereference(entity) ?: unknownEntity(entity, message)
 
 /**
- * The default value for [this] component type within this [ecs], overruling [Entity.default].
+ * The default value for [this] component type within this [ecs], overruling [ComponentType.defaultDefault].
+ *
+ * @since 0.0.1-alpha.4
+ */
+context(ecs: Ecs)
+
+public val <T> ComponentType<T>.default: T get() = ecs.getDefaultOf(this)
+
+/**
+ * The default value for [this] component type within this [ecs], overruling [ComponentType.defaultDefault].
  *
  * @since 0.0.1-alpha.4
  */
 @Suppress("CONTEXTUAL_OVERLOAD_SHADOWED") // same behavior
 context(ecs: MutableEcs)
-public var <T> Entity<T>.currentDefault: T
-    get() = ecs.getDefaultOf(this)
-    set(value) = ecs.setDefaultOf(this, value)
+public var <T> ComponentType<T>.default: T
+	get() = ecs.getDefaultOf(this)
+	set(value) = ecs.setDefaultOf(this, value)
+
+context(ecs: MutableEcs)
+
+/**
+ * Resets [ComponentType.default] to [ComponentType.defaultDefault].
+ *
+ * @since 0.0.1-alpha.4
+ */
+public fun Entity.resetDefault() {
+	ecs.resetDefaultOf(this)
+}
 
 /**
  * Iterates over components of [this] provided type, running a lambda [forEach] one.
@@ -66,8 +78,8 @@ public var <T> Entity<T>.currentDefault: T
  * @since 0.0.1-alpha.4
  */
 context(ecs: Ecs)
-public fun <T> Entity<T>.select(forEach: context(Ecs) Compable.(T) -> Unit) {
-    ecs.select(componentType = this, forEach)
+public fun <T> ComponentType<T>.select(forEach: context(Ecs) Compable.(T) -> Unit) {
+	ecs.select(componentType = this, forEach)
 }
 
 /**
@@ -80,8 +92,8 @@ public fun <T> Entity<T>.select(forEach: context(Ecs) Compable.(T) -> Unit) {
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T> Entity<T>.mutate(forEach: context(Ecs) Compable.(T) -> T) {
-    ecs.mutate(componentType = this, forEach)
+public fun <T> ComponentType<T>.mutate(forEach: context(Ecs) Compable.(T) -> T) {
+	ecs.mutate(componentType = this, forEach)
 }
 
 /**
@@ -91,12 +103,12 @@ public fun <T> Entity<T>.mutate(forEach: context(Ecs) Compable.(T) -> T) {
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T, T2> Entity<T>.mutate(
-    componentType2: Entity<T2>,
-    onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
-    forEach: context(Ecs) Compable.(T, T2) -> T
+public fun <T, T2> ComponentType<T>.mutate(
+	componentType2: ComponentType<T2>,
+	onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
+	forEach: context(Ecs) Compable.(T, T2) -> T
 ) {
-    ecs.mutate(mutatedComponentType = this, componentType2, onlyMutateSetComponents, forEach)
+	ecs.mutate(mutatedComponentType = this, componentType2, onlyMutateSetComponents, forEach)
 }
 
 /**
@@ -106,13 +118,13 @@ public fun <T, T2> Entity<T>.mutate(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T, T2, T3> Entity<T>.mutate(
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
-    forEach: context(Ecs) Compable.(T, T2, T3) -> T
+public fun <T, T2, T3> ComponentType<T>.mutate(
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
+	forEach: context(Ecs) Compable.(T, T2, T3) -> T
 ) {
-    ecs.mutate(mutatedComponentType = this, componentType2, componentType3, onlyMutateSetComponents, forEach)
+	ecs.mutate(mutatedComponentType = this, componentType2, componentType3, onlyMutateSetComponents, forEach)
 }
 
 /**
@@ -122,21 +134,21 @@ public fun <T, T2, T3> Entity<T>.mutate(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T, T2, T3, T4> Entity<T>.mutate(
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    componentType4: Entity<T4>,
-    onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
-    forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
+public fun <T, T2, T3, T4> ComponentType<T>.mutate(
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	componentType4: ComponentType<T4>,
+	onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
+	forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
 ) {
-    ecs.mutate(
-        mutatedComponentType = this,
-        componentType2,
-        componentType3,
-        componentType4,
-        onlyMutateSetComponents,
-        forEach
-    )
+	ecs.mutate(
+		mutatedComponentType = this,
+		componentType2,
+		componentType3,
+		componentType4,
+		onlyMutateSetComponents,
+		forEach
+	)
 }
 
 /**
@@ -146,23 +158,23 @@ public fun <T, T2, T3, T4> Entity<T>.mutate(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T, T2, T3, T4> Entity<T>.mutate(
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    componentType4: Entity<T4>,
-    vararg componentTypes: Entity<*>,
-    onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
-    forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
+public fun <T, T2, T3, T4> ComponentType<T>.mutate(
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	componentType4: ComponentType<T4>,
+	vararg componentTypes: Entity,
+	onlyMutateSetComponents: Boolean = onlyMutateSetComponentsByDefault,
+	forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
 ) {
-    ecs.mutate(
-        mutatedComponentType = this,
-        componentType2,
-        componentType3,
-        componentType4,
-        componentTypes = componentTypes,
-        onlyMutateSetComponents,
-        forEach
-    )
+	ecs.mutate(
+		mutatedComponentType = this,
+		componentType2,
+		componentType3,
+		componentType4,
+		componentTypes = componentTypes,
+		onlyMutateSetComponents,
+		forEach
+	)
 }
 
 /**
@@ -172,8 +184,8 @@ public fun <T, T2, T3, T4> Entity<T>.mutate(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T, R> Entity<R>.set(componentType: Entity<T>, forEach: context(Ecs) Compable.(T) -> R) {
-    ecs.set(modifiedComponentType = this, componentType, forEach)
+public fun <T, R> ComponentType<R>.set(componentType: ComponentType<T>, forEach: context(Ecs) Compable.(T) -> R) {
+	ecs.set(modifiedComponentType = this, componentType, forEach)
 }
 
 /**
@@ -183,12 +195,12 @@ public fun <T, R> Entity<R>.set(componentType: Entity<T>, forEach: context(Ecs) 
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T1, T2, R> Entity<R>.set(
-    componentType1: Entity<T1>,
-    componentType2: Entity<T2>,
-    forEach: context(Ecs) Compable.(T1, T2) -> R
+public fun <T1, T2, R> ComponentType<R>.set(
+	componentType1: ComponentType<T1>,
+	componentType2: ComponentType<T2>,
+	forEach: context(Ecs) Compable.(T1, T2) -> R
 ) {
-    ecs.set(modifiedComponentType = this, componentType1, componentType2, forEach)
+	ecs.set(modifiedComponentType = this, componentType1, componentType2, forEach)
 }
 
 /**
@@ -198,13 +210,13 @@ public fun <T1, T2, R> Entity<R>.set(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T1, T2, T3, R> Entity<R>.set(
-    componentType1: Entity<T1>,
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    forEach: context(Ecs) Compable.(T1, T2, T3) -> R
+public fun <T1, T2, T3, R> ComponentType<R>.set(
+	componentType1: ComponentType<T1>,
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	forEach: context(Ecs) Compable.(T1, T2, T3) -> R
 ) {
-    ecs.set(modifiedComponentType = this, componentType1, componentType2, componentType3, forEach)
+	ecs.set(modifiedComponentType = this, componentType1, componentType2, componentType3, forEach)
 }
 
 /**
@@ -214,14 +226,14 @@ public fun <T1, T2, T3, R> Entity<R>.set(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T1, T2, T3, T4, R> Entity<R>.set(
-    componentType1: Entity<T1>,
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    componentType4: Entity<T4>,
-    forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
+public fun <T1, T2, T3, T4, R> ComponentType<R>.set(
+	componentType1: ComponentType<T1>,
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	componentType4: ComponentType<T4>,
+	forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
 ) {
-    ecs.set(modifiedComponentType = this, componentType1, componentType2, componentType3, componentType4, forEach)
+	ecs.set(modifiedComponentType = this, componentType1, componentType2, componentType3, componentType4, forEach)
 }
 
 /**
@@ -231,28 +243,28 @@ public fun <T1, T2, T3, T4, R> Entity<R>.set(
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public fun <T1, T2, T3, T4, R> Entity<R>.set(
-    componentType1: Entity<T1>,
-    componentType2: Entity<T2>,
-    componentType3: Entity<T3>,
-    componentType4: Entity<T4>,
-    vararg componentTypes: Entity<*>,
-    forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
+public fun <T1, T2, T3, T4, R> ComponentType<R>.set(
+	componentType1: ComponentType<T1>,
+	componentType2: ComponentType<T2>,
+	componentType3: ComponentType<T3>,
+	componentType4: ComponentType<T4>,
+	vararg componentTypes: Entity,
+	forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
 ) {
-    ecs.set(
-        modifiedComponentType = this,
-        componentType1,
-        componentType2,
-        componentType3,
-        componentType4,
-        componentTypes = componentTypes,
-        forEach
-    )
+	ecs.set(
+		modifiedComponentType = this,
+		componentType1,
+		componentType2,
+		componentType3,
+		componentType4,
+		componentTypes = componentTypes,
+		forEach
+	)
 }
 
 /**
  * Checks if this [Compable] exists.
- * * If [this] is an [Entity], returns whether it is found at the root of this [Ecs].
+ * * If [this] is an [ComponentType], returns whether it is found at the root of this [Ecs].
  * * If [this] is a [Possession], returns whether the described component exists.
  *
  * @since 0.0.1-alpha.4
@@ -260,11 +272,14 @@ public fun <T1, T2, T3, T4, R> Entity<R>.set(
 context(ecs: Ecs)
 public fun Compable.exists(): Boolean = this in ecs
 
+private const val materializeErrorMessage = "Failed materializing entity"
+
 /**
  * Adds this [Compable] if it does not already exist.
  * * If [this] is a [NamedEntity], [add][MutableEcs.add]s it onto the ECS.
  * * If [this] is a [Possession], [materializes][MutableEcs.materialize]s it per usual.
- * * If [this] is an [Entity.Autonomous], throws if it does not exist.
+ * * If [this] is an [ComponentType.Autonomous], throws if it does not exist.
+ * * If [this] is an [Entity.Reference], [dereferences][Ecs.dereference] it then acts per above.
  *
  * This is a **non-terminal** setter.
  *
@@ -273,11 +288,12 @@ public fun Compable.exists(): Boolean = this in ecs
 @Throws(IllegalArgumentException::class)
 context(ecs: MutableEcs)
 public fun Compable.materialize() {
-    when (this) {
-        is NamedEntity<*> -> ecs.add(this)
-        is Possession<*, *> -> ecs.materialize(entity = possessive, componentType = possessed)
-        is Entity.Autonomous -> if (!exists()) unknownEntity(this, message = "Cannot materialize nameless entity")
-    }
+	when (this) {
+		is NamedEntity<*> -> ecs.add(this)
+		is Possession<*, *> -> ecs.materialize(entity = possessive, componentType = possessed)
+		is Entity.Reference -> ecs.dereferenceOrThrow(this, materializeErrorMessage).materialize()
+		is ComponentType.Autonomous -> if (!exists()) unknownEntity(id, materializeErrorMessage)
+	}
 }
 
 /**
@@ -286,7 +302,8 @@ public fun Compable.materialize() {
  * @since 0.0.1-alpha.4
  */
 context(ecs: Ecs)
-public operator fun Compable.contains(componentType: Entity<*>): Boolean = ecs.possesses(entity = this, componentType)
+public operator fun Compable.contains(componentType: Entity): Boolean =
+	ecs.possesses(entity = this, componentType)
 
 /**
  * [Get][Ecs.get]s the component of the provided type from [this] entity, or the default value if not found.
@@ -294,7 +311,7 @@ public operator fun Compable.contains(componentType: Entity<*>): Boolean = ecs.p
  * @since 0.0.1-alpha.4
  */
 context(ecs: Ecs)
-public operator fun <T> Compable.get(componentType: Entity<T>): T = ecs[this, componentType]
+public operator fun <T> Compable.get(componentType: ComponentType<T>): T = ecs[this, componentType]
 
 /**
  * [Set][MutableEcs.set]s the component of the provided type on [this] entity to [value].
@@ -305,8 +322,8 @@ public operator fun <T> Compable.get(componentType: Entity<T>): T = ecs[this, co
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public operator fun <T> Compable.set(componentType: Entity<T>, value: T) {
-    ecs[this, componentType] = value
+public operator fun <T> Compable.set(componentType: ComponentType<T>, value: T) {
+	ecs[this, componentType] = value
 }
 
 /**
@@ -318,8 +335,8 @@ public operator fun <T> Compable.set(componentType: Entity<T>, value: T) {
  * @since 0.0.1-alpha.4
  */
 context(ecs: MutableEcs)
-public operator fun Compable.plusAssign(componentType: Entity<*>) {
-    ecs.materialize(entity = this, componentType)
+public operator fun Compable.plusAssign(componentType: Entity) {
+	ecs.materialize(entity = this, componentType)
 }
 
 /**
@@ -333,8 +350,8 @@ public operator fun Compable.plusAssign(componentType: Entity<*>) {
  * @see MutableEcs.setToDefault
  */
 context(ecs: MutableEcs)
-public fun Compable.toggle(componentType: Entity<*>) {
-    ecs.toggle(entity = this, componentType = componentType)
+public fun Compable.toggle(componentType: Entity) {
+	ecs.toggle(entity = this, componentType = componentType)
 }
 
 /**
@@ -347,20 +364,20 @@ public fun Compable.toggle(componentType: Entity<*>) {
  */
 @ExperimentalSpockApi
 context(ecs: MutableEcs)
-public operator fun Compable.minusAssign(componentType: Entity<*>) {
-    ecs.remove(entity = this, componentType)
+public operator fun Compable.minusAssign(componentType: Entity) {
+	ecs.remove(entity = this, componentType)
 }
 
 /**
  * Removes this [Compable] and all its components.
- * * If [this] is an [Entity], all components of its associated type will be removed as well.
+ * * If [this] is an [ComponentType], all components of its associated type will be removed as well.
  * * If [this] is a [Possession], the described component will be [remove][MutableEcs.remove]d if it exists.
  *
  * @since 0.0.1-alpha.
  */
 context(ecs: MutableEcs)
 public fun Compable.delete() {
-    ecs.delete(campable = this)
+	ecs.delete(campable = this)
 }
 
 /**
@@ -369,8 +386,8 @@ public fun Compable.delete() {
  * @since 0.0.1-alpha.4
  */
 context(_: Ecs)
-public operator fun <C : Compable, T> C.div(possessed: Entity<T>): Possession<C, T> =
-    Possession(possessive = this, possessed)
+public operator fun <C : Compable, T> C.div(possessed: ComponentType<T>): Possession<C, T> =
+	Possession(possessive = this, possessed)
 
 /**
  * Retrieves the component described by this [Possession],
@@ -393,7 +410,7 @@ public fun <T> Possession<*, T>.get(): T = possessive[possessed]
  */
 context(ecs: MutableEcs)
 public fun Possession<*, *>.unset() {
-    ecs.unset(entity = possessive, componentType = possessed)
+	ecs.unset(entity = possessive, componentType = possessed)
 }
 
 /**
@@ -406,7 +423,7 @@ public fun Possession<*, *>.unset() {
  */
 context(ecs: MutableEcs)
 public fun <T> Possession<*, T>.assign(value: T) {
-    this[possessed] = value
+	this[possessed] = value
 }
 
 /**
@@ -419,7 +436,7 @@ public fun <T> Possession<*, T>.assign(value: T) {
  */
 context(ecs: MutableEcs)
 public fun <T> Possession<*, T>.assignIfNotPresent(value: T) {
-    ecs.setIfNotPresent(entity = this, componentType = possessed, value)
+	ecs.setIfNotPresent(entity = this, componentType = possessed, value)
 }
 
 /**
@@ -433,7 +450,7 @@ public fun <T> Possession<*, T>.assignIfNotPresent(value: T) {
  */
 context(ecs: MutableEcs)
 public fun Possession<*, *>.assignDefault() {
-    ecs.setToDefault(entity = possessive, componentType = possessed)
+	ecs.setToDefault(entity = possessive, componentType = possessed)
 }
 
 /**
@@ -448,7 +465,7 @@ public fun Possession<*, *>.assignDefault() {
  */
 context(ecs: MutableEcs)
 public fun Possession<*, *>.toggle() {
-    possessive.toggle(componentType = possessed)
+	possessive.toggle(componentType = possessed)
 }
 
 /**

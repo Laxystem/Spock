@@ -6,10 +6,10 @@ package quest.laxla.spock
  * @since 0.0.1-alpha.4
  */
 public interface Named {
-    /**
-     * The canonical name of this object through which it and only it may be retrieved from a [ResourceSource].
-     *
-     * @since 0.0.1-alpha.4
-     */
-    public val name: Name
+	/**
+	 * The canonical name of this object through which it and only it may be retrieved from a [ResourceSource].
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	public val name: Name
 }

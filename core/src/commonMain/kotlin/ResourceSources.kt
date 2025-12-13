@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.emptyFlow
  * @author Laxystem
  */
 private data object Empty : ResourceSource<Nothing> {
-    override fun list(resourceName: Name): Flow<Nothing> = emptyFlow()
+	override fun list(resourceName: Name): Flow<Nothing> = emptyFlow()
 }
 
 /**

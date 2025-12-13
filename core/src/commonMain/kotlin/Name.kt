@@ -4,7 +4,7 @@ import kotlin.jvm.JvmInline
 import kotlin.jvm.JvmName
 
 /**
- * Globally-unique [Resource] name composed of latin-alphabet `camelCase` elements separated by slashes, e.g. an [Entity] name.
+ * Globally-unique [Resource] name composed of latin-alphabet `camelCase` elements separated by slashes, e.g. an [ComponentType] name.
  *
  * @since 0.0.1-alpha.4
  */

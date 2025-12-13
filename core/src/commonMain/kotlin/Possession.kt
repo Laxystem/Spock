@@ -9,4 +9,4 @@ package quest.laxla.spock
  * @since 0.0.1-alpha.4
  */
 @FutureValueClass
-public data class Possession<C : Compable, T>(val possessive: C, val possessed: Entity<T>) : Compable
+public data class Possession<C : Compable, T>(val possessive: C, val possessed: ComponentType<T>) : Compable
