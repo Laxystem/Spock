@@ -13,7 +13,7 @@ public interface Loggable {
 	 * The log level this object restricts itself to.
 	 *
 	 * No synchronization is required to change this property, as it is essentially stateless.
-	 * Implementations are expected to use its *current* state and avoid caching it whenever possible.
+	 * Implementations are expected to use its *current* state and never cache it.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
