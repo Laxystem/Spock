@@ -1,0 +1,26 @@
+div.table--container > table {
+    & > tbody > tr > td:empty::after {
+        content: "\2205";
+        color: var(--color-text-light);
+    }
+
+    & > thead > tr > th:first-of-type {
+        vertical-align: bottom;
+    }
+}
+
+small.na::after {
+    content: "N/A";
+    color: var(--color-text-light);
+}
+
+.theme-dark small.na::after,
+.theme-dark div.table--container > table > tbody > tr > td:empty::after {
+    color: var(--color-text-light-dt);
+}
+
+td:empty,
+td:has(small.na) {
+    text-align: center;
+    vertical-align: middle;
+}

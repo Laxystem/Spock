@@ -1,0 +1,296 @@
+public abstract interface class quest/laxla/spock/Compable {
+}
+
+public abstract interface class quest/laxla/spock/Ecs {
+	public abstract fun contains (Lquest/laxla/spock/Compable;)Z
+	public abstract fun get (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun getDefaultOf (Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun idOf-feUpBcY (Ljava/lang/String;)I
+	public abstract fun possesses (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Z
+	public abstract fun select (Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public abstract fun select (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function4;)V
+	public abstract fun select (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function5;)V
+	public abstract fun select (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function5;)V
+	public abstract fun select (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function6;)V
+	public abstract fun select ([Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function1;)V
+	public abstract fun snap ()Lquest/laxla/spock/SnappedEcs;
+}
+
+public abstract interface annotation class quest/laxla/spock/EcsDsl : java/lang/annotation/Annotation {
+}
+
+public final class quest/laxla/spock/EcsDslKt {
+	public static final fun assign (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Possession;Ljava/lang/Object;)V
+	public static final fun assignDefault (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Possession;)V
+	public static final fun assignIfNotPresent (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Possession;Ljava/lang/Object;)V
+	public static final fun contains (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Z
+	public static final fun delete (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;)V
+	public static final fun div (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Lquest/laxla/spock/Possession;
+	public static final fun exists (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Compable;)Z
+	public static final fun get (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public static final fun get (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Possession;)Ljava/lang/Object;
+	public static final fun getCurrentDefault (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public static final fun getCurrentDefault (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public static final fun getId (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Entity;)I
+	public static final fun idOf (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Entity;)I
+	public static final fun materialize (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;)V
+	public static final fun minusAssign (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public static final fun mutate (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public static final fun mutate (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;)V
+	public static final fun mutate (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;)V
+	public static final fun mutate (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function5;)V
+	public static final fun mutate (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function4;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function4;ILjava/lang/Object;)V
+	public static final fun plusAssign (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public static final fun select (Lquest/laxla/spock/Ecs;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;Ljava/lang/Object;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function4;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function5;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function6;)V
+	public static final fun set (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function6;)V
+	public static final fun setCurrentDefault (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Ljava/lang/Object;)V
+	public static final fun toggle (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public static final fun toggle (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Possession;)V
+	public static final fun unknownEntity-HMPjLwc (ILjava/lang/String;)Ljava/lang/Void;
+	public static synthetic fun unknownEntity-HMPjLwc$default (ILjava/lang/String;ILjava/lang/Object;)Ljava/lang/Void;
+	public static final fun unknownEntity-qim9Vi0 (ILjava/lang/String;)Ljava/lang/Void;
+	public static synthetic fun unknownEntity-qim9Vi0$default (ILjava/lang/String;ILjava/lang/Object;)Ljava/lang/Void;
+	public static final fun unset (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Possession;)V
+}
+
+public abstract interface class quest/laxla/spock/Entity : quest/laxla/spock/Compable {
+	public abstract fun getDataType ()Lkotlin/reflect/KClass;
+	public abstract fun getDefault ()Ljava/lang/Object;
+	public fun getOnlyMutateSetComponentsByDefault ()Z
+}
+
+public final class quest/laxla/spock/Entity$Autonomous : quest/laxla/spock/Entity {
+	public static final synthetic fun box-impl (I)Lquest/laxla/spock/Entity$Autonomous;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public fun getDataType ()Lkotlin/reflect/KClass;
+	public static fun getDataType-impl (I)Lkotlin/reflect/KClass;
+	public synthetic fun getDefault ()Ljava/lang/Object;
+	public fun getDefault ()V
+	public static fun getDefault-impl (I)Lkotlin/Unit;
+	public final fun getId-pVg5ArA ()I
+	public fun getOnlyMutateSetComponentsByDefault ()Z
+	public static fun getOnlyMutateSetComponentsByDefault-impl (I)Z
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class quest/laxla/spock/Entity$DefaultImpls {
+	public static fun getOnlyMutateSetComponentsByDefault (Lquest/laxla/spock/Entity;)Z
+}
+
+public abstract interface class quest/laxla/spock/MutableEcs : quest/laxla/spock/Ecs {
+	public abstract fun add (Lquest/laxla/spock/NamedEntity;)V
+	public abstract fun delete (Lquest/laxla/spock/Compable;)V
+	public abstract fun getAndMaterialize (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun getAndRemove (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun getAndSet (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getAndSetDefaultOf (Lquest/laxla/spock/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getAndSetToDefault (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun getAndUnset (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Ljava/lang/Object;
+	public abstract fun getOrSet (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun materialize (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function5;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function4;)V
+	public abstract fun mutate (Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function3;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function4;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+	public abstract fun remove (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public abstract fun resetComponentTypeDefaults ()V
+	public abstract fun set (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;Ljava/lang/Object;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function3;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function4;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function5;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function6;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function6;)V
+	public abstract fun set (Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;Lkotlin/jvm/functions/Function2;)V
+	public abstract fun setDefaultOf (Lquest/laxla/spock/Entity;Ljava/lang/Object;)V
+	public abstract fun setIfNotPresent (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;Ljava/lang/Object;)V
+	public abstract fun setToDefault (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public abstract fun toggle (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public abstract fun unset (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+}
+
+public final class quest/laxla/spock/MutableEcs$DefaultImpls {
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function6;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function5;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function4;ILjava/lang/Object;)V
+	public static synthetic fun mutate$default (Lquest/laxla/spock/MutableEcs;Lquest/laxla/spock/Entity;[Lquest/laxla/spock/Entity;ZLkotlin/jvm/functions/Function3;ILjava/lang/Object;)V
+}
+
+public final class quest/laxla/spock/Name {
+	public static final field Companion Lquest/laxla/spock/Name$Companion;
+	public static final field SEPARATOR C
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lquest/laxla/spock/Name;
+	public static final fun div-yNQJZrk (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public static final fun getParent-2ks7rh4 (Ljava/lang/String;)Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/Name$Companion {
+}
+
+public final class quest/laxla/spock/NameKt {
+	public static final fun div (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun div-m3SCaAA (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun from (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/Named {
+	public abstract fun getName-Gg4G9pE ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/NamedEntity : quest/laxla/spock/Entity, quest/laxla/spock/Named {
+}
+
+public final class quest/laxla/spock/NamedEntity$DefaultImpls {
+	public static fun getOnlyMutateSetComponentsByDefault (Lquest/laxla/spock/NamedEntity;)Z
+}
+
+public final class quest/laxla/spock/Nametag : quest/laxla/spock/NamedEntity {
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lquest/laxla/spock/Nametag;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getDataType ()Lkotlin/reflect/KClass;
+	public static fun getDataType-impl (Ljava/lang/String;)Lkotlin/reflect/KClass;
+	public synthetic fun getDefault ()Ljava/lang/Object;
+	public fun getDefault ()V
+	public static fun getDefault-impl (Ljava/lang/String;)Lkotlin/Unit;
+	public fun getName-Gg4G9pE ()Ljava/lang/String;
+	public fun getOnlyMutateSetComponentsByDefault ()Z
+	public static fun getOnlyMutateSetComponentsByDefault-impl (Ljava/lang/String;)Z
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class quest/laxla/spock/Possession : quest/laxla/spock/Compable {
+	public fun <init> (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)V
+	public final fun component1 ()Lquest/laxla/spock/Compable;
+	public final fun component2 ()Lquest/laxla/spock/Entity;
+	public final fun copy (Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;)Lquest/laxla/spock/Possession;
+	public static synthetic fun copy$default (Lquest/laxla/spock/Possession;Lquest/laxla/spock/Compable;Lquest/laxla/spock/Entity;ILjava/lang/Object;)Lquest/laxla/spock/Possession;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPossessed ()Lquest/laxla/spock/Entity;
+	public final fun getPossessive ()Lquest/laxla/spock/Compable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/RawResource {
+	public static final field Companion Lquest/laxla/spock/RawResource$Companion;
+	public abstract fun acquire (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getDeserializationMethod ()Lkotlinx/collections/immutable/ImmutableList;
+}
+
+public final class quest/laxla/spock/RawResource$Companion {
+	public final fun invoke (Ljava/lang/Object;Lkotlinx/collections/immutable/ImmutableList;)Lquest/laxla/spock/RawResource;
+	public static synthetic fun invoke$default (Lquest/laxla/spock/RawResource$Companion;Ljava/lang/Object;Lkotlinx/collections/immutable/ImmutableList;ILjava/lang/Object;)Lquest/laxla/spock/RawResource;
+}
+
+public final class quest/laxla/spock/RawResource$DefaultImpls {
+	public static fun getDeserializationMethod (Lquest/laxla/spock/RawResource;)Lkotlinx/collections/immutable/ImmutableList;
+}
+
+public final class quest/laxla/spock/Resource : quest/laxla/spock/RawResource {
+	public fun <init> (Ljava/lang/Object;Lquest/laxla/spock/ResourceType;)V
+	public fun acquire (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Lquest/laxla/spock/ResourceType;
+	public final fun copy (Ljava/lang/Object;Lquest/laxla/spock/ResourceType;)Lquest/laxla/spock/Resource;
+	public static synthetic fun copy$default (Lquest/laxla/spock/Resource;Ljava/lang/Object;Lquest/laxla/spock/ResourceType;ILjava/lang/Object;)Lquest/laxla/spock/Resource;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDeserializationMethod ()Lkotlinx/collections/immutable/ImmutableList;
+	public final fun getResourceType ()Lquest/laxla/spock/ResourceType;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class quest/laxla/spock/ResourceDeserializer {
+	public abstract fun deserialize (Lquest/laxla/spock/RawResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/ResourceSource {
+	public abstract fun list-c-DYAmU (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class quest/laxla/spock/ResourceSourcesKt {
+	public static final fun emptyResourceSource ()Lquest/laxla/spock/ResourceSource;
+}
+
+public abstract interface class quest/laxla/spock/ResourceType {
+	public abstract fun collapse (Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class quest/laxla/spock/SnappedEcs : quest/laxla/spock/Ecs {
+}
+
+public final class quest/laxla/spock/VersionedEntityID {
+	public static final field Companion Lquest/laxla/spock/VersionedEntityID$Companion;
+	public static final synthetic fun box-impl (I)Lquest/laxla/spock/VersionedEntityID;
+	public static fun constructor-impl (I)I
+	public static fun constructor-impl (II)I
+	public static synthetic fun constructor-impl$default (IIILkotlin/jvm/internal/DefaultConstructorMarker;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public static final fun getOrdinal-pVg5ArA (I)I
+	public static final fun getVersion-pVg5ArA (I)I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public static final fun nextOrdinal-pnzm3cA (I)I
+	public static final fun nextVersion-pnzm3cA (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public static final fun toUInt-pVg5ArA (I)I
+	public final synthetic fun unbox-impl ()I
+}
+
+public final synthetic class quest/laxla/spock/VersionedEntityID$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lquest/laxla/spock/VersionedEntityID$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize--18sVhU (Lkotlinx/serialization/encoding/Decoder;)I
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-nTHR_eQ (Lkotlinx/serialization/encoding/Encoder;I)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/VersionedEntityID$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

@@ -245,6 +245,10 @@ public final class quest/laxla/spock/IterableRangesKt {
 	public static final fun step-Qn1smSk (Lkotlin/ranges/UIntProgression;I)Lkotlin/ranges/UIntProgression;
 }
 
+public final class quest/laxla/spock/IteratorsKt {
+	public static final fun emptyIterator ()Ljava/util/Iterator;
+}
+
 public abstract interface class quest/laxla/spock/KTarget {
 	public static final field Companion Lquest/laxla/spock/KTarget$Companion;
 	public abstract fun getOperatingSystem ()Lquest/laxla/spock/OperatingSystem;
@@ -406,6 +410,8 @@ public final class quest/laxla/spock/Platforms_jvmKt {
 public final class quest/laxla/spock/StringsKt {
 	public static final fun emptyString ()Ljava/lang/String;
 	public static final fun escapeHtml (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun trimAndAppendIfNotBlank (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun trimAndAppendIfNotBlank$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 }
 
 public abstract interface class quest/laxla/spock/SuspendCloseable {

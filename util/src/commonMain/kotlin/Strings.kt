@@ -9,6 +9,15 @@ package quest.laxla.spock
 public inline fun emptyString(): String = ""
 
 /**
+ * Readies a [kotlin.String] to be concatted to a user-facing message.
+ *
+ * @since 0.0.1-alpha.4
+ */
+public fun String.trimAndAppendIfNotBlank(prefix: String = emptyString(), suffix: String = emptyString()): String =
+	if (isBlank()) emptyString()
+	else prefix + trim() + suffix
+
+/**
  * Escapes the provided string to avoid markup from being accidentally applied when used in HTML files.
  *
  * This function is taken from Ktor, under the Apache License 2.0.

@@ -4,10 +4,7 @@ package quest.laxla.spock.glfw
 
 import kotlinx.cinterop.ExperimentalForeignApi
 
-internal actual fun glfwInit(): Unit? = Unit.takeIf { glfw.glfwInit() == GlfwTrue }
-internal actual fun glfwTerminate() {
-	glfw.glfwTerminate()
-}
+internal expect fun _glfwInit(): Int
 
-public actual val GlfwTrue: Int get() = glfw.GLFW_TRUE
-public actual val GlfwFalse: Int get() = glfw.GLFW_FALSE
+internal actual fun glfwInit(): Unit? = Unit.takeIf { _glfwInit() == GlfwTrue }
+

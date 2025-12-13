@@ -15,3 +15,10 @@ import kotlin.coroutines.CoroutineContext
 //@get:Throws(IllegalStateException::class) TODO: crashes on native
 public val CoroutineContext.dispatcher: CoroutineDispatcher
 	get() = this[CoroutineDispatcher] ?: error("Coroutine context doesn't contain coroutine dispatcher: $this")
+
+/**
+ * Shortcut for [CoroutineContext.minusKey], unclear why this does not exist by default.
+ *
+ * @since 0.0.1-alpha.4
+ */
+public operator fun CoroutineContext.minus(key: CoroutineContext.Key<*>): CoroutineContext = minusKey(key)

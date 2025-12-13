@@ -10,4 +10,6 @@ dokka {
 			remoteLineSuffix = "#L"
 		}
 	}
+
+	pluginsConfiguration.html.customStyleSheets = rootProject.files("docs/custom.css")
 }

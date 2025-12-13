@@ -57,7 +57,6 @@ public inline fun Flag.ifSet(block: () -> Unit) {
  * This function is not thread-safe.
  * Use [setWithLock] instead if you don't want [action] to execute twice.
  *
- * @return the thrown exception, if any.
  * @since 0.0.1-alpha.4
  */
 @OptIn(ExperimentalContracts::class)
@@ -86,7 +85,6 @@ public inline fun Flag.set(action: () -> Unit) {
  * @param owner Optional owner token for debugging.
  * When specified (non-`null` value) and the [mutex] is already locked with the same token (same identity),
  * this function throws [IllegalStateException].
- * @return the thrown exception, if any.
  * @since 0.0.1-alpha.4
  * @see set
  * @see Mutex.withLock

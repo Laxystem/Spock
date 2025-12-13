@@ -110,6 +110,8 @@ public expect val GlfwTrue: Int
  * @since 0.0.1-alpha.4
  */
 public expect val GlfwFalse: Int
+
+
 private const val FailedInitializationWithExistingCoroutineContext =
 	"GLFW initialization should not fail when a GLFW coroutine context already exists, " +
 			"as presumably, GLFW is already initialized."

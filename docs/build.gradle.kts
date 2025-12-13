@@ -5,6 +5,7 @@ plugins {
 dependencies {
 	dokka(projects.client)
 	dokka(projects.clientToolkit)
+	dokka(projects.core)
 	dokka(projects.glfw)
 	dokka(projects.init)
 	dokka(projects.math)
@@ -19,7 +20,7 @@ val docsDir = layout.projectDirectory.dir("history").apply { asFile.mkdirs() }
 
 dokka {
 	moduleName = rootProject.name
-	
+
 	dokkaPublications.html {
 		includes.from(rootProject.file("README.md"))
 	}

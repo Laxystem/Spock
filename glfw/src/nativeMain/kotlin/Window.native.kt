@@ -2,11 +2,6 @@
 
 package quest.laxla.spock.glfw
 
-import cnames.structs.GLFWwindow
-import glfw.glfwCreateWindow
-import glfw.glfwDestroyWindow
-import glfw.glfwGetWindowSize
-import glfw.glfwWindowShouldClose
 import kotlinx.cinterop.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -18,6 +13,34 @@ import quest.laxla.spock.math.UIntSpace
 import quest.laxla.spock.math.Vector2ui
 import quest.laxla.spock.math.vectorOf
 import quest.laxla.spock.windowing.Window
+
+@ExperimentalForeignApi
+public expect class GLFWwindow : CPointed
+
+@ExperimentalForeignApi
+internal expect class GLFWmonitor : CPointed
+
+@ExperimentalForeignApi
+internal expect fun glfwCreateWindow(
+	width: Int,
+	height: Int,
+	title: String,
+	monitor: CValuesRef<GLFWmonitor>?,
+	share: CValuesRef<GLFWwindow>?
+): CPointer<GLFWwindow>?
+
+@ExperimentalForeignApi
+internal expect fun glfwWindowShouldClose(window: CPointer<GLFWwindow>): Int
+
+@ExperimentalForeignApi
+internal expect fun glfwGetWindowSize(
+	window: CPointer<GLFWwindow>,
+	width: CPointer<IntVar>,
+	height: CPointer<IntVar>
+)
+
+@ExperimentalForeignApi
+internal expect fun glfwDestroyWindow(window: CPointer<GLFWwindow>)
 
 public actual class GlfwWindow(public val pointer: CPointer<GLFWwindow>) : Window {
 	public actual constructor(width: UInt, height: UInt, title: String) :

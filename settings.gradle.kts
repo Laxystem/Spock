@@ -4,6 +4,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
 	"client",
 	"client-toolkit",
+	"core",
 	"docs",
 	"example",
 	"glfw",

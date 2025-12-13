@@ -2,7 +2,6 @@
 
 package quest.laxla.spock.glfw
 
-import glfw.glfwPollEvents
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.DelicateCoroutinesApi
 import quest.laxla.spock.DelicateSpockApi
@@ -12,3 +11,6 @@ import quest.laxla.spock.ExperimentalSpockApi
 public actual suspend fun Glfw.pollEventsWithoutLogging(): Unit = Glfw {
 	glfwPollEvents()
 }
+
+@ExperimentalForeignApi
+internal expect fun glfwPollEvents()
