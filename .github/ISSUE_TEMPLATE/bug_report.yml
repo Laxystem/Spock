@@ -107,6 +107,7 @@ body:
       options:
         - x64
         - Arm64
+        - RISC-V
     validations:
       required: true
   - type: dropdown
