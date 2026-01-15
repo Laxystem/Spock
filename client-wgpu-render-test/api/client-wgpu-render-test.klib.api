@@ -1,0 +1,30 @@
+// Klib ABI Dump
+// Targets: [linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:client-wgpu-render-test>
+final class quest.laxla.spock.client.wgpu.renderTest/BasicRenderer : quest.laxla.spock.client.wgpu/WebGpuRenderer, quest.laxla.spock/Closer { // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer|null[0]
+    constructor <init>(io.ygdrasil.webgpu/GPUDevice, quest.laxla.spock.client.wgpu/Surface, io.ygdrasil.webgpu/GPUTextureFormat = ...) // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.<init>|<init>(io.ygdrasil.webgpu.GPUDevice;quest.laxla.spock.client.wgpu.Surface;io.ygdrasil.webgpu.GPUTextureFormat){}[0]
+
+    final val device // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.device|{}device[0]
+        final fun <get-device>(): io.ygdrasil.webgpu/GPUDevice // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.device.<get-device>|<get-device>(){}[0]
+    final val format // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.format|{}format[0]
+        final fun <get-format>(): io.ygdrasil.webgpu/GPUTextureFormat // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.format.<get-format>|<get-format>(){}[0]
+    final val surface // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.surface|{}surface[0]
+        final fun <get-surface>(): quest.laxla.spock.client.wgpu/Surface // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.surface.<get-surface>|<get-surface>(){}[0]
+
+    final fun <#A1: kotlin/AutoCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.unaryPlus|unaryPlus@0:0(){0§<kotlin.AutoCloseable>}[0]
+    final fun <#A1: quest.laxla.spock/SuspendCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.unaryPlus|unaryPlus@0:0(){0§<quest.laxla.spock.SuspendCloseable>}[0]
+    final fun contains(quest.laxla.spock/SuspendCloseable): kotlin/Boolean // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.contains|contains(quest.laxla.spock.SuspendCloseable){}[0]
+    final suspend fun close() // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.close|close(){}[0]
+    final suspend fun invoke() // quest.laxla.spock.client.wgpu.renderTest/BasicRenderer.invoke|invoke(){}[0]
+}
+
+final fun quest.laxla.spock.client.wgpu.renderTest/main() // quest.laxla.spock.client.wgpu.renderTest/main|main(){}[0]
+final suspend fun quest.laxla.spock.client.wgpu.renderTest/renderTest() // quest.laxla.spock.client.wgpu.renderTest/renderTest|renderTest(){}[0]
+
+// Targets: [wasmJs]
+final suspend fun /main() // /main|main(){}[0]

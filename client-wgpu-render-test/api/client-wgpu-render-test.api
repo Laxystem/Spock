@@ -1,4 +1,4 @@
-public final class quest/laxla/spock/renderTest/BasicRenderer : quest/laxla/spock/Closer, quest/laxla/spock/client/wgpu/WebGpuRenderer {
+public final class quest/laxla/spock/client/wgpu/renderTest/BasicRenderer : quest/laxla/spock/Closer, quest/laxla/spock/client/wgpu/WebGpuRenderer {
 	public fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;)V
 	public synthetic fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -11,12 +11,12 @@ public final class quest/laxla/spock/renderTest/BasicRenderer : quest/laxla/spoc
 	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
 }
 
-public final class quest/laxla/spock/renderTest/MainKt {
+public final class quest/laxla/spock/client/wgpu/renderTest/MainKt {
 	public static final fun main ()V
 	public static synthetic fun main ([Ljava/lang/String;)V
 }
 
-public final class quest/laxla/spock/renderTest/RenderTestKt {
+public final class quest/laxla/spock/client/wgpu/renderTest/RenderTestKt {
 	public static final fun renderTest (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

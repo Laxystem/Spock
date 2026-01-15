@@ -4,6 +4,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
 	"client",
 	"client-wgpu",
+	"client-wgpu-render-test",
 	"core",
 	"docs",
 	"example",
@@ -13,7 +14,6 @@ include(
 	"math",
 	"math-base",
 	"math-codegen",
-	"render-test",
 	"util",
 	"windowing"
 )

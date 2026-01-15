@@ -15,15 +15,15 @@ dependencies {
 
 kotlin {
 	jvm().mainRun {
-		mainClass = "quest.laxla.spock.renderTest.MainKt"
+		mainClass = "quest.laxla.spock.client.wgpu.renderTest.MainKt"
 	}
 
 	linuxX64().binaries.executable {
-		entryPoint = "quest.laxla.spock.renderTest.main"
+		entryPoint = "quest.laxla.spock.client.wgpu.renderTest.main"
 	}
 
 	mingwX64().binaries.executable {
-		entryPoint = "quest.laxla.spock.renderTest.main"
+		entryPoint = "quest.laxla.spock.client.wgpu.renderTest.main"
 	}
 
 	wasmJs {

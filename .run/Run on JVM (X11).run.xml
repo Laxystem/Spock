@@ -3,6 +3,7 @@
     <ExternalSystemSettings>
       <option name="env">
         <map>
+          <entry key="MALLOC_CHECK_" value="3" />
           <entry key="RUST_BACKTRACE" value="full" />
           <entry key="XDG_SESSION_TYPE" value="x11" />
         </map>
@@ -16,15 +17,18 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":example:jvmRun" />
+          <option value="example:jvmRun" />
         </list>
       </option>
-      <option name="vmOptions" />
+      <option name="vmOptions" value="-ea -Dkotlinx.coroutines.debug" />
     </ExternalSystemSettings>
     <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+    <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
     <DebugAllEnabled>false</DebugAllEnabled>
     <RunAsTest>false</RunAsTest>
+    <GradleProfilingDisabled>false</GradleProfilingDisabled>
+    <GradleCoverageDisabled>false</GradleCoverageDisabled>
     <method v="2" />
   </configuration>
 </component>

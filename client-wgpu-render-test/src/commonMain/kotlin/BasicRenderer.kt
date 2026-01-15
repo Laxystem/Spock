@@ -1,4 +1,4 @@
-package quest.laxla.spock.renderTest
+package quest.laxla.spock.client.wgpu.renderTest
 
 import io.ygdrasil.webgpu.*
 import quest.laxla.spock.*
