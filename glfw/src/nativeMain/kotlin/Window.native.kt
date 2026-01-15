@@ -59,7 +59,7 @@ public actual class GlfwWindow(public val pointer: CPointer<GLFWwindow>) : Windo
 		}
 	}
 
-	@OptIn(ExperimentalSpockApi::class, DelicateCoroutinesApi::class, DelicateSpockApi::class)
+	@OptIn( DelicateCoroutinesApi::class, DelicateSpockApi::class)
 	actual override suspend fun close(): Unit = Glfw(NonCancellable) {
 		glfwDestroyWindow(pointer)
 	}

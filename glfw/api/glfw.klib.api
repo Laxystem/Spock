@@ -1,0 +1,52 @@
+// Klib ABI Dump
+// Targets: [linuxX64, mingwX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:glfw>
+final class quest.laxla.spock.glfw/GlfwWindow : quest.laxla.spock.windowing/Window { // quest.laxla.spock.glfw/GlfwWindow|null[0]
+    constructor <init>(kotlin/UInt, kotlin/UInt, kotlin/String) // quest.laxla.spock.glfw/GlfwWindow.<init>|<init>(kotlin.UInt;kotlin.UInt;kotlin.String){}[0]
+    constructor <init>(kotlinx.cinterop/CPointer<cnames.structs/GLFWwindow>) // quest.laxla.spock.glfw/GlfwWindow.<init>|<init>(kotlinx.cinterop.CPointer<cnames.structs.GLFWwindow>){}[0]
+
+    final val pointer // quest.laxla.spock.glfw/GlfwWindow.pointer|{}pointer[0]
+        final fun <get-pointer>(): kotlinx.cinterop/CPointer<cnames.structs/GLFWwindow> // quest.laxla.spock.glfw/GlfwWindow.pointer.<get-pointer>|<get-pointer>(){}[0]
+    final val shouldClose // quest.laxla.spock.glfw/GlfwWindow.shouldClose|{}shouldClose[0]
+        final fun <get-shouldClose>(): kotlin/Boolean // quest.laxla.spock.glfw/GlfwWindow.shouldClose.<get-shouldClose>|<get-shouldClose>(){}[0]
+    final val size // quest.laxla.spock.glfw/GlfwWindow.size|{}size[0]
+        final fun <get-size>(): kotlinx.coroutines/Deferred<quest.laxla.spock.math/Vector2<kotlin/UInt, quest.laxla.spock.math/UIntSpace>> // quest.laxla.spock.glfw/GlfwWindow.size.<get-size>|<get-size>(){}[0]
+
+    final suspend fun close() // quest.laxla.spock.glfw/GlfwWindow.close|close(){}[0]
+}
+
+open class quest.laxla.spock.glfw/GlfwException : kotlin/RuntimeException { // quest.laxla.spock.glfw/GlfwException|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/Throwable? = ...) // quest.laxla.spock.glfw/GlfwException.<init>|<init>(kotlin.String?;kotlin.Throwable?){}[0]
+}
+
+final object quest.laxla.spock.glfw/Glfw : kotlinx.coroutines/CoroutineScope, quest.laxla.spock/SuspendCloseable { // quest.laxla.spock.glfw/Glfw|null[0]
+    final val coroutineContext // quest.laxla.spock.glfw/Glfw.coroutineContext|{}coroutineContext[0]
+        final fun <get-coroutineContext>(): kotlin.coroutines/CoroutineContext // quest.laxla.spock.glfw/Glfw.coroutineContext.<get-coroutineContext>|<get-coroutineContext>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.glfw/Glfw.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.glfw/Glfw.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.glfw/Glfw.toString|toString(){}[0]
+    final suspend fun <#A1: kotlin/Any?> invoke(kotlin.coroutines/CoroutineContext = ..., kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, #A1>): #A1 // quest.laxla.spock.glfw/Glfw.invoke|invoke(kotlin.coroutines.CoroutineContext;kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun close() // quest.laxla.spock.glfw/Glfw.close|close(){}[0]
+    final suspend fun initialize() // quest.laxla.spock.glfw/Glfw.initialize|initialize(){}[0]
+}
+
+final val quest.laxla.spock.glfw/GlfwClientApi // quest.laxla.spock.glfw/GlfwClientApi|{}GlfwClientApi[0]
+    final fun <get-GlfwClientApi>(): kotlin/Int // quest.laxla.spock.glfw/GlfwClientApi.<get-GlfwClientApi>|<get-GlfwClientApi>(){}[0]
+final val quest.laxla.spock.glfw/GlfwFalse // quest.laxla.spock.glfw/GlfwFalse|{}GlfwFalse[0]
+    final fun <get-GlfwFalse>(): kotlin/Int // quest.laxla.spock.glfw/GlfwFalse.<get-GlfwFalse>|<get-GlfwFalse>(){}[0]
+final val quest.laxla.spock.glfw/GlfwNoApi // quest.laxla.spock.glfw/GlfwNoApi|{}GlfwNoApi[0]
+    final fun <get-GlfwNoApi>(): kotlin/Int // quest.laxla.spock.glfw/GlfwNoApi.<get-GlfwNoApi>|<get-GlfwNoApi>(){}[0]
+final val quest.laxla.spock.glfw/GlfwResizable // quest.laxla.spock.glfw/GlfwResizable|{}GlfwResizable[0]
+    final fun <get-GlfwResizable>(): kotlin/Int // quest.laxla.spock.glfw/GlfwResizable.<get-GlfwResizable>|<get-GlfwResizable>(){}[0]
+final val quest.laxla.spock.glfw/GlfwTrue // quest.laxla.spock.glfw/GlfwTrue|{}GlfwTrue[0]
+    final fun <get-GlfwTrue>(): kotlin/Int // quest.laxla.spock.glfw/GlfwTrue.<get-GlfwTrue>|<get-GlfwTrue>(){}[0]
+
+final fun quest.laxla.spock.glfw/glfwWindowHint(kotlin/Int, kotlin/Int) // quest.laxla.spock.glfw/glfwWindowHint|glfwWindowHint(kotlin.Int;kotlin.Int){}[0]
+final suspend fun (quest.laxla.spock.glfw/Glfw).quest.laxla.spock.glfw/pollEvents() // quest.laxla.spock.glfw/pollEvents|pollEvents@quest.laxla.spock.glfw.Glfw(){}[0]
+final suspend fun (quest.laxla.spock.glfw/Glfw).quest.laxla.spock.glfw/pollEventsWithoutLogging() // quest.laxla.spock.glfw/pollEventsWithoutLogging|pollEventsWithoutLogging@quest.laxla.spock.glfw.Glfw(){}[0]

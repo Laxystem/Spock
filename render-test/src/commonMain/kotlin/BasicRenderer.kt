@@ -4,14 +4,13 @@ import io.ygdrasil.webgpu.*
 import quest.laxla.spock.*
 import quest.laxla.spock.client.toolkit.Surface
 import quest.laxla.spock.client.toolkit.WebGpuRenderer
-import quest.laxla.spock.client.toolkit.naïvelySelectTextureFormat
+import quest.laxla.spock.client.toolkit.naivelySelectTextureFormat
 
 
-@OptIn(ExperimentalSpockApi::class)
 public class BasicRenderer(
 	override val device: GPUDevice,
 	override val surface: Surface,
-	override val format: GPUTextureFormat = surface.naïvelySelectTextureFormat()
+	override val format: GPUTextureFormat = surface.naivelySelectTextureFormat()
 ) : WebGpuRenderer, Closer by Closer() {
 	private val vertices = floatArrayOf(
 		-0.8f, -0.8f,

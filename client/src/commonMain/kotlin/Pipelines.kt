@@ -1,7 +1,5 @@
 package quest.laxla.spock.client
 
-import quest.laxla.spock.ExperimentalSpockApi
-
 private const val PipelineVertexKindDeprecationMessage = "Vertex kinds only affect the vertex shader, not the entire pipeline."
 
 /**
@@ -13,6 +11,5 @@ private const val PipelineVertexKindDeprecationMessage = "Vertex kinds only affe
 	level = DeprecationLevel.ERROR,
 	replaceWith = ReplaceWith("this.vertexShader.vertexKind")
 )
-@ExperimentalSpockApi
 public val <Vertex : Any> Pipeline<Vertex>.vertexKind: VertexKind<Vertex>
 	get() = throw NotImplementedError(PipelineVertexKindDeprecationMessage)

@@ -3,6 +3,7 @@ docs/current
 
 ### Memory Dumps ###
 *.hprof
+vgcore.*
 
 ### Gradle ###
 .gradle

@@ -1,0 +1,359 @@
+// Klib ABI Dump
+// Targets: [linuxArm64, linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:util>
+open annotation class quest.laxla.spock/DelicateSpockApi : kotlin/Annotation { // quest.laxla.spock/DelicateSpockApi|null[0]
+    constructor <init>(kotlin/ReplaceWith = ...) // quest.laxla.spock/DelicateSpockApi.<init>|<init>(kotlin.ReplaceWith){}[0]
+
+    final val replaceWith // quest.laxla.spock/DelicateSpockApi.replaceWith|{}replaceWith[0]
+        final fun <get-replaceWith>(): kotlin/ReplaceWith // quest.laxla.spock/DelicateSpockApi.replaceWith.<get-replaceWith>|<get-replaceWith>(){}[0]
+}
+
+open annotation class quest.laxla.spock/ExperimentalSpockApi : kotlin/Annotation { // quest.laxla.spock/ExperimentalSpockApi|null[0]
+    constructor <init>() // quest.laxla.spock/ExperimentalSpockApi.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock/FutureContextFunction : kotlin/Annotation { // quest.laxla.spock/FutureContextFunction|null[0]
+    constructor <init>() // quest.laxla.spock/FutureContextFunction.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock/FutureErrorType : kotlin/Annotation { // quest.laxla.spock/FutureErrorType|null[0]
+    constructor <init>() // quest.laxla.spock/FutureErrorType.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock/FutureImmutableArray : kotlin/Annotation { // quest.laxla.spock/FutureImmutableArray|null[0]
+    constructor <init>() // quest.laxla.spock/FutureImmutableArray.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock/FutureSuspendProperty : kotlin/Annotation { // quest.laxla.spock/FutureSuspendProperty|null[0]
+    constructor <init>() // quest.laxla.spock/FutureSuspendProperty.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock/FutureValueClass : kotlin/Annotation { // quest.laxla.spock/FutureValueClass|null[0]
+    constructor <init>() // quest.laxla.spock/FutureValueClass.<init>|<init>(){}[0]
+}
+
+abstract fun interface <#A: out kotlin/Any?> quest.laxla.spock/SuspendLazy : kotlin.coroutines/SuspendFunction0<#A> // quest.laxla.spock/SuspendLazy|null[0]
+
+abstract fun interface quest.laxla.spock/SuspendCloseable { // quest.laxla.spock/SuspendCloseable|null[0]
+    abstract suspend fun close() // quest.laxla.spock/SuspendCloseable.close|close(){}[0]
+}
+
+abstract interface <#A: in kotlin/Any?, #B: out kotlin/Any?> quest.laxla.spock/Cache : quest.laxla.spock/SuspendCloseable { // quest.laxla.spock/Cache|null[0]
+    abstract suspend fun contains(#A): kotlin/Boolean // quest.laxla.spock/Cache.contains|contains(1:0){}[0]
+    abstract suspend fun forget(#A): kotlin/Unit? // quest.laxla.spock/Cache.forget|forget(1:0){}[0]
+    abstract suspend fun getAndRemove(#A): quest.laxla.spock/Cache.Entry<#B> // quest.laxla.spock/Cache.getAndRemove|getAndRemove(1:0){}[0]
+    abstract suspend fun getEntry(#A): quest.laxla.spock/Cache.Entry<#B> // quest.laxla.spock/Cache.getEntry|getEntry(1:0){}[0]
+    open suspend fun cacheAll(kotlin.sequences/Sequence<#A>) // quest.laxla.spock/Cache.cacheAll|cacheAll(kotlin.sequences.Sequence<1:0>){}[0]
+    open suspend fun tick() // quest.laxla.spock/Cache.tick|tick(){}[0]
+
+    abstract interface <#A1: out kotlin/Any?> Entry : quest.laxla.spock/SuspendCloseable { // quest.laxla.spock/Cache.Entry|null[0]
+        abstract val product // quest.laxla.spock/Cache.Entry.product|{}product[0]
+            abstract fun <get-product>(): #A1 // quest.laxla.spock/Cache.Entry.product.<get-product>|<get-product>(){}[0]
+
+        sealed interface <#A2: out kotlin/Any?> Direct : quest.laxla.spock/Cache.Entry<#A2> { // quest.laxla.spock/Cache.Entry.Direct|null[0]
+            final value class <#A3: out kotlin/AutoCloseable> Auto : quest.laxla.spock/Cache.Entry.Direct<#A3> { // quest.laxla.spock/Cache.Entry.Direct.Auto|null[0]
+                constructor <init>(#A3) // quest.laxla.spock/Cache.Entry.Direct.Auto.<init>|<init>(1:0){}[0]
+
+                final val product // quest.laxla.spock/Cache.Entry.Direct.Auto.product|{}product[0]
+                    final fun <get-product>(): #A3 // quest.laxla.spock/Cache.Entry.Direct.Auto.product.<get-product>|<get-product>(){}[0]
+
+                final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Cache.Entry.Direct.Auto.equals|equals(kotlin.Any?){}[0]
+                final fun hashCode(): kotlin/Int // quest.laxla.spock/Cache.Entry.Direct.Auto.hashCode|hashCode(){}[0]
+                final fun toString(): kotlin/String // quest.laxla.spock/Cache.Entry.Direct.Auto.toString|toString(){}[0]
+                final suspend fun close() // quest.laxla.spock/Cache.Entry.Direct.Auto.close|close(){}[0]
+            }
+
+            final value class <#A3: out quest.laxla.spock/SuspendCloseable> Suspend : quest.laxla.spock/Cache.Entry.Direct<#A3>, quest.laxla.spock/SuspendCloseable { // quest.laxla.spock/Cache.Entry.Direct.Suspend|null[0]
+                constructor <init>(#A3) // quest.laxla.spock/Cache.Entry.Direct.Suspend.<init>|<init>(1:0){}[0]
+
+                final val product // quest.laxla.spock/Cache.Entry.Direct.Suspend.product|{}product[0]
+                    final fun <get-product>(): #A3 // quest.laxla.spock/Cache.Entry.Direct.Suspend.product.<get-product>|<get-product>(){}[0]
+
+                final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Cache.Entry.Direct.Suspend.equals|equals(kotlin.Any?){}[0]
+                final fun hashCode(): kotlin/Int // quest.laxla.spock/Cache.Entry.Direct.Suspend.hashCode|hashCode(){}[0]
+                final fun toString(): kotlin/String // quest.laxla.spock/Cache.Entry.Direct.Suspend.toString|toString(){}[0]
+                final suspend fun close() // quest.laxla.spock/Cache.Entry.Direct.Suspend.close|close(){}[0]
+            }
+        }
+
+        final class <#A2: kotlin/Any?, #B2: kotlin/Any?> Borrowed : quest.laxla.spock/Cache.Entry<#B2> { // quest.laxla.spock/Cache.Entry.Borrowed|null[0]
+            constructor <init>(quest.laxla.spock/InferringCache<#A2, #B2>, quest.laxla.spock/Cache.Entry<#B2>) // quest.laxla.spock/Cache.Entry.Borrowed.<init>|<init>(quest.laxla.spock.InferringCache<1:0,1:1>;quest.laxla.spock.Cache.Entry<1:1>){}[0]
+
+            final val cache // quest.laxla.spock/Cache.Entry.Borrowed.cache|{}cache[0]
+                final fun <get-cache>(): quest.laxla.spock/InferringCache<#A2, #B2> // quest.laxla.spock/Cache.Entry.Borrowed.cache.<get-cache>|<get-cache>(){}[0]
+            final val original // quest.laxla.spock/Cache.Entry.Borrowed.original|{}original[0]
+                final fun <get-original>(): quest.laxla.spock/Cache.Entry<#B2> // quest.laxla.spock/Cache.Entry.Borrowed.original.<get-original>|<get-original>(){}[0]
+            final val product // quest.laxla.spock/Cache.Entry.Borrowed.product|{}product[0]
+                final fun <get-product>(): #B2 // quest.laxla.spock/Cache.Entry.Borrowed.product.<get-product>|<get-product>(){}[0]
+
+            final fun component1(): quest.laxla.spock/InferringCache<#A2, #B2> // quest.laxla.spock/Cache.Entry.Borrowed.component1|component1(){}[0]
+            final fun component2(): quest.laxla.spock/Cache.Entry<#B2> // quest.laxla.spock/Cache.Entry.Borrowed.component2|component2(){}[0]
+            final fun copy(quest.laxla.spock/InferringCache<#A2, #B2> = ..., quest.laxla.spock/Cache.Entry<#B2> = ...): quest.laxla.spock/Cache.Entry.Borrowed<#A2, #B2> // quest.laxla.spock/Cache.Entry.Borrowed.copy|copy(quest.laxla.spock.InferringCache<1:0,1:1>;quest.laxla.spock.Cache.Entry<1:1>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Cache.Entry.Borrowed.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // quest.laxla.spock/Cache.Entry.Borrowed.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // quest.laxla.spock/Cache.Entry.Borrowed.toString|toString(){}[0]
+            final suspend fun close() // quest.laxla.spock/Cache.Entry.Borrowed.close|close(){}[0]
+        }
+
+        final value class <#A2: out kotlin/Any?> Reference : quest.laxla.spock/Cache.Entry<#A2> { // quest.laxla.spock/Cache.Entry.Reference|null[0]
+            constructor <init>(#A2) // quest.laxla.spock/Cache.Entry.Reference.<init>|<init>(1:0){}[0]
+
+            final val product // quest.laxla.spock/Cache.Entry.Reference.product|{}product[0]
+                final fun <get-product>(): #A2 // quest.laxla.spock/Cache.Entry.Reference.product.<get-product>|<get-product>(){}[0]
+
+            final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Cache.Entry.Reference.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // quest.laxla.spock/Cache.Entry.Reference.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // quest.laxla.spock/Cache.Entry.Reference.toString|toString(){}[0]
+            final suspend fun close() // quest.laxla.spock/Cache.Entry.Reference.close|close(){}[0]
+        }
+    }
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/InferringCache : quest.laxla.spock/Cache<#A, #B> { // quest.laxla.spock/InferringCache|null[0]
+    abstract fun descriptorOf(#B): #A // quest.laxla.spock/InferringCache.descriptorOf|descriptorOf(1:1){}[0]
+    open suspend fun put(quest.laxla.spock/Cache.Entry<#B>): kotlin/Unit? // quest.laxla.spock/InferringCache.put|put(quest.laxla.spock.Cache.Entry<1:1>){}[0]
+}
+
+abstract interface quest.laxla.spock/ByteAppender { // quest.laxla.spock/ByteAppender|null[0]
+    abstract val capacity // quest.laxla.spock/ByteAppender.capacity|{}capacity[0]
+        abstract fun <get-capacity>(): kotlin/Int // quest.laxla.spock/ByteAppender.capacity.<get-capacity>|<get-capacity>(){}[0]
+    abstract val offset // quest.laxla.spock/ByteAppender.offset|{}offset[0]
+        abstract fun <get-offset>(): kotlin/Int // quest.laxla.spock/ByteAppender.offset.<get-offset>|<get-offset>(){}[0]
+    abstract val remainingCapacity // quest.laxla.spock/ByteAppender.remainingCapacity|{}remainingCapacity[0]
+        abstract fun <get-remainingCapacity>(): kotlin/Int // quest.laxla.spock/ByteAppender.remainingCapacity.<get-remainingCapacity>|<get-remainingCapacity>(){}[0]
+
+    abstract fun append(kotlin/Byte) // quest.laxla.spock/ByteAppender.append|append(kotlin.Byte){}[0]
+    abstract fun append(kotlin/ByteArray, kotlin/Int = ..., kotlin/Int = ...) // quest.laxla.spock/ByteAppender.append|append(kotlin.ByteArray;kotlin.Int;kotlin.Int){}[0]
+    abstract fun toByteString(): kotlinx.io.bytestring/ByteString // quest.laxla.spock/ByteAppender.toByteString|toByteString(){}[0]
+}
+
+abstract interface quest.laxla.spock/Closer : quest.laxla.spock/SuspendCloseable { // quest.laxla.spock/Closer|null[0]
+    abstract fun <#A1: kotlin/AutoCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock/Closer.unaryPlus|unaryPlus@0:0(){0§<kotlin.AutoCloseable>}[0]
+    abstract fun <#A1: quest.laxla.spock/SuspendCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock/Closer.unaryPlus|unaryPlus@0:0(){0§<quest.laxla.spock.SuspendCloseable>}[0]
+    abstract fun contains(quest.laxla.spock/SuspendCloseable): kotlin/Boolean // quest.laxla.spock/Closer.contains|contains(quest.laxla.spock.SuspendCloseable){}[0]
+}
+
+abstract interface quest.laxla.spock/Flag { // quest.laxla.spock/Flag|null[0]
+    abstract fun invoke(): kotlin/Boolean // quest.laxla.spock/Flag.invoke|invoke(){}[0]
+    abstract fun set() // quest.laxla.spock/Flag.set|set(){}[0]
+}
+
+abstract interface quest.laxla.spock/KTarget { // quest.laxla.spock/KTarget|null[0]
+    abstract val operatingSystem // quest.laxla.spock/KTarget.operatingSystem|{}operatingSystem[0]
+        abstract fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+    sealed interface JvmBased : quest.laxla.spock/KTarget // quest.laxla.spock/KTarget.JvmBased|null[0]
+
+    final class Jvm : quest.laxla.spock/KTarget.JvmBased { // quest.laxla.spock/KTarget.Jvm|null[0]
+        constructor <init>(quest.laxla.spock/OperatingSystem? = ...) // quest.laxla.spock/KTarget.Jvm.<init>|<init>(quest.laxla.spock.OperatingSystem?){}[0]
+
+        final val operatingSystem // quest.laxla.spock/KTarget.Jvm.operatingSystem|{}operatingSystem[0]
+            final fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.Jvm.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+        final fun component1(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.Jvm.component1|component1(){}[0]
+        final fun copy(quest.laxla.spock/OperatingSystem? = ...): quest.laxla.spock/KTarget.Jvm // quest.laxla.spock/KTarget.Jvm.copy|copy(quest.laxla.spock.OperatingSystem?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/KTarget.Jvm.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/KTarget.Jvm.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/KTarget.Jvm.toString|toString(){}[0]
+    }
+
+    final class Native : quest.laxla.spock/KTarget { // quest.laxla.spock/KTarget.Native|null[0]
+        constructor <init>(quest.laxla.spock/OperatingSystem? = ...) // quest.laxla.spock/KTarget.Native.<init>|<init>(quest.laxla.spock.OperatingSystem?){}[0]
+
+        final val operatingSystem // quest.laxla.spock/KTarget.Native.operatingSystem|{}operatingSystem[0]
+            final fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.Native.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+        final fun component1(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.Native.component1|component1(){}[0]
+        final fun copy(quest.laxla.spock/OperatingSystem? = ...): quest.laxla.spock/KTarget.Native // quest.laxla.spock/KTarget.Native.copy|copy(quest.laxla.spock.OperatingSystem?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/KTarget.Native.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/KTarget.Native.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/KTarget.Native.toString|toString(){}[0]
+    }
+
+    final class WasmJs : quest.laxla.spock/KTarget { // quest.laxla.spock/KTarget.WasmJs|null[0]
+        constructor <init>(quest.laxla.spock/OperatingSystem? = ...) // quest.laxla.spock/KTarget.WasmJs.<init>|<init>(quest.laxla.spock.OperatingSystem?){}[0]
+
+        final val operatingSystem // quest.laxla.spock/KTarget.WasmJs.operatingSystem|{}operatingSystem[0]
+            final fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.WasmJs.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+        final fun component1(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.WasmJs.component1|component1(){}[0]
+        final fun copy(quest.laxla.spock/OperatingSystem? = ...): quest.laxla.spock/KTarget.WasmJs // quest.laxla.spock/KTarget.WasmJs.copy|copy(quest.laxla.spock.OperatingSystem?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/KTarget.WasmJs.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/KTarget.WasmJs.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/KTarget.WasmJs.toString|toString(){}[0]
+    }
+
+    final class WasmWasi : quest.laxla.spock/KTarget { // quest.laxla.spock/KTarget.WasmWasi|null[0]
+        constructor <init>(quest.laxla.spock/OperatingSystem? = ...) // quest.laxla.spock/KTarget.WasmWasi.<init>|<init>(quest.laxla.spock.OperatingSystem?){}[0]
+
+        final val operatingSystem // quest.laxla.spock/KTarget.WasmWasi.operatingSystem|{}operatingSystem[0]
+            final fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.WasmWasi.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+        final fun component1(): quest.laxla.spock/OperatingSystem? // quest.laxla.spock/KTarget.WasmWasi.component1|component1(){}[0]
+        final fun copy(quest.laxla.spock/OperatingSystem? = ...): quest.laxla.spock/KTarget.WasmWasi // quest.laxla.spock/KTarget.WasmWasi.copy|copy(quest.laxla.spock.OperatingSystem?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/KTarget.WasmWasi.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/KTarget.WasmWasi.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/KTarget.WasmWasi.toString|toString(){}[0]
+    }
+
+    final object Android : quest.laxla.spock/KTarget.JvmBased { // quest.laxla.spock/KTarget.Android|null[0]
+        final val operatingSystem // quest.laxla.spock/KTarget.Android.operatingSystem|{}operatingSystem[0]
+            final fun <get-operatingSystem>(): quest.laxla.spock/OperatingSystem.Android // quest.laxla.spock/KTarget.Android.operatingSystem.<get-operatingSystem>|<get-operatingSystem>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/KTarget.Android.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/KTarget.Android.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/KTarget.Android.toString|toString(){}[0]
+    }
+
+    final object Companion // quest.laxla.spock/KTarget.Companion|null[0]
+}
+
+abstract interface quest.laxla.spock/LocalizedLogLevel { // quest.laxla.spock/LocalizedLogLevel|null[0]
+    abstract var subjectiveLogLevel // quest.laxla.spock/LocalizedLogLevel.subjectiveLogLevel|{}subjectiveLogLevel[0]
+        abstract fun <get-subjectiveLogLevel>(): io.github.oshai.kotlinlogging/Level // quest.laxla.spock/LocalizedLogLevel.subjectiveLogLevel.<get-subjectiveLogLevel>|<get-subjectiveLogLevel>(){}[0]
+        abstract fun <set-subjectiveLogLevel>(io.github.oshai.kotlinlogging/Level) // quest.laxla.spock/LocalizedLogLevel.subjectiveLogLevel.<set-subjectiveLogLevel>|<set-subjectiveLogLevel>(io.github.oshai.kotlinlogging.Level){}[0]
+}
+
+abstract interface quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem|null[0]
+    final object Android : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.Android|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.Android.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.Android.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.Android.toString|toString(){}[0]
+    }
+
+    final object Companion // quest.laxla.spock/OperatingSystem.Companion|null[0]
+
+    final object FreeBsd : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.FreeBsd|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.FreeBsd.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.FreeBsd.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.FreeBsd.toString|toString(){}[0]
+    }
+
+    final object Linux : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.Linux|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.Linux.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.Linux.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.Linux.toString|toString(){}[0]
+    }
+
+    final object MacOS : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.MacOS|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.MacOS.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.MacOS.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.MacOS.toString|toString(){}[0]
+    }
+
+    final object Windows : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.Windows|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.Windows.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.Windows.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.Windows.toString|toString(){}[0]
+    }
+
+    final object iOS : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.iOS|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.iOS.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.iOS.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.iOS.toString|toString(){}[0]
+    }
+
+    final object iPadOS : quest.laxla.spock/OperatingSystem { // quest.laxla.spock/OperatingSystem.iPadOS|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/OperatingSystem.iPadOS.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/OperatingSystem.iPadOS.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/OperatingSystem.iPadOS.toString|toString(){}[0]
+    }
+}
+
+final object quest.laxla.spock/Empty // quest.laxla.spock/Empty|null[0]
+
+final object quest.laxla.spock/Uninitialized // quest.laxla.spock/Uninitialized|null[0]
+
+final val quest.laxla.spock/current // quest.laxla.spock/current|@quest.laxla.spock.KTarget.Companion{}current[0]
+    final fun (quest.laxla.spock/KTarget.Companion).<get-current>(): quest.laxla.spock/KTarget // quest.laxla.spock/current.<get-current>|<get-current>@quest.laxla.spock.KTarget.Companion(){}[0]
+final val quest.laxla.spock/dispatcher // quest.laxla.spock/dispatcher|@kotlin.coroutines.CoroutineContext{}dispatcher[0]
+    final fun (kotlin.coroutines/CoroutineContext).<get-dispatcher>(): kotlinx.coroutines/CoroutineDispatcher // quest.laxla.spock/dispatcher.<get-dispatcher>|<get-dispatcher>@kotlin.coroutines.CoroutineContext(){}[0]
+final val quest.laxla.spock/fallbackName // quest.laxla.spock/fallbackName|@kotlin.reflect.KClass<*>{}fallbackName[0]
+    final fun (kotlin.reflect/KClass<*>).<get-fallbackName>(): kotlin/String // quest.laxla.spock/fallbackName.<get-fallbackName>|<get-fallbackName>@kotlin.reflect.KClass<*>(){}[0]
+
+final fun (kotlin.coroutines/CoroutineContext).quest.laxla.spock/minus(kotlin.coroutines/CoroutineContext.Key<*>): kotlin.coroutines/CoroutineContext // quest.laxla.spock/minus|minus@kotlin.coroutines.CoroutineContext(kotlin.coroutines.CoroutineContext.Key<*>){}[0]
+final fun (kotlin.ranges/UIntProgression).quest.laxla.spock/step(kotlin/UInt): kotlin.ranges/UIntProgression // quest.laxla.spock/step|step@kotlin.ranges.UIntProgression(kotlin.UInt){}[0]
+final fun (kotlin.ranges/ULongProgression).quest.laxla.spock/step(kotlin/ULong): kotlin.ranges/ULongProgression // quest.laxla.spock/step|step@kotlin.ranges.ULongProgression(kotlin.ULong){}[0]
+final fun (kotlin/Any?).quest.laxla.spock/toIdentityString(): kotlin/String // quest.laxla.spock/toIdentityString|toIdentityString@kotlin.Any?(){}[0]
+final fun (kotlin/AutoCloseable).quest.laxla.spock/asSuspendCloseable(): quest.laxla.spock/SuspendCloseable // quest.laxla.spock/asSuspendCloseable|asSuspendCloseable@kotlin.AutoCloseable(){}[0]
+final fun (kotlin/ByteArray).quest.laxla.spock/appender(kotlin/Int = ...): quest.laxla.spock/ByteAppender // quest.laxla.spock/appender|appender@kotlin.ByteArray(kotlin.Int){}[0]
+final fun (kotlin/String).quest.laxla.spock/escapeHtml(): kotlin/String // quest.laxla.spock/escapeHtml|escapeHtml@kotlin.String(){}[0]
+final fun (kotlin/String).quest.laxla.spock/trimAndAppendIfNotBlank(): kotlin/String // quest.laxla.spock/trimAndAppendIfNotBlank|trimAndAppendIfNotBlank@kotlin.String(){}[0]
+final fun (kotlin/String).quest.laxla.spock/trimAndAppendIfNotBlank(kotlin/String = ..., kotlin/String = ...): kotlin/String // quest.laxla.spock/trimAndAppendIfNotBlank|trimAndAppendIfNotBlank@kotlin.String(kotlin.String;kotlin.String){}[0]
+final fun (kotlinx.io.bytestring/ByteStringBuilder).quest.laxla.spock/asAppender(): quest.laxla.spock/ByteAppender // quest.laxla.spock/asAppender|asAppender@kotlinx.io.bytestring.ByteStringBuilder(){}[0]
+final fun (quest.laxla.spock/Cache<*, *>).quest.laxla.spock/lent(quest.laxla.spock/Cache.Entry<*>): kotlin/Boolean // quest.laxla.spock/lent|lent@quest.laxla.spock.Cache<*,*>(quest.laxla.spock.Cache.Entry<*>){}[0]
+final fun (quest.laxla.spock/Closer).quest.laxla.spock/plusAssign(kotlin/AutoCloseable) // quest.laxla.spock/plusAssign|plusAssign@quest.laxla.spock.Closer(kotlin.AutoCloseable){}[0]
+final fun (quest.laxla.spock/Closer).quest.laxla.spock/plusAssign(quest.laxla.spock/SuspendCloseable) // quest.laxla.spock/plusAssign|plusAssign@quest.laxla.spock.Closer(quest.laxla.spock.SuspendCloseable){}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/Cache<#A, #B>).quest.laxla.spock/then(quest.laxla.spock/Cache<#B, #C>): quest.laxla.spock/Cache<#A, #C> // quest.laxla.spock/then|then@quest.laxla.spock.Cache<0:0,0:1>(quest.laxla.spock.Cache<0:1,0:2>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/InferringCache<#A, #B>).quest.laxla.spock/then(quest.laxla.spock/InferringCache<#B, #C>): quest.laxla.spock/InferringCache<#A, #C> // quest.laxla.spock/then|then@quest.laxla.spock.InferringCache<0:0,0:1>(quest.laxla.spock.InferringCache<0:1,0:2>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/BorrowingCache(quest.laxla.spock/InferringCache<#A, #B>, kotlinx.coroutines.sync/Mutex? = ...): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/BorrowingCache|BorrowingCache(quest.laxla.spock.InferringCache<0:0,0:1>;kotlinx.coroutines.sync.Mutex?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (#A).quest.laxla.spock/takeIfSet(quest.laxla.spock/Flag): #A? // quest.laxla.spock/takeIfSet|takeIfSet@0:0(quest.laxla.spock.Flag){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (#A).quest.laxla.spock/takeUnlessSet(quest.laxla.spock/Flag): #A? // quest.laxla.spock/takeUnlessSet|takeUnlessSet@0:0(quest.laxla.spock.Flag){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlin.collections/List<#A>).quest.laxla.spock/from(kotlin/Int): kotlin.collections/List<#A> // quest.laxla.spock/from|from@kotlin.collections.List<0:0>(kotlin.Int){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlin.collections/List<#A>).quest.laxla.spock/skipFirst(): kotlin.collections/List<#A> // quest.laxla.spock/skipFirst|skipFirst@kotlin.collections.List<0:0>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (kotlin.ranges/IntRange).quest.laxla.spock/at(kotlin.collections/List<#A>): kotlin.collections/List<#A> // quest.laxla.spock/at|at@kotlin.ranges.IntRange(kotlin.collections.List<0:0>){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock/Cache.Entry<#A>).quest.laxla.spock/component1(): #A // quest.laxla.spock/component1|component1@quest.laxla.spock.Cache.Entry<0:0>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock/Cache.Entry<#A>).quest.laxla.spock/component2(): quest.laxla.spock/SuspendCloseable // quest.laxla.spock/component2|component2@quest.laxla.spock.Cache.Entry<0:0>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> quest.laxla.spock/CacheEntry(#A): quest.laxla.spock/Cache.Entry<#A> // quest.laxla.spock/CacheEntry|CacheEntry(0:0){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> quest.laxla.spock/emptyIterator(): kotlin.collections/Iterator<#A> // quest.laxla.spock/emptyIterator|emptyIterator(){0§<kotlin.Any?>}[0]
+final fun quest.laxla.spock/ByteAppender(kotlin/Int): quest.laxla.spock/ByteAppender // quest.laxla.spock/ByteAppender|ByteAppender(kotlin.Int){}[0]
+final fun quest.laxla.spock/Closer(io.github.oshai.kotlinlogging/Level = ...): quest.laxla.spock/Closer // quest.laxla.spock/Closer|Closer(io.github.oshai.kotlinlogging.Level){}[0]
+final fun quest.laxla.spock/Closer(kotlin/Array<out kotlin/AutoCloseable>..., io.github.oshai.kotlinlogging/Level = ...): quest.laxla.spock/Closer // quest.laxla.spock/Closer|Closer(kotlin.Array<out|kotlin.AutoCloseable>...;io.github.oshai.kotlinlogging.Level){}[0]
+final fun quest.laxla.spock/Closer(kotlin/Array<out quest.laxla.spock/SuspendCloseable>..., io.github.oshai.kotlinlogging/Level = ...): quest.laxla.spock/Closer // quest.laxla.spock/Closer|Closer(kotlin.Array<out|quest.laxla.spock.SuspendCloseable>...;io.github.oshai.kotlinlogging.Level){}[0]
+final fun quest.laxla.spock/Flag(): quest.laxla.spock/Flag // quest.laxla.spock/Flag|Flag(){}[0]
+final inline fun (kotlin/ByteArray).quest.laxla.spock/append(kotlin/Int = ..., kotlin/Function1<quest.laxla.spock/ByteAppender, kotlin/Unit>) // quest.laxla.spock/append|append@kotlin.ByteArray(kotlin.Int;kotlin.Function1<quest.laxla.spock.ByteAppender,kotlin.Unit>){}[0]
+final inline fun (kotlinx.io.bytestring/ByteStringBuilder).quest.laxla.spock/append(kotlin/Function1<quest.laxla.spock/ByteAppender, kotlin/Unit>) // quest.laxla.spock/append|append@kotlinx.io.bytestring.ByteStringBuilder(kotlin.Function1<quest.laxla.spock.ByteAppender,kotlin.Unit>){}[0]
+final inline fun (quest.laxla.spock/Flag).quest.laxla.spock/ifSet(kotlin/Function0<kotlin/Unit>) // quest.laxla.spock/ifSet|ifSet@quest.laxla.spock.Flag(kotlin.Function0<kotlin.Unit>){}[0]
+final inline fun (quest.laxla.spock/Flag).quest.laxla.spock/set(kotlin/Function0<kotlin/Unit>) // quest.laxla.spock/set|set@quest.laxla.spock.Flag(kotlin.Function0<kotlin.Unit>){}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> quest.laxla.spock/BorrowingCache(quest.laxla.spock/InferringCache<#B, #C>, kotlinx.coroutines.sync/Mutex? = ..., crossinline kotlin/Function1<#A, #B>): quest.laxla.spock/Cache<#A, #C> // quest.laxla.spock/BorrowingCache|BorrowingCache(quest.laxla.spock.InferringCache<0:1,0:2>;kotlinx.coroutines.sync.Mutex?;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/EverlastingCache(crossinline kotlin.coroutines/SuspendFunction1<#A, quest.laxla.spock/Cache.Entry<#B>>, kotlinx.coroutines.sync/Mutex? = ..., kotlin.collections/MutableMap<#A, quest.laxla.spock/Cache.Entry<#B>> = ...): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/EverlastingCache|EverlastingCache(kotlin.coroutines.SuspendFunction1<0:0,quest.laxla.spock.Cache.Entry<0:1>>;kotlinx.coroutines.sync.Mutex?;kotlin.collections.MutableMap<0:0,quest.laxla.spock.Cache.Entry<0:1>>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/EverlastingCache(kotlinx.coroutines.sync/Mutex? = ..., crossinline kotlin/Function1<#B, quest.laxla.spock/Cache.Entry<#B>> = ..., crossinline kotlin.coroutines/SuspendFunction1<#A, #B>): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/EverlastingCache|EverlastingCache(kotlinx.coroutines.sync.Mutex?;kotlin.Function1<0:1,quest.laxla.spock.Cache.Entry<0:1>>;kotlin.coroutines.SuspendFunction1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/NoopCache(crossinline kotlin.coroutines/SuspendFunction1<#A, #B>, crossinline kotlin/Function1<#B, #A>): quest.laxla.spock/InferringCache<#A, #B> // quest.laxla.spock/NoopCache|NoopCache(kotlin.coroutines.SuspendFunction1<0:0,0:1>;kotlin.Function1<0:1,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/Pool(crossinline kotlin.coroutines/SuspendFunction1<#A, #B>, crossinline kotlin/Function1<#B, #A>, crossinline kotlin/Function1<#B, quest.laxla.spock/Cache.Entry<#B>> = ..., kotlinx.coroutines.sync/Mutex = ...): quest.laxla.spock/InferringCache<#A, #B> // quest.laxla.spock/Pool|Pool(kotlin.coroutines.SuspendFunction1<0:0,0:1>;kotlin.Function1<0:1,0:0>;kotlin.Function1<0:1,quest.laxla.spock.Cache.Entry<0:1>>;kotlinx.coroutines.sync.Mutex){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/Pool(crossinline kotlin.coroutines/SuspendFunction1<#A, quest.laxla.spock/Cache.Entry<#B>>, crossinline kotlin/Function1<#B, #A>, kotlinx.coroutines.sync/Mutex? = ...): quest.laxla.spock/InferringCache<#A, #B> // quest.laxla.spock/Pool|Pool(kotlin.coroutines.SuspendFunction1<0:0,quest.laxla.spock.Cache.Entry<0:1>>;kotlin.Function1<0:1,0:0>;kotlinx.coroutines.sync.Mutex?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/PruningCache(crossinline kotlin.coroutines/SuspendFunction1<#A, quest.laxla.spock/Cache.Entry<#B>>, kotlinx.coroutines.sync/Mutex? = ...): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/PruningCache|PruningCache(kotlin.coroutines.SuspendFunction1<0:0,quest.laxla.spock.Cache.Entry<0:1>>;kotlinx.coroutines.sync.Mutex?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/PruningCache(kotlinx.coroutines.sync/Mutex? = ..., crossinline kotlin/Function1<#B, quest.laxla.spock/Cache.Entry<#B>> = ..., crossinline kotlin.coroutines/SuspendFunction1<#A, #B>): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/PruningCache|PruningCache(kotlinx.coroutines.sync.Mutex?;kotlin.Function1<0:1,quest.laxla.spock.Cache.Entry<0:1>>;kotlin.coroutines.SuspendFunction1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/PruningPool(crossinline kotlin.coroutines/SuspendFunction1<#A, #B>, crossinline kotlin/Function1<#B, #A>, crossinline kotlin/Function1<#B, quest.laxla.spock/Cache.Entry<#B>> = ..., kotlinx.coroutines.sync/Mutex? = ...): quest.laxla.spock/InferringCache<#A, #B> // quest.laxla.spock/PruningPool|PruningPool(kotlin.coroutines.SuspendFunction1<0:0,0:1>;kotlin.Function1<0:1,0:0>;kotlin.Function1<0:1,quest.laxla.spock.Cache.Entry<0:1>>;kotlinx.coroutines.sync.Mutex?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/PruningPool(crossinline kotlin.coroutines/SuspendFunction1<#A, quest.laxla.spock/Cache.Entry<#B>>, crossinline kotlin/Function1<#B, #A>, kotlinx.coroutines.sync/Mutex? = ...): quest.laxla.spock/InferringCache<#A, #B> // quest.laxla.spock/PruningPool|PruningPool(kotlin.coroutines.SuspendFunction1<0:0,quest.laxla.spock.Cache.Entry<0:1>>;kotlin.Function1<0:1,0:0>;kotlinx.coroutines.sync.Mutex?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/SingleValueCache(kotlinx.coroutines.sync/Mutex? = ..., crossinline kotlin.coroutines/SuspendFunction1<#A, quest.laxla.spock/Cache.Entry<#B>>): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/SingleValueCache|SingleValueCache(kotlinx.coroutines.sync.Mutex?;kotlin.coroutines.SuspendFunction1<0:0,quest.laxla.spock.Cache.Entry<0:1>>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> (#A).quest.laxla.spock/logIfNull(io.github.oshai.kotlinlogging/KLogger, io.github.oshai.kotlinlogging/Level = ..., io.github.oshai.kotlinlogging/Marker? = ..., crossinline kotlin/Function0<kotlin/String>): #A // quest.laxla.spock/logIfNull|logIfNull@0:0(io.github.oshai.kotlinlogging.KLogger;io.github.oshai.kotlinlogging.Level;io.github.oshai.kotlinlogging.Marker?;kotlin.Function0<kotlin.String>){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> quest.laxla.spock/suspendLazy(crossinline kotlin.coroutines/SuspendFunction0<#A>): quest.laxla.spock/SuspendLazy<#A> // quest.laxla.spock/suspendLazy|suspendLazy(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: quest.laxla.spock/LocalizedLogLevel> (#A).quest.laxla.spock/debugVia(io.github.oshai.kotlinlogging/KLogger, kotlin/Throwable? = ..., crossinline kotlin/Function1<#A, kotlin/Any?>) // quest.laxla.spock/debugVia|debugVia@0:0(io.github.oshai.kotlinlogging.KLogger;kotlin.Throwable?;kotlin.Function1<0:0,kotlin.Any?>){0§<quest.laxla.spock.LocalizedLogLevel>}[0]
+final inline fun <#A: quest.laxla.spock/LocalizedLogLevel> (#A).quest.laxla.spock/traceVia(io.github.oshai.kotlinlogging/KLogger, kotlin/Throwable? = ..., crossinline kotlin/Function1<#A, kotlin/Any?>) // quest.laxla.spock/traceVia|traceVia@0:0(io.github.oshai.kotlinlogging.KLogger;kotlin.Throwable?;kotlin.Function1<0:0,kotlin.Any?>){0§<quest.laxla.spock.LocalizedLogLevel>}[0]
+final inline fun quest.laxla.spock/appendToByteArray(kotlin/Int, kotlin/Function1<quest.laxla.spock/ByteAppender, kotlin/Unit>): kotlin/ByteArray // quest.laxla.spock/appendToByteArray|appendToByteArray(kotlin.Int;kotlin.Function1<quest.laxla.spock.ByteAppender,kotlin.Unit>){}[0]
+final inline fun quest.laxla.spock/appendToByteString(kotlin/Int, kotlin/Function1<quest.laxla.spock/ByteAppender, kotlin/Unit>): kotlinx.io.bytestring/ByteString // quest.laxla.spock/appendToByteString|appendToByteString(kotlin.Int;kotlin.Function1<quest.laxla.spock.ByteAppender,kotlin.Unit>){}[0]
+final inline fun quest.laxla.spock/emptyString(): kotlin/String // quest.laxla.spock/emptyString|emptyString(){}[0]
+final suspend fun (kotlinx.coroutines.flow/Flow<kotlin/Boolean>).quest.laxla.spock/all(): kotlin/Boolean // quest.laxla.spock/all|all@kotlinx.coroutines.flow.Flow<kotlin.Boolean>(){}[0]
+final suspend fun (kotlinx.coroutines.flow/Flow<kotlin/Boolean>).quest.laxla.spock/any(): kotlin/Boolean // quest.laxla.spock/any|any@kotlinx.coroutines.flow.Flow<kotlin.Boolean>(){}[0]
+final suspend fun (kotlinx.coroutines.flow/Flow<kotlin/Boolean>).quest.laxla.spock/none(): kotlin/Boolean // quest.laxla.spock/none|none@kotlinx.coroutines.flow.Flow<kotlin.Boolean>(){}[0]
+final suspend fun (quest.laxla.spock/SuspendCloseable?).quest.laxla.spock/closeFinally(kotlin/Throwable?) // quest.laxla.spock/closeFinally|closeFinally@quest.laxla.spock.SuspendCloseable?(kotlin.Throwable?){}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/Cache<#A, quest.laxla.spock/Cache<#B, #C>>).quest.laxla.spock/get(#A, #B): #C // quest.laxla.spock/get|get@quest.laxla.spock.Cache<0:0,quest.laxla.spock.Cache<0:1,0:2>>(0:0;0:1){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/Cache<#A, quest.laxla.spock/InferringCache<#B, #C>>).quest.laxla.spock/borrow(#A, #B): quest.laxla.spock/Cache.Entry.Borrowed<in #B, out #C> // quest.laxla.spock/borrow|borrow@quest.laxla.spock.Cache<0:0,quest.laxla.spock.InferringCache<0:1,0:2>>(0:0;0:1){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/Cache<kotlin/Pair<#A, #B>, #C>).quest.laxla.spock/get(#A, #B): #C // quest.laxla.spock/get|get@quest.laxla.spock.Cache<kotlin.Pair<0:0,0:1>,0:2>(0:0;0:1){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (quest.laxla.spock/InferringCache<kotlin/Pair<#A, #B>, #C>).quest.laxla.spock/borrow(#A, #B): quest.laxla.spock/Cache.Entry.Borrowed<in kotlin/Pair<#A, #B>, out #C> // quest.laxla.spock/borrow|borrow@quest.laxla.spock.InferringCache<kotlin.Pair<0:0,0:1>,0:2>(0:0;0:1){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?> (quest.laxla.spock/Cache<#A, #B>).quest.laxla.spock/get(#A): #B // quest.laxla.spock/get|get@quest.laxla.spock.Cache<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?, #B: kotlin/Any?> (quest.laxla.spock/InferringCache<#A, #B>).quest.laxla.spock/borrow(#A): quest.laxla.spock/Cache.Entry.Borrowed<#A, #B> // quest.laxla.spock/borrow|borrow@quest.laxla.spock.InferringCache<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (kotlin.collections/MutableMap<*, quest.laxla.spock/Cache.Entry<#A>>).quest.laxla.spock/closeValuesAndClear() // quest.laxla.spock/closeValuesAndClear|closeValuesAndClear@kotlin.collections.MutableMap<*,quest.laxla.spock.Cache.Entry<0:0>>(){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (kotlinx.coroutines.sync/Mutex).quest.laxla.spock/coroutineScopeWithLock(kotlin/Any? = ..., kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, #A>): #A // quest.laxla.spock/coroutineScopeWithLock|coroutineScopeWithLock@kotlinx.coroutines.sync.Mutex(kotlin.Any?;kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (kotlinx.coroutines.sync/Mutex?).quest.laxla.spock/coroutineScopeWithLockIfAny(kotlin/Any? = ..., kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, #A>): #A // quest.laxla.spock/coroutineScopeWithLockIfAny|coroutineScopeWithLockIfAny@kotlinx.coroutines.sync.Mutex?(kotlin.Any?;kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (quest.laxla.spock/Cache<*, #A>).quest.laxla.spock/put(quest.laxla.spock/Cache.Entry<#A>): kotlin/Unit? // quest.laxla.spock/put|put@quest.laxla.spock.Cache<*,0:0>(quest.laxla.spock.Cache.Entry<0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (quest.laxla.spock/Cache<*, #A>).quest.laxla.spock/putReferenceTo(#A): kotlin/Unit? // quest.laxla.spock/putReferenceTo|putReferenceTo@quest.laxla.spock.Cache<*,0:0>(0:0){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (quest.laxla.spock/InferringCache<*, #A>).quest.laxla.spock/put(#A, kotlin/Boolean = ...): kotlin/Unit? // quest.laxla.spock/put|put@quest.laxla.spock.InferringCache<*,0:0>(0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/AutoCloseable> (quest.laxla.spock/Cache<*, #A>).quest.laxla.spock/putCloseable(#A): kotlin/Unit? // quest.laxla.spock/putCloseable|putCloseable@quest.laxla.spock.Cache<*,0:0>(0:0){0§<kotlin.AutoCloseable>}[0]
+final suspend fun <#A: quest.laxla.spock/SuspendCloseable> (quest.laxla.spock/Cache<*, #A>).quest.laxla.spock/putCloseable(#A): kotlin/Unit? // quest.laxla.spock/putCloseable|putCloseable@quest.laxla.spock.Cache<*,0:0>(0:0){0§<quest.laxla.spock.SuspendCloseable>}[0]
+final suspend inline fun (quest.laxla.spock/Flag).quest.laxla.spock/setWithLock(kotlinx.coroutines.sync/Mutex, kotlin/Any? = ..., kotlin/Function0<kotlin/Unit>) // quest.laxla.spock/setWithLock|setWithLock@quest.laxla.spock.Flag(kotlinx.coroutines.sync.Mutex;kotlin.Any?;kotlin.Function0<kotlin.Unit>){}[0]
+final suspend inline fun <#A: kotlin/Any?, #B: kotlin/Any?> quest.laxla.spock/SingleValueCache(kotlinx.coroutines.sync/Mutex? = ..., crossinline kotlin/Function1<#B, quest.laxla.spock/Cache.Entry<#B>>, crossinline kotlin.coroutines/SuspendFunction1<#A, #B>): quest.laxla.spock/Cache<#A, #B> // quest.laxla.spock/SingleValueCache|SingleValueCache(kotlinx.coroutines.sync.Mutex?;kotlin.Function1<0:1,quest.laxla.spock.Cache.Entry<0:1>>;kotlin.coroutines.SuspendFunction1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final suspend inline fun <#A: kotlin/Any?> (kotlinx.coroutines.sync/Mutex?).quest.laxla.spock/withLockIfAny(kotlin/Any? = ..., kotlin/Function0<#A>): #A // quest.laxla.spock/withLockIfAny|withLockIfAny@kotlinx.coroutines.sync.Mutex?(kotlin.Any?;kotlin.Function0<0:0>){0§<kotlin.Any?>}[0]
+final suspend inline fun <#A: kotlin/Any?> quest.laxla.spock/autoclose(io.github.oshai.kotlinlogging/Level = ..., kotlin/Function1<quest.laxla.spock/Closer, #A>): #A // quest.laxla.spock/autoclose|autoclose(io.github.oshai.kotlinlogging.Level;kotlin.Function1<quest.laxla.spock.Closer,0:0>){0§<kotlin.Any?>}[0]
+final suspend inline fun <#A: kotlin/Any?> quest.laxla.spock/autoclose(kotlin/Array<out kotlin/AutoCloseable>..., io.github.oshai.kotlinlogging/Level = ..., kotlin/Function1<quest.laxla.spock/Closer, #A>): #A // quest.laxla.spock/autoclose|autoclose(kotlin.Array<out|kotlin.AutoCloseable>...;io.github.oshai.kotlinlogging.Level;kotlin.Function1<quest.laxla.spock.Closer,0:0>){0§<kotlin.Any?>}[0]
+final suspend inline fun <#A: kotlin/Any?> quest.laxla.spock/autoclose(kotlin/Array<out quest.laxla.spock/SuspendCloseable>..., io.github.oshai.kotlinlogging/Level = ..., kotlin/Function1<quest.laxla.spock/Closer, #A>): #A // quest.laxla.spock/autoclose|autoclose(kotlin.Array<out|quest.laxla.spock.SuspendCloseable>...;io.github.oshai.kotlinlogging.Level;kotlin.Function1<quest.laxla.spock.Closer,0:0>){0§<kotlin.Any?>}[0]
+final suspend inline fun <#A: quest.laxla.spock/SuspendCloseable?, #B: kotlin/Any?> (#A).quest.laxla.spock/use(kotlin/Function1<#A, #B>): #B // quest.laxla.spock/use|use@0:0(kotlin.Function1<0:0,0:1>){0§<quest.laxla.spock.SuspendCloseable?>;1§<kotlin.Any?>}[0]
+
+// Targets: [mingwX64]
+final val quest.laxla.spock/current // quest.laxla.spock/current|@quest.laxla.spock.OperatingSystem.Companion{}current[0]
+    final fun (quest.laxla.spock/OperatingSystem.Companion).<get-current>(): quest.laxla.spock/OperatingSystem // quest.laxla.spock/current.<get-current>|<get-current>@quest.laxla.spock.OperatingSystem.Companion(){}[0]

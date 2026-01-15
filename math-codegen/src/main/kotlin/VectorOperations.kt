@@ -12,7 +12,6 @@ import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.ksp.*
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.at
 import quest.laxla.spock.math.*
 
@@ -23,7 +22,7 @@ public val KSAnnotated.vectorization: Vectorization.Kind
 	get() = getAllAnnotations<Vectorization>().firstOrNull()?.kind ?: Vectorization.Kind.Disabled
 
 // TODO: fix this whateverness
-@OptIn(KspExperimental::class, ExperimentalSpockApi::class)
+@OptIn(KspExperimental::class)
 public fun Resolver.generateVectorOperations(packageName: String): FileSpec = file(packageName, "VectorOperations") {
 	val space = getDeclarationOf(Space::class)!!.asStarProjectedType()
 

@@ -3,14 +3,12 @@
 package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.IntSpace.append
 
 /**
  * @since 0.0.1-alpha.4
  * @see UInt
  */
-@OptIn(ExperimentalSpockApi::class)
 @Typealiased("#ui", UInt::class)
 public data object UIntSpace : NumeralSpace<UInt>, BufferableSpace<UInt> {
 	override fun UInt.minus(other: UInt): UInt = this - other

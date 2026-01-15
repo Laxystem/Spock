@@ -41,18 +41,56 @@ private class ByteAppenderImpl(private val buffer: ByteArray, override var offse
 }
 
 /**
- * Creates a [appendToByteString] beginning at the provided [offset] of this [ByteArray].
+ * Creates a [ByteAppender] beginning at the provided [offset] of this [ByteArray].
  *
  * @since 0.0.1-alpha.4
  * @see ByteAppender.offset
  */
 public fun ByteArray.appender(offset: Int = 0): ByteAppender = ByteAppenderImpl(this, offset)
 
+/**
+ * Creates a [ByteAppender] of the provided [size].
+ *
+ * @since 0.0.1-alpha.4
+ */
 public fun ByteAppender(size: Int): ByteAppender = ByteArray(size).appender()
 
-public inline fun appendToByteString(size: Int, block: ByteAppender.() -> Unit): ByteString = ByteAppender(size).apply(block).toByteString()
-public inline fun appendToByteArray(size: Int, block: ByteAppender.() -> Unit): ByteArray = ByteArray(size).apply { appender().block() }
+/**
+ * Creates a [ByteString] of the provided [size], populated via a [ByteAppender].
+ *
+ * @since 0.0.1-alpha.4
+ */
+@OptIn(ExperimentalContracts::class)
+public inline fun appendToByteString(size: Int, block: ByteAppender.() -> Unit): ByteString {
+	contract {
+		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+	}
 
+	return ByteAppender(size).apply(block).toByteString()
+}
+
+/**
+ * Creates a [ByteArray] of the provided [size], and populates it via a [ByteAppender].
+ *
+ * @since 0.0.1-alpha.4
+ */
+@OptIn(ExperimentalContracts::class)
+public inline fun appendToByteArray(size: Int, block: ByteAppender.() -> Unit): ByteArray {
+	contract {
+		callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+	}
+
+	return ByteArray(size).apply { appender().block() }
+}
+
+/**
+ * Populates this [ByteArray] by appending onto it starting at the provided [offset].
+ *
+ * @see ByteArray.appender
+ * @see ByteAppender.offset
+ *
+ * @since 0.0.1-alpha.4
+ */
 @OptIn(ExperimentalContracts::class)
 public inline fun ByteArray.append(offset: Int = 0, block: ByteAppender.() -> Unit) {
 	contract {
@@ -91,7 +129,11 @@ private value class WrappedByteStringBuilder(private val builder: ByteStringBuil
  *
  * @since 0.0.1-alpha.4
  */
-@OptIn(ExperimentalSpockApi::class)
 public fun ByteStringBuilder.asAppender(): ByteAppender = WrappedByteStringBuilder(this)
 
+/**
+ * Appends onto this [ByteStringBuilder] via the [ByteAppender] interface.
+ *
+ * @since 0.0.1-alpha.4
+ */
 public inline fun ByteStringBuilder.append(block: ByteAppender.() -> Unit): Unit = asAppender().block()

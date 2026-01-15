@@ -10,5 +10,5 @@ package quest.laxla.spock
 	level = RequiresOptIn.Level.WARNING
 )
 @MustBeDocumented
-@Target(AnnotationTarget.FUNCTION)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_SETTER)
 public annotation class DelicateSpockApi(val replaceWith: ReplaceWith = ReplaceWith(""))

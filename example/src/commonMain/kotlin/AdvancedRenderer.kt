@@ -26,7 +26,7 @@ public class AdvancedRenderer(
 	override val device: GPUDevice,
 	override val surface: Surface,
 	transpiler: Shader.Transpiler.Simple<Wgsl, StringShader.FormFactor>,
-	override val format: GPUTextureFormat = surface.naïvelySelectTextureFormat(),
+	override val format: GPUTextureFormat = surface.naivelySelectTextureFormat(),
 	public val backgroundColor: GPUColor = Color(.0, .0, .0, 1.0),
 	enableDebugLabels: Boolean = true,
 	private val byteArrayPool: InferringCache<Int, ByteArray> = NoopCache(
@@ -34,9 +34,9 @@ public class AdvancedRenderer(
 		inferrer = ByteArray::size
 	),
 	logLevel: Level = Level.DEBUG,
-	private val renderLogLevel: Level = Level.OFF,
+	public var renderLogLevel: Level = Level.OFF,
 	public val scene: RenderScene
-) : WebGpuRenderer, Closer by Closer(surface, device, logLevel = logLevel) {
+) : WebGpuRenderer, Closer by Closer(logLevel) {
 	private val isConfigured = Flag()
 	private val shaders = +ShaderCache(transpiler)
 	private val shaderDescriptors = +EverlastingCache<Shader, ShaderModuleDescriptor> {

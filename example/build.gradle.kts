@@ -32,11 +32,8 @@ kotlin {
 			commonWebpackConfig {
 				outputFileName = "spock.js"
 				devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-					static = (static ?: mutableListOf()).apply {
-						// Serve sources to debug inside browser
-						add(project.rootDir.path)
-						add(project.projectDir.path)
-					}
+					static(project.rootDir.path)
+					static(project.projectDir.path)
 				}
 			}
 		}

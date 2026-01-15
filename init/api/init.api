@@ -3,3 +3,7 @@ public final class quest/laxla/spock/init/Init_jvmKt {
 	public static synthetic fun runBlockingIfSupported$default (Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class quest/laxla/spock/init/Logging_jvmKt {
+	public static final fun setLogLevelToIfHardcoded (Lio/github/oshai/kotlinlogging/Level;)V
+}
+

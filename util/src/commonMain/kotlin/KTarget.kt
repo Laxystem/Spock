@@ -27,6 +27,7 @@ public interface KTarget {
 	 */
 	public data class WasmWasi(override val operatingSystem: OperatingSystem? = null) : KTarget
 
+	// TODO: unseal?
 	/**
 	 * @since 0.0.1-alpha.1
 	 */

@@ -1,5 +1,6 @@
 package quest.laxla.spock
 
+import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 import kotlin.reflect.KClass
 
@@ -17,6 +18,7 @@ import kotlin.reflect.KClass
  *
  * @since 0.0.1-alpha.4
  */
+@Serializable
 public sealed interface ComponentType<T> : Entity {
 	/**
 	 * The type of data this entity carries if added to a [Compable].
@@ -54,12 +56,14 @@ public sealed interface ComponentType<T> : Entity {
 	 * while this one is used to mark [ComponentType]s whose [dataType]s are [Unit] - aka, a [Tag].
 	 * Implementations may throw when given the wrong
 	 *
-	 * @property id The numeral identifier of this [ComponentType].
 	 * @since 0.0.1-alpha.4
 	 */
 	@JvmInline
-	public value class Autonomous(public val id: UInt) : Tag {
+	@Serializable
+	public value class Autonomous(public override val id: UInt) : Tag, Entity.Opaque {
 		override val dataType: KClass<Unit> get() = Unit::class
 		override val defaultDefault: Unit get() = Unit
+
+		override fun toString(): String = "Tag($formattedID)"
 	}
 }

@@ -1,5 +1,6 @@
 package quest.laxla.spock
 
+import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 import kotlin.reflect.KClass
 
@@ -9,7 +10,10 @@ import kotlin.reflect.KClass
  * @since 0.0.1-alpha.4
  */
 @JvmInline
+@Serializable
 public value class Nametag(override val name: Name) : NamedEntity<Unit> {
 	override val dataType: KClass<Unit> get() = Unit::class
 	override val defaultDefault: Unit get() = Unit
+
+	override fun toString(): String = "Tag($name)"
 }

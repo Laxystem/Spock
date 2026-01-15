@@ -4,11 +4,22 @@ package quest.laxla.spock.client.toolkit
 
 import glfw.glfwGetX11Display
 import glfw.glfwGetX11Window
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.cinterop.CPointed
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.posix.size_t
 import quest.laxla.spock.glfw.GlfwWindow
+import quest.laxla.spock.logIfNull
 
-public val GlfwWindow.x11Display: CPointer<out CPointed>? get() = glfwGetX11Display(pointer)
-public val GlfwWindow.x11Window: size_t? get() = glfwGetX11Window(pointer).takeIf { it != 0uL }
+private val logger = KotlinLogging.logger { }
+
+public val GlfwWindow.x11Display: CPointer<out CPointed>?
+	get() = glfwGetX11Display(pointer).logIfNull(logger) {
+		"Failed acquiring X11 display handle from GLFW window"
+	}
+
+public val GlfwWindow.x11Window: size_t?
+	get() = glfwGetX11Window(pointer).takeIf { it != 0uL }.logIfNull(logger) {
+		"Failed acquiring X11 window handle from GLFW window"
+	}

@@ -3,7 +3,6 @@
 package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.LongSpace.append
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -12,7 +11,6 @@ import kotlin.math.pow
  * @since 0.0.1-alpha.4
  * @see Double
  */
-@OptIn(ExperimentalSpockApi::class)
 @Typealiased("#d", Double::class)
 public data object DoubleSpace : FloatingPointSpace<Double>, SignedSpace<Double>, BufferableSpace<Double> {
 	override fun Double.pow(exponent: Double): Double = pow(x = exponent)

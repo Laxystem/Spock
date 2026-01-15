@@ -1,23 +1,22 @@
 [versions]
 dokka = "2.1.0"
-javaNativeAccess = "5.17.0"
-kotlin = "2.2.21"
-kotlinLogging = "7.0.13"
+javaNativeAccess = "5.18.1"
+kotlin = "2.3.0"
+kotlinLogging = "7.0.14"
 kotlinPoet = "2.2.0"
-kotlinSymbolProcessing = "2.3.3"
-kotlinx-binaryCompatibilityValidator = "0.18.1"
+kotlinSymbolProcessing = "2.3.4"
 kotlinx-browser = "0.5.0"
 kotlinx-collections-immutable = "0.4.0"
 kotlinx-coroutines = "1.10.2"
-kotlinx-io = "0.8.0"
-kotlinx-kover = "0.9.3"
+kotlinx-io = "0.8.2"
+kotlinx-kover = "0.9.4"
 kotlinx-serialization = "1.9.0"
-logback = "1.5.21"
+logback = "1.5.24"
 lwjgl = "3.3.6"
-mavenPublish = "0.32.0"
+mavenPublish = "0.35.0"
 semver = "3.0.0"
 wgpu4k = "0.1.1"
-wgpu4k-glfw = "0.0.1"
+wgpu4k-glfw = "0.0.2"
 wgpu4k-ktypes = "0.0.8"
 wgpu4k-rococoa = "0.0.1"
 
@@ -53,7 +52,6 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
-kotlinx-binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibilityValidator" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
 kotlinx-powerAssert = { id = "org.jetbrains.kotlin.plugin.power-assert", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

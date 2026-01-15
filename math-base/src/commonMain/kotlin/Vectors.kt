@@ -2,7 +2,9 @@ package quest.laxla.spock.math
 
 import kotlin.jvm.JvmInline
 
-private data class TypedVector1<V, out S>(override val space: S, override val x: V) : Vector1<V, S> where S : Space<V>
+private data class TypedVector1<V, out S>(override val space: S, override val x: V) : Vector1<V, S> where S : Space<V> {
+	override fun toString(): String = "$space($x)"
+}
 
 /**
  * Creates a [single-element vector][Vector1].
@@ -16,7 +18,9 @@ private data class TypedVector2<V, out S>(
 	override val space: S,
 	override val x: V,
 	override val y: V
-) : Vector2<V, S> where S : Space<V>
+) : Vector2<V, S> where S : Space<V> {
+	override fun toString(): String = "$space($x,$y)"
+}
 
 /**
  * Creates a [two-element vector][Vector2].
@@ -32,7 +36,9 @@ private data class TypedVector3<V, out S>(
 	override val x: V,
 	override val y: V,
 	override val z: V
-) : Vector3<V, S> where S : Space<V>
+) : Vector3<V, S> where S : Space<V> {
+	override fun toString(): String = "$space($x,$y,$z)"
+}
 
 /**
  * Creates a [three-element vector][Vector4].
@@ -49,7 +55,9 @@ private data class TypedVector4<V, out S>(
 	override val y: V,
 	override val z: V,
 	override val w: V
-) : Vector4<V, S> where S : Space<V>
+) : Vector4<V, S> where S : Space<V> {
+	override fun toString(): String = "$space($x,$y,$z,$w)"
+}
 
 /**
  * Creates a [four-element vector][Vector4].

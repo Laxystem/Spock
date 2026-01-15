@@ -2,11 +2,11 @@ package quest.laxla.spock.glfw
 
 import kotlinx.coroutines.*
 import quest.laxla.spock.DelicateSpockApi
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.SuspendCloseable
 import quest.laxla.spock.dispatcher
 import quest.laxla.spock.glfw.Glfw.close
 import quest.laxla.spock.glfw.Glfw.initialize
+import quest.laxla.spock.minus
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -64,19 +64,16 @@ public data object Glfw : CoroutineScope, SuspendCloseable {
 	 * Steps into a [Glfw] context.
 	 *
 	 * Unlike [async], [launch], and other functions that use [Glfw] as a [CoroutineScope],
-	 * code executed this way **will not** be cancelled by [close].
-	 *
-	 * This function is [experimental][ExperimentalSpockApi], as its use-case is not yet known.
+	 * this call is implemented via [withContext], and will be a child of the caller's [Job].
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
 	@DelicateCoroutinesApi
 	@DelicateSpockApi
-	@ExperimentalSpockApi
 	public suspend operator fun <T> invoke(
 		context: CoroutineContext = EmptyCoroutineContext,
 		block: suspend CoroutineScope.() -> T
-	): T = withContext(context + coroutineContext, block)
+	): T = withContext(context + (coroutineContext - Job), block)
 
 	/**
 	 * Terminates [Glfw] and cancels all coroutines that used it.
@@ -85,10 +82,13 @@ public data object Glfw : CoroutineScope, SuspendCloseable {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	@OptIn(DelicateCoroutinesApi::class, DelicateSpockApi::class, ExperimentalSpockApi::class)
+	@OptIn(DelicateCoroutinesApi::class, DelicateSpockApi::class)
 	override suspend fun close() {
-		Glfw(NonCancellable) { glfwTerminate() }
-		closeCoroutineContext("GLFW was terminated")
+		try {
+			Glfw(NonCancellable) { glfwTerminate() }
+		} finally {
+			closeCoroutineContext("GLFW was terminated")
+		}
 	}
 
 	override fun toString(): String = "Glfw(coroutineContext=$coroutineContext)"

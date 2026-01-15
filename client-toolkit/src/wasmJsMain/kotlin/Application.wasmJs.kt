@@ -5,6 +5,8 @@ import io.ygdrasil.webgpu.Adapter
 import io.ygdrasil.webgpu.GPUDevice
 import kotlinx.browser.document
 import kotlinx.browser.window
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLCanvasElement
@@ -32,7 +34,8 @@ private suspend inline fun createResizeObserver(
 			target.height = max(1, height.toInt())
 		}
 
-		launch {
+		@OptIn(DelicateCoroutinesApi::class)
+		launch(start = CoroutineStart.ATOMIC) {
 			render()
 		}
 	}
@@ -54,7 +57,6 @@ private suspend fun Adapter.requestDeviceOrThrow(): GPUDevice = try {
 	throw RuntimeException("Failed acquiring WebGPU device", e)
 }
 
-@OptIn(ExperimentalSpockApi::class)
 private suspend inline fun logExceptionsAndAutoclose(block: Closer.() -> Unit): Unit = try {
 	autoclose(block = block)
 } catch (e: Throwable) {
@@ -72,7 +74,7 @@ private suspend inline fun logExceptionsAndAutoclose(block: Closer.() -> Unit): 
 			<li>Current platform: <a onclick='navigator.clipboard.writeText(text)'><code>${KTarget.current.toString().escapeHtml()}</code></a>.</li>
 			<li>On Linux, install <a href='https://flathub.org/apps/com.google.ChromeDev'>Chrome Dev</a> and enable:
 				<ul>
-					<li><a onclick='navigator.clipboard.writeText(text)'><code>chrome://flags/#unsafe-webgpu-support</code></a></li>
+					<li><a onclick='navigator.clipboard.writeText(text)'><code>chrome://flags/#enable-unsafe-webgpu</code></a></li>
 					<li><a onclick='navigator.clipboard.writeText(text)'><code>chrome://flags/#enable-vulkan</code></a></li>
 				</ul>	
 			</li>

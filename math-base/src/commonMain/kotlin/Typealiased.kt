@@ -12,5 +12,6 @@ import kotlin.reflect.KClass
  * @since 0.0.1-alpha.4
  */
 @MustBeDocumented
+@Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS)
 public annotation class Typealiased(val name: String, val type: KClass<*>)

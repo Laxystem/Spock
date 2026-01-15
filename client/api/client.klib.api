@@ -1,0 +1,252 @@
+// Klib ABI Dump
+// Targets: [linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:client>
+abstract fun interface quest.laxla.spock.client/RenderScene { // quest.laxla.spock.client/RenderScene|null[0]
+    abstract fun invoke(): kotlinx.collections.immutable/ImmutableList<quest.laxla.spock.client/Pipeline.Batch<*>> // quest.laxla.spock.client/RenderScene.invoke|invoke(){}[0]
+}
+
+abstract interface <#A: in kotlin/Any> quest.laxla.spock.client/VertexKind { // quest.laxla.spock.client/VertexKind|null[0]
+    abstract val attributes // quest.laxla.spock.client/VertexKind.attributes|{}attributes[0]
+        abstract fun <get-attributes>(): kotlinx.collections.immutable/ImmutableList<io.ygdrasil.webgpu/GPUVertexFormat> // quest.laxla.spock.client/VertexKind.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+    abstract fun (quest.laxla.spock/ByteAppender).append(#A) // quest.laxla.spock.client/VertexKind.append|append@quest.laxla.spock.ByteAppender(1:0){}[0]
+
+    abstract interface <#A1: in kotlin/Any> Bound { // quest.laxla.spock.client/VertexKind.Bound|null[0]
+        abstract val vertexKind // quest.laxla.spock.client/VertexKind.Bound.vertexKind|{}vertexKind[0]
+            abstract fun <get-vertexKind>(): quest.laxla.spock.client/VertexKind<#A1> // quest.laxla.spock.client/VertexKind.Bound.vertexKind.<get-vertexKind>|<get-vertexKind>(){}[0]
+    }
+}
+
+abstract interface <#A: kotlin/Any> quest.laxla.spock.client/VertexShader : quest.laxla.spock.client/Shader, quest.laxla.spock.client/VertexKind.Bound<#A> { // quest.laxla.spock.client/VertexShader|null[0]
+    abstract val constants // quest.laxla.spock.client/VertexShader.constants|{}constants[0]
+        abstract fun <get-constants>(): kotlinx.collections.immutable/ImmutableMap<kotlin/String, kotlin/Double> // quest.laxla.spock.client/VertexShader.constants.<get-constants>|<get-constants>(){}[0]
+}
+
+abstract interface quest.laxla.spock.client/FragmentShader : quest.laxla.spock.client/Shader { // quest.laxla.spock.client/FragmentShader|null[0]
+    abstract val textureFormat // quest.laxla.spock.client/FragmentShader.textureFormat|{}textureFormat[0]
+        abstract fun <get-textureFormat>(): io.ygdrasil.webgpu/GPUTextureFormat // quest.laxla.spock.client/FragmentShader.textureFormat.<get-textureFormat>|<get-textureFormat>(){}[0]
+}
+
+abstract interface quest.laxla.spock.client/Renderer : quest.laxla.spock/Closer { // quest.laxla.spock.client/Renderer|null[0]
+    abstract suspend fun invoke() // quest.laxla.spock.client/Renderer.invoke|invoke(){}[0]
+}
+
+abstract interface quest.laxla.spock.client/Shader { // quest.laxla.spock.client/Shader|null[0]
+    abstract val formFactor // quest.laxla.spock.client/Shader.formFactor|{}formFactor[0]
+        abstract fun <get-formFactor>(): quest.laxla.spock.client/Shader.FormFactor // quest.laxla.spock.client/Shader.formFactor.<get-formFactor>|<get-formFactor>(){}[0]
+    abstract val language // quest.laxla.spock.client/Shader.language|{}language[0]
+        abstract fun <get-language>(): quest.laxla.spock.client/Shader.Language // quest.laxla.spock.client/Shader.language.<get-language>|<get-language>(){}[0]
+    open val label // quest.laxla.spock.client/Shader.label|{}label[0]
+        open fun <get-label>(): kotlin/String // quest.laxla.spock.client/Shader.label.<get-label>|<get-label>(){}[0]
+
+    abstract interface <#A1: out quest.laxla.spock.client/Shader.Language, #B1: out quest.laxla.spock.client/Shader.FormFactor> Transpiled : quest.laxla.spock.client/Shader { // quest.laxla.spock.client/Shader.Transpiled|null[0]
+        abstract val formFactor // quest.laxla.spock.client/Shader.Transpiled.formFactor|{}formFactor[0]
+            abstract fun <get-formFactor>(): #B1 // quest.laxla.spock.client/Shader.Transpiled.formFactor.<get-formFactor>|<get-formFactor>(){}[0]
+        abstract val language // quest.laxla.spock.client/Shader.Transpiled.language|{}language[0]
+            abstract fun <get-language>(): #A1 // quest.laxla.spock.client/Shader.Transpiled.language.<get-language>|<get-language>(){}[0]
+        abstract val original // quest.laxla.spock.client/Shader.Transpiled.original|{}original[0]
+            abstract fun <get-original>(): quest.laxla.spock.client/Shader // quest.laxla.spock.client/Shader.Transpiled.original.<get-original>|<get-original>(){}[0]
+    }
+
+    abstract interface FormFactor { // quest.laxla.spock.client/Shader.FormFactor|null[0]
+        abstract fun accepts(quest.laxla.spock.client/Shader): kotlin/Boolean // quest.laxla.spock.client/Shader.FormFactor.accepts|accepts(quest.laxla.spock.client.Shader){}[0]
+    }
+
+    abstract interface Language { // quest.laxla.spock.client/Shader.Language|null[0]
+        abstract fun accepts(quest.laxla.spock.client/Shader): kotlin/Boolean // quest.laxla.spock.client/Shader.Language.accepts|accepts(quest.laxla.spock.client.Shader){}[0]
+    }
+
+    sealed interface <#A1: out quest.laxla.spock.client/Shader.Language, #B1: out quest.laxla.spock.client/Shader.FormFactor> Transpiler { // quest.laxla.spock.client/Shader.Transpiler|null[0]
+        abstract suspend fun invoke(quest.laxla.spock.client/Shader): quest.laxla.spock.client/Shader.Transpiled<#A1, #B1>? // quest.laxla.spock.client/Shader.Transpiler.invoke|invoke(quest.laxla.spock.client.Shader){}[0]
+
+        abstract interface <#A2: out quest.laxla.spock.client/Shader.Language, #B2: out quest.laxla.spock.client/Shader.FormFactor> Dynamic : quest.laxla.spock.client/Shader.Transpiler<#A2, #B2> { // quest.laxla.spock.client/Shader.Transpiler.Dynamic|null[0]
+            abstract val outputKinds // quest.laxla.spock.client/Shader.Transpiler.Dynamic.outputKinds|{}outputKinds[0]
+                abstract fun <get-outputKinds>(): kotlinx.collections.immutable/ImmutableSet<quest.laxla.spock.client/Shader.Kind<#A2, #B2>> // quest.laxla.spock.client/Shader.Transpiler.Dynamic.outputKinds.<get-outputKinds>|<get-outputKinds>(){}[0]
+        }
+
+        abstract interface <#A2: out quest.laxla.spock.client/Shader.Language, #B2: out quest.laxla.spock.client/Shader.FormFactor> Simple : quest.laxla.spock.client/Shader.Transpiler<#A2, #B2> { // quest.laxla.spock.client/Shader.Transpiler.Simple|null[0]
+            abstract val outputKind // quest.laxla.spock.client/Shader.Transpiler.Simple.outputKind|{}outputKind[0]
+                abstract fun <get-outputKind>(): quest.laxla.spock.client/Shader.Kind<#A2, #B2> // quest.laxla.spock.client/Shader.Transpiler.Simple.outputKind.<get-outputKind>|<get-outputKind>(){}[0]
+        }
+    }
+
+    final class <#A1: out quest.laxla.spock.client/Shader.Language, #B1: out quest.laxla.spock.client/Shader.FormFactor> Kind { // quest.laxla.spock.client/Shader.Kind|null[0]
+        constructor <init>(#A1, #B1) // quest.laxla.spock.client/Shader.Kind.<init>|<init>(1:0;1:1){}[0]
+
+        final val formFactor // quest.laxla.spock.client/Shader.Kind.formFactor|{}formFactor[0]
+            final fun <get-formFactor>(): #B1 // quest.laxla.spock.client/Shader.Kind.formFactor.<get-formFactor>|<get-formFactor>(){}[0]
+        final val language // quest.laxla.spock.client/Shader.Kind.language|{}language[0]
+            final fun <get-language>(): #A1 // quest.laxla.spock.client/Shader.Kind.language.<get-language>|<get-language>(){}[0]
+
+        final fun component1(): #A1 // quest.laxla.spock.client/Shader.Kind.component1|component1(){}[0]
+        final fun component2(): #B1 // quest.laxla.spock.client/Shader.Kind.component2|component2(){}[0]
+        final fun copy(#A1 = ..., #B1 = ...): quest.laxla.spock.client/Shader.Kind<#A1, #B1> // quest.laxla.spock.client/Shader.Kind.copy|copy(1:0;1:1){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Shader.Kind.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Shader.Kind.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock.client/Shader.Kind.toString|toString(){}[0]
+    }
+
+    final object Companion // quest.laxla.spock.client/Shader.Companion|null[0]
+}
+
+abstract interface quest.laxla.spock.client/StringShader : quest.laxla.spock.client/Shader { // quest.laxla.spock.client/StringShader|null[0]
+    abstract val code // quest.laxla.spock.client/StringShader.code|{}code[0]
+        abstract fun <get-code>(): kotlin/String // quest.laxla.spock.client/StringShader.code.<get-code>|<get-code>(){}[0]
+    open val formFactor // quest.laxla.spock.client/StringShader.formFactor|{}formFactor[0]
+        open fun <get-formFactor>(): quest.laxla.spock.client/StringShader.FormFactor // quest.laxla.spock.client/StringShader.formFactor.<get-formFactor>|<get-formFactor>(){}[0]
+
+    final object FormFactor : quest.laxla.spock.client/Shader.FormFactor { // quest.laxla.spock.client/StringShader.FormFactor|null[0]
+        final fun accepts(quest.laxla.spock.client/Shader): kotlin/Boolean // quest.laxla.spock.client/StringShader.FormFactor.accepts|accepts(quest.laxla.spock.client.Shader){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/StringShader.FormFactor.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.client/StringShader.FormFactor.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock.client/StringShader.FormFactor.toString|toString(){}[0]
+    }
+}
+
+final class <#A: kotlin/Any> quest.laxla.spock.client/Pipeline { // quest.laxla.spock.client/Pipeline|null[0]
+    constructor <init>(quest.laxla.spock.client/VertexShader<#A>, quest.laxla.spock.client/FragmentShader?, kotlin/String = ...) // quest.laxla.spock.client/Pipeline.<init>|<init>(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;kotlin.String){}[0]
+
+    final val fragmentShader // quest.laxla.spock.client/Pipeline.fragmentShader|{}fragmentShader[0]
+        final fun <get-fragmentShader>(): quest.laxla.spock.client/FragmentShader? // quest.laxla.spock.client/Pipeline.fragmentShader.<get-fragmentShader>|<get-fragmentShader>(){}[0]
+    final val label // quest.laxla.spock.client/Pipeline.label|{}label[0]
+        final fun <get-label>(): kotlin/String // quest.laxla.spock.client/Pipeline.label.<get-label>|<get-label>(){}[0]
+    final val vertexShader // quest.laxla.spock.client/Pipeline.vertexShader|{}vertexShader[0]
+        final fun <get-vertexShader>(): quest.laxla.spock.client/VertexShader<#A> // quest.laxla.spock.client/Pipeline.vertexShader.<get-vertexShader>|<get-vertexShader>(){}[0]
+
+    final fun component1(): quest.laxla.spock.client/VertexShader<#A> // quest.laxla.spock.client/Pipeline.component1|component1(){}[0]
+    final fun component2(): quest.laxla.spock.client/FragmentShader? // quest.laxla.spock.client/Pipeline.component2|component2(){}[0]
+    final fun component3(): kotlin/String // quest.laxla.spock.client/Pipeline.component3|component3(){}[0]
+    final fun copy(quest.laxla.spock.client/VertexShader<#A> = ..., quest.laxla.spock.client/FragmentShader? = ..., kotlin/String = ...): quest.laxla.spock.client/Pipeline<#A> // quest.laxla.spock.client/Pipeline.copy|copy(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Pipeline.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Pipeline.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Pipeline.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any> Batch { // quest.laxla.spock.client/Pipeline.Batch|null[0]
+        constructor <init>(quest.laxla.spock.client/Pipeline<#A1>, kotlin/Array<out #A1>...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.Pipeline<1:0>;kotlin.Array<out|1:0>...){}[0]
+        constructor <init>(quest.laxla.spock.client/Pipeline<#A1>, kotlinx.collections.immutable/ImmutableList<#A1>, kotlin/UIntArray...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.Pipeline<1:0>;kotlinx.collections.immutable.ImmutableList<1:0>;kotlin.UIntArray...){}[0]
+        constructor <init>(quest.laxla.spock.client/Pipeline<#A1>, quest.laxla.spock.client/Mesh<#A1>) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.Pipeline<1:0>;quest.laxla.spock.client.Mesh<1:0>){}[0]
+        constructor <init>(quest.laxla.spock.client/VertexShader<#A1>, quest.laxla.spock.client/FragmentShader?, kotlin/Array<out #A1>..., kotlin/String = ...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;kotlin.Array<out|1:0>...;kotlin.String){}[0]
+        constructor <init>(quest.laxla.spock.client/VertexShader<#A1>, quest.laxla.spock.client/FragmentShader?, kotlinx.collections.immutable/ImmutableList<#A1>, kotlin/UIntArray..., kotlin/String = ...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;kotlinx.collections.immutable.ImmutableList<1:0>;kotlin.UIntArray...;kotlin.String){}[0]
+        constructor <init>(quest.laxla.spock.client/VertexShader<#A1>, quest.laxla.spock.client/FragmentShader?, kotlinx.collections.immutable/ImmutableList<#A1>, kotlinx.collections.immutable/ImmutableList<kotlin/UInt>, kotlin/String = ...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;kotlinx.collections.immutable.ImmutableList<1:0>;kotlinx.collections.immutable.ImmutableList<kotlin.UInt>;kotlin.String){}[0]
+        constructor <init>(quest.laxla.spock.client/VertexShader<#A1>, quest.laxla.spock.client/FragmentShader?, quest.laxla.spock.client/Mesh<#A1>, kotlin/String = ...) // quest.laxla.spock.client/Pipeline.Batch.<init>|<init>(quest.laxla.spock.client.VertexShader<1:0>;quest.laxla.spock.client.FragmentShader?;quest.laxla.spock.client.Mesh<1:0>;kotlin.String){}[0]
+
+        final val mesh // quest.laxla.spock.client/Pipeline.Batch.mesh|{}mesh[0]
+            final fun <get-mesh>(): quest.laxla.spock.client/Mesh<#A1> // quest.laxla.spock.client/Pipeline.Batch.mesh.<get-mesh>|<get-mesh>(){}[0]
+        final val pipeline // quest.laxla.spock.client/Pipeline.Batch.pipeline|{}pipeline[0]
+            final fun <get-pipeline>(): quest.laxla.spock.client/Pipeline<#A1> // quest.laxla.spock.client/Pipeline.Batch.pipeline.<get-pipeline>|<get-pipeline>(){}[0]
+
+        final fun component1(): quest.laxla.spock.client/Pipeline<#A1> // quest.laxla.spock.client/Pipeline.Batch.component1|component1(){}[0]
+        final fun component2(): quest.laxla.spock.client/Mesh<#A1> // quest.laxla.spock.client/Pipeline.Batch.component2|component2(){}[0]
+        final fun copy(quest.laxla.spock.client/Pipeline<#A1> = ..., quest.laxla.spock.client/Mesh<#A1> = ...): quest.laxla.spock.client/Pipeline.Batch<#A1> // quest.laxla.spock.client/Pipeline.Batch.copy|copy(quest.laxla.spock.client.Pipeline<1:0>;quest.laxla.spock.client.Mesh<1:0>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Pipeline.Batch.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Pipeline.Batch.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock.client/Pipeline.Batch.toString|toString(){}[0]
+    }
+}
+
+final class <#A: out kotlin/Any> quest.laxla.spock.client/Mesh { // quest.laxla.spock.client/Mesh|null[0]
+    constructor <init>(kotlin/Array<out #A>...) // quest.laxla.spock.client/Mesh.<init>|<init>(kotlin.Array<out|1:0>...){}[0]
+    constructor <init>(kotlinx.collections.immutable/ImmutableList<#A>, kotlin/UIntArray...) // quest.laxla.spock.client/Mesh.<init>|<init>(kotlinx.collections.immutable.ImmutableList<1:0>;kotlin.UIntArray...){}[0]
+    constructor <init>(kotlinx.collections.immutable/ImmutableList<#A>, kotlinx.collections.immutable/ImmutableList<kotlin/UInt> = ...) // quest.laxla.spock.client/Mesh.<init>|<init>(kotlinx.collections.immutable.ImmutableList<1:0>;kotlinx.collections.immutable.ImmutableList<kotlin.UInt>){}[0]
+
+    final val indices // quest.laxla.spock.client/Mesh.indices|{}indices[0]
+        final fun <get-indices>(): kotlinx.collections.immutable/ImmutableList<kotlin/UInt> // quest.laxla.spock.client/Mesh.indices.<get-indices>|<get-indices>(){}[0]
+    final val indicesOrVertexOrder // quest.laxla.spock.client/Mesh.indicesOrVertexOrder|{}indicesOrVertexOrder[0]
+        final fun <get-indicesOrVertexOrder>(): kotlinx.collections.immutable/ImmutableList<kotlin/UInt> // quest.laxla.spock.client/Mesh.indicesOrVertexOrder.<get-indicesOrVertexOrder>|<get-indicesOrVertexOrder>(){}[0]
+    final val vertices // quest.laxla.spock.client/Mesh.vertices|{}vertices[0]
+        final fun <get-vertices>(): kotlinx.collections.immutable/ImmutableList<#A> // quest.laxla.spock.client/Mesh.vertices.<get-vertices>|<get-vertices>(){}[0]
+
+    final fun component1(): kotlinx.collections.immutable/ImmutableList<#A> // quest.laxla.spock.client/Mesh.component1|component1(){}[0]
+    final fun component2(): kotlinx.collections.immutable/ImmutableList<kotlin/UInt> // quest.laxla.spock.client/Mesh.component2|component2(){}[0]
+    final fun copy(kotlinx.collections.immutable/ImmutableList<#A> = ..., kotlinx.collections.immutable/ImmutableList<kotlin/UInt> = ...): quest.laxla.spock.client/Mesh<#A> // quest.laxla.spock.client/Mesh.copy|copy(kotlinx.collections.immutable.ImmutableList<1:0>;kotlinx.collections.immutable.ImmutableList<kotlin.UInt>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Mesh.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Mesh.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Mesh.toString|toString(){}[0]
+}
+
+open class quest.laxla.spock.client/UnsupportedShaderException : kotlin/IllegalArgumentException { // quest.laxla.spock.client/UnsupportedShaderException|null[0]
+    constructor <init>(quest.laxla.spock.client/Shader, kotlin/String? = ..., kotlin/Throwable? = ...) // quest.laxla.spock.client/UnsupportedShaderException.<init>|<init>(quest.laxla.spock.client.Shader;kotlin.String?;kotlin.Throwable?){}[0]
+
+    final val shader // quest.laxla.spock.client/UnsupportedShaderException.shader|{}shader[0]
+        final fun <get-shader>(): quest.laxla.spock.client/Shader // quest.laxla.spock.client/UnsupportedShaderException.shader.<get-shader>|<get-shader>(){}[0]
+}
+
+final object quest.laxla.spock.client/Vector1fVertexKind : quest.laxla.spock.client/VertexKind<quest.laxla.spock.math/Vector1<kotlin/Float, quest.laxla.spock.math/FloatSpace>> { // quest.laxla.spock.client/Vector1fVertexKind|null[0]
+    final val attributes // quest.laxla.spock.client/Vector1fVertexKind.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlinx.collections.immutable/ImmutableList<io.ygdrasil.webgpu/GPUVertexFormat> // quest.laxla.spock.client/Vector1fVertexKind.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+    final fun (quest.laxla.spock/ByteAppender).append(quest.laxla.spock.math/Vector1<kotlin/Float, quest.laxla.spock.math/FloatSpace>) // quest.laxla.spock.client/Vector1fVertexKind.append|append@quest.laxla.spock.ByteAppender(quest.laxla.spock.math.Vector1<kotlin.Float,quest.laxla.spock.math.FloatSpace>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Vector1fVertexKind.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Vector1fVertexKind.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Vector1fVertexKind.toString|toString(){}[0]
+}
+
+final object quest.laxla.spock.client/Vector2fVertexKind : quest.laxla.spock.client/VertexKind<quest.laxla.spock.math/Vector2<kotlin/Float, quest.laxla.spock.math/FloatSpace>> { // quest.laxla.spock.client/Vector2fVertexKind|null[0]
+    final val attributes // quest.laxla.spock.client/Vector2fVertexKind.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlinx.collections.immutable/ImmutableList<io.ygdrasil.webgpu/GPUVertexFormat> // quest.laxla.spock.client/Vector2fVertexKind.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+    final fun (quest.laxla.spock/ByteAppender).append(quest.laxla.spock.math/Vector2<kotlin/Float, quest.laxla.spock.math/FloatSpace>) // quest.laxla.spock.client/Vector2fVertexKind.append|append@quest.laxla.spock.ByteAppender(quest.laxla.spock.math.Vector2<kotlin.Float,quest.laxla.spock.math.FloatSpace>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Vector2fVertexKind.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Vector2fVertexKind.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Vector2fVertexKind.toString|toString(){}[0]
+}
+
+final object quest.laxla.spock.client/Vector3fVertexKind : quest.laxla.spock.client/VertexKind<quest.laxla.spock.math/Vector3<kotlin/Float, quest.laxla.spock.math/FloatSpace>> { // quest.laxla.spock.client/Vector3fVertexKind|null[0]
+    final val attributes // quest.laxla.spock.client/Vector3fVertexKind.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlinx.collections.immutable/ImmutableList<io.ygdrasil.webgpu/GPUVertexFormat> // quest.laxla.spock.client/Vector3fVertexKind.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+    final fun (quest.laxla.spock/ByteAppender).append(quest.laxla.spock.math/Vector3<kotlin/Float, quest.laxla.spock.math/FloatSpace>) // quest.laxla.spock.client/Vector3fVertexKind.append|append@quest.laxla.spock.ByteAppender(quest.laxla.spock.math.Vector3<kotlin.Float,quest.laxla.spock.math.FloatSpace>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Vector3fVertexKind.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Vector3fVertexKind.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Vector3fVertexKind.toString|toString(){}[0]
+}
+
+final object quest.laxla.spock.client/Wgsl : quest.laxla.spock.client/Shader.Language { // quest.laxla.spock.client/Wgsl|null[0]
+    final fun accepts(quest.laxla.spock.client/Shader): kotlin/Boolean // quest.laxla.spock.client/Wgsl.accepts|accepts(quest.laxla.spock.client.Shader){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.client/Wgsl.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.client/Wgsl.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.client/Wgsl.toString|toString(){}[0]
+
+    abstract interface Shader : quest.laxla.spock.client/Shader { // quest.laxla.spock.client/Wgsl.Shader|null[0]
+        abstract val entrypoint // quest.laxla.spock.client/Wgsl.Shader.entrypoint|{}entrypoint[0]
+            abstract fun <get-entrypoint>(): kotlin/String // quest.laxla.spock.client/Wgsl.Shader.entrypoint.<get-entrypoint>|<get-entrypoint>(){}[0]
+        open val language // quest.laxla.spock.client/Wgsl.Shader.language|{}language[0]
+            open fun <get-language>(): quest.laxla.spock.client/Wgsl // quest.laxla.spock.client/Wgsl.Shader.language.<get-language>|<get-language>(){}[0]
+    }
+}
+
+final val quest.laxla.spock.client/isCarryingRequiredMetadata // quest.laxla.spock.client/isCarryingRequiredMetadata|@quest.laxla.spock.client.Shader{}isCarryingRequiredMetadata[0]
+    final fun (quest.laxla.spock.client/Shader).<get-isCarryingRequiredMetadata>(): kotlin/Boolean // quest.laxla.spock.client/isCarryingRequiredMetadata.<get-isCarryingRequiredMetadata>|<get-isCarryingRequiredMetadata>@quest.laxla.spock.client.Shader(){}[0]
+final val quest.laxla.spock.client/kind // quest.laxla.spock.client/kind|@quest.laxla.spock.client.Shader.Transpiled<0:0,0:1>{0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}kind[0]
+    final fun <#A1: quest.laxla.spock.client/Shader.Language, #B1: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader.Transpiled<#A1, #B1>).<get-kind>(): quest.laxla.spock.client/Shader.Kind<#A1, #B1> // quest.laxla.spock.client/kind.<get-kind>|<get-kind>@quest.laxla.spock.client.Shader.Transpiled<0:0,0:1>(){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final val quest.laxla.spock.client/kind // quest.laxla.spock.client/kind|@quest.laxla.spock.client.Shader{}kind[0]
+    final fun (quest.laxla.spock.client/Shader).<get-kind>(): quest.laxla.spock.client/Shader.Kind<*, *> // quest.laxla.spock.client/kind.<get-kind>|<get-kind>@quest.laxla.spock.client.Shader(){}[0]
+final val quest.laxla.spock.client/outputKinds // quest.laxla.spock.client/outputKinds|@quest.laxla.spock.client.Shader.Transpiler<0:0,0:1>{0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}outputKinds[0]
+    final fun <#A1: quest.laxla.spock.client/Shader.Language, #B1: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader.Transpiler<#A1, #B1>).<get-outputKinds>(): kotlinx.collections.immutable/ImmutableSet<quest.laxla.spock.client/Shader.Kind<#A1, #B1>> // quest.laxla.spock.client/outputKinds.<get-outputKinds>|<get-outputKinds>@quest.laxla.spock.client.Shader.Transpiler<0:0,0:1>(){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final val quest.laxla.spock.client/vertexKind // quest.laxla.spock.client/vertexKind|@quest.laxla.spock.client.Pipeline<0:0>{0§<kotlin.Any>}vertexKind[0]
+    final fun <#A1: kotlin/Any> (quest.laxla.spock.client/Pipeline<#A1>).<get-vertexKind>(): quest.laxla.spock.client/VertexKind<#A1> // quest.laxla.spock.client/vertexKind.<get-vertexKind>|<get-vertexKind>@quest.laxla.spock.client.Pipeline<0:0>(){0§<kotlin.Any>}[0]
+
+final fun (io.ygdrasil.webgpu/GPUExtent3D).quest.laxla.spock.client/asVector3(): quest.laxla.spock.math/Vector3<kotlin/UInt, quest.laxla.spock.math/UIntSpace> // quest.laxla.spock.client/asVector3|asVector3@io.ygdrasil.webgpu.GPUExtent3D(){}[0]
+final fun (quest.laxla.spock.client/Shader).quest.laxla.spock.client/isAcceptedByAnyKindOutputtedBy(quest.laxla.spock.client/Shader.Transpiler<*, *>): kotlin/Boolean // quest.laxla.spock.client/isAcceptedByAnyKindOutputtedBy|isAcceptedByAnyKindOutputtedBy@quest.laxla.spock.client.Shader(quest.laxla.spock.client.Shader.Transpiler<*,*>){}[0]
+final fun (quest.laxla.spock.client/Shader).quest.laxla.spock.client/isOfAnyKindOutputtedBy(quest.laxla.spock.client/Shader.Transpiler<*, *>): kotlin/Boolean // quest.laxla.spock.client/isOfAnyKindOutputtedBy|isOfAnyKindOutputtedBy@quest.laxla.spock.client.Shader(quest.laxla.spock.client.Shader.Transpiler<*,*>){}[0]
+final fun (quest.laxla.spock.client/Shader).quest.laxla.spock.client/isOfKind(quest.laxla.spock.client/Shader.Kind<*, *>): kotlin/Boolean // quest.laxla.spock.client/isOfKind|isOfKind@quest.laxla.spock.client.Shader(quest.laxla.spock.client.Shader.Kind<*,*>){}[0]
+final fun (quest.laxla.spock.client/Shader).quest.laxla.spock.client/toTranspilationStepString(): kotlin/String // quest.laxla.spock.client/toTranspilationStepString|toTranspilationStepString@quest.laxla.spock.client.Shader(){}[0]
+final fun (quest.laxla.spock.client/Shader).quest.laxla.spock.client/transpilationTraceToString(): kotlin/String // quest.laxla.spock.client/transpilationTraceToString|transpilationTraceToString@quest.laxla.spock.client.Shader(){}[0]
+final fun (quest.laxla.spock.client/Shader.Kind<*, *>).quest.laxla.spock.client/accepts(quest.laxla.spock.client/Shader): kotlin/Boolean // quest.laxla.spock.client/accepts|accepts@quest.laxla.spock.client.Shader.Kind<*,*>(quest.laxla.spock.client.Shader){}[0]
+final fun <#A: kotlin/Any> quest.laxla.spock.client/wgslVertexShaderOf(kotlin/String, quest.laxla.spock.client/VertexKind<#A>, kotlin/String, kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin/Double>): quest.laxla.spock.client/VertexShader<#A> // quest.laxla.spock.client/wgslVertexShaderOf|wgslVertexShaderOf(kotlin.String;quest.laxla.spock.client.VertexKind<0:0>;kotlin.String;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Double>){0§<kotlin.Any>}[0]
+final fun <#A: kotlin/Any> quest.laxla.spock.client/wgslVertexShaderOf(kotlin/String, quest.laxla.spock.client/VertexKind<#A>, kotlin/String, kotlin/String = ..., kotlin/Array<out kotlin/Pair<kotlin/String, kotlin/Double>>...): quest.laxla.spock.client/VertexShader<#A> // quest.laxla.spock.client/wgslVertexShaderOf|wgslVertexShaderOf(kotlin.String;quest.laxla.spock.client.VertexKind<0:0>;kotlin.String;kotlin.String;kotlin.Array<out|kotlin.Pair<kotlin.String,kotlin.Double>>...){0§<kotlin.Any>}[0]
+final fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader).quest.laxla.spock.client/withKind(#A, #B): quest.laxla.spock.client/Shader.Transpiled<#A, #B> // quest.laxla.spock.client/withKind|withKind@quest.laxla.spock.client.Shader(0:0;0:1){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader).quest.laxla.spock.client/withKind(quest.laxla.spock.client/Shader.Kind<#A, #B>): quest.laxla.spock.client/Shader.Transpiled<#A, #B> // quest.laxla.spock.client/withKind|withKind@quest.laxla.spock.client.Shader(quest.laxla.spock.client.Shader.Kind<0:0,0:1>){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> quest.laxla.spock.client/NoopShaderTranspiler(#A, #B): quest.laxla.spock.client/Shader.Transpiler.Simple<#A, #B> // quest.laxla.spock.client/NoopShaderTranspiler|NoopShaderTranspiler(0:0;0:1){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> quest.laxla.spock.client/NoopShaderTranspiler(quest.laxla.spock.client/Shader.Kind<#A, #B>): quest.laxla.spock.client/Shader.Transpiler.Simple<#A, #B> // quest.laxla.spock.client/NoopShaderTranspiler|NoopShaderTranspiler(quest.laxla.spock.client.Shader.Kind<0:0,0:1>){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final fun quest.laxla.spock.client/ShaderCache(quest.laxla.spock.client/Shader.Transpiler<*, *>): quest.laxla.spock/Cache<quest.laxla.spock.client/Shader, quest.laxla.spock.client/Shader?> // quest.laxla.spock.client/ShaderCache|ShaderCache(quest.laxla.spock.client.Shader.Transpiler<*,*>){}[0]
+final fun quest.laxla.spock.client/wgslFragmentShaderOf(kotlin/String, io.ygdrasil.webgpu/GPUTextureFormat, kotlin/String, kotlin/String = ...): quest.laxla.spock.client/FragmentShader // quest.laxla.spock.client/wgslFragmentShaderOf|wgslFragmentShaderOf(kotlin.String;io.ygdrasil.webgpu.GPUTextureFormat;kotlin.String;kotlin.String){}[0]
+final inline fun <#A: kotlin/Any> quest.laxla.spock.client/VertexKind(kotlin/Array<out io.ygdrasil.webgpu/GPUVertexFormat>..., crossinline kotlin/Function2<quest.laxla.spock/ByteAppender, #A, kotlin/Unit>): quest.laxla.spock.client/VertexKind<#A> // quest.laxla.spock.client/VertexKind|VertexKind(kotlin.Array<out|io.ygdrasil.webgpu.GPUVertexFormat>...;kotlin.Function2<quest.laxla.spock.ByteAppender,0:0,kotlin.Unit>){0§<kotlin.Any>}[0]
+final inline fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader.Companion).quest.laxla.spock.client/Transpiler(#A, #B, crossinline kotlin/Function1<quest.laxla.spock.client/Shader, quest.laxla.spock.client/Shader.Transpiled<#A, #B>?>): quest.laxla.spock.client/Shader.Transpiler.Simple<#A, #B> // quest.laxla.spock.client/Transpiler|Transpiler@quest.laxla.spock.client.Shader.Companion(0:0;0:1;kotlin.Function1<quest.laxla.spock.client.Shader,quest.laxla.spock.client.Shader.Transpiled<0:0,0:1>?>){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final inline fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader.Companion).quest.laxla.spock.client/Transpiler(quest.laxla.spock.client/Shader.Kind<#A, #B>, crossinline kotlin/Function1<quest.laxla.spock.client/Shader, quest.laxla.spock.client/Shader.Transpiled<#A, #B>?>): quest.laxla.spock.client/Shader.Transpiler.Simple<#A, #B> // quest.laxla.spock.client/Transpiler|Transpiler@quest.laxla.spock.client.Shader.Companion(quest.laxla.spock.client.Shader.Kind<0:0,0:1>;kotlin.Function1<quest.laxla.spock.client.Shader,quest.laxla.spock.client.Shader.Transpiled<0:0,0:1>?>){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]
+final suspend fun <#A: quest.laxla.spock.client/Shader.Language, #B: quest.laxla.spock.client/Shader.FormFactor> (quest.laxla.spock.client/Shader.Transpiler<#A, #B>).quest.laxla.spock.client/transpile(quest.laxla.spock.client/Shader): quest.laxla.spock.client/Shader.Transpiled<#A, #B>? // quest.laxla.spock.client/transpile|transpile@quest.laxla.spock.client.Shader.Transpiler<0:0,0:1>(quest.laxla.spock.client.Shader){0§<quest.laxla.spock.client.Shader.Language>;1§<quest.laxla.spock.client.Shader.FormFactor>}[0]

@@ -1,5 +1,7 @@
 package quest.laxla.spock
 
+import kotlinx.serialization.Serializable
+
 /**
  * Represents the [possessive] having a component of type [possessed].
  *
@@ -9,4 +11,5 @@ package quest.laxla.spock
  * @since 0.0.1-alpha.4
  */
 @FutureValueClass
+@Serializable
 public data class Possession<C : Compable, T>(val possessive: C, val possessed: ComponentType<T>) : Compable

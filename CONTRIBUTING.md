@@ -12,7 +12,7 @@ Contributions are welcome and accepted. Please create issues or pull requests!
 
 To build Spock for a particular target, your machine needs to have:
 * For any platform 
-  * JVM v22 (any distribution is supported)
+  * JVM v25+ (any distribution is supported)
 * For WasmJS
   * Chromium
   * Firefox
@@ -21,7 +21,9 @@ To build Spock for a particular target, your machine needs to have:
       * `core/libxcrypt-compat` on Arch
       * `libxcrypt-static` and `libxcrypt-compat` on Fedora
   * GLFW
-    * `glfw`, `glfw-devel`, and `glfw-doc` on Fedora
+    * `glfw` and `glfw-devel` on Fedora
+  * glibc 3.4+
+    * On Fedora, `glibc-static` might be required.
 * For Apple targets
   * MacOS installed.
 * Lots of patience (sorry).
@@ -138,7 +140,7 @@ usually [on port 63342](http://localhost:63342/spock/spock.docs/current/index.ht
 ### Dump ABI
 
 ```bash
-./gradlew apiDump --quiet --stacktrace
+./gradlew updateLegacyAbi --quiet --stacktrace
 ```
 
 ### Generate Test Coverage Report

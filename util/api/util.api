@@ -39,7 +39,6 @@ public final class quest/laxla/spock/Cache$DefaultImpls {
 }
 
 public abstract interface class quest/laxla/spock/Cache$Entry : quest/laxla/spock/SuspendCloseable {
-	public abstract fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getProduct ()Ljava/lang/Object;
 }
 
@@ -212,6 +211,12 @@ public final class quest/laxla/spock/FlagsKt {
 	public static final fun takeUnlessSet (Ljava/lang/Object;Lquest/laxla/spock/Flag;)Ljava/lang/Object;
 }
 
+public final class quest/laxla/spock/FlowsKt {
+	public static final fun all (Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun any (Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun none (Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public abstract interface annotation class quest/laxla/spock/FutureContextFunction : java/lang/annotation/Annotation {
 }
 
@@ -326,17 +331,21 @@ public final class quest/laxla/spock/LazyKt {
 	public static final fun suspendLazy (Lkotlin/jvm/functions/Function1;)Lquest/laxla/spock/SuspendLazy;
 }
 
-public abstract interface class quest/laxla/spock/Loggable {
+public abstract interface class quest/laxla/spock/LocalizedLogLevel {
 	public abstract fun getSubjectiveLogLevel ()Lio/github/oshai/kotlinlogging/Level;
 	public abstract fun setSubjectiveLogLevel (Lio/github/oshai/kotlinlogging/Level;)V
 }
 
-public final class quest/laxla/spock/LoggableKt {
-	public static final fun debugVia (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun debugVia$default (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-	public static final fun getSubjectiveLogLevel (Ljava/lang/Object;)Lio/github/oshai/kotlinlogging/Level;
-	public static final fun traceVia (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun traceVia$default (Lquest/laxla/spock/Loggable;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+public final class quest/laxla/spock/LocalizedLogLevelKt {
+	public static final fun debugVia (Lquest/laxla/spock/LocalizedLogLevel;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun debugVia$default (Lquest/laxla/spock/LocalizedLogLevel;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static final fun traceVia (Lquest/laxla/spock/LocalizedLogLevel;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun traceVia$default (Lquest/laxla/spock/LocalizedLogLevel;Lio/github/oshai/kotlinlogging/KLogger;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
+public final class quest/laxla/spock/LoggingKt {
+	public static final fun logIfNull (Ljava/lang/Object;Lio/github/oshai/kotlinlogging/KLogger;Lio/github/oshai/kotlinlogging/Level;Lio/github/oshai/kotlinlogging/Marker;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public static synthetic fun logIfNull$default (Ljava/lang/Object;Lio/github/oshai/kotlinlogging/KLogger;Lio/github/oshai/kotlinlogging/Level;Lio/github/oshai/kotlinlogging/Marker;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class quest/laxla/spock/MutexKt {
@@ -408,9 +417,15 @@ public final class quest/laxla/spock/Platforms_jvmKt {
 	public static final fun getCurrent (Lquest/laxla/spock/KTarget$Companion;)Lquest/laxla/spock/KTarget;
 }
 
+public final class quest/laxla/spock/ReflectionKt {
+	public static final fun getFallbackName (Lkotlin/reflect/KClass;)Ljava/lang/String;
+	public static final fun toIdentityString (Ljava/lang/Object;)Ljava/lang/String;
+}
+
 public final class quest/laxla/spock/StringsKt {
 	public static final fun emptyString ()Ljava/lang/String;
 	public static final fun escapeHtml (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun trimAndAppendIfNotBlank (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun trimAndAppendIfNotBlank (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static synthetic fun trimAndAppendIfNotBlank$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 }

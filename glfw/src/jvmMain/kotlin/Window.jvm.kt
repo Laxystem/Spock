@@ -2,6 +2,7 @@ package quest.laxla.spock.glfw
 
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFW.glfwGetWindowSize
@@ -32,8 +33,8 @@ public actual class GlfwWindow(public val pointer: Long) : Window {
 		}
 	}
 
-	@OptIn(ExperimentalSpockApi::class, DelicateCoroutinesApi::class, DelicateSpockApi::class)
-	actual override suspend fun close(): Unit = Glfw {
+	@OptIn(DelicateCoroutinesApi::class, DelicateSpockApi::class)
+	actual override suspend fun close(): Unit = Glfw(NonCancellable) {
 		GLFW.glfwDestroyWindow(pointer)
 	}
 }

@@ -1,0 +1,517 @@
+// Klib ABI Dump
+// Targets: [linuxArm64, linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:core>
+open annotation class quest.laxla.spock/EcsDsl : kotlin/Annotation { // quest.laxla.spock/EcsDsl|null[0]
+    constructor <init>() // quest.laxla.spock/EcsDsl.<init>|<init>(){}[0]
+}
+
+abstract fun interface <#A: in kotlin/Any, #B: kotlin/Any> quest.laxla.spock/ResourceDeserializationMethod { // quest.laxla.spock/ResourceDeserializationMethod|null[0]
+    abstract suspend fun deserialize(#A): kotlin/Result<#B>? // quest.laxla.spock/ResourceDeserializationMethod.deserialize|deserialize(1:0){}[0]
+}
+
+abstract fun interface <#A: in kotlin/Any, #B: kotlin/Any> quest.laxla.spock/ResourceDeserializer { // quest.laxla.spock/ResourceDeserializer|null[0]
+    abstract suspend fun deserialize(quest.laxla.spock/RawResource<#A>): quest.laxla.spock/Resource<#B>? // quest.laxla.spock/ResourceDeserializer.deserialize|deserialize(quest.laxla.spock.RawResource<1:0>){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any> quest.laxla.spock/ResourceType { // quest.laxla.spock/ResourceType|null[0]
+    abstract suspend fun (kotlinx.coroutines.flow/Flow<#A>).collapse(): #A? // quest.laxla.spock/ResourceType.collapse|collapse@kotlinx.coroutines.flow.Flow<1:0>(){}[0]
+}
+
+abstract fun interface <#A: out kotlin/Any> quest.laxla.spock/ResourceSource { // quest.laxla.spock/ResourceSource|null[0]
+    abstract fun list(quest.laxla.spock/Name): kotlinx.coroutines.flow/Flow<quest.laxla.spock/RawResource<#A>> // quest.laxla.spock/ResourceSource.list|list(quest.laxla.spock.Name){}[0]
+}
+
+abstract interface <#A: kotlin/Any?> quest.laxla.spock/NamedEntity : quest.laxla.spock/ComponentType<#A>, quest.laxla.spock/Named // quest.laxla.spock/NamedEntity|null[0]
+
+abstract interface <#A: out kotlin/Any> quest.laxla.spock/RawResource { // quest.laxla.spock/RawResource|null[0]
+    open val deserializationMethod // quest.laxla.spock/RawResource.deserializationMethod|{}deserializationMethod[0]
+        open fun <get-deserializationMethod>(): kotlinx.collections.immutable/ImmutableList<quest.laxla.spock/Name> // quest.laxla.spock/RawResource.deserializationMethod.<get-deserializationMethod>|<get-deserializationMethod>(){}[0]
+
+    abstract suspend fun acquire(): #A // quest.laxla.spock/RawResource.acquire|acquire(){}[0]
+
+    final object Companion { // quest.laxla.spock/RawResource.Companion|null[0]
+        final fun <#A2: kotlin/Any> invoke(#A2, kotlinx.collections.immutable/ImmutableList<quest.laxla.spock/Name> = ...): quest.laxla.spock/RawResource<#A2> // quest.laxla.spock/RawResource.Companion.invoke|invoke(0:0;kotlinx.collections.immutable.ImmutableList<quest.laxla.spock.Name>){0§<kotlin.Any>}[0]
+    }
+}
+
+abstract interface quest.laxla.spock/Ecs { // quest.laxla.spock/Ecs|null[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?, #E1: kotlin/Any?> select(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin.coroutines/SuspendFunction4<quest.laxla.spock/Entity.Selected, #A1, #B1, #D1, kotlinx.coroutines.flow/Flow<#E1>>): kotlinx.coroutines.flow/Flow<#E1> // quest.laxla.spock/Ecs.select|select(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.Entity.Selected,0:0,0:1,0:3,kotlinx.coroutines.flow.Flow<0:4>>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?, #E1: kotlin/Any?> select(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin.coroutines/SuspendFunction5<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1, kotlinx.coroutines.flow/Flow<#E1>>): kotlinx.coroutines.flow/Flow<#E1> // quest.laxla.spock/Ecs.select|select(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,kotlinx.coroutines.flow.Flow<0:4>>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?> select(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, kotlin.coroutines/SuspendFunction4<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, kotlinx.coroutines.flow/Flow<#D1>>): kotlinx.coroutines.flow/Flow<#D1> // quest.laxla.spock/Ecs.select|select(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,kotlinx.coroutines.flow.Flow<0:3>>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?> select(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, kotlin.coroutines/SuspendFunction3<quest.laxla.spock/Entity.Selected, #A1, #B1, kotlinx.coroutines.flow/Flow<#C1>>): kotlinx.coroutines.flow/Flow<#C1> // quest.laxla.spock/Ecs.select|select(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;kotlin.coroutines.SuspendFunction3<quest.laxla.spock.Entity.Selected,0:0,0:1,kotlinx.coroutines.flow.Flow<0:2>>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?> select(quest.laxla.spock/ComponentType<#A1>, kotlin.coroutines/SuspendFunction2<quest.laxla.spock/Entity.Selected, #A1, #B1>): kotlinx.coroutines.flow/Flow<#B1> // quest.laxla.spock/Ecs.select|select(quest.laxla.spock.ComponentType<0:0>;kotlin.coroutines.SuspendFunction2<quest.laxla.spock.Entity.Selected,0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract fun dereference(quest.laxla.spock/Entity.Reference): quest.laxla.spock/ComponentType<*>? // quest.laxla.spock/Ecs.dereference|dereference(quest.laxla.spock.Entity.Reference){}[0]
+    abstract fun reference(quest.laxla.spock/Name): quest.laxla.spock/Entity.Reference // quest.laxla.spock/Ecs.reference|reference(quest.laxla.spock.Name){}[0]
+    abstract fun select(kotlin/Array<out quest.laxla.spock/Entity>...): kotlinx.coroutines.flow/Flow<quest.laxla.spock/Entity.Selected> // quest.laxla.spock/Ecs.select|select(kotlin.Array<out|quest.laxla.spock.Entity>...){}[0]
+    abstract suspend fun <#A1: kotlin/Any?> get(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/Ecs.get|get(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getDefaultOf(quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/Ecs.getDefaultOf|getDefaultOf(quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun all(kotlin/Array<out quest.laxla.spock/Entity>..., kotlin.coroutines/SuspendFunction1<quest.laxla.spock/Entity.Selected, kotlin/Boolean>): kotlin/Boolean // quest.laxla.spock/Ecs.all|all(kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.coroutines.SuspendFunction1<quest.laxla.spock.Entity.Selected,kotlin.Boolean>){}[0]
+    abstract suspend fun contains(quest.laxla.spock/Compable): kotlin/Boolean // quest.laxla.spock/Ecs.contains|contains(quest.laxla.spock.Compable){}[0]
+    abstract suspend fun possesses(quest.laxla.spock/Compable, quest.laxla.spock/Entity): kotlin/Boolean // quest.laxla.spock/Ecs.possesses|possesses(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+    abstract suspend fun snap(): quest.laxla.spock/SnappedEcs // quest.laxla.spock/Ecs.snap|snap(){}[0]
+    open fun prepare(kotlin/Array<out quest.laxla.spock/Entity>...) // quest.laxla.spock/Ecs.prepare|prepare(kotlin.Array<out|quest.laxla.spock.Entity>...){}[0]
+}
+
+abstract interface quest.laxla.spock/MutableEcs : quest.laxla.spock/Ecs { // quest.laxla.spock/MutableEcs|null[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?, #E1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#E1>, quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin.coroutines/SuspendFunction5<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1, #E1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:4>;quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:4>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?, #E1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#E1>, quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin.coroutines/SuspendFunction5<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1, #E1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:4>;quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:4>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction5<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.Boolean;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#D1>, kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction5<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Boolean;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?, #D1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#D1>, quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, kotlin.coroutines/SuspendFunction4<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #D1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:3>;quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#C1>, kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction4<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;kotlin.Boolean;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?, #C1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#C1>, quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, kotlin.coroutines/SuspendFunction3<quest.laxla.spock/Entity.Selected, #A1, #B1, #C1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;kotlin.coroutines.SuspendFunction3<quest.laxla.spock.Entity.Selected,0:0,0:1,0:2>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, quest.laxla.spock/ComponentType<#B1>, kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction3<quest.laxla.spock/Entity.Selected, #A1, #B1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;kotlin.Boolean;kotlin.coroutines.SuspendFunction3<quest.laxla.spock.Entity.Selected,0:0,0:1,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#B1>, quest.laxla.spock/ComponentType<#A1>, kotlin.coroutines/SuspendFunction2<quest.laxla.spock/Entity.Selected, #A1, #B1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:0>;kotlin.coroutines.SuspendFunction2<quest.laxla.spock.Entity.Selected,0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, kotlin.coroutines/SuspendFunction2<quest.laxla.spock/Entity.Selected, #A1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;kotlin.coroutines.SuspendFunction2<quest.laxla.spock.Entity.Selected,0:0,0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> mutate(quest.laxla.spock/ComponentType<#A1>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction2<quest.laxla.spock/Entity.Selected, #A1, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.mutate|mutate(quest.laxla.spock.ComponentType<0:0>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.Boolean;kotlin.coroutines.SuspendFunction2<quest.laxla.spock.Entity.Selected,0:0,0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> set(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>, #A1) // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> set(quest.laxla.spock/ComponentType<#A1>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin.coroutines/SuspendFunction1<quest.laxla.spock/Entity.Selected, #A1>): kotlinx.coroutines/Job // quest.laxla.spock/MutableEcs.set|set(quest.laxla.spock.ComponentType<0:0>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.coroutines.SuspendFunction1<quest.laxla.spock.Entity.Selected,0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> setDefaultOf(quest.laxla.spock/ComponentType<#A1>, #A1) // quest.laxla.spock/MutableEcs.setDefaultOf|setDefaultOf(quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> setIfNotPresent(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>, #A1) // quest.laxla.spock/MutableEcs.setIfNotPresent|setIfNotPresent(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract fun add(quest.laxla.spock/NamedEntity<*>) // quest.laxla.spock/MutableEcs.add|add(quest.laxla.spock.NamedEntity<*>){}[0]
+    abstract fun delete(quest.laxla.spock/Compable) // quest.laxla.spock/MutableEcs.delete|delete(quest.laxla.spock.Compable){}[0]
+    abstract fun materialize(quest.laxla.spock/Compable, quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.materialize|materialize(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+    abstract fun remove(quest.laxla.spock/Compable, quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.remove|remove(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+    abstract fun resetComponentTypeDefaults() // quest.laxla.spock/MutableEcs.resetComponentTypeDefaults|resetComponentTypeDefaults(){}[0]
+    abstract fun resetDefaultOf(quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.resetDefaultOf|resetDefaultOf(quest.laxla.spock.Entity){}[0]
+    abstract fun setToDefault(quest.laxla.spock/Compable, quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.setToDefault|setToDefault(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+    abstract fun unset(quest.laxla.spock/Compable, quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.unset|unset(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndMaterialize(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/MutableEcs.getAndMaterialize|getAndMaterialize(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndRemove(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/MutableEcs.getAndRemove|getAndRemove(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndSet(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>, #A1): #A1 // quest.laxla.spock/MutableEcs.getAndSet|getAndSet(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndSetDefaultOf(quest.laxla.spock/ComponentType<#A1>, #A1): #A1 // quest.laxla.spock/MutableEcs.getAndSetDefaultOf|getAndSetDefaultOf(quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndSetToDefault(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/MutableEcs.getAndSetToDefault|getAndSetToDefault(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getAndUnset(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>): #A1 // quest.laxla.spock/MutableEcs.getAndUnset|getAndUnset(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> getOrSet(quest.laxla.spock/Compable, quest.laxla.spock/ComponentType<#A1>, #A1): #A1 // quest.laxla.spock/MutableEcs.getOrSet|getOrSet(quest.laxla.spock.Compable;quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+    abstract suspend fun toggle(quest.laxla.spock/Compable, quest.laxla.spock/Entity) // quest.laxla.spock/MutableEcs.toggle|toggle(quest.laxla.spock.Compable;quest.laxla.spock.Entity){}[0]
+
+    final object Selection { // quest.laxla.spock/MutableEcs.Selection|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/MutableEcs.Selection.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/MutableEcs.Selection.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/MutableEcs.Selection.toString|toString(){}[0]
+
+        abstract class DataFlowException : kotlin/Exception { // quest.laxla.spock/MutableEcs.Selection.DataFlowException|null[0]
+            constructor <init>(quest.laxla.spock/Entity.Selected, kotlin/Throwable?, kotlin/String = ...) // quest.laxla.spock/MutableEcs.Selection.DataFlowException.<init>|<init>(quest.laxla.spock.Entity.Selected;kotlin.Throwable?;kotlin.String){}[0]
+        }
+    }
+}
+
+abstract interface quest.laxla.spock/Named { // quest.laxla.spock/Named|null[0]
+    abstract val name // quest.laxla.spock/Named.name|{}name[0]
+        abstract fun <get-name>(): quest.laxla.spock/Name // quest.laxla.spock/Named.name.<get-name>|<get-name>(){}[0]
+}
+
+abstract interface quest.laxla.spock/Scheduler { // quest.laxla.spock/Scheduler|null[0]
+    abstract val nextTickLength // quest.laxla.spock/Scheduler.nextTickLength|{}nextTickLength[0]
+        abstract fun <get-nextTickLength>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/Scheduler.nextTickLength.<get-nextTickLength>|<get-nextTickLength>(){}[0]
+
+    abstract var engineSecond // quest.laxla.spock/Scheduler.engineSecond|{}engineSecond[0]
+        abstract fun <get-engineSecond>(): kotlin.time/Duration // quest.laxla.spock/Scheduler.engineSecond.<get-engineSecond>|<get-engineSecond>(){}[0]
+        abstract fun <set-engineSecond>(kotlin.time/Duration) // quest.laxla.spock/Scheduler.engineSecond.<set-engineSecond>|<set-engineSecond>(kotlin.time.Duration){}[0]
+    abstract var tickLength // quest.laxla.spock/Scheduler.tickLength|{}tickLength[0]
+        abstract fun <get-tickLength>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/Scheduler.tickLength.<get-tickLength>|<get-tickLength>(){}[0]
+        abstract fun <set-tickLength>(quest.laxla.spock/EngineDuration) // quest.laxla.spock/Scheduler.tickLength.<set-tickLength>|<set-tickLength>(quest.laxla.spock.EngineDuration){}[0]
+
+    abstract fun get(quest.laxla.spock/System): quest.laxla.spock/Schedule // quest.laxla.spock/Scheduler.get|get(quest.laxla.spock.System){}[0]
+    abstract fun persist(quest.laxla.spock/System) // quest.laxla.spock/Scheduler.persist|persist(quest.laxla.spock.System){}[0]
+    abstract fun remove(quest.laxla.spock/System) // quest.laxla.spock/Scheduler.remove|remove(quest.laxla.spock.System){}[0]
+    abstract fun schedule(quest.laxla.spock/Schedule, kotlin/Boolean = ..., kotlin.coroutines/SuspendFunction2<quest.laxla.spock/MutableEcs, quest.laxla.spock/System, kotlin/Unit>): quest.laxla.spock/System // quest.laxla.spock/Scheduler.schedule|schedule(quest.laxla.spock.Schedule;kotlin.Boolean;kotlin.coroutines.SuspendFunction2<quest.laxla.spock.MutableEcs,quest.laxla.spock.System,kotlin.Unit>){}[0]
+    abstract fun set(quest.laxla.spock/System, quest.laxla.spock/Schedule) // quest.laxla.spock/Scheduler.set|set(quest.laxla.spock.System;quest.laxla.spock.Schedule){}[0]
+    abstract fun trigger(quest.laxla.spock/System) // quest.laxla.spock/Scheduler.trigger|trigger(quest.laxla.spock.System){}[0]
+}
+
+abstract interface quest.laxla.spock/SnappedEcs : quest.laxla.spock/Ecs // quest.laxla.spock/SnappedEcs|null[0]
+
+sealed interface <#A: kotlin/Any?> quest.laxla.spock/ComponentType : quest.laxla.spock/Entity { // quest.laxla.spock/ComponentType|null[0]
+    abstract val dataType // quest.laxla.spock/ComponentType.dataType|{}dataType[0]
+        abstract fun <get-dataType>(): kotlin.reflect/KClass<#A!!> // quest.laxla.spock/ComponentType.dataType.<get-dataType>|<get-dataType>(){}[0]
+    abstract val defaultDefault // quest.laxla.spock/ComponentType.defaultDefault|{}defaultDefault[0]
+        abstract fun <get-defaultDefault>(): #A // quest.laxla.spock/ComponentType.defaultDefault.<get-defaultDefault>|<get-defaultDefault>(){}[0]
+    open val onlyMutateSetComponentsByDefault // quest.laxla.spock/ComponentType.onlyMutateSetComponentsByDefault|{}onlyMutateSetComponentsByDefault[0]
+        open fun <get-onlyMutateSetComponentsByDefault>(): kotlin/Boolean // quest.laxla.spock/ComponentType.onlyMutateSetComponentsByDefault.<get-onlyMutateSetComponentsByDefault>|<get-onlyMutateSetComponentsByDefault>(){}[0]
+
+    final value class Autonomous : quest.laxla.spock/ComponentType<kotlin/Unit>, quest.laxla.spock/Entity.Opaque { // quest.laxla.spock/ComponentType.Autonomous|null[0]
+        constructor <init>(kotlin/UInt) // quest.laxla.spock/ComponentType.Autonomous.<init>|<init>(kotlin.UInt){}[0]
+
+        final val dataType // quest.laxla.spock/ComponentType.Autonomous.dataType|{}dataType[0]
+            final fun <get-dataType>(): kotlin.reflect/KClass<kotlin/Unit> // quest.laxla.spock/ComponentType.Autonomous.dataType.<get-dataType>|<get-dataType>(){}[0]
+        final val defaultDefault // quest.laxla.spock/ComponentType.Autonomous.defaultDefault|{}defaultDefault[0]
+            final fun <get-defaultDefault>() // quest.laxla.spock/ComponentType.Autonomous.defaultDefault.<get-defaultDefault>|<get-defaultDefault>(){}[0]
+        final val id // quest.laxla.spock/ComponentType.Autonomous.id|{}id[0]
+            final fun <get-id>(): kotlin/UInt // quest.laxla.spock/ComponentType.Autonomous.id.<get-id>|<get-id>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/ComponentType.Autonomous.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/ComponentType.Autonomous.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/ComponentType.Autonomous.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/ComponentType.Autonomous> { // quest.laxla.spock/ComponentType.Autonomous.$serializer|null[0]
+            final val descriptor // quest.laxla.spock/ComponentType.Autonomous.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/ComponentType.Autonomous.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/ComponentType.Autonomous.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/ComponentType.Autonomous // quest.laxla.spock/ComponentType.Autonomous.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/ComponentType.Autonomous) // quest.laxla.spock/ComponentType.Autonomous.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.ComponentType.Autonomous){}[0]
+        }
+
+        final object Companion { // quest.laxla.spock/ComponentType.Autonomous.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/ComponentType.Autonomous> // quest.laxla.spock/ComponentType.Autonomous.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock/ComponentType.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<quest.laxla.spock/ComponentType<#A2>> // quest.laxla.spock/ComponentType.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock/ComponentType.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface quest.laxla.spock/Compable { // quest.laxla.spock/Compable|null[0]
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock/Compable.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Compable> // quest.laxla.spock/Compable.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock/Compable.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface quest.laxla.spock/Entity : quest.laxla.spock/Compable { // quest.laxla.spock/Entity|null[0]
+    sealed interface Opaque : quest.laxla.spock/Entity { // quest.laxla.spock/Entity.Opaque|null[0]
+        abstract val id // quest.laxla.spock/Entity.Opaque.id|{}id[0]
+            abstract fun <get-id>(): kotlin/UInt // quest.laxla.spock/Entity.Opaque.id.<get-id>|<get-id>(){}[0]
+
+        final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock/Entity.Opaque.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Entity.Opaque> // quest.laxla.spock/Entity.Opaque.Companion.serializer|serializer(){}[0]
+            final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock/Entity.Opaque.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+        }
+    }
+
+    final value class Reference : quest.laxla.spock/Entity.Opaque { // quest.laxla.spock/Entity.Reference|null[0]
+        constructor <init>(kotlin/UInt) // quest.laxla.spock/Entity.Reference.<init>|<init>(kotlin.UInt){}[0]
+
+        final val id // quest.laxla.spock/Entity.Reference.id|{}id[0]
+            final fun <get-id>(): kotlin/UInt // quest.laxla.spock/Entity.Reference.id.<get-id>|<get-id>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Entity.Reference.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/Entity.Reference.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/Entity.Reference.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/Entity.Reference> { // quest.laxla.spock/Entity.Reference.$serializer|null[0]
+            final val descriptor // quest.laxla.spock/Entity.Reference.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Entity.Reference.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Entity.Reference.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/Entity.Reference // quest.laxla.spock/Entity.Reference.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/Entity.Reference) // quest.laxla.spock/Entity.Reference.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.Entity.Reference){}[0]
+        }
+
+        final object Companion { // quest.laxla.spock/Entity.Reference.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Entity.Reference> // quest.laxla.spock/Entity.Reference.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final value class Selected : quest.laxla.spock/Entity.Opaque { // quest.laxla.spock/Entity.Selected|null[0]
+        constructor <init>(kotlin/UInt) // quest.laxla.spock/Entity.Selected.<init>|<init>(kotlin.UInt){}[0]
+
+        final val id // quest.laxla.spock/Entity.Selected.id|{}id[0]
+            final fun <get-id>(): kotlin/UInt // quest.laxla.spock/Entity.Selected.id.<get-id>|<get-id>(){}[0]
+
+        final fun (context(quest.laxla.spock/MutableEcs.Selection)).delete(kotlin/Throwable? = ...): kotlin/Nothing // quest.laxla.spock/Entity.Selected.delete|delete(quest.laxla.spock.MutableEcs.Selection)(kotlin.Throwable?){}[0]
+        final fun (context(quest.laxla.spock/MutableEcs.Selection)).remove(kotlin/Throwable? = ...): kotlin/Nothing // quest.laxla.spock/Entity.Selected.remove|remove(quest.laxla.spock.MutableEcs.Selection)(kotlin.Throwable?){}[0]
+        final fun (context(quest.laxla.spock/MutableEcs.Selection)).unset(kotlin/Throwable? = ...): kotlin/Nothing // quest.laxla.spock/Entity.Selected.unset|unset(quest.laxla.spock.MutableEcs.Selection)(kotlin.Throwable?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Entity.Selected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock/Entity.Selected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // quest.laxla.spock/Entity.Selected.toString|toString(){}[0]
+
+        final class ComponentRemovalException : quest.laxla.spock/MutableEcs.Selection.DataFlowException { // quest.laxla.spock/Entity.Selected.ComponentRemovalException|null[0]
+            constructor <init>(quest.laxla.spock/Entity.Selected, kotlin/Throwable?, kotlin/Boolean) // quest.laxla.spock/Entity.Selected.ComponentRemovalException.<init>|<init>(quest.laxla.spock.Entity.Selected;kotlin.Throwable?;kotlin.Boolean){}[0]
+
+            final val terminal // quest.laxla.spock/Entity.Selected.ComponentRemovalException.terminal|{}terminal[0]
+                final fun <get-terminal>(): kotlin/Boolean // quest.laxla.spock/Entity.Selected.ComponentRemovalException.terminal.<get-terminal>|<get-terminal>(){}[0]
+        }
+
+        final class DeletionException : quest.laxla.spock/MutableEcs.Selection.DataFlowException { // quest.laxla.spock/Entity.Selected.DeletionException|null[0]
+            constructor <init>(quest.laxla.spock/Entity.Selected, kotlin/Throwable?) // quest.laxla.spock/Entity.Selected.DeletionException.<init>|<init>(quest.laxla.spock.Entity.Selected;kotlin.Throwable?){}[0]
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/Entity.Selected> { // quest.laxla.spock/Entity.Selected.$serializer|null[0]
+            final val descriptor // quest.laxla.spock/Entity.Selected.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Entity.Selected.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Entity.Selected.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/Entity.Selected // quest.laxla.spock/Entity.Selected.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/Entity.Selected) // quest.laxla.spock/Entity.Selected.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.Entity.Selected){}[0]
+        }
+
+        final object Companion { // quest.laxla.spock/Entity.Selected.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Entity.Selected> // quest.laxla.spock/Entity.Selected.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock/Entity.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Entity> // quest.laxla.spock/Entity.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock/Entity.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class <#A: kotlin/Any> quest.laxla.spock/Resource : quest.laxla.spock/RawResource<#A> { // quest.laxla.spock/Resource|null[0]
+    constructor <init>(#A, quest.laxla.spock/ResourceType<in #A>) // quest.laxla.spock/Resource.<init>|<init>(1:0;quest.laxla.spock.ResourceType<in|1:0>){}[0]
+
+    final val resourceType // quest.laxla.spock/Resource.resourceType|{}resourceType[0]
+        final fun <get-resourceType>(): quest.laxla.spock/ResourceType<in #A> // quest.laxla.spock/Resource.resourceType.<get-resourceType>|<get-resourceType>(){}[0]
+    final val value // quest.laxla.spock/Resource.value|{}value[0]
+        final fun <get-value>(): #A // quest.laxla.spock/Resource.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): #A // quest.laxla.spock/Resource.component1|component1(){}[0]
+    final fun component2(): quest.laxla.spock/ResourceType<in #A> // quest.laxla.spock/Resource.component2|component2(){}[0]
+    final fun copy(#A = ..., quest.laxla.spock/ResourceType<in #A> = ...): quest.laxla.spock/Resource<#A> // quest.laxla.spock/Resource.copy|copy(1:0;quest.laxla.spock.ResourceType<in|1:0>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Resource.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/Resource.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/Resource.toString|toString(){}[0]
+    final suspend fun acquire(): #A // quest.laxla.spock/Resource.acquire|acquire(){}[0]
+}
+
+final class <#A: quest.laxla.spock/Compable, #B: kotlin/Any?> quest.laxla.spock/Possession : quest.laxla.spock/Compable { // quest.laxla.spock/Possession|null[0]
+    constructor <init>(#A, quest.laxla.spock/ComponentType<#B>) // quest.laxla.spock/Possession.<init>|<init>(1:0;quest.laxla.spock.ComponentType<1:1>){}[0]
+
+    final val possessed // quest.laxla.spock/Possession.possessed|{}possessed[0]
+        final fun <get-possessed>(): quest.laxla.spock/ComponentType<#B> // quest.laxla.spock/Possession.possessed.<get-possessed>|<get-possessed>(){}[0]
+    final val possessive // quest.laxla.spock/Possession.possessive|{}possessive[0]
+        final fun <get-possessive>(): #A // quest.laxla.spock/Possession.possessive.<get-possessive>|<get-possessive>(){}[0]
+
+    final fun component1(): #A // quest.laxla.spock/Possession.component1|component1(){}[0]
+    final fun component2(): quest.laxla.spock/ComponentType<#B> // quest.laxla.spock/Possession.component2|component2(){}[0]
+    final fun copy(#A = ..., quest.laxla.spock/ComponentType<#B> = ...): quest.laxla.spock/Possession<#A, #B> // quest.laxla.spock/Possession.copy|copy(1:0;quest.laxla.spock.ComponentType<1:1>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Possession.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/Possession.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/Possession.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any?, #B1: kotlin/Any?> $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/Possession<#A1, #B1>> { // quest.laxla.spock/Possession.$serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>, kotlinx.serialization/KSerializer<#B1>) // quest.laxla.spock/Possession.$serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>;kotlinx.serialization.KSerializer<1:1>){}[0]
+
+        final val descriptor // quest.laxla.spock/Possession.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Possession.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+        final val typeSerial0 // quest.laxla.spock/Possession.$serializer.typeSerial0|{}typeSerial0[0]
+        final val typeSerial1 // quest.laxla.spock/Possession.$serializer.typeSerial1|{}typeSerial1[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Possession.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/Possession<#A1, #B1> // quest.laxla.spock/Possession.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/Possession<#A1, #B1>) // quest.laxla.spock/Possession.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.Possession<1:0,1:1>){}[0]
+        final fun typeParametersSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Possession.$serializer.typeParametersSerializers|typeParametersSerializers(){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock/Possession.Companion|null[0]
+        final val $cachedDescriptor // quest.laxla.spock/Possession.Companion.$cachedDescriptor|{}$cachedDescriptor[0]
+            final fun <get-$cachedDescriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Possession.Companion.$cachedDescriptor.<get-$cachedDescriptor>|<get-$cachedDescriptor>(){}[0]
+
+        final fun <#A2: kotlin/Any?, #B2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>, kotlinx.serialization/KSerializer<#B2>): kotlinx.serialization/KSerializer<quest.laxla.spock/Possession<#A2, #B2>> // quest.laxla.spock/Possession.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>;kotlinx.serialization.KSerializer<0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock/Possession.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class quest.laxla.spock/Schedule { // quest.laxla.spock/Schedule|null[0]
+    constructor <init>(kotlin.ranges/UIntRange = ..., quest.laxla.spock/Compable? = ..., kotlin/Boolean = ...) // quest.laxla.spock/Schedule.<init>|<init>(kotlin.ranges.UIntRange;quest.laxla.spock.Compable?;kotlin.Boolean){}[0]
+    constructor <init>(kotlin/UInt, kotlin/Boolean = ...) // quest.laxla.spock/Schedule.<init>|<init>(kotlin.UInt;kotlin.Boolean){}[0]
+
+    final val acceptableTickDistance // quest.laxla.spock/Schedule.acceptableTickDistance|{}acceptableTickDistance[0]
+        final fun <get-acceptableTickDistance>(): kotlin.ranges/UIntRange // quest.laxla.spock/Schedule.acceptableTickDistance.<get-acceptableTickDistance>|<get-acceptableTickDistance>(){}[0]
+    final val onMutationOf // quest.laxla.spock/Schedule.onMutationOf|{}onMutationOf[0]
+        final fun <get-onMutationOf>(): quest.laxla.spock/Compable? // quest.laxla.spock/Schedule.onMutationOf.<get-onMutationOf>|<get-onMutationOf>(){}[0]
+    final val removeAfterExecution // quest.laxla.spock/Schedule.removeAfterExecution|{}removeAfterExecution[0]
+        final fun <get-removeAfterExecution>(): kotlin/Boolean // quest.laxla.spock/Schedule.removeAfterExecution.<get-removeAfterExecution>|<get-removeAfterExecution>(){}[0]
+
+    final fun component1(): kotlin.ranges/UIntRange // quest.laxla.spock/Schedule.component1|component1(){}[0]
+    final fun component2(): quest.laxla.spock/Compable? // quest.laxla.spock/Schedule.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean // quest.laxla.spock/Schedule.component3|component3(){}[0]
+    final fun copy(kotlin.ranges/UIntRange = ..., quest.laxla.spock/Compable? = ..., kotlin/Boolean = ...): quest.laxla.spock/Schedule // quest.laxla.spock/Schedule.copy|copy(kotlin.ranges.UIntRange;quest.laxla.spock.Compable?;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Schedule.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/Schedule.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/Schedule.toString|toString(){}[0]
+}
+
+final value class quest.laxla.spock/EngineDuration : kotlin/Comparable<quest.laxla.spock/EngineDuration> { // quest.laxla.spock/EngineDuration|null[0]
+    final val absoluteValue // quest.laxla.spock/EngineDuration.absoluteValue|{}absoluteValue[0]
+        final fun <get-absoluteValue>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.absoluteValue.<get-absoluteValue>|<get-absoluteValue>(){}[0]
+    final val inWholeGameMicroseconds // quest.laxla.spock/EngineDuration.inWholeGameMicroseconds|{}inWholeGameMicroseconds[0]
+        final fun <get-inWholeGameMicroseconds>(): kotlin/Long // quest.laxla.spock/EngineDuration.inWholeGameMicroseconds.<get-inWholeGameMicroseconds>|<get-inWholeGameMicroseconds>(){}[0]
+    final val inWholeGameMilliseconds // quest.laxla.spock/EngineDuration.inWholeGameMilliseconds|{}inWholeGameMilliseconds[0]
+        final fun <get-inWholeGameMilliseconds>(): kotlin/Long // quest.laxla.spock/EngineDuration.inWholeGameMilliseconds.<get-inWholeGameMilliseconds>|<get-inWholeGameMilliseconds>(){}[0]
+    final val inWholeGameNanoseconds // quest.laxla.spock/EngineDuration.inWholeGameNanoseconds|{}inWholeGameNanoseconds[0]
+        final fun <get-inWholeGameNanoseconds>(): kotlin/Long // quest.laxla.spock/EngineDuration.inWholeGameNanoseconds.<get-inWholeGameNanoseconds>|<get-inWholeGameNanoseconds>(){}[0]
+    final val inWholeGameSeconds // quest.laxla.spock/EngineDuration.inWholeGameSeconds|{}inWholeGameSeconds[0]
+        final fun <get-inWholeGameSeconds>(): kotlin/Long // quest.laxla.spock/EngineDuration.inWholeGameSeconds.<get-inWholeGameSeconds>|<get-inWholeGameSeconds>(){}[0]
+
+    final fun (context(quest.laxla.spock/Scheduler)).toDuration(): kotlin.time/Duration // quest.laxla.spock/EngineDuration.toDuration|toDuration(quest.laxla.spock.Scheduler)(){}[0]
+    final fun compareTo(quest.laxla.spock/EngineDuration): kotlin/Int // quest.laxla.spock/EngineDuration.compareTo|compareTo(quest.laxla.spock.EngineDuration){}[0]
+    final fun div(kotlin/Double): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.div|div(kotlin.Double){}[0]
+    final fun div(kotlin/Int): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.div|div(kotlin.Int){}[0]
+    final fun div(quest.laxla.spock/EngineDuration): kotlin/Double // quest.laxla.spock/EngineDuration.div|div(quest.laxla.spock.EngineDuration){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/EngineDuration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/EngineDuration.hashCode|hashCode(){}[0]
+    final fun isFinite(): kotlin/Boolean // quest.laxla.spock/EngineDuration.isFinite|isFinite(){}[0]
+    final fun isInfinite(): kotlin/Boolean // quest.laxla.spock/EngineDuration.isInfinite|isInfinite(){}[0]
+    final fun isNegative(): kotlin/Boolean // quest.laxla.spock/EngineDuration.isNegative|isNegative(){}[0]
+    final fun isPositive(): kotlin/Boolean // quest.laxla.spock/EngineDuration.isPositive|isPositive(){}[0]
+    final fun minus(quest.laxla.spock/EngineDuration): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.minus|minus(quest.laxla.spock.EngineDuration){}[0]
+    final fun plus(quest.laxla.spock/EngineDuration): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.plus|plus(quest.laxla.spock.EngineDuration){}[0]
+    final fun times(kotlin/Double): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.times|times(kotlin.Double){}[0]
+    final fun times(kotlin/Int): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.times|times(kotlin.Int){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/EngineDuration.toString|toString(){}[0]
+    final fun unaryMinus(): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.unaryMinus|unaryMinus(){}[0]
+
+    final object Companion { // quest.laxla.spock/EngineDuration.Companion|null[0]
+        final val Infinite // quest.laxla.spock/EngineDuration.Companion.Infinite|{}Infinite[0]
+            final fun <get-Infinite>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.Companion.Infinite.<get-Infinite>|<get-Infinite>(){}[0]
+        final val Zero // quest.laxla.spock/EngineDuration.Companion.Zero|{}Zero[0]
+            final fun <get-Zero>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/EngineDuration.Companion.Zero.<get-Zero>|<get-Zero>(){}[0]
+    }
+}
+
+final value class quest.laxla.spock/Name { // quest.laxla.spock/Name|null[0]
+    final val parent // quest.laxla.spock/Name.parent|{}parent[0]
+        final fun <get-parent>(): quest.laxla.spock/Name? // quest.laxla.spock/Name.parent.<get-parent>|<get-parent>(){}[0]
+
+    final fun div(kotlin/String): quest.laxla.spock/Name // quest.laxla.spock/Name.div|div(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Name.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/Name.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/Name.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/Name> { // quest.laxla.spock/Name.$serializer|null[0]
+        final val descriptor // quest.laxla.spock/Name.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Name.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Name.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/Name // quest.laxla.spock/Name.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/Name) // quest.laxla.spock/Name.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.Name){}[0]
+    }
+
+    final object Companion { // quest.laxla.spock/Name.Companion|null[0]
+        final const val SEPARATOR // quest.laxla.spock/Name.Companion.SEPARATOR|{}SEPARATOR[0]
+            final fun <get-SEPARATOR>(): kotlin/Char // quest.laxla.spock/Name.Companion.SEPARATOR.<get-SEPARATOR>|<get-SEPARATOR>(){}[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Name> // quest.laxla.spock/Name.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final value class quest.laxla.spock/Nametag : quest.laxla.spock/NamedEntity<kotlin/Unit> { // quest.laxla.spock/Nametag|null[0]
+    constructor <init>(quest.laxla.spock/Name) // quest.laxla.spock/Nametag.<init>|<init>(quest.laxla.spock.Name){}[0]
+
+    final val dataType // quest.laxla.spock/Nametag.dataType|{}dataType[0]
+        final fun <get-dataType>(): kotlin.reflect/KClass<kotlin/Unit> // quest.laxla.spock/Nametag.dataType.<get-dataType>|<get-dataType>(){}[0]
+    final val defaultDefault // quest.laxla.spock/Nametag.defaultDefault|{}defaultDefault[0]
+        final fun <get-defaultDefault>() // quest.laxla.spock/Nametag.defaultDefault.<get-defaultDefault>|<get-defaultDefault>(){}[0]
+    final val name // quest.laxla.spock/Nametag.name|{}name[0]
+        final fun <get-name>(): quest.laxla.spock/Name // quest.laxla.spock/Nametag.name.<get-name>|<get-name>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/Nametag.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/Nametag.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/Nametag.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<quest.laxla.spock/Nametag> { // quest.laxla.spock/Nametag.$serializer|null[0]
+        final val descriptor // quest.laxla.spock/Nametag.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock/Nametag.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // quest.laxla.spock/Nametag.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock/Nametag // quest.laxla.spock/Nametag.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock/Nametag) // quest.laxla.spock/Nametag.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.Nametag){}[0]
+    }
+
+    final object Companion { // quest.laxla.spock/Nametag.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<quest.laxla.spock/Nametag> // quest.laxla.spock/Nametag.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final value class quest.laxla.spock/System { // quest.laxla.spock/System|null[0]
+    constructor <init>(kotlin/UInt) // quest.laxla.spock/System.<init>|<init>(kotlin.UInt){}[0]
+
+    final val id // quest.laxla.spock/System.id|{}id[0]
+        final fun <get-id>(): kotlin/UInt // quest.laxla.spock/System.id.<get-id>|<get-id>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock/System.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock/System.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock/System.toString|toString(){}[0]
+}
+
+final val quest.laxla.spock/engineMicroseconds // quest.laxla.spock/engineMicroseconds|@kotlin.Double{}engineMicroseconds[0]
+    final inline fun (kotlin/Double).<get-engineMicroseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMicroseconds.<get-engineMicroseconds>|<get-engineMicroseconds>@kotlin.Double(){}[0]
+final val quest.laxla.spock/engineMicroseconds // quest.laxla.spock/engineMicroseconds|@kotlin.Int{}engineMicroseconds[0]
+    final inline fun (kotlin/Int).<get-engineMicroseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMicroseconds.<get-engineMicroseconds>|<get-engineMicroseconds>@kotlin.Int(){}[0]
+final val quest.laxla.spock/engineMicroseconds // quest.laxla.spock/engineMicroseconds|@kotlin.Long{}engineMicroseconds[0]
+    final inline fun (kotlin/Long).<get-engineMicroseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMicroseconds.<get-engineMicroseconds>|<get-engineMicroseconds>@kotlin.Long(){}[0]
+final val quest.laxla.spock/engineMilliseconds // quest.laxla.spock/engineMilliseconds|@kotlin.Double{}engineMilliseconds[0]
+    final inline fun (kotlin/Double).<get-engineMilliseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMilliseconds.<get-engineMilliseconds>|<get-engineMilliseconds>@kotlin.Double(){}[0]
+final val quest.laxla.spock/engineMilliseconds // quest.laxla.spock/engineMilliseconds|@kotlin.Int{}engineMilliseconds[0]
+    final inline fun (kotlin/Int).<get-engineMilliseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMilliseconds.<get-engineMilliseconds>|<get-engineMilliseconds>@kotlin.Int(){}[0]
+final val quest.laxla.spock/engineMilliseconds // quest.laxla.spock/engineMilliseconds|@kotlin.Long{}engineMilliseconds[0]
+    final inline fun (kotlin/Long).<get-engineMilliseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineMilliseconds.<get-engineMilliseconds>|<get-engineMilliseconds>@kotlin.Long(){}[0]
+final val quest.laxla.spock/engineNanoseconds // quest.laxla.spock/engineNanoseconds|@kotlin.Double{}engineNanoseconds[0]
+    final inline fun (kotlin/Double).<get-engineNanoseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineNanoseconds.<get-engineNanoseconds>|<get-engineNanoseconds>@kotlin.Double(){}[0]
+final val quest.laxla.spock/engineNanoseconds // quest.laxla.spock/engineNanoseconds|@kotlin.Int{}engineNanoseconds[0]
+    final inline fun (kotlin/Int).<get-engineNanoseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineNanoseconds.<get-engineNanoseconds>|<get-engineNanoseconds>@kotlin.Int(){}[0]
+final val quest.laxla.spock/engineNanoseconds // quest.laxla.spock/engineNanoseconds|@kotlin.Long{}engineNanoseconds[0]
+    final inline fun (kotlin/Long).<get-engineNanoseconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineNanoseconds.<get-engineNanoseconds>|<get-engineNanoseconds>@kotlin.Long(){}[0]
+final val quest.laxla.spock/engineSeconds // quest.laxla.spock/engineSeconds|@kotlin.Double{}engineSeconds[0]
+    final inline fun (kotlin/Double).<get-engineSeconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineSeconds.<get-engineSeconds>|<get-engineSeconds>@kotlin.Double(){}[0]
+final val quest.laxla.spock/engineSeconds // quest.laxla.spock/engineSeconds|@kotlin.Int{}engineSeconds[0]
+    final inline fun (kotlin/Int).<get-engineSeconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineSeconds.<get-engineSeconds>|<get-engineSeconds>@kotlin.Int(){}[0]
+final val quest.laxla.spock/engineSeconds // quest.laxla.spock/engineSeconds|@kotlin.Long{}engineSeconds[0]
+    final inline fun (kotlin/Long).<get-engineSeconds>(): quest.laxla.spock/EngineDuration // quest.laxla.spock/engineSeconds.<get-engineSeconds>|<get-engineSeconds>@kotlin.Long(){}[0]
+final val quest.laxla.spock/formattedID // quest.laxla.spock/formattedID|@quest.laxla.spock.Compable{}formattedID[0]
+    final fun (quest.laxla.spock/Compable).<get-formattedID>(): kotlin/String // quest.laxla.spock/formattedID.<get-formattedID>|<get-formattedID>@quest.laxla.spock.Compable(){}[0]
+final val quest.laxla.spock/nextTicksPerEngineSecond // quest.laxla.spock/nextTicksPerEngineSecond|@quest.laxla.spock.Scheduler{}nextTicksPerEngineSecond[0]
+    final fun (quest.laxla.spock/Scheduler).<get-nextTicksPerEngineSecond>(): kotlin/Double // quest.laxla.spock/nextTicksPerEngineSecond.<get-nextTicksPerEngineSecond>|<get-nextTicksPerEngineSecond>@quest.laxla.spock.Scheduler(){}[0]
+
+final var quest.laxla.spock/schedule // quest.laxla.spock/schedule|(quest.laxla.spock.Scheduler)@quest.laxla.spock.System{}schedule[0]
+    final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/System).<get-schedule>(): quest.laxla.spock/Schedule // quest.laxla.spock/schedule.<get-schedule>|<get-schedule>(quest.laxla.spock.Scheduler)@quest.laxla.spock.System(){}[0]
+    final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/System).<set-schedule>(quest.laxla.spock/Schedule) // quest.laxla.spock/schedule.<set-schedule>|<set-schedule>(quest.laxla.spock.Scheduler)@quest.laxla.spock.System(quest.laxla.spock.Schedule){}[0]
+final var quest.laxla.spock/ticksPerEngineSecond // quest.laxla.spock/ticksPerEngineSecond|@quest.laxla.spock.Scheduler{}ticksPerEngineSecond[0]
+    final fun (quest.laxla.spock/Scheduler).<get-ticksPerEngineSecond>(): kotlin/Double // quest.laxla.spock/ticksPerEngineSecond.<get-ticksPerEngineSecond>|<get-ticksPerEngineSecond>@quest.laxla.spock.Scheduler(){}[0]
+    final fun (quest.laxla.spock/Scheduler).<set-ticksPerEngineSecond>(kotlin/Double) // quest.laxla.spock/ticksPerEngineSecond.<set-ticksPerEngineSecond>|<set-ticksPerEngineSecond>@quest.laxla.spock.Scheduler(kotlin.Double){}[0]
+
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Compable).quest.laxla.spock/delete() // quest.laxla.spock/delete|delete(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Compable(){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Compable).quest.laxla.spock/minusAssign(quest.laxla.spock/Entity) // quest.laxla.spock/minusAssign|minusAssign(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Compable(quest.laxla.spock.Entity){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Compable).quest.laxla.spock/plusAssign(quest.laxla.spock/Entity) // quest.laxla.spock/plusAssign|plusAssign(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Compable(quest.laxla.spock.Entity){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Entity).quest.laxla.spock/resetDefault() // quest.laxla.spock/resetDefault|resetDefault(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Entity(){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/NamedEntity<*>).quest.laxla.spock/materialize() // quest.laxla.spock/materialize|materialize(quest.laxla.spock.MutableEcs)@quest.laxla.spock.NamedEntity<*>(){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, *>).quest.laxla.spock/assignDefault() // quest.laxla.spock/assignDefault|assignDefault(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,*>(){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, *>).quest.laxla.spock/materialize() // quest.laxla.spock/materialize|materialize(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,*>(){}[0]
+final fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, *>).quest.laxla.spock/unset() // quest.laxla.spock/unset|unset(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,*>(){}[0]
+final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/Schedule).quest.laxla.spock/execute(kotlin.coroutines/SuspendFunction2<quest.laxla.spock/MutableEcs, quest.laxla.spock/System, kotlin/Unit>): quest.laxla.spock/System // quest.laxla.spock/execute|execute(quest.laxla.spock.Scheduler)@quest.laxla.spock.Schedule(kotlin.coroutines.SuspendFunction2<quest.laxla.spock.MutableEcs,quest.laxla.spock.System,kotlin.Unit>){}[0]
+final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/System).quest.laxla.spock/persist() // quest.laxla.spock/persist|persist(quest.laxla.spock.Scheduler)@quest.laxla.spock.System(){}[0]
+final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/System).quest.laxla.spock/schedule(kotlin/UInt, kotlin/Boolean = ...) // quest.laxla.spock/schedule|schedule(quest.laxla.spock.Scheduler)@quest.laxla.spock.System(kotlin.UInt;kotlin.Boolean){}[0]
+final fun (context(quest.laxla.spock/Scheduler), quest.laxla.spock/System).quest.laxla.spock/trigger() // quest.laxla.spock/trigger|trigger(quest.laxla.spock.Scheduler)@quest.laxla.spock.System(){}[0]
+final fun (kotlin/Double).quest.laxla.spock/toEngineDuration(kotlin.time/DurationUnit): quest.laxla.spock/EngineDuration // quest.laxla.spock/toEngineDuration|toEngineDuration@kotlin.Double(kotlin.time.DurationUnit){}[0]
+final fun (kotlin/Int).quest.laxla.spock/toEngineDuration(kotlin.time/DurationUnit): quest.laxla.spock/EngineDuration // quest.laxla.spock/toEngineDuration|toEngineDuration@kotlin.Int(kotlin.time.DurationUnit){}[0]
+final fun (kotlin/Long).quest.laxla.spock/toEngineDuration(kotlin.time/DurationUnit): quest.laxla.spock/EngineDuration // quest.laxla.spock/toEngineDuration|toEngineDuration@kotlin.Long(kotlin.time.DurationUnit){}[0]
+final fun (kotlin/String).quest.laxla.spock/asName(): quest.laxla.spock/Name // quest.laxla.spock/asName|asName@kotlin.String(){}[0]
+final fun (kotlin/String).quest.laxla.spock/div(kotlin/String): quest.laxla.spock/Name // quest.laxla.spock/div|div@kotlin.String(kotlin.String){}[0]
+final fun (quest.laxla.spock/Compable).quest.laxla.spock/onMutation(kotlin.ranges/UIntRange = ..., kotlin/Boolean = ...): quest.laxla.spock/Schedule // quest.laxla.spock/onMutation|onMutation@quest.laxla.spock.Compable(kotlin.ranges.UIntRange;kotlin.Boolean){}[0]
+final fun (quest.laxla.spock/Ecs).quest.laxla.spock/dereferenceOrThrow(quest.laxla.spock/Entity.Reference, kotlin/String = ...): quest.laxla.spock/ComponentType<*> // quest.laxla.spock/dereferenceOrThrow|dereferenceOrThrow@quest.laxla.spock.Ecs(quest.laxla.spock.Entity.Reference;kotlin.String){}[0]
+final fun (quest.laxla.spock/Ecs).quest.laxla.spock/reference(quest.laxla.spock/Entity): quest.laxla.spock/Entity.Reference // quest.laxla.spock/reference|reference@quest.laxla.spock.Ecs(quest.laxla.spock.Entity){}[0]
+final fun (quest.laxla.spock/Name?).quest.laxla.spock/div(kotlin/String): quest.laxla.spock/Name // quest.laxla.spock/div|div@quest.laxla.spock.Name?(kotlin.String){}[0]
+final fun <#A: kotlin/Any?, #B: kotlin/Any?> (context(quest.laxla.spock/Ecs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/select(kotlin.coroutines/SuspendFunction2<quest.laxla.spock/Entity.Selected, #A, #B>): kotlinx.coroutines.flow/Flow<#B> // quest.laxla.spock/select|select(quest.laxla.spock.Ecs)@quest.laxla.spock.ComponentType<0:0>(kotlin.coroutines.SuspendFunction2<quest.laxla.spock.Entity.Selected,0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Compable).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, #A) // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Compable(quest.laxla.spock.ComponentType<0:0>;0:0){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, #A>).quest.laxla.spock/assign(#A) // quest.laxla.spock/assign|assign(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,0:0>(0:0){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, #A>).quest.laxla.spock/assignIfNotPresent(#A) // quest.laxla.spock/assignIfNotPresent|assignIfNotPresent(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,0:0>(0:0){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> quest.laxla.spock/emptyResourceSource(): quest.laxla.spock/ResourceSource<#A!!> // quest.laxla.spock/emptyResourceSource|emptyResourceSource(){0§<kotlin.Any?>}[0]
+final fun <#A: quest.laxla.spock/Compable, #B: kotlin/Any?> (context(quest.laxla.spock/Ecs), #A).quest.laxla.spock/div(quest.laxla.spock/ComponentType<#B>): quest.laxla.spock/Possession<#A, #B> // quest.laxla.spock/div|div(quest.laxla.spock.Ecs)@0:0(quest.laxla.spock.ComponentType<0:1>){0§<quest.laxla.spock.Compable>;1§<kotlin.Any?>}[0]
+final fun quest.laxla.spock/unknownEntity(kotlin/UInt, kotlin/String = ...): kotlin/Nothing // quest.laxla.spock/unknownEntity|unknownEntity(kotlin.UInt;kotlin.String){}[0]
+final fun quest.laxla.spock/unknownEntity(quest.laxla.spock/Entity.Reference, kotlin/String = ...): kotlin/Nothing // quest.laxla.spock/unknownEntity|unknownEntity(quest.laxla.spock.Entity.Reference;kotlin.String){}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?, #E: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#E>).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, quest.laxla.spock/ComponentType<#D>, crossinline kotlin.coroutines/SuspendFunction6<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #D, #E>): kotlinx.coroutines/Job // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:4>(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.coroutines.SuspendFunction6<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:4>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?, #E: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#E>).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, quest.laxla.spock/ComponentType<#D>, kotlin/Array<out quest.laxla.spock/Entity>..., crossinline kotlin.coroutines/SuspendFunction6<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #D, #E>): kotlinx.coroutines/Job // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:4>(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.coroutines.SuspendFunction6<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:4>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>;4§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/mutate(quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, quest.laxla.spock/ComponentType<#D>, kotlin/Array<out quest.laxla.spock/Entity>..., kotlin/Boolean = ..., crossinline kotlin.coroutines/SuspendFunction6<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #D, #A>): kotlinx.coroutines/Job // quest.laxla.spock/mutate|mutate(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:0>(quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Array<out|quest.laxla.spock.Entity>...;kotlin.Boolean;kotlin.coroutines.SuspendFunction6<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/mutate(quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, quest.laxla.spock/ComponentType<#D>, kotlin/Boolean = ..., crossinline kotlin.coroutines/SuspendFunction6<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #D, #A>): kotlinx.coroutines/Job // quest.laxla.spock/mutate|mutate(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:0>(quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;quest.laxla.spock.ComponentType<0:3>;kotlin.Boolean;kotlin.coroutines.SuspendFunction6<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#D>).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, crossinline kotlin.coroutines/SuspendFunction5<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #D>): kotlinx.coroutines/Job // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:3>(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:3>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>;3§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/mutate(quest.laxla.spock/ComponentType<#B>, quest.laxla.spock/ComponentType<#C>, kotlin/Boolean = ..., crossinline kotlin.coroutines/SuspendFunction5<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C, #A>): kotlinx.coroutines/Job // quest.laxla.spock/mutate|mutate(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:0>(quest.laxla.spock.ComponentType<0:1>;quest.laxla.spock.ComponentType<0:2>;kotlin.Boolean;kotlin.coroutines.SuspendFunction5<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#C>).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, quest.laxla.spock/ComponentType<#B>, crossinline kotlin.coroutines/SuspendFunction4<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #C>): kotlinx.coroutines/Job // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:2>(quest.laxla.spock.ComponentType<0:0>;quest.laxla.spock.ComponentType<0:1>;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:2>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/mutate(quest.laxla.spock/ComponentType<#B>, kotlin/Boolean = ..., crossinline kotlin.coroutines/SuspendFunction4<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B, #A>): kotlinx.coroutines/Job // quest.laxla.spock/mutate|mutate(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:0>(quest.laxla.spock.ComponentType<0:1>;kotlin.Boolean;kotlin.coroutines.SuspendFunction4<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1,0:0>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#B>).quest.laxla.spock/set(quest.laxla.spock/ComponentType<#A>, crossinline kotlin.coroutines/SuspendFunction3<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #B>): kotlinx.coroutines/Job // quest.laxla.spock/set|set(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:1>(quest.laxla.spock.ComponentType<0:0>;kotlin.coroutines.SuspendFunction3<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/ComponentType<#A>).quest.laxla.spock/mutate(crossinline kotlin.coroutines/SuspendFunction3<quest.laxla.spock/MutableEcs.Selection, quest.laxla.spock/Entity.Selected, #A, #A>): kotlinx.coroutines/Job // quest.laxla.spock/mutate|mutate(quest.laxla.spock.MutableEcs)@quest.laxla.spock.ComponentType<0:0>(kotlin.coroutines.SuspendFunction3<quest.laxla.spock.MutableEcs.Selection,quest.laxla.spock.Entity.Selected,0:0,0:0>){0§<kotlin.Any?>}[0]
+final suspend fun (context(quest.laxla.spock/Ecs), quest.laxla.spock/Compable).quest.laxla.spock/contains(quest.laxla.spock/Entity): kotlin/Boolean // quest.laxla.spock/contains|contains(quest.laxla.spock.Ecs)@quest.laxla.spock.Compable(quest.laxla.spock.Entity){}[0]
+final suspend fun (context(quest.laxla.spock/Ecs), quest.laxla.spock/Compable).quest.laxla.spock/exists(): kotlin/Boolean // quest.laxla.spock/exists|exists(quest.laxla.spock.Ecs)@quest.laxla.spock.Compable(){}[0]
+final suspend fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Compable).quest.laxla.spock/toggle(quest.laxla.spock/Entity) // quest.laxla.spock/toggle|toggle(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Compable(quest.laxla.spock.Entity){}[0]
+final suspend fun (context(quest.laxla.spock/MutableEcs), quest.laxla.spock/Possession<*, *>).quest.laxla.spock/toggle() // quest.laxla.spock/toggle|toggle(quest.laxla.spock.MutableEcs)@quest.laxla.spock.Possession<*,*>(){}[0]
+final suspend fun (context(quest.laxla.spock/Scheduler, quest.laxla.spock/MutableEcs), quest.laxla.spock/Schedule).quest.laxla.spock/executeImmediately(kotlin.coroutines/SuspendFunction2<quest.laxla.spock/MutableEcs, quest.laxla.spock/System, kotlin/Unit>): quest.laxla.spock/System // quest.laxla.spock/executeImmediately|executeImmediately(quest.laxla.spock.Scheduler;quest.laxla.spock.MutableEcs)@quest.laxla.spock.Schedule(kotlin.coroutines.SuspendFunction2<quest.laxla.spock.MutableEcs,quest.laxla.spock.System,kotlin.Unit>){}[0]
+final suspend fun <#A: kotlin/Any?> (context(quest.laxla.spock/Ecs), quest.laxla.spock/Compable).quest.laxla.spock/get(quest.laxla.spock/ComponentType<#A>): #A // quest.laxla.spock/get|get(quest.laxla.spock.Ecs)@quest.laxla.spock.Compable(quest.laxla.spock.ComponentType<0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> (context(quest.laxla.spock/Ecs), quest.laxla.spock/Possession<*, #A>).quest.laxla.spock/get(): #A // quest.laxla.spock/get|get(quest.laxla.spock.Ecs)@quest.laxla.spock.Possession<*,0:0>(){0§<kotlin.Any?>}[0]

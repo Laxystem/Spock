@@ -31,7 +31,7 @@ public data class SpacelessVector3<V>(public val x: V, public val y: V, public v
 	 * @author Laxystem
 	 * @since 0.0.1-alpha.4
 	 */ 
-	private class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector3<V>> {
+	public class Serializer<V>(private val impl: KSerializer<V>) : KSerializer<SpacelessVector3<V>> {
 		@OptIn(InternalSerializationApi::class)
 		override val descriptor: SerialDescriptor = buildSerialDescriptor(
 			"quest.laxla.spock.math.Vector3",

@@ -3,14 +3,12 @@
 package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
-import quest.laxla.spock.ExperimentalSpockApi
 import kotlin.math.absoluteValue
 
 /** 
  * @since 0.0.1-alpha.4
  * @see Long
  */
-@OptIn(ExperimentalSpockApi::class)
 @Typealiased("#l", Long::class)
 public data object LongSpace : SignedSpace<Long>, BufferableSpace<Long> {
 	override fun Long.mod(divisor: Long): Long = mod(other = divisor)

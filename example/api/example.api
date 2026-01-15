@@ -6,9 +6,11 @@ public final class quest/laxla/spock/example/AdvancedRenderer : quest/laxla/spoc
 	public final fun getBackgroundColor ()Lio/ygdrasil/webgpu/GPUColor;
 	public fun getDevice ()Lio/ygdrasil/webgpu/GPUDevice;
 	public fun getFormat ()Lio/ygdrasil/webgpu/GPUTextureFormat;
+	public final fun getRenderLogLevel ()Lio/github/oshai/kotlinlogging/Level;
 	public final fun getScene ()Lquest/laxla/spock/client/RenderScene;
 	public fun getSurface ()Lquest/laxla/spock/client/toolkit/Surface;
 	public fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setRenderLogLevel (Lio/github/oshai/kotlinlogging/Level;)V
 	public fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
 	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
 }

@@ -31,8 +31,6 @@ kotlin {
     compilerOptions.allWarningsAsErrors = false
 
     sourceSets.all {
-        // TODO: remove on Kotlin 2.3.0
-        languageSettings.enableLanguageFeature("NestedTypeAliases")
         languageSettings.enableLanguageFeature("ContextParameters")
     }
 }

@@ -3,7 +3,6 @@
 package quest.laxla.spock.math
 
 import quest.laxla.spock.ByteAppender
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.math.IntSpace.append
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -12,7 +11,6 @@ import kotlin.math.pow
  * @since 0.0.1-alpha.4
  * @see Float
  */
-@OptIn(ExperimentalSpockApi::class)
 @Typealiased("#f", Float::class)
 public data object FloatSpace : FloatingPointSpace<Float>, SignedSpace<Float>, BufferableSpace<Float> {
 	override fun Float.pow(exponent: Float): Float = pow(x = exponent)

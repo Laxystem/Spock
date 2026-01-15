@@ -38,7 +38,6 @@ public final class quest/laxla/spock/client/toolkit/Surface : java/lang/AutoClos
 
 public final class quest/laxla/spock/client/toolkit/TextureFormatKt {
 	public static final fun naivelySelectTextureFormat (Lquest/laxla/spock/client/toolkit/Surface;)Lio/ygdrasil/webgpu/GPUTextureFormat;
-	public static final fun naïvelySelectTextureFormat (Lquest/laxla/spock/client/toolkit/Surface;)Lio/ygdrasil/webgpu/GPUTextureFormat;
 }
 
 public abstract interface class quest/laxla/spock/client/toolkit/WebGpuRenderer : quest/laxla/spock/client/Renderer {

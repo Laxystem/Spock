@@ -1,9 +1,11 @@
 package quest.laxla.spock.math
 
-import quest.laxla.spock.ExperimentalSpockApi
-
-// TODO: comment what this even does...
-@ExperimentalSpockApi
+/**
+ * Marks a [VectorOperation] parameter of non-[Disabled][Vectorization.Kind.Exact] [Vectorization]
+ * to provide the [space][Vector.space] for the output vector.
+ *
+ * @since 0.0.1-alpha.4
+ */
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.VALUE_PARAMETER)

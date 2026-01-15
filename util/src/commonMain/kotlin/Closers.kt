@@ -14,7 +14,6 @@ private val logger = KotlinLogging.logger {}
 /**
  * @author Laxystem
  */
-@OptIn(ExperimentalSpockApi::class)
 private class CloserImpl(
 	closeables: Array<out SuspendCloseable>,
 	override var subjectiveLogLevel: Level = Level.OFF
@@ -45,11 +44,14 @@ private class CloserImpl(
 		isClosed.setWithLock(closeMutex) {
 			val exceptions = mutableSetOf<Throwable>()
 
+			val ident = this@CloserImpl.toIdentityString()
+			debugVia(logger) { "$ident: Starting closure of ${suspendCloseables.size} entries..." }
+
 			for (closeable in suspendCloseables.reversed()) try {
- 				debugVia(logger) { "closing $closeable..." }
+ 				debugVia(logger) { "$ident: Closing $closeable..." }
 				closeable.close()
 			} catch (e: Throwable) {
-				debugVia(logger, e) { "Encountered exception while closing $closeable" }
+				debugVia(logger, e) { "$ident: Encountered exception while closing $closeable." }
 				exceptions += e
 			}
 
@@ -57,7 +59,10 @@ private class CloserImpl(
 
 			// return exception instead of throwing so that the setWithLock succeeds and the JVM doesn't forget the exception
 			return@withContext when (exceptions.size) {
-				0 -> null
+				0 -> {
+					debugVia(logger) { "$ident: Closed successfully" }
+					null
+				}
 				1 -> exceptions.single()
 				else -> RuntimeException("Closer encountered exceptions when trying to close").apply {
 					for (exception in exceptions) addSuppressed(exception)

@@ -4,12 +4,9 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import io.github.oshai.kotlinlogging.Level
 import io.ygdrasil.webgpu.GPUDevice
 import io.ygdrasil.webgpu.poll
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
 import quest.laxla.spock.Closer
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.autoclose
 import quest.laxla.spock.glfw.*
 
@@ -17,7 +14,6 @@ private val logger = KotlinLogging.logger {  }
 
 internal expect suspend fun Closer.initializeWebGpu()
 
-@OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class, ExperimentalSpockApi::class)
 public actual suspend fun webGpuApplication(
 	title: String,
 	preferredWidth: UInt,
@@ -39,15 +35,11 @@ public actual suspend fun webGpuApplication(
 	while (currentCoroutineContext().isActive && !window.shouldClose) {
 		Glfw.pollEvents()
 
-		logger.trace { "Polling device events..." }
 		device.poll().onFailure {
 			logger.error(it) { "Encountered error while polling device events" }
 		}
 
-		logger.trace { "Rendering..." }
 		render()
-
-		logger.trace { "Presenting frame..." }
 		surface.presentFrame()
 	}
 

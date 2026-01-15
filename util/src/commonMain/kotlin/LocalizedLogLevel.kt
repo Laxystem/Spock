@@ -3,6 +3,9 @@ package quest.laxla.spock
 import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.Level
 
+// TODO: should instead have classes "flatten" to some log level, and only output (at the original level) if that level is active
+// TODO: Closer should only toString() caches on TRACE, not DEBUG
+
 /**
  * Marks classes that support changing their own log level arbitrarily and independently of the global log level.
  *

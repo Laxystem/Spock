@@ -247,7 +247,6 @@ public fun <Vertex : Any> wgslVertexShaderOf(
  * @param wgsl the [StringShader.code] of this shader.
  * @since 0.0.1-alpha.4
  */
-@ExperimentalSpockApi
 public fun <Vertex : Any> wgslVertexShaderOf(
 	wgsl: String,
 	vertexKind: VertexKind<Vertex>,

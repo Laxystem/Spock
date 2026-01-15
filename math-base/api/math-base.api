@@ -27,6 +27,17 @@ public final class quest/laxla/spock/math/SpacelessVector1$Companion {
 	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
 }
 
+public final class quest/laxla/spock/math/SpacelessVector1$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-CZwm3-w (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-SolwQz8 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
 public final class quest/laxla/spock/math/SpacelessVector2 {
 	public static final field Companion Lquest/laxla/spock/math/SpacelessVector2$Companion;
 	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;)V
@@ -44,6 +55,17 @@ public final class quest/laxla/spock/math/SpacelessVector2 {
 
 public final class quest/laxla/spock/math/SpacelessVector2$Companion {
 	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector2$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector2;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector2;)V
 }
 
 public final class quest/laxla/spock/math/SpacelessVector3 {
@@ -67,6 +89,17 @@ public final class quest/laxla/spock/math/SpacelessVector3$Companion {
 	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
 }
 
+public final class quest/laxla/spock/math/SpacelessVector3$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector3;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector3;)V
+}
+
 public final class quest/laxla/spock/math/SpacelessVector4 {
 	public static final field Companion Lquest/laxla/spock/math/SpacelessVector4$Companion;
 	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
@@ -88,6 +121,17 @@ public final class quest/laxla/spock/math/SpacelessVector4 {
 
 public final class quest/laxla/spock/math/SpacelessVector4$Companion {
 	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class quest/laxla/spock/math/SpacelessVector4$Serializer : kotlinx/serialization/KSerializer {
+	public fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lquest/laxla/spock/math/SpacelessVector4;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun hashCode ()I
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lquest/laxla/spock/math/SpacelessVector4;)V
 }
 
 public abstract interface annotation class quest/laxla/spock/math/Typealiased : java/lang/annotation/Annotation {

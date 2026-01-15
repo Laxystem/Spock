@@ -1,0 +1,10 @@
+// Klib ABI Dump
+// Targets: [linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:init>
+final fun <#A: kotlin/Any?> quest.laxla.spock.init/runBlockingIfSupported(kotlin.coroutines/CoroutineContext = ..., kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, #A>): #A // quest.laxla.spock.init/runBlockingIfSupported|runBlockingIfSupported(kotlin.coroutines.CoroutineContext;kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,0:0>){0§<kotlin.Any?>}[0]
+final fun quest.laxla.spock.init/setLogLevelToIfHardcoded(io.github.oshai.kotlinlogging/Level) // quest.laxla.spock.init/setLogLevelToIfHardcoded|setLogLevelToIfHardcoded(io.github.oshai.kotlinlogging.Level){}[0]

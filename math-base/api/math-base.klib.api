@@ -1,0 +1,282 @@
+// Klib ABI Dump
+// Targets: [linuxArm64, linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:math-base>
+open annotation class quest.laxla.spock.math/SpaceProvider : kotlin/Annotation { // quest.laxla.spock.math/SpaceProvider|null[0]
+    constructor <init>() // quest.laxla.spock.math/SpaceProvider.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock.math/Typealiased : kotlin/Annotation { // quest.laxla.spock.math/Typealiased|null[0]
+    constructor <init>(kotlin/String, kotlin.reflect/KClass<*>) // quest.laxla.spock.math/Typealiased.<init>|<init>(kotlin.String;kotlin.reflect.KClass<*>){}[0]
+
+    final val name // quest.laxla.spock.math/Typealiased.name|{}name[0]
+        final fun <get-name>(): kotlin/String // quest.laxla.spock.math/Typealiased.name.<get-name>|<get-name>(){}[0]
+    final val type // quest.laxla.spock.math/Typealiased.type|{}type[0]
+        final fun <get-type>(): kotlin.reflect/KClass<*> // quest.laxla.spock.math/Typealiased.type.<get-type>|<get-type>(){}[0]
+}
+
+open annotation class quest.laxla.spock.math/VectorOperation : kotlin/Annotation { // quest.laxla.spock.math/VectorOperation|null[0]
+    constructor <init>() // quest.laxla.spock.math/VectorOperation.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock.math/VectorSubject : kotlin/Annotation { // quest.laxla.spock.math/VectorSubject|null[0]
+    constructor <init>() // quest.laxla.spock.math/VectorSubject.<init>|<init>(){}[0]
+}
+
+open annotation class quest.laxla.spock.math/Vectorization : kotlin/Annotation { // quest.laxla.spock.math/Vectorization|null[0]
+    constructor <init>(quest.laxla.spock.math/Vectorization.Kind) // quest.laxla.spock.math/Vectorization.<init>|<init>(quest.laxla.spock.math.Vectorization.Kind){}[0]
+
+    final val kind // quest.laxla.spock.math/Vectorization.kind|{}kind[0]
+        final fun <get-kind>(): quest.laxla.spock.math/Vectorization.Kind // quest.laxla.spock.math/Vectorization.kind.<get-kind>|<get-kind>(){}[0]
+
+    final enum class Kind : kotlin/Enum<quest.laxla.spock.math/Vectorization.Kind> { // quest.laxla.spock.math/Vectorization.Kind|null[0]
+        enum entry Disabled // quest.laxla.spock.math/Vectorization.Kind.Disabled|null[0]
+        enum entry Exact // quest.laxla.spock.math/Vectorization.Kind.Exact|null[0]
+        enum entry Minimum // quest.laxla.spock.math/Vectorization.Kind.Minimum|null[0]
+
+        final val entries // quest.laxla.spock.math/Vectorization.Kind.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<quest.laxla.spock.math/Vectorization.Kind> // quest.laxla.spock.math/Vectorization.Kind.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): quest.laxla.spock.math/Vectorization.Kind // quest.laxla.spock.math/Vectorization.Kind.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<quest.laxla.spock.math/Vectorization.Kind> // quest.laxla.spock.math/Vectorization.Kind.values|values#static(){}[0]
+    }
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/UniformVector : quest.laxla.spock.math/Vector<#A, #B> { // quest.laxla.spock.math/UniformVector|null[0]
+    abstract val value // quest.laxla.spock.math/UniformVector.value|{}value[0]
+        abstract fun <get-value>(): #A // quest.laxla.spock.math/UniformVector.value.<get-value>|<get-value>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/Vector { // quest.laxla.spock.math/Vector|null[0]
+    abstract val space // quest.laxla.spock.math/Vector.space|{}space[0]
+        abstract fun <get-space>(): #B // quest.laxla.spock.math/Vector.space.<get-space>|<get-space>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/Vector1 : quest.laxla.spock.math/VectorWithX<#A, #B> { // quest.laxla.spock.math/Vector1|null[0]
+    final object Companion // quest.laxla.spock.math/Vector1.Companion|null[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/Vector2 : quest.laxla.spock.math/VectorWithY<#A, #B> { // quest.laxla.spock.math/Vector2|null[0]
+    final object Companion // quest.laxla.spock.math/Vector2.Companion|null[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/Vector3 : quest.laxla.spock.math/VectorWithZ<#A, #B> { // quest.laxla.spock.math/Vector3|null[0]
+    final object Companion // quest.laxla.spock.math/Vector3.Companion|null[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/Vector4 : quest.laxla.spock.math/VectorWithW<#A, #B> { // quest.laxla.spock.math/Vector4|null[0]
+    final object Companion // quest.laxla.spock.math/Vector4.Companion|null[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/VectorWithW : quest.laxla.spock.math/VectorWithZ<#A, #B> { // quest.laxla.spock.math/VectorWithW|null[0]
+    abstract val w // quest.laxla.spock.math/VectorWithW.w|{}w[0]
+        abstract fun <get-w>(): #A // quest.laxla.spock.math/VectorWithW.w.<get-w>|<get-w>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/VectorWithX : quest.laxla.spock.math/Vector<#A, #B> { // quest.laxla.spock.math/VectorWithX|null[0]
+    abstract val x // quest.laxla.spock.math/VectorWithX.x|{}x[0]
+        abstract fun <get-x>(): #A // quest.laxla.spock.math/VectorWithX.x.<get-x>|<get-x>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/VectorWithY : quest.laxla.spock.math/VectorWithX<#A, #B> { // quest.laxla.spock.math/VectorWithY|null[0]
+    abstract val y // quest.laxla.spock.math/VectorWithY.y|{}y[0]
+        abstract fun <get-y>(): #A // quest.laxla.spock.math/VectorWithY.y.<get-y>|<get-y>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: out quest.laxla.spock.math/Space<#A>> quest.laxla.spock.math/VectorWithZ : quest.laxla.spock.math/VectorWithY<#A, #B> { // quest.laxla.spock.math/VectorWithZ|null[0]
+    abstract val z // quest.laxla.spock.math/VectorWithZ.z|{}z[0]
+        abstract fun <get-z>(): #A // quest.laxla.spock.math/VectorWithZ.z.<get-z>|<get-z>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?> quest.laxla.spock.math/Space { // quest.laxla.spock.math/Space|null[0]
+    abstract val unit // quest.laxla.spock.math/Space.unit|{}unit[0]
+        abstract fun <get-unit>(): #A // quest.laxla.spock.math/Space.unit.<get-unit>|<get-unit>(){}[0]
+    abstract val zero // quest.laxla.spock.math/Space.zero|{}zero[0]
+        abstract fun <get-zero>(): #A // quest.laxla.spock.math/Space.zero.<get-zero>|<get-zero>(){}[0]
+}
+
+final class <#A: kotlin/Any?> quest.laxla.spock.math/SpacelessVector2 { // quest.laxla.spock.math/SpacelessVector2|null[0]
+    constructor <init>(#A, #A) // quest.laxla.spock.math/SpacelessVector2.<init>|<init>(1:0;1:0){}[0]
+
+    final val x // quest.laxla.spock.math/SpacelessVector2.x|{}x[0]
+        final fun <get-x>(): #A // quest.laxla.spock.math/SpacelessVector2.x.<get-x>|<get-x>(){}[0]
+    final val y // quest.laxla.spock.math/SpacelessVector2.y|{}y[0]
+        final fun <get-y>(): #A // quest.laxla.spock.math/SpacelessVector2.y.<get-y>|<get-y>(){}[0]
+
+    final fun <#A1: quest.laxla.spock.math/Space<#A>> space(#A1): quest.laxla.spock.math/Vector2<#A, #A1> // quest.laxla.spock.math/SpacelessVector2.space|space(0:0){0§<quest.laxla.spock.math.Space<1:0>>}[0]
+    final fun component1(): #A // quest.laxla.spock.math/SpacelessVector2.component1|component1(){}[0]
+    final fun component2(): #A // quest.laxla.spock.math/SpacelessVector2.component2|component2(){}[0]
+    final fun copy(#A = ..., #A = ...): quest.laxla.spock.math/SpacelessVector2<#A> // quest.laxla.spock.math/SpacelessVector2.copy|copy(1:0;1:0){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector2.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector2.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.math/SpacelessVector2.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any?> Serializer : kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector2<#A1>> { // quest.laxla.spock.math/SpacelessVector2.Serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>) // quest.laxla.spock.math/SpacelessVector2.Serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>){}[0]
+
+        final val descriptor // quest.laxla.spock.math/SpacelessVector2.Serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock.math/SpacelessVector2.Serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock.math/SpacelessVector2<#A1> // quest.laxla.spock.math/SpacelessVector2.Serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector2.Serializer.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector2.Serializer.hashCode|hashCode(){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock.math/SpacelessVector2<#A1>) // quest.laxla.spock.math/SpacelessVector2.Serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.math.SpacelessVector2<1:0>){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock.math/SpacelessVector2.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector2<#A2>> // quest.laxla.spock.math/SpacelessVector2.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock.math/SpacelessVector2.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class <#A: kotlin/Any?> quest.laxla.spock.math/SpacelessVector3 { // quest.laxla.spock.math/SpacelessVector3|null[0]
+    constructor <init>(#A, #A, #A) // quest.laxla.spock.math/SpacelessVector3.<init>|<init>(1:0;1:0;1:0){}[0]
+
+    final val x // quest.laxla.spock.math/SpacelessVector3.x|{}x[0]
+        final fun <get-x>(): #A // quest.laxla.spock.math/SpacelessVector3.x.<get-x>|<get-x>(){}[0]
+    final val y // quest.laxla.spock.math/SpacelessVector3.y|{}y[0]
+        final fun <get-y>(): #A // quest.laxla.spock.math/SpacelessVector3.y.<get-y>|<get-y>(){}[0]
+    final val z // quest.laxla.spock.math/SpacelessVector3.z|{}z[0]
+        final fun <get-z>(): #A // quest.laxla.spock.math/SpacelessVector3.z.<get-z>|<get-z>(){}[0]
+
+    final fun <#A1: quest.laxla.spock.math/Space<#A>> space(#A1): quest.laxla.spock.math/Vector3<#A, #A1> // quest.laxla.spock.math/SpacelessVector3.space|space(0:0){0§<quest.laxla.spock.math.Space<1:0>>}[0]
+    final fun component1(): #A // quest.laxla.spock.math/SpacelessVector3.component1|component1(){}[0]
+    final fun component2(): #A // quest.laxla.spock.math/SpacelessVector3.component2|component2(){}[0]
+    final fun component3(): #A // quest.laxla.spock.math/SpacelessVector3.component3|component3(){}[0]
+    final fun copy(#A = ..., #A = ..., #A = ...): quest.laxla.spock.math/SpacelessVector3<#A> // quest.laxla.spock.math/SpacelessVector3.copy|copy(1:0;1:0;1:0){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector3.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector3.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.math/SpacelessVector3.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any?> Serializer : kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector3<#A1>> { // quest.laxla.spock.math/SpacelessVector3.Serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>) // quest.laxla.spock.math/SpacelessVector3.Serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>){}[0]
+
+        final val descriptor // quest.laxla.spock.math/SpacelessVector3.Serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock.math/SpacelessVector3.Serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock.math/SpacelessVector3<#A1> // quest.laxla.spock.math/SpacelessVector3.Serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector3.Serializer.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector3.Serializer.hashCode|hashCode(){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock.math/SpacelessVector3<#A1>) // quest.laxla.spock.math/SpacelessVector3.Serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.math.SpacelessVector3<1:0>){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock.math/SpacelessVector3.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector3<#A2>> // quest.laxla.spock.math/SpacelessVector3.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock.math/SpacelessVector3.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class <#A: kotlin/Any?> quest.laxla.spock.math/SpacelessVector4 { // quest.laxla.spock.math/SpacelessVector4|null[0]
+    constructor <init>(#A, #A, #A, #A) // quest.laxla.spock.math/SpacelessVector4.<init>|<init>(1:0;1:0;1:0;1:0){}[0]
+
+    final val w // quest.laxla.spock.math/SpacelessVector4.w|{}w[0]
+        final fun <get-w>(): #A // quest.laxla.spock.math/SpacelessVector4.w.<get-w>|<get-w>(){}[0]
+    final val x // quest.laxla.spock.math/SpacelessVector4.x|{}x[0]
+        final fun <get-x>(): #A // quest.laxla.spock.math/SpacelessVector4.x.<get-x>|<get-x>(){}[0]
+    final val y // quest.laxla.spock.math/SpacelessVector4.y|{}y[0]
+        final fun <get-y>(): #A // quest.laxla.spock.math/SpacelessVector4.y.<get-y>|<get-y>(){}[0]
+    final val z // quest.laxla.spock.math/SpacelessVector4.z|{}z[0]
+        final fun <get-z>(): #A // quest.laxla.spock.math/SpacelessVector4.z.<get-z>|<get-z>(){}[0]
+
+    final fun <#A1: quest.laxla.spock.math/Space<#A>> space(#A1): quest.laxla.spock.math/Vector4<#A, #A1> // quest.laxla.spock.math/SpacelessVector4.space|space(0:0){0§<quest.laxla.spock.math.Space<1:0>>}[0]
+    final fun component1(): #A // quest.laxla.spock.math/SpacelessVector4.component1|component1(){}[0]
+    final fun component2(): #A // quest.laxla.spock.math/SpacelessVector4.component2|component2(){}[0]
+    final fun component3(): #A // quest.laxla.spock.math/SpacelessVector4.component3|component3(){}[0]
+    final fun component4(): #A // quest.laxla.spock.math/SpacelessVector4.component4|component4(){}[0]
+    final fun copy(#A = ..., #A = ..., #A = ..., #A = ...): quest.laxla.spock.math/SpacelessVector4<#A> // quest.laxla.spock.math/SpacelessVector4.copy|copy(1:0;1:0;1:0;1:0){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector4.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector4.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.math/SpacelessVector4.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any?> Serializer : kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector4<#A1>> { // quest.laxla.spock.math/SpacelessVector4.Serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>) // quest.laxla.spock.math/SpacelessVector4.Serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>){}[0]
+
+        final val descriptor // quest.laxla.spock.math/SpacelessVector4.Serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock.math/SpacelessVector4.Serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock.math/SpacelessVector4<#A1> // quest.laxla.spock.math/SpacelessVector4.Serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector4.Serializer.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector4.Serializer.hashCode|hashCode(){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock.math/SpacelessVector4<#A1>) // quest.laxla.spock.math/SpacelessVector4.Serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.math.SpacelessVector4<1:0>){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock.math/SpacelessVector4.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector4<#A2>> // quest.laxla.spock.math/SpacelessVector4.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock.math/SpacelessVector4.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final value class <#A: kotlin/Any?> quest.laxla.spock.math/SpacelessVector1 { // quest.laxla.spock.math/SpacelessVector1|null[0]
+    constructor <init>(#A) // quest.laxla.spock.math/SpacelessVector1.<init>|<init>(1:0){}[0]
+
+    final val x // quest.laxla.spock.math/SpacelessVector1.x|{}x[0]
+        final fun <get-x>(): #A // quest.laxla.spock.math/SpacelessVector1.x.<get-x>|<get-x>(){}[0]
+
+    final fun <#A1: quest.laxla.spock.math/Space<#A>> space(#A1): quest.laxla.spock.math/Vector1<#A, #A1> // quest.laxla.spock.math/SpacelessVector1.space|space(0:0){0§<quest.laxla.spock.math.Space<1:0>>}[0]
+    final fun component1(): #A // quest.laxla.spock.math/SpacelessVector1.component1|component1(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // quest.laxla.spock.math/SpacelessVector1.toString|toString(){}[0]
+
+    final class <#A1: kotlin/Any?> Serializer : kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector1<#A1>> { // quest.laxla.spock.math/SpacelessVector1.Serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>) // quest.laxla.spock.math/SpacelessVector1.Serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>){}[0]
+
+        final val descriptor // quest.laxla.spock.math/SpacelessVector1.Serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // quest.laxla.spock.math/SpacelessVector1.Serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): quest.laxla.spock.math/SpacelessVector1<#A1> // quest.laxla.spock.math/SpacelessVector1.Serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // quest.laxla.spock.math/SpacelessVector1.Serializer.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // quest.laxla.spock.math/SpacelessVector1.Serializer.hashCode|hashCode(){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, quest.laxla.spock.math/SpacelessVector1<#A1>) // quest.laxla.spock.math/SpacelessVector1.Serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;quest.laxla.spock.math.SpacelessVector1<1:0>){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // quest.laxla.spock.math/SpacelessVector1.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/SpacelessVector1<#A2>> // quest.laxla.spock.math/SpacelessVector1.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // quest.laxla.spock.math/SpacelessVector1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/uniformVectorOf(#A): quest.laxla.spock.math/UniformVector<#A, #B> // quest.laxla.spock.math/uniformVectorOf|uniformVectorOf@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOf(#A): quest.laxla.spock.math/Vector1<#A, #B> // quest.laxla.spock.math/vectorOf|vectorOf@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOf(#A, #A): quest.laxla.spock.math/Vector2<#A, #B> // quest.laxla.spock.math/vectorOf|vectorOf@0:1(0:0;0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOf(#A, #A, #A): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/vectorOf|vectorOf@0:1(0:0;0:0;0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOf(#A, #A, #A, #A): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/vectorOf|vectorOf@0:1(0:0;0:0;0:0;0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOfOnes(): quest.laxla.spock.math/UniformVector<#A, #B> // quest.laxla.spock.math/vectorOfOnes|vectorOfOnes@0:1(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/vectorOfZeros(): quest.laxla.spock.math/UniformVector<#A, #B> // quest.laxla.spock.math/vectorOfZeros|vectorOfZeros@0:1(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/x(#A): quest.laxla.spock.math/Vector1<#A, #B> // quest.laxla.spock.math/x|x@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/xy(#A): quest.laxla.spock.math/Vector2<#A, #B> // quest.laxla.spock.math/xy|xy@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/xyz(#A): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/xyz|xyz@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (#B).quest.laxla.spock.math/xyzw(#A): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/xyzw|xyzw@0:1(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/UniformVector<#A, #B>).quest.laxla.spock.math/asVector1(): quest.laxla.spock.math/Vector1<#A, #B> // quest.laxla.spock.math/asVector1|asVector1@quest.laxla.spock.math.UniformVector<0:0,0:1>(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/UniformVector<#A, #B>).quest.laxla.spock.math/asVector2(): quest.laxla.spock.math/Vector2<#A, #B> // quest.laxla.spock.math/asVector2|asVector2@quest.laxla.spock.math.UniformVector<0:0,0:1>(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/UniformVector<#A, #B>).quest.laxla.spock.math/asVector3(): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/asVector3|asVector3@quest.laxla.spock.math.UniformVector<0:0,0:1>(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/UniformVector<#A, #B>).quest.laxla.spock.math/asVector4(): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/asVector4|asVector4@quest.laxla.spock.math.UniformVector<0:0,0:1>(){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1.Companion).quest.laxla.spock.math/serializer(kotlin/String, #B, kotlinx.serialization/KSerializer<#A>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/Vector1<#A, #B>> // quest.laxla.spock.math/serializer|serializer@quest.laxla.spock.math.Vector1.Companion(kotlin.String;0:1;kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1<#A, #B>).quest.laxla.spock.math/y(#A): quest.laxla.spock.math/Vector2<#A, #B> // quest.laxla.spock.math/y|y@quest.laxla.spock.math.Vector1<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1<#A, #B>).quest.laxla.spock.math/yz(#A): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/yz|yz@quest.laxla.spock.math.Vector1<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1<#A, #B>).quest.laxla.spock.math/yz(quest.laxla.spock.math/Vector2<#A, #B>): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/yz|yz@quest.laxla.spock.math.Vector1<0:0,0:1>(quest.laxla.spock.math.Vector2<0:0,0:1>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1<#A, #B>).quest.laxla.spock.math/yzw(#A): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/yzw|yzw@quest.laxla.spock.math.Vector1<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector1<#A, #B>).quest.laxla.spock.math/yzw(quest.laxla.spock.math/Vector3<#A, #B>): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/yzw|yzw@quest.laxla.spock.math.Vector1<0:0,0:1>(quest.laxla.spock.math.Vector3<0:0,0:1>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector2.Companion).quest.laxla.spock.math/serializer(kotlin/String, #B, kotlinx.serialization/KSerializer<#A>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/Vector2<#A, #B>> // quest.laxla.spock.math/serializer|serializer@quest.laxla.spock.math.Vector2.Companion(kotlin.String;0:1;kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector2<#A, #B>).quest.laxla.spock.math/z(#A): quest.laxla.spock.math/Vector3<#A, #B> // quest.laxla.spock.math/z|z@quest.laxla.spock.math.Vector2<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector2<#A, #B>).quest.laxla.spock.math/zw(#A): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/zw|zw@quest.laxla.spock.math.Vector2<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector2<#A, #B>).quest.laxla.spock.math/zw(quest.laxla.spock.math/Vector2<#A, #B>): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/zw|zw@quest.laxla.spock.math.Vector2<0:0,0:1>(quest.laxla.spock.math.Vector2<0:0,0:1>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector3.Companion).quest.laxla.spock.math/serializer(kotlin/String, #B, kotlinx.serialization/KSerializer<#A>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/Vector3<#A, #B>> // quest.laxla.spock.math/serializer|serializer@quest.laxla.spock.math.Vector3.Companion(kotlin.String;0:1;kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector3<#A, #B>).quest.laxla.spock.math/w(#A): quest.laxla.spock.math/Vector4<#A, #B> // quest.laxla.spock.math/w|w@quest.laxla.spock.math.Vector3<0:0,0:1>(0:0){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?, #B: quest.laxla.spock.math/Space<#A>> (quest.laxla.spock.math/Vector4.Companion).quest.laxla.spock.math/serializer(kotlin/String, #B, kotlinx.serialization/KSerializer<#A>): kotlinx.serialization/KSerializer<quest.laxla.spock.math/Vector4<#A, #B>> // quest.laxla.spock.math/serializer|serializer@quest.laxla.spock.math.Vector4.Companion(kotlin.String;0:1;kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>;1§<quest.laxla.spock.math.Space<0:0>>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/Vector1<#A, *>).quest.laxla.spock.math/withoutSpace(): quest.laxla.spock.math/SpacelessVector1<#A> // quest.laxla.spock.math/withoutSpace|withoutSpace@quest.laxla.spock.math.Vector1<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/Vector2<#A, *>).quest.laxla.spock.math/withoutSpace(): quest.laxla.spock.math/SpacelessVector2<#A> // quest.laxla.spock.math/withoutSpace|withoutSpace@quest.laxla.spock.math.Vector2<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/Vector3<#A, *>).quest.laxla.spock.math/withoutSpace(): quest.laxla.spock.math/SpacelessVector3<#A> // quest.laxla.spock.math/withoutSpace|withoutSpace@quest.laxla.spock.math.Vector3<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/Vector4<#A, *>).quest.laxla.spock.math/withoutSpace(): quest.laxla.spock.math/SpacelessVector4<#A> // quest.laxla.spock.math/withoutSpace|withoutSpace@quest.laxla.spock.math.Vector4<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/VectorWithW<#A, *>).quest.laxla.spock.math/component4(): #A // quest.laxla.spock.math/component4|component4@quest.laxla.spock.math.VectorWithW<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/VectorWithX<#A, *>).quest.laxla.spock.math/component1(): #A // quest.laxla.spock.math/component1|component1@quest.laxla.spock.math.VectorWithX<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/VectorWithY<#A, *>).quest.laxla.spock.math/component2(): #A // quest.laxla.spock.math/component2|component2@quest.laxla.spock.math.VectorWithY<0:0,*>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (quest.laxla.spock.math/VectorWithZ<#A, *>).quest.laxla.spock.math/component3(): #A // quest.laxla.spock.math/component3|component3@quest.laxla.spock.math.VectorWithZ<0:0,*>(){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: quest.laxla.spock.math/Space<#B>> (quest.laxla.spock.math/Vector1<#A, *>).quest.laxla.spock.math/map(#C, kotlin/Function1<#A, #B>): quest.laxla.spock.math/Vector1<#B, #C> // quest.laxla.spock.math/map|map@quest.laxla.spock.math.Vector1<0:0,*>(0:2;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<quest.laxla.spock.math.Space<0:1>>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: quest.laxla.spock.math/Space<#B>> (quest.laxla.spock.math/Vector2<#A, *>).quest.laxla.spock.math/map(#C, kotlin/Function1<#A, #B>): quest.laxla.spock.math/Vector2<#B, #C> // quest.laxla.spock.math/map|map@quest.laxla.spock.math.Vector2<0:0,*>(0:2;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<quest.laxla.spock.math.Space<0:1>>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: quest.laxla.spock.math/Space<#B>> (quest.laxla.spock.math/Vector3<#A, *>).quest.laxla.spock.math/map(#C, kotlin/Function1<#A, #B>): quest.laxla.spock.math/Vector3<#B, #C> // quest.laxla.spock.math/map|map@quest.laxla.spock.math.Vector3<0:0,*>(0:2;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<quest.laxla.spock.math.Space<0:1>>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?, #C: quest.laxla.spock.math/Space<#B>> (quest.laxla.spock.math/Vector4<#A, *>).quest.laxla.spock.math/map(#C, kotlin/Function1<#A, #B>): quest.laxla.spock.math/Vector4<#B, #C> // quest.laxla.spock.math/map|map@quest.laxla.spock.math.Vector4<0:0,*>(0:2;kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>;2§<quest.laxla.spock.math.Space<0:1>>}[0]

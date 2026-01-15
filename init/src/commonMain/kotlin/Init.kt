@@ -1,7 +1,6 @@
 package quest.laxla.spock.init
 
 import kotlinx.coroutines.CoroutineScope
-import quest.laxla.spock.ExperimentalSpockApi
 import quest.laxla.spock.KTarget
 import quest.laxla.spock.current
 import kotlin.coroutines.CoroutineContext
@@ -20,6 +19,5 @@ public expect fun <T> runBlockingIfSupported(
 	block: suspend CoroutineScope.() -> T
 ): T
 
-@OptIn(ExperimentalSpockApi::class)
 internal fun unsupported(function: String): Nothing =
 	throw UnsupportedOperationException("Function $function is not supported on ${KTarget.current}, see its documentation for more information.")

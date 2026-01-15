@@ -11,8 +11,6 @@ public interface BufferableSpace<V> : SizedSpace<V> {
 	/**
 	 * Appends this [value] into this [ByteAppender].
 	 *
-	 * Concrete implementations are recommended to rename [value] to the concrete type [V] represents.
-	 *
 	 * @since 0.0.1-alpha.4
 	 * @see kotlinx.io.bytestring.ByteString
 	 */

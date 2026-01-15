@@ -51,18 +51,21 @@ class FlagTest {
 		val flag = Flag()
 		val mutex = Mutex()
 		assertFalse(flag())
+		assertFalse(mutex.isLocked)
 
 		var executed = false
 
 		flag.setWithLock(mutex) {
+			assertTrue(mutex.isLocked)
 			executed = true
 		}
 
 		assertTrue(executed && flag())
+		assertFalse(mutex.isLocked)
 	}
 
 	@Test
-	fun `set flag with mutex locks`() = runTest {
+	fun `set flag with mutex and owner`() = runTest {
 		val flag = Flag()
 		val mutex = Mutex()
 		assertFalse(flag())
@@ -79,6 +82,18 @@ class FlagTest {
 		}
 
 		assertFalse(executed)
+		assertFalse(flag())
+		assertTrue(mutex.isLocked)
+
+		mutex.unlock(owner)
+
+		flag.setWithLock(mutex, owner) {
+			assertTrue(mutex.isLocked)
+			executed = true
+		}
+
+		assertTrue(executed && flag())
+		assertFalse(mutex.isLocked)
 	}
 }
 

@@ -1,5 +1,8 @@
 package quest.laxla.spock
 
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
+
 /**
  * Storage for an entity-component-system.
  *
@@ -33,6 +36,15 @@ public interface Ecs {
 	public fun dereference(entity: Entity.Reference): ComponentType<*>?
 
 	/**
+	 * Notifies the implementation to ready components of the provided types for usage.
+	 *
+	 * Calling this function before [get]ting or [select]ing may improve performance.
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	public fun prepare(vararg componentTypes: Entity) {}
+
+	/**
 	 * Retrieves the component of the provided type associated with this [entity], or the default value if not found.
 	 *
 	 * @since 0.0.1-alpha.4
@@ -42,7 +54,7 @@ public interface Ecs {
 	 * @see MutableEcs.getAndMaterialize
 	 * @see MutableEcs.getAndRemove
 	 */
-	public operator fun <T> get(entity: Compable, componentType: ComponentType<T>): T
+	public suspend operator fun <T> get(entity: Compable, componentType: ComponentType<T>): T
 
 	/**
 	 * Iterates over entities with components of all provided types,
@@ -50,14 +62,14 @@ public interface Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun select(vararg componentTypes: Entity, forEach: Compable.() -> Unit)
+	public fun select(vararg componentTypes: Entity): Flow<Entity.Selected>
 
 	/**
 	 * Iterates over components of the provided type, running a lambda [forEach] one.
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T> select(componentType: ComponentType<T>, forEach: context(Ecs) Compable.(T) -> Unit)
+	public fun <T, R> select(componentType: ComponentType<T>, forEach: suspend Entity.Selected.(T) -> R): Flow<R>
 
 	/**
 	 * Iterates over entities with components of both provided types,
@@ -65,11 +77,11 @@ public interface Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T1, T2> select(
+	public fun <T1, T2, R> select(
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
-		forEach: context(Ecs) Compable.(T1, T2) -> Unit
-	)
+		forEach: suspend Entity.Selected.(T1, T2) -> Flow<R>
+	): Flow<R>
 
 	/**
 	 * Iterates over entities with components of all provided types,
@@ -77,12 +89,12 @@ public interface Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T1, T2, T3> select(
+	public fun <T1, T2, T3, R> select(
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
-		forEach: context(Ecs) Compable.(T1, T2, T3) -> Unit
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T3) -> Flow<R>
+	): Flow<R>
 
 	/**
 	 * Iterates over entities with components of all provided types,
@@ -90,13 +102,13 @@ public interface Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T1, T2, T3, T4> select(
+	public fun <T1, T2, T3, T4, R> select(
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
 		componentType4: ComponentType<T4>,
-		forEach: context(Ecs) Compable.(T1, T2, T4) -> Unit
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T4) -> Flow<R>
+	): Flow<R>
 
 	/**
 	 * Iterates over entities with components of all provided types,
@@ -104,14 +116,19 @@ public interface Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T1, T2, T3, T4> select(
+	public fun <T1, T2, T3, T4, R> select(
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
 		componentType4: ComponentType<T4>,
 		vararg componentTypes: Entity,
-		forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> Unit
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T3, T4) -> Flow<R>
+	): Flow<R>
+
+	/**
+	 * @since 0.0.1-alpha.4
+	 */
+	public suspend fun all(vararg componentTypes: Entity, predicate: suspend Entity.Selected.() -> Boolean): Boolean
 
 	/**
 	 * Checks if this [entity] has a component of the provided type.
@@ -122,7 +139,7 @@ public interface Ecs {
 	 * @see MutableEcs.toggle
 	 * @see MutableEcs.materialize
 	 */
-	public fun possesses(entity: Compable, componentType: Entity): Boolean
+	public suspend fun possesses(entity: Compable, componentType: Entity): Boolean
 
 	/**
 	 * Checks if the described [compable] exists.
@@ -134,7 +151,7 @@ public interface Ecs {
 	 * @see MutableEcs.materialize
 	 * @see MutableEcs.delete
 	 */
-	public operator fun contains(compable: Compable): Boolean
+	public suspend operator fun contains(compable: Compable): Boolean
 
 	/**
 	 * Retrieves the default value for this [componentType].
@@ -145,7 +162,7 @@ public interface Ecs {
 	 * @see MutableEcs.resetDefaultOf
 	 * @see MutableEcs.resetComponentTypeDefaults
 	 */
-	public fun <T> getDefaultOf(componentType: ComponentType<T>): T
+	public suspend fun <T> getDefaultOf(componentType: ComponentType<T>): T
 
 	/**
 	 * Creates a read-only, deeply-immutable [snap][SnappedEcs] of the current state of this Entity-Component-System.
@@ -153,7 +170,7 @@ public interface Ecs {
 	 * ***Warning:** this is an expensive operation.*
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun snap(): SnappedEcs
+	public suspend fun snap(): SnappedEcs
 }
 
 /**
@@ -213,6 +230,7 @@ public interface SnappedEcs : Ecs
  *
  * @since 0.0.1-alpha.4
  */
+//TODO: Kotlin 2.3 @MustUseReturnValues
 public interface MutableEcs : Ecs {
 	/**
 	 * Adds [value] as a component of the provided type onto this [entity],
@@ -242,7 +260,7 @@ public interface MutableEcs : Ecs {
 	 * @see getAndSetToDefault
 	 * @see getAndRemove
 	 */
-	public fun <T> getAndSet(entity: Compable, componentType: ComponentType<T>, value: T): T
+	public suspend fun <T> getAndSet(entity: Compable, componentType: ComponentType<T>, value: T): T
 
 	/**
 	 * If this [entity] does not have a component of the provided type, adds [value] as such.
@@ -271,7 +289,7 @@ public interface MutableEcs : Ecs {
 	 * @see getAndMaterialize
 	 * @see getAndUnset
 	 */
-	public fun <T> getOrSet(entity: Compable, componentType: ComponentType<T>, value: T): T
+	public suspend fun <T> getOrSet(entity: Compable, componentType: ComponentType<T>, value: T): T
 
 	/**
 	 * Adds the [default][ComponentType.defaultDefault] component of the provided type onto this [entity],
@@ -301,7 +319,7 @@ public interface MutableEcs : Ecs {
 	 * @see getAndSet
 	 * @see getAndRemove
 	 */
-	public fun <T> getAndSetToDefault(entity: Compable, componentType: ComponentType<T>): T
+	public suspend fun <T> getAndSetToDefault(entity: Compable, componentType: ComponentType<T>): T
 
 	/**
 	 * If this [entity] does not have a component of the provided type, adds the [default][ComponentType.defaultDefault] as such.
@@ -331,7 +349,7 @@ public interface MutableEcs : Ecs {
 	 * @see getOrSet
 	 * @see getAndUnset
 	 */
-	public fun <T> getAndMaterialize(entity: Compable, componentType: ComponentType<T>): T
+	public suspend fun <T> getAndMaterialize(entity: Compable, componentType: ComponentType<T>): T
 
 	/**
 	 * If this [entity] already has a component of the provided type, [remove][MutableEcs.remove]s it;
@@ -343,7 +361,7 @@ public interface MutableEcs : Ecs {
 	 * @since 0.0.1-alpha.4
 	 * @see setToDefault
 	 */
-	public fun toggle(entity: Compable, componentType: Entity)
+	public suspend fun toggle(entity: Compable, componentType: Entity)
 
 	/**
 	 * Removes the component of the provided type from this [entity], if any.
@@ -376,7 +394,7 @@ public interface MutableEcs : Ecs {
 	 * @see getAndSetToDefault
 	 * @see getAndSet
 	 */
-	public fun <T> getAndRemove(entity: Compable, componentType: ComponentType<T>): T
+	public suspend fun <T> getAndRemove(entity: Compable, componentType: ComponentType<T>): T
 
 	/**
 	 * Removes the component of the provided type from this [entity], if any.
@@ -408,7 +426,25 @@ public interface MutableEcs : Ecs {
 	 * @see setToDefault
 	 * @see set
 	 */
-	public fun <T> getAndUnset(entity: Compable, componentType: ComponentType<T>): T
+	public suspend fun <T> getAndUnset(entity: Compable, componentType: ComponentType<T>): T
+
+	/**
+	 * This object carries no real meaning, and only exists for syntax-sugaring in mutating [select]-likes, e.g. [mutate] and [set].
+	 *
+	 * @since 0.0.1-alpha.4
+	 */
+	public data object Selection {
+		/**
+		 * Supertype for [Exception]s that should not exist outside a [Selection] block.
+		 *
+		 * @since 0.0.1-alpha.4
+		 */
+		public abstract class DataFlowException(
+			entity: Entity.Selected,
+			cause: Throwable?,
+			message: String = emptyString()
+		) : Exception(entity.formattedID + message.trimAndAppendIfNotBlank(prefix = "; "), cause)
+	}
 
 	/**
 	 * Iterates over every entity with a component of the provided type,
@@ -416,7 +452,7 @@ public interface MutableEcs : Ecs {
 	 *
 	 * @since 0.0.1-alpha.4
 	 */
-	public fun <T> mutate(componentType: ComponentType<T>, forEach: context(Ecs) Compable.(T) -> T)
+	public fun <T> mutate(componentType: ComponentType<T>, forEach: suspend Entity.Selected.(T) -> T): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided types,
@@ -428,8 +464,8 @@ public interface MutableEcs : Ecs {
 		mutatedComponentType: ComponentType<T>,
 		vararg componentTypes: Entity,
 		onlyMutateSetComponents: Boolean = mutatedComponentType.onlyMutateSetComponentsByDefault,
-		forEach: context(Ecs) Compable.(T) -> T
-	)
+		forEach: suspend Entity.Selected.(T) -> T
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of both provided types,
@@ -441,8 +477,8 @@ public interface MutableEcs : Ecs {
 		mutatedComponentType: ComponentType<T>,
 		componentType2: ComponentType<T2>,
 		onlyMutateSetComponents: Boolean = mutatedComponentType.onlyMutateSetComponentsByDefault,
-		forEach: context(Ecs) Compable.(T, T2) -> T
-	)
+		forEach: suspend Entity.Selected.(T, T2) -> T
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided types,
@@ -455,8 +491,8 @@ public interface MutableEcs : Ecs {
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
 		onlyMutateSetComponents: Boolean = mutatedComponentType.onlyMutateSetComponentsByDefault,
-		forEach: context(Ecs) Compable.(T, T2, T3) -> T
-	)
+		forEach: suspend Entity.Selected.(T, T2, T3) -> T
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided types,
@@ -470,8 +506,8 @@ public interface MutableEcs : Ecs {
 		componentType3: ComponentType<T3>,
 		componentType4: ComponentType<T4>,
 		onlyMutateSetComponents: Boolean = mutatedComponentType.onlyMutateSetComponentsByDefault,
-		forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
-	)
+		forEach: suspend Entity.Selected.(T, T2, T3, T4) -> T
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided types,
@@ -486,8 +522,8 @@ public interface MutableEcs : Ecs {
 		componentType4: ComponentType<T4>,
 		vararg componentTypes: Entity,
 		onlyMutateSetComponents: Boolean = mutatedComponentType.onlyMutateSetComponentsByDefault,
-		forEach: context(Ecs) Compable.(T, T2, T3, T4) -> T
-	)
+		forEach: suspend Entity.Selected.(T, T2, T3, T4) -> T
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided component types,
@@ -498,8 +534,8 @@ public interface MutableEcs : Ecs {
 	public fun <R> set(
 		modifiedComponentType: ComponentType<R>,
 		vararg componentTypes: Entity,
-		forEach: context(Ecs) Compable.() -> R
-	)
+		forEach: suspend Entity.Selected.() -> R
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of the provided type,
@@ -510,8 +546,8 @@ public interface MutableEcs : Ecs {
 	public fun <T, R> set(
 		modifiedComponentType: ComponentType<R>,
 		componentType: ComponentType<T>,
-		forEach: context(Ecs) Compable.(T) -> R
-	)
+		forEach: suspend Entity.Selected.(T) -> R
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of both provided component types,
@@ -523,8 +559,8 @@ public interface MutableEcs : Ecs {
 		modifiedComponentType: ComponentType<R>,
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
-		forEach: context(Ecs) Compable.(T1, T2) -> R
-	)
+		forEach: suspend Entity.Selected.(T1, T2) -> R
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided component types,
@@ -537,8 +573,8 @@ public interface MutableEcs : Ecs {
 		componentType1: ComponentType<T1>,
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
-		forEach: context(Ecs) Compable.(T1, T2, T3) -> R
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T3) -> R
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided component types,
@@ -552,8 +588,8 @@ public interface MutableEcs : Ecs {
 		componentType2: ComponentType<T2>,
 		componentType3: ComponentType<T3>,
 		componentType4: ComponentType<T4>,
-		forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T3, T4) -> R
+	): Job
 
 	/**
 	 * Iterates over every entity with a component of all provided component types,
@@ -568,8 +604,8 @@ public interface MutableEcs : Ecs {
 		componentType3: ComponentType<T3>,
 		componentType4: ComponentType<T4>,
 		vararg componentTypes: Entity,
-		forEach: context(Ecs) Compable.(T1, T2, T3, T4) -> R
-	)
+		forEach: suspend Entity.Selected.(T1, T2, T3, T4) -> R
+	): Job
 
 	/**
 	 * Adds this [NamedEntity] onto the ECS.
@@ -615,7 +651,7 @@ public interface MutableEcs : Ecs {
 	 * @see resetDefaultOf
 	 * @see resetComponentTypeDefaults
 	 */
-	public fun <T> getAndSetDefaultOf(componentType: ComponentType<T>, value: T): T
+	public suspend fun <T> getAndSetDefaultOf(componentType: ComponentType<T>, value: T): T
 
 	/**
 	 * @since 0.0.1-alpha.4

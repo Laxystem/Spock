@@ -1,5 +1,6 @@
 package quest.laxla.spock
 
+import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 import kotlin.jvm.JvmName
 
@@ -9,6 +10,7 @@ import kotlin.jvm.JvmName
  * @since 0.0.1-alpha.4
  */
 @JvmInline
+@Serializable
 public value class Name private constructor(private val name: String) {
 	/**
 	 * An identical [Name] save for missing the last element.

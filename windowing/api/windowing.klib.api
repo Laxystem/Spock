@@ -1,0 +1,14 @@
+// Klib ABI Dump
+// Targets: [linuxArm64, linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:windowing>
+abstract interface quest.laxla.spock.windowing/Window : quest.laxla.spock/SuspendCloseable { // quest.laxla.spock.windowing/Window|null[0]
+    abstract val shouldClose // quest.laxla.spock.windowing/Window.shouldClose|{}shouldClose[0]
+        abstract fun <get-shouldClose>(): kotlin/Boolean // quest.laxla.spock.windowing/Window.shouldClose.<get-shouldClose>|<get-shouldClose>(){}[0]
+    abstract val size // quest.laxla.spock.windowing/Window.size|{}size[0]
+        abstract fun <get-size>(): kotlinx.coroutines/Deferred<quest.laxla.spock.math/Vector2<kotlin/UInt, quest.laxla.spock.math/UIntSpace>> // quest.laxla.spock.windowing/Window.size.<get-size>|<get-size>(){}[0]
+}

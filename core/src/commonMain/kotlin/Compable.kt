@@ -1,5 +1,7 @@
 package quest.laxla.spock
 
+import kotlinx.serialization.Serializable
+
 /**
  * Any object that may carry components, that is, an [Entity] or a [Possession].
  *
@@ -7,4 +9,5 @@ package quest.laxla.spock
  * @see Ecs
  */
 // TODO: make EcsDsl KT-83100
+@Serializable
 public sealed interface Compable

@@ -1,8 +1,5 @@
-import kotlinx.validation.ExperimentalBCVApi
-
 plugins {
 	kotlin("multiplatform")
-	id("org.jetbrains.kotlinx.binary-compatibility-validator")
 }
 
 repositories.mavenCentral()
@@ -18,12 +15,20 @@ kotlin {
 	}
 
 	withSourcesJar(publish = true)
+
+	targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>() {
+		binaries.all {
+			// TODO: remove this once Kotlin updates to glibc 2.34+
+			linkerOpts("-Wl,--allow-shlib-undefined")
+		}
+	}
+
+	@OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+	abiValidation {
+		enabled = true
+	}
 }
 
-apiValidation {
-	@OptIn(ExperimentalBCVApi::class)
-	klib {
-		// TODO: KT-75378
-		// enabled = true
-	}
+tasks.build {
+	dependsOn(tasks.checkLegacyAbi)
 }

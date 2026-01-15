@@ -111,9 +111,6 @@ public interface Cache<in Descriptor, out Product> : SuspendCloseable {
 		 */
 		public val product: T
 
-		@DelicateSpockApi
-		override suspend fun close()
-
 		/**
 		 * [Cache.Entry] that was [borrow]ed from another cache and should be [put] back.
 		 *

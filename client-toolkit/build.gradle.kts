@@ -35,7 +35,6 @@ kotlin {
 	sourceSets {
 		commonMain.dependencies {
 			api(libs.wgpu4k)
-			api(libs.wgpu4k.ktypes)
 			api(libs.wgpu4k.ktypes.descriptors)
 			api(projects.client)
 			api(projects.windowing)

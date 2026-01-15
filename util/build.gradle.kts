@@ -30,8 +30,8 @@ kotlin {
 		}
 
 		commonTest.dependencies {
-			api(kotlin("test"))
-			api(libs.kotlinx.coroutines.test)
+			implementation(kotlin("test"))
+			implementation(libs.kotlinx.coroutines.test)
 		}
 
 		jvmMain.dependencies {
@@ -39,7 +39,7 @@ kotlin {
 		}
 
 		jvmTest.dependencies {
-			api(kotlin("test-junit5"))
+			implementation(kotlin("test-junit5"))
 		}
 
 		wasmJsMain.dependencies {

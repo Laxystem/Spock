@@ -13,6 +13,18 @@ public inline fun emptyString(): String = ""
  *
  * @since 0.0.1-alpha.4
  */
+@Deprecated(
+	message = "No prefix nor suffix provided.",
+	replaceWith = ReplaceWith("this.trim()"),
+	level = DeprecationLevel.ERROR
+) // do not remove, necessary for below function
+public fun String.trimAndAppendIfNotBlank(): String = trim()
+
+/**
+ * Readies a [kotlin.String] to be concatted to a user-facing message.
+ *
+ * @since 0.0.1-alpha.4
+ */
 public fun String.trimAndAppendIfNotBlank(prefix: String = emptyString(), suffix: String = emptyString()): String =
 	if (isBlank()) emptyString()
 	else prefix + trim() + suffix
