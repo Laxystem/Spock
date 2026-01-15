@@ -9,8 +9,8 @@ import kotlinx.coroutines.withContext
 import quest.laxla.spock.*
 import quest.laxla.spock.client.*
 import quest.laxla.spock.math.z
-import quest.laxla.spock.client.toolkit.*
-import quest.laxla.spock.client.toolkit.ShaderModuleDescriptor
+import quest.laxla.spock.client.wgpu.*
+import quest.laxla.spock.client.wgpu.ShaderModuleDescriptor
 import kotlin.uuid.ExperimentalUuidApi
 
 /**

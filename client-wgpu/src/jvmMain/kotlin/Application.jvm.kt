@@ -1,4 +1,4 @@
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import ffi.LibraryLoader
 import io.github.oshai.kotlinlogging.KotlinLogging

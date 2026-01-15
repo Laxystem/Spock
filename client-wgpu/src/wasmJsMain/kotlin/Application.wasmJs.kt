@@ -1,4 +1,4 @@
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ygdrasil.webgpu.Adapter

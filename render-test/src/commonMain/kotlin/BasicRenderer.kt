@@ -2,9 +2,9 @@ package quest.laxla.spock.renderTest
 
 import io.ygdrasil.webgpu.*
 import quest.laxla.spock.*
-import quest.laxla.spock.client.toolkit.Surface
-import quest.laxla.spock.client.toolkit.WebGpuRenderer
-import quest.laxla.spock.client.toolkit.naivelySelectTextureFormat
+import quest.laxla.spock.client.wgpu.Surface
+import quest.laxla.spock.client.wgpu.WebGpuRenderer
+import quest.laxla.spock.client.wgpu.naivelySelectTextureFormat
 
 
 public class BasicRenderer(

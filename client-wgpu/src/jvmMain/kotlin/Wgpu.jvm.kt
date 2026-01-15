@@ -1,6 +1,6 @@
 @file:Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import com.sun.jna.platform.win32.Kernel32
 import darwin.CAMetalLayer

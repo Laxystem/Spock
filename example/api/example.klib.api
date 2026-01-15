@@ -6,8 +6,8 @@
 // - Show declarations: true
 
 // Library unique name: <quest.laxla:example>
-final class quest.laxla.spock.example/AdvancedRenderer : quest.laxla.spock.client.toolkit/WebGpuRenderer, quest.laxla.spock/Closer { // quest.laxla.spock.example/AdvancedRenderer|null[0]
-    constructor <init>(io.ygdrasil.webgpu/GPUDevice, quest.laxla.spock.client.toolkit/Surface, quest.laxla.spock.client/Shader.Transpiler.Simple<quest.laxla.spock.client/Wgsl, quest.laxla.spock.client/StringShader.FormFactor>, io.ygdrasil.webgpu/GPUTextureFormat = ..., io.ygdrasil.webgpu/GPUColor = ..., kotlin/Boolean = ..., quest.laxla.spock/InferringCache<kotlin/Int, kotlin/ByteArray> = ..., io.github.oshai.kotlinlogging/Level = ..., io.github.oshai.kotlinlogging/Level = ..., quest.laxla.spock.client/RenderScene) // quest.laxla.spock.example/AdvancedRenderer.<init>|<init>(io.ygdrasil.webgpu.GPUDevice;quest.laxla.spock.client.toolkit.Surface;quest.laxla.spock.client.Shader.Transpiler.Simple<quest.laxla.spock.client.Wgsl,quest.laxla.spock.client.StringShader.FormFactor>;io.ygdrasil.webgpu.GPUTextureFormat;io.ygdrasil.webgpu.GPUColor;kotlin.Boolean;quest.laxla.spock.InferringCache<kotlin.Int,kotlin.ByteArray>;io.github.oshai.kotlinlogging.Level;io.github.oshai.kotlinlogging.Level;quest.laxla.spock.client.RenderScene){}[0]
+final class quest.laxla.spock.example/AdvancedRenderer : quest.laxla.spock.client.wgpu/WebGpuRenderer, quest.laxla.spock/Closer { // quest.laxla.spock.example/AdvancedRenderer|null[0]
+    constructor <init>(io.ygdrasil.webgpu/GPUDevice, quest.laxla.spock.client.wgpu/Surface, quest.laxla.spock.client/Shader.Transpiler.Simple<quest.laxla.spock.client/Wgsl, quest.laxla.spock.client/StringShader.FormFactor>, io.ygdrasil.webgpu/GPUTextureFormat = ..., io.ygdrasil.webgpu/GPUColor = ..., kotlin/Boolean = ..., quest.laxla.spock/InferringCache<kotlin/Int, kotlin/ByteArray> = ..., io.github.oshai.kotlinlogging/Level = ..., io.github.oshai.kotlinlogging/Level = ..., quest.laxla.spock.client/RenderScene) // quest.laxla.spock.example/AdvancedRenderer.<init>|<init>(io.ygdrasil.webgpu.GPUDevice;quest.laxla.spock.client.wgpu.Surface;quest.laxla.spock.client.Shader.Transpiler.Simple<quest.laxla.spock.client.Wgsl,quest.laxla.spock.client.StringShader.FormFactor>;io.ygdrasil.webgpu.GPUTextureFormat;io.ygdrasil.webgpu.GPUColor;kotlin.Boolean;quest.laxla.spock.InferringCache<kotlin.Int,kotlin.ByteArray>;io.github.oshai.kotlinlogging.Level;io.github.oshai.kotlinlogging.Level;quest.laxla.spock.client.RenderScene){}[0]
 
     final val backgroundColor // quest.laxla.spock.example/AdvancedRenderer.backgroundColor|{}backgroundColor[0]
         final fun <get-backgroundColor>(): io.ygdrasil.webgpu/GPUColor // quest.laxla.spock.example/AdvancedRenderer.backgroundColor.<get-backgroundColor>|<get-backgroundColor>(){}[0]
@@ -18,7 +18,7 @@ final class quest.laxla.spock.example/AdvancedRenderer : quest.laxla.spock.clien
     final val scene // quest.laxla.spock.example/AdvancedRenderer.scene|{}scene[0]
         final fun <get-scene>(): quest.laxla.spock.client/RenderScene // quest.laxla.spock.example/AdvancedRenderer.scene.<get-scene>|<get-scene>(){}[0]
     final val surface // quest.laxla.spock.example/AdvancedRenderer.surface|{}surface[0]
-        final fun <get-surface>(): quest.laxla.spock.client.toolkit/Surface // quest.laxla.spock.example/AdvancedRenderer.surface.<get-surface>|<get-surface>(){}[0]
+        final fun <get-surface>(): quest.laxla.spock.client.wgpu/Surface // quest.laxla.spock.example/AdvancedRenderer.surface.<get-surface>|<get-surface>(){}[0]
 
     final var renderLogLevel // quest.laxla.spock.example/AdvancedRenderer.renderLogLevel|{}renderLogLevel[0]
         final fun <get-renderLogLevel>(): io.github.oshai.kotlinlogging/Level // quest.laxla.spock.example/AdvancedRenderer.renderLogLevel.<get-renderLogLevel>|<get-renderLogLevel>(){}[0]

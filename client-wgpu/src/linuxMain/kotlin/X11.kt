@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalForeignApi::class)
 
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import glfw.glfwGetX11Display
 import glfw.glfwGetX11Window

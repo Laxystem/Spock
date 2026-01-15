@@ -1,7 +1,7 @@
 @file:Suppress("unused") // external
 @file:OptIn(ExperimentalWasmJsInterop::class)
 
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import org.w3c.dom.Element
 import quest.laxla.spock.math.DoubleSpace

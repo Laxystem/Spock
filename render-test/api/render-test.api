@@ -1,11 +1,11 @@
-public final class quest/laxla/spock/renderTest/BasicRenderer : quest/laxla/spock/Closer, quest/laxla/spock/client/toolkit/WebGpuRenderer {
-	public fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/toolkit/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;)V
-	public synthetic fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/toolkit/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+public final class quest/laxla/spock/renderTest/BasicRenderer : quest/laxla/spock/Closer, quest/laxla/spock/client/wgpu/WebGpuRenderer {
+	public fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;)V
+	public synthetic fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lio/ygdrasil/webgpu/GPUTextureFormat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun contains (Lquest/laxla/spock/SuspendCloseable;)Z
 	public fun getDevice ()Lio/ygdrasil/webgpu/GPUDevice;
 	public fun getFormat ()Lio/ygdrasil/webgpu/GPUTextureFormat;
-	public fun getSurface ()Lquest/laxla/spock/client/toolkit/Surface;
+	public fun getSurface ()Lquest/laxla/spock/client/wgpu/Surface;
 	public fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
 	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;

@@ -1,4 +1,4 @@
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import com.sun.jna.Pointer
 import org.rococoa.ID

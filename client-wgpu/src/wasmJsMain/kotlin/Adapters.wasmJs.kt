@@ -1,4 +1,4 @@
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import io.ygdrasil.webgpu.Adapter
 import io.ygdrasil.webgpu.GPURequestAdapterOptions

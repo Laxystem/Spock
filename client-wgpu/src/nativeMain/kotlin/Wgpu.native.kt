@@ -1,7 +1,7 @@
 @file:Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 @file:OptIn(ExperimentalForeignApi::class)
 
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import io.ygdrasil.webgpu.Adapter
 import io.ygdrasil.webgpu.NativeSurface

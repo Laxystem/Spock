@@ -1,4 +1,4 @@
-package quest.laxla.spock.client.toolkit
+package quest.laxla.spock.client.wgpu
 
 import io.ygdrasil.webgpu.Extent3D
 import quest.laxla.spock.math.Vector3ui
