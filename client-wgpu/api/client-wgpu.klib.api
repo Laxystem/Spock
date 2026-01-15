@@ -6,7 +6,7 @@
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <quest.laxla:client-toolkit>
+// Library unique name: <quest.laxla:client-wgpu>
 abstract interface quest.laxla.spock.client.toolkit/WebGpuRenderer : quest.laxla.spock.client/Renderer { // quest.laxla.spock.client.toolkit/WebGpuRenderer|null[0]
     abstract val device // quest.laxla.spock.client.toolkit/WebGpuRenderer.device|{}device[0]
         abstract fun <get-device>(): io.ygdrasil.webgpu/GPUDevice // quest.laxla.spock.client.toolkit/WebGpuRenderer.device.<get-device>|<get-device>(){}[0]

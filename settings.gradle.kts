@@ -3,7 +3,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
 	"client",
-	"client-toolkit",
+	"client-wgpu",
 	"core",
 	"docs",
 	"example",

@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
 	dokka(projects.client)
-	dokka(projects.clientToolkit)
+	dokka(projects.clientWgpu)
 	dokka(projects.core)
 	dokka(projects.glfw)
 	dokka(projects.init)
