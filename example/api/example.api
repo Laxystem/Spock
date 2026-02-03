@@ -1,20 +1,3 @@
-public final class quest/laxla/spock/example/AdvancedRenderer : quest/laxla/spock/Closer, quest/laxla/spock/client/wgpu/WebGpuRenderer {
-	public fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lquest/laxla/spock/client/Shader$Transpiler$Simple;Lio/ygdrasil/webgpu/GPUTextureFormat;Lio/ygdrasil/webgpu/GPUColor;ZLquest/laxla/spock/InferringCache;Lio/github/oshai/kotlinlogging/Level;Lio/github/oshai/kotlinlogging/Level;Lquest/laxla/spock/client/RenderScene;)V
-	public synthetic fun <init> (Lio/ygdrasil/webgpu/GPUDevice;Lquest/laxla/spock/client/wgpu/Surface;Lquest/laxla/spock/client/Shader$Transpiler$Simple;Lio/ygdrasil/webgpu/GPUTextureFormat;Lio/ygdrasil/webgpu/GPUColor;ZLquest/laxla/spock/InferringCache;Lio/github/oshai/kotlinlogging/Level;Lio/github/oshai/kotlinlogging/Level;Lquest/laxla/spock/client/RenderScene;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun contains (Lquest/laxla/spock/SuspendCloseable;)Z
-	public final fun getBackgroundColor ()Lio/ygdrasil/webgpu/GPUColor;
-	public fun getDevice ()Lio/ygdrasil/webgpu/GPUDevice;
-	public fun getFormat ()Lio/ygdrasil/webgpu/GPUTextureFormat;
-	public final fun getRenderLogLevel ()Lio/github/oshai/kotlinlogging/Level;
-	public final fun getScene ()Lquest/laxla/spock/client/RenderScene;
-	public fun getSurface ()Lquest/laxla/spock/client/wgpu/Surface;
-	public fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun setRenderLogLevel (Lio/github/oshai/kotlinlogging/Level;)V
-	public fun unaryPlus (Ljava/lang/AutoCloseable;)Ljava/lang/AutoCloseable;
-	public fun unaryPlus (Lquest/laxla/spock/SuspendCloseable;)Lquest/laxla/spock/SuspendCloseable;
-}
-
 public final class quest/laxla/spock/example/MainKt {
 	public static final fun main ()V
 	public static synthetic fun main ([Ljava/lang/String;)V

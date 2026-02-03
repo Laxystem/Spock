@@ -46,7 +46,9 @@ body:
       options:
         - Build process
         - Client
-        - Client Toolkit
+        - Client WebGPU Implementation
+        - Client WebGPU Renderer
+        - Core
         - Documentation
         - Examples (incl. Render Test)
         - Glfw
@@ -75,6 +77,7 @@ body:
         - JVM
         - Native
         - WasmJS
+        - Wasm/WASI
     validations:
       required: true
   - type: dropdown
@@ -95,6 +98,7 @@ body:
         - ChromeOS Flex
         - FreeBSD
         - Linux
+        - Linux via FEX
         - Linux via Wine/Proton
         - Windows
     validations:
@@ -139,5 +143,5 @@ body:
     attributes:
       label: Additional context
       description: |
-        Operating system version/distro, screenshots, JVM version, Kotlin version, gradle version,
+        Operating system version/distro, screenshots, JVM version, gradle version,
         browser and version, etc.

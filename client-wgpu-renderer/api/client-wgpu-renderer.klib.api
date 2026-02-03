@@ -1,0 +1,32 @@
+// Klib ABI Dump
+// Targets: [linuxX64, mingwX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <quest.laxla:client-wgpu-renderer>
+final class quest.laxla.spock.client.wgpu.renderer/Renderer : quest.laxla.spock.client.wgpu/WebGpuRenderer, quest.laxla.spock/Closer { // quest.laxla.spock.client.wgpu.renderer/Renderer|null[0]
+    constructor <init>(io.ygdrasil.webgpu/GPUDevice, quest.laxla.spock.client.wgpu/Surface, quest.laxla.spock.client/Shader.Transpiler.Simple<quest.laxla.spock.client/Wgsl, quest.laxla.spock.client/StringShader.FormFactor>, io.ygdrasil.webgpu/GPUTextureFormat = ..., io.ygdrasil.webgpu/GPUColor = ..., kotlin/Boolean = ..., quest.laxla.spock/InferringCache<kotlin/Int, kotlin/ByteArray> = ..., io.github.oshai.kotlinlogging/Level = ..., io.github.oshai.kotlinlogging/Level = ..., quest.laxla.spock.client/RenderScene) // quest.laxla.spock.client.wgpu.renderer/Renderer.<init>|<init>(io.ygdrasil.webgpu.GPUDevice;quest.laxla.spock.client.wgpu.Surface;quest.laxla.spock.client.Shader.Transpiler.Simple<quest.laxla.spock.client.Wgsl,quest.laxla.spock.client.StringShader.FormFactor>;io.ygdrasil.webgpu.GPUTextureFormat;io.ygdrasil.webgpu.GPUColor;kotlin.Boolean;quest.laxla.spock.InferringCache<kotlin.Int,kotlin.ByteArray>;io.github.oshai.kotlinlogging.Level;io.github.oshai.kotlinlogging.Level;quest.laxla.spock.client.RenderScene){}[0]
+
+    final val backgroundColor // quest.laxla.spock.client.wgpu.renderer/Renderer.backgroundColor|{}backgroundColor[0]
+        final fun <get-backgroundColor>(): io.ygdrasil.webgpu/GPUColor // quest.laxla.spock.client.wgpu.renderer/Renderer.backgroundColor.<get-backgroundColor>|<get-backgroundColor>(){}[0]
+    final val device // quest.laxla.spock.client.wgpu.renderer/Renderer.device|{}device[0]
+        final fun <get-device>(): io.ygdrasil.webgpu/GPUDevice // quest.laxla.spock.client.wgpu.renderer/Renderer.device.<get-device>|<get-device>(){}[0]
+    final val format // quest.laxla.spock.client.wgpu.renderer/Renderer.format|{}format[0]
+        final fun <get-format>(): io.ygdrasil.webgpu/GPUTextureFormat // quest.laxla.spock.client.wgpu.renderer/Renderer.format.<get-format>|<get-format>(){}[0]
+    final val scene // quest.laxla.spock.client.wgpu.renderer/Renderer.scene|{}scene[0]
+        final fun <get-scene>(): quest.laxla.spock.client/RenderScene // quest.laxla.spock.client.wgpu.renderer/Renderer.scene.<get-scene>|<get-scene>(){}[0]
+    final val surface // quest.laxla.spock.client.wgpu.renderer/Renderer.surface|{}surface[0]
+        final fun <get-surface>(): quest.laxla.spock.client.wgpu/Surface // quest.laxla.spock.client.wgpu.renderer/Renderer.surface.<get-surface>|<get-surface>(){}[0]
+
+    final var renderLogLevel // quest.laxla.spock.client.wgpu.renderer/Renderer.renderLogLevel|{}renderLogLevel[0]
+        final fun <get-renderLogLevel>(): io.github.oshai.kotlinlogging/Level // quest.laxla.spock.client.wgpu.renderer/Renderer.renderLogLevel.<get-renderLogLevel>|<get-renderLogLevel>(){}[0]
+        final fun <set-renderLogLevel>(io.github.oshai.kotlinlogging/Level) // quest.laxla.spock.client.wgpu.renderer/Renderer.renderLogLevel.<set-renderLogLevel>|<set-renderLogLevel>(io.github.oshai.kotlinlogging.Level){}[0]
+
+    final fun <#A1: kotlin/AutoCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock.client.wgpu.renderer/Renderer.unaryPlus|unaryPlus@0:0(){0§<kotlin.AutoCloseable>}[0]
+    final fun <#A1: quest.laxla.spock/SuspendCloseable> (#A1).unaryPlus(): #A1 // quest.laxla.spock.client.wgpu.renderer/Renderer.unaryPlus|unaryPlus@0:0(){0§<quest.laxla.spock.SuspendCloseable>}[0]
+    final fun contains(quest.laxla.spock/SuspendCloseable): kotlin/Boolean // quest.laxla.spock.client.wgpu.renderer/Renderer.contains|contains(quest.laxla.spock.SuspendCloseable){}[0]
+    final suspend fun close() // quest.laxla.spock.client.wgpu.renderer/Renderer.close|close(){}[0]
+    final suspend fun invoke() // quest.laxla.spock.client.wgpu.renderer/Renderer.invoke|invoke(){}[0]
+}

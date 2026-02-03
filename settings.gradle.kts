@@ -5,6 +5,7 @@ include(
 	"client",
 	"client-wgpu",
 	"client-wgpu-render-test",
+	"client-wgpu-renderer",
 	"core",
 	"docs",
 	"example",

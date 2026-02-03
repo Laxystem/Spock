@@ -10,8 +10,16 @@ plugins {
 
 kotlin {
 	jvm()
-	linuxX64()
-	mingwX64()
+
+	linuxX64().binaries {
+		staticLib()
+		sharedLib()
+	}
+
+	mingwX64().binaries {
+		staticLib()
+		sharedLib()
+	}
 
 	sourceSets {
 		commonMain.dependencies {

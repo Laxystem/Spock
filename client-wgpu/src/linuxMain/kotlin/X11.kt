@@ -14,8 +14,8 @@ import quest.laxla.spock.logIfNull
 
 private val logger = KotlinLogging.logger { }
 
-public val GlfwWindow.x11Display: CPointer<out CPointed>?
-	get() = glfwGetX11Display(pointer).logIfNull(logger) {
+public val x11Display: CPointer<out CPointed>?
+	get() = glfwGetX11Display().logIfNull(logger) {
 		"Failed acquiring X11 display handle from GLFW window"
 	}
 

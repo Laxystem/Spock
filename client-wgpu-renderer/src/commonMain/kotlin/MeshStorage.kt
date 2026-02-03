@@ -1,4 +1,4 @@
-package quest.laxla.spock.example
+package quest.laxla.spock.client.wgpu.renderer
 
 import io.ygdrasil.webgpu.GPUVertexFormat
 import io.ygdrasil.webgpu.sizeInBytes

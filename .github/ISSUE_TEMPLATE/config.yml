@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Documentation (old)
+    url: https://laxystem.github.io/Spock/
+    about: Check the documentation on GitHub. Out-of-date, will be migrated to Codeberg and replaced soon.
+  - name: Contact me on Mastodon
+    url: https://tooot.im/@lax
+    about: Available for anything at lax at tooot dot im.

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.target.Family
+
 plugins {
 	kotlin("multiplatform")
 }
@@ -17,7 +19,7 @@ kotlin {
 	withSourcesJar(publish = true)
 
 	targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>() {
-		binaries.all {
+		if (konanTarget.family == Family.LINUX) binaries.all {
 			// TODO: remove this once Kotlin updates to glibc 2.34+
 			linkerOpts("-Wl,--allow-shlib-undefined")
 		}
@@ -29,6 +31,12 @@ kotlin {
 	}
 }
 
-tasks.build {
-	dependsOn(tasks.checkLegacyAbi)
+tasks {
+	build {
+		dependsOn(tasks.checkLegacyAbi)
+	}
+
+	checkLegacyAbi {
+		mustRunAfter(updateLegacyAbi)
+	}
 }

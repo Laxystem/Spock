@@ -84,8 +84,8 @@ final fun quest.laxla.spock.client.wgpu/Wgpu(): io.ygdrasil.webgpu/WGPU // quest
 final suspend fun (io.ygdrasil.webgpu/Adapter).quest.laxla.spock.client.wgpu/requestDeviceOrThrow(io.ygdrasil.webgpu/DeviceDescriptor = ...): io.ygdrasil.webgpu/GPUDevice // quest.laxla.spock.client.wgpu/requestDeviceOrThrow|requestDeviceOrThrow@io.ygdrasil.webgpu.Adapter(io.ygdrasil.webgpu.DeviceDescriptor){}[0]
 
 // Targets: [linuxX64]
-final val quest.laxla.spock.client.wgpu/x11Display // quest.laxla.spock.client.wgpu/x11Display|@quest.laxla.spock.glfw.GlfwWindow{}x11Display[0]
-    final fun (quest.laxla.spock.glfw/GlfwWindow).<get-x11Display>(): kotlinx.cinterop/CPointer<out kotlinx.cinterop/CPointed>? // quest.laxla.spock.client.wgpu/x11Display.<get-x11Display>|<get-x11Display>@quest.laxla.spock.glfw.GlfwWindow(){}[0]
+final val quest.laxla.spock.client.wgpu/x11Display // quest.laxla.spock.client.wgpu/x11Display|{}x11Display[0]
+    final fun <get-x11Display>(): kotlinx.cinterop/CPointer<out kotlinx.cinterop/CPointed>? // quest.laxla.spock.client.wgpu/x11Display.<get-x11Display>|<get-x11Display>(){}[0]
 
 // Targets: [linuxX64]
 final val quest.laxla.spock.client.wgpu/x11Window // quest.laxla.spock.client.wgpu/x11Window|@quest.laxla.spock.glfw.GlfwWindow{}x11Window[0]

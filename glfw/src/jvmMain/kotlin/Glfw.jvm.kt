@@ -1,7 +1,6 @@
 package quest.laxla.spock.glfw
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import kotlinx.io.bytestring.ByteString
 import kotlinx.io.bytestring.ByteStringBuilder
 import kotlinx.io.bytestring.decodeToString
 import org.lwjgl.glfw.GLFW

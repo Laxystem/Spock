@@ -18,9 +18,22 @@ dependencies {
 
 kotlin {
 	jvm()
-	linuxX64()
-	linuxArm64()
-	mingwX64()
+
+	linuxArm64().binaries {
+		sharedLib()
+		staticLib()
+	}
+
+	linuxX64().binaries {
+		sharedLib()
+		staticLib()
+	}
+
+	mingwX64().binaries {
+		sharedLib()
+		staticLib()
+	}
+
 	wasmJs {
 		browser()
 		binaries.library()

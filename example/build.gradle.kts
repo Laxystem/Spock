@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-	commonMainApi(projects.clientWgpu)
+	commonMainApi(projects.clientWgpuRenderer)
 	commonMainImplementation(projects.init)
 }
 

@@ -18,13 +18,25 @@ dependencies {
 
 kotlin {
     jvm()
-    linuxArm64()
-    linuxX64()
-    mingwX64()
-    wasmJs().browser {
-        testTask {
-            useKarma().useChromiumHeadless()
-        }
+
+    linuxArm64().binaries {
+        sharedLib()
+        staticLib()
+    }
+
+    linuxX64().binaries {
+        sharedLib()
+        staticLib()
+    }
+
+    mingwX64().binaries {
+        sharedLib()
+        staticLib()
+    }
+
+    wasmJs {
+        binaries.library()
+        browser()
     }
 
     // TODO: KT-82284

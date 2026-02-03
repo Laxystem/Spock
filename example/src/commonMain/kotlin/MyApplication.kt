@@ -3,11 +3,12 @@ package quest.laxla.spock.example
 import io.ygdrasil.webgpu.Color
 import io.ygdrasil.webgpu.GPUVertexFormat
 import kotlinx.collections.immutable.persistentListOf
-import quest.laxla.spock.*
+import quest.laxla.spock.ByteAppender
 import quest.laxla.spock.client.*
-import quest.laxla.spock.math.*
 import quest.laxla.spock.client.wgpu.naivelySelectTextureFormat
+import quest.laxla.spock.client.wgpu.renderer.Renderer
 import quest.laxla.spock.client.wgpu.webGpuApplication
+import quest.laxla.spock.math.*
 
 // do not use in shader; IntelliJ formatting shenanigans
 private const val vertexMain = "vertexMain"
@@ -79,7 +80,7 @@ public suspend fun myApplication(title: String): Unit = webGpuApplication(title)
 		)
 	)
 
-	AdvancedRenderer(
+	Renderer(
 		device,
 		surface,
 		NoopShaderTranspiler(kind),
