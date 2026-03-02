@@ -16,6 +16,7 @@ include(
 	"math-base",
 	"math-codegen",
 	"util",
+	"util-io",
 	"windowing"
 )
 

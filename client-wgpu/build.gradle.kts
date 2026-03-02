@@ -22,21 +22,9 @@ kotlin {
 	}
 
 	jvm()
-
-	linuxX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	mingwX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	wasmJs {
-		binaries.library()
-		browser()
-	}
+	linuxX64()
+	mingwX64()
+	wasmJs().browser()
 
 	sourceSets {
 		commonMain.dependencies {

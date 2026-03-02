@@ -11,29 +11,15 @@ plugins {
 
 kotlin {
 	jvm()
-
-	linuxArm64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	linuxX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	mingwX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	wasmJs {
-		binaries.library()
-		browser {
-			testTask {
-				useKarma().useChromiumHeadless()
-			}
+	linuxArm64()
+	linuxX64()
+	mingwX64()
+	wasmJs().browser {
+		// TODO: fix
+		/*testTask {
+			useKarma().useChromiumHeadless()
 		}
+		 */
 	}
 
 	sourceSets {
@@ -52,10 +38,6 @@ kotlin {
 
 		jvmMain.dependencies {
 			runtimeOnly(libs.logback)
-		}
-
-		jvmTest.dependencies {
-			implementation(kotlin("test-junit5"))
 		}
 
 		wasmJsMain.dependencies {

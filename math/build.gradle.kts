@@ -1,5 +1,6 @@
-@file:OptIn(ExperimentalWasmDsl::class)
+@file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
 
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
@@ -18,29 +19,13 @@ dependencies {
 
 kotlin {
 	jvm()
+	linuxArm64()
+	linuxX64()
+	mingwX64()
+	wasmJs().browser()
 
-	linuxArm64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	linuxX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	mingwX64().binaries {
-		sharedLib()
-		staticLib()
-	}
-
-	wasmJs {
-		browser()
-		binaries.library()
-	}
-	
 	sourceSets.commonMain {
-		kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
+		generatedKotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
 	}
 }
 
