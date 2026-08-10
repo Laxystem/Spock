@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.registering
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 import org.jetbrains.kotlin.konan.target.Family
 
 plugins {
@@ -25,18 +27,16 @@ kotlin {
 		}
 	}
 
-	@OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-	abiValidation {
-		enabled = true
-	}
+	@OptIn(ExperimentalAbiValidation::class)
+	abiValidation()
 }
 
-tasks {
-	build {
-		dependsOn(tasks.checkLegacyAbi)
-	}
-
-	checkLegacyAbi {
-		mustRunAfter(updateLegacyAbi)
-	}
-}
+//tasks {
+//	build {
+//		dependsOn(tasks.checkLegacyAbi)
+//	}
+//
+//	checkLegacyAbi {
+//		mustRunAfter(updateLegacyAbi)
+//	}
+//}

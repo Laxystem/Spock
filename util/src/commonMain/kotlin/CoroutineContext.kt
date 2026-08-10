@@ -1,6 +1,7 @@
 package quest.laxla.spock
 
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -13,6 +14,8 @@ import kotlin.coroutines.CoroutineContext
  * @since 0.0.1-alpha.4
  */
 //@get:Throws(IllegalStateException::class) TODO: crashes on native
+//TODO: fix deprecation
+@OptIn(ExperimentalStdlibApi::class)
 public val CoroutineContext.dispatcher: CoroutineDispatcher
 	get() = this[CoroutineDispatcher] ?: error("Coroutine context doesn't contain coroutine dispatcher: $this")
 
@@ -22,3 +25,10 @@ public val CoroutineContext.dispatcher: CoroutineDispatcher
  * @since 0.0.1-alpha.4
  */
 public operator fun CoroutineContext.minus(key: CoroutineContext.Key<*>): CoroutineContext = minusKey(key)
+
+/**
+ * Retrieves the IO dispatcher on platforms that support it, or a fallback dispatcher otherwise.
+ *
+ * @since 0.0.1-alpha.4
+ */
+public expect val Dispatchers.IO: CoroutineDispatcher

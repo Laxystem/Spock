@@ -9,4 +9,5 @@ public actual inline fun Int.growArraySize(minimumGrowth: Int, preferredGrowth: 
 @PublishedApi
 internal actual val SoftMaxArrayLength: Int get() = DefaultSoftMaxArrayLength
 
-public actual typealias OutOfMemoryError = OutOfMemoryError
+@Suppress("ACTUAL_ANNOTATIONS_NOT_MATCH_EXPECT")
+internal actual typealias OutOfMemoryError = OutOfMemoryError

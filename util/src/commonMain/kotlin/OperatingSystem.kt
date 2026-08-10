@@ -9,24 +9,29 @@ package quest.laxla.spock
  */
 public interface OperatingSystem {
 	/**
-	 * @since 0.0.1-alpha.1
+	 * @since 0.0.1-alpha.4
 	 */
-	public data object Android : OperatingSystem
+	public interface Unix : OperatingSystem
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object FreeBsd : OperatingSystem
+	public data object Android : Unix
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object Linux : OperatingSystem
+	public data object FreeBsd : Unix
 
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object MacOS : OperatingSystem
+	public data object Linux : Unix
+
+	/**
+	 * @since 0.0.1-alpha.1
+	 */
+	public data object MacOS : Unix
 
 	/**
 	 * @since 0.0.1-alpha.1
@@ -36,12 +41,12 @@ public interface OperatingSystem {
 	/**
 	 * @since 0.0.1-alpha.1
 	 */
-	public data object iOS : OperatingSystem
+	public data object iOS : Unix
 
 	/**
 	 * @since 0.0.1-alpha.4
 	 */
-	public data object iPadOS : OperatingSystem
+	public data object iPadOS : Unix
 
 	/**
 	 * @since 0.0.1-alpha.1

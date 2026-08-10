@@ -1,4 +1,4 @@
-package quest.laxla.spock
+package quest.laxla.spock.core
 
 /*
 /**

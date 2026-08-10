@@ -37,6 +37,18 @@ It is recommended to install all dependencies, even if you don't intend on using
 
 *Don't worry too much about this part, tweaking an API to match the style guide is a relatively easy task.*
 
+### Terminology & Exceptions
+
+* `IllegalArgumentException` does as its name; it should be used sparingly.
+* `IllegalStateException` implies _we should never be here_.
+  It is used in place of `IllegalArgumentException` when the caller has asserted arguments will be compliant,
+  via `orThrow` or using a non-`orNull` function when one exists.
+* `NullPointerException` is only emitted by `!!`, which is functionally a `toNonNullOrThrow()`;
+  It should be treated as an `IllegalStateException`.
+* `UnsupportedOperationException` implies _the current state is legal, but does not support doing this._
+* `NotImplementedError` implies the function wasn't yet implemented (if emitted from `kotlin.TODO`),
+  or isn't ever supposed to be called (otherwise).
+
 ### APIs
 
 * APIs should be thread-safe and immutable by default.

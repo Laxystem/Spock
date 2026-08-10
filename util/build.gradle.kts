@@ -3,6 +3,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
+	alias(libs.plugins.kotlinx.atomicfu)
 	alias(libs.plugins.publish)
 	dokka
 	multiplatform
@@ -37,7 +38,7 @@ kotlin {
 		}
 
 		jvmMain.dependencies {
-			runtimeOnly(libs.logback)
+			implementation(libs.logback)
 		}
 
 		wasmJsMain.dependencies {

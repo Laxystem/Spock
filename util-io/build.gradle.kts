@@ -3,6 +3,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
+	alias(libs.plugins.kotlinx.atomicfu)
 	alias(libs.plugins.publish)
 	dokka
 	multiplatform
@@ -26,6 +27,7 @@ kotlin {
 		commonMain.dependencies {
 			api(libs.kotlinx.io)
 			api(projects.util)
+			implementation(libs.kotlinx.serialization.properties)
 		}
 
 		commonTest.dependencies {

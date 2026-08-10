@@ -1,4 +1,6 @@
-package quest.laxla.spock
+@file:Suppress("DEPRECATION")
+
+package quest.laxla.spock.core
 
 import kotlin.jvm.JvmInline
 import kotlin.time.Duration
@@ -32,6 +34,7 @@ import kotlin.time.toDuration
  * @see Duration
  */
 @JvmInline
+@Deprecated("Will be replaced with Timeline-local duration")
 public value class EngineDuration internal constructor(private val impl: Duration) : Comparable<EngineDuration> {
 	public operator fun unaryMinus(): EngineDuration = EngineDuration(-impl)
 	public operator fun plus(other: EngineDuration): EngineDuration = EngineDuration(impl + other.impl)
@@ -97,11 +100,8 @@ public value class EngineDuration internal constructor(private val impl: Duratio
 	public val inWholeGameNanoseconds: Long
 		get() = impl.inWholeNanoseconds
 
-	/**
-	 * @since 0.0.1-alpha.4
-	 */
-	context(scheduler: Scheduler)
-	public fun toDuration(): Duration = impl * scheduler.engineSecond.toDouble(DurationUnit.SECONDS)
+	// context(scheduler: Scheduler)
+	// public fun toDuration(): Duration = impl * scheduler.engineSecond.toDouble(DurationUnit.SECONDS)
 
 	override fun toString(): String = "$impl [in-engine]"
 

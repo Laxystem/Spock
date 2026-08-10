@@ -105,7 +105,7 @@ public class Renderer(
 			device.createBuffer(
 				descriptor = BufferDescriptor(
 					size = it,
-					usage = setOf(GPUBufferUsage.Vertex, GPUBufferUsage.CopyDst)
+					usage = GPUBufferUsage.Vertex or GPUBufferUsage.CopyDst
 				)
 			)
 		},
@@ -120,7 +120,7 @@ public class Renderer(
 			device.createBuffer(
 				descriptor = BufferDescriptor(
 					size = it,
-					usage = setOf(GPUBufferUsage.Index, GPUBufferUsage.CopyDst)
+					usage = GPUBufferUsage.Index or GPUBufferUsage.CopyDst
 				)
 			)
 		},
@@ -137,7 +137,7 @@ public class Renderer(
 			TextureDescriptor(
 				size = (surface.window.size.await() z 1u).asSize3D(),
 				format = GPUTextureFormat.Depth24Plus,
-				usage = setOf(GPUTextureUsage.RenderAttachment)
+				usage = GPUTextureUsage.RenderAttachment
 			)
 		)
 	}

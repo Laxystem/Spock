@@ -7,6 +7,7 @@ import kotlinx.io.bytestring.ByteString
  *
  * @since 0.0.1-alpha.4
  */
+// TODO: replace all ByteAppenders with Sources and Sinks
 @SubclassOptInRequired(ExperimentalSpockApi::class)
 public interface ByteAppender {
 	/**

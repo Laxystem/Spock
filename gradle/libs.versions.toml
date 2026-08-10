@@ -1,29 +1,33 @@
 [versions]
-dokka = "2.1.0"
-javaNativeAccess = "5.18.1"
-kotlin = "2.3.0"
-kotlinLogging = "7.0.14"
-kotlinPoet = "2.2.0"
-kotlinSymbolProcessing = "2.3.4"
+dokka = "2.2.0"
+javaNativeAccess = "5.19.1"
+kotlin = "2.4.0"
+kotlinLogging = "8.0.4"
+kotlinPoet = "2.3.0"
+kotlinSymbolProcessing = "2.3.9"
+kotlinx-atomicfu = "0.33.0"
 kotlinx-browser = "0.5.0"
-kotlinx-collections-immutable = "0.4.0"
-kotlinx-coroutines = "1.10.2"
-kotlinx-io = "0.8.2"
-kotlinx-kover = "0.9.4"
-kotlinx-serialization = "1.9.0"
-logback = "1.5.24"
-lwjgl = "3.3.6"
-mavenPublish = "0.35.0"
-semver = "3.0.0"
+kotlinx-collections-immutable = "0.5.0"
+kotlinx-coroutines = "1.11.0"
+kotlinx-io = "0.9.0"
+kotlinx-kover = "0.9.8"
+kotlinx-serialization = "1.11.0"
+ktor = "3.5.0"
+logback = "1.5.34"
+lwjgl = "3.4.1"
+mavenPublish = "0.36.0"
+semver = "3.1.0"
 wgpu4k = "0.1.1"
 wgpu4k-glfw = "0.0.3"
-wgpu4k-ktypes = "0.0.8"
+wgpu4k-ktypes = "0.0.9"
 wgpu4k-rococoa = "0.0.1"
 
 [libraries]
 dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin" }
 javaNativeAccess = { group = "net.java.dev.jna", name = "jna", version.ref = "javaNativeAccess" }
 javaNativeAccess-platform = { group = "net.java.dev.jna", name = "jna-platform", version.ref = "javaNativeAccess" }
+kotlin-compiler-embeddable = { group = "org.jetbrains.kotlin", name = "kotlin-compiler-embeddable", version.ref = "kotlin" }
+kotlin-gradlePluginApi = { group= "org.jetbrains.kotlin", name = "kotlin-gradle-plugin-api", version.ref = "kotlin" }
 kotlinLogging = { group = "io.github.oshai", name = "kotlin-logging", version.ref = "kotlinLogging" }
 kotlinPoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinPoet" }
 kotlinPoet-kotlinSymbolProcessing = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinPoet" }
@@ -52,6 +56,7 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
+kotlinx-atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version.ref = "kotlinx-atomicfu" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
 kotlinx-powerAssert = { id = "org.jetbrains.kotlin.plugin.power-assert", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

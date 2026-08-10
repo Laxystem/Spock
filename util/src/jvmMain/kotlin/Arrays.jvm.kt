@@ -7,4 +7,5 @@ public actual inline fun Int.growArraySize(minimumGrowth: Int, preferredGrowth: 
 @PublishedApi
 internal actual val SoftMaxArrayLength: Int get() = jdk.internal.util.ArraysSupport.SOFT_MAX_ARRAY_LENGTH
 
-public actual typealias OutOfMemoryError = java.lang.OutOfMemoryError
+@Suppress("ACTUAL_ANNOTATIONS_NOT_MATCH_EXPECT")
+internal actual typealias OutOfMemoryError = java.lang.OutOfMemoryError
